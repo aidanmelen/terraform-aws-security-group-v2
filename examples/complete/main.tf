@@ -37,7 +37,7 @@ module "managed_rules_sg" {
       rule             = "postgresql-tcp"
       ipv6_cidr_blocks = ["2001:db8::/64"]
     }
-    "SSH to from prefix lists" = {
+    "SSH to prefix lists" = {
       rule            = "ssh-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.example.id]
     }
