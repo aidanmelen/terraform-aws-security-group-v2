@@ -23,12 +23,18 @@ func TestTerraformRulesOnlyExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualManagedRuleKeys := terraform.Output(t, terraformOptions, "managed_security_group_rule_keys")
-	actualRuleKeys := terraform.Output(t, terraformOptions, "security_group_rule_keys")
+	actualIngressRuleKeys := terraform.Output(t, terraformOptions, "ingress_rule_keys")
+	actualManagedIngressRuleKeys := terraform.Output(t, terraformOptions, "managed_ingress_rule_keys")
+	actualEgressRuleKeys := terraform.Output(t, terraformOptions, "egress_rule_keys")
+	actualManagedEgressRuleKeys := terraform.Output(t, terraformOptions, "managed_egress_rule_keys")
 
-	expectedManagedRuleKeys := "[ingress-http-80-tcp-from-sg-b551fece]"
-	expectedRuleKeys := "[]"
+	expectedIngressRuleKeys := "[]"
+	expectedManagedIngressRuleKeys := "[ingress-http-80-tcp-from-sg-b551fece]"
+	expectedEgressRuleKeys := "[]"
+	expectedManagedEgressRuleKeys := "[]"
 
-	assert.Equal(t, expectedManagedRuleKeys, actualManagedRuleKeys, "Map %q should match %q", expectedManagedRuleKeys, actualManagedRuleKeys)
-	assert.Equal(t, expectedRuleKeys, actualRuleKeys, "Map %q should match %q", expectedRuleKeys, actualRuleKeys)
+	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)
+	assert.Equal(t, expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys, "Map %q should match %q", expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys)
+	assert.Equal(t, expectedEgressRuleKeys, actualEgressRuleKeys, "Map %q should match %q", expectedEgressRuleKeys, actualEgressRuleKeys)
+	assert.Equal(t, expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys, "Map %q should match %q", expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys)
 }

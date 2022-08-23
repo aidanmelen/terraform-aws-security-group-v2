@@ -1,6 +1,7 @@
 ###############################################################################
 # Security Group
 ###############################################################################
+
 variable "create" {
   description = "Whether to create security group and all rules"
   type        = bool
@@ -70,11 +71,6 @@ variable "delete_timeout" {
 ###############################################################################
 # Ingress Rules
 ###############################################################################
-variable "managed_ingress_rules" {
-  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
-  type        = any
-  default     = []
-}
 
 variable "ingress_rules" {
   description = "List of ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
@@ -82,17 +78,24 @@ variable "ingress_rules" {
   default     = []
 }
 
-###############################################################################
-# Egress Rules
-###############################################################################
-variable "managed_egress_rules" {
-  description = "List of managed egress rules. The key is the rule description and the value is the managed rule name."
+variable "managed_ingress_rules" {
+  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
   type        = any
   default     = []
 }
 
+###############################################################################
+# Egress Rules
+###############################################################################
+
 variable "egress_rules" {
   description = "List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+  type        = any
+  default     = []
+}
+
+variable "managed_egress_rules" {
+  description = "List of managed egress rules. The key is the rule description and the value is the managed rule name."
   type        = any
   default     = []
 }

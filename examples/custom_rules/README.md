@@ -116,6 +116,8 @@ module "security_group" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_managed_security_group_rule_keys"></a> [managed\_security\_group\_rule\_keys](#output\_managed\_security\_group\_rule\_keys) | The managed security group rule keys. |
-| <a name="output_security_group_rule_keys"></a> [security\_group\_rule\_keys](#output\_security\_group\_rule\_keys) | The security group rule keys. |
+| <a name="output_egress_rule_keys"></a> [egress\_rule\_keys](#output\_egress\_rule\_keys) | The egress security group rule keys. |
+| <a name="output_ingress_rule_keys"></a> [ingress\_rule\_keys](#output\_ingress\_rule\_keys) | The ingress security group rule keys. |
+| <a name="output_managed_egress_rule_keys"></a> [managed\_egress\_rule\_keys](#output\_managed\_egress\_rule\_keys) | The managed egress security group rule keys. |
+| <a name="output_managed_ingress_rule_keys"></a> [managed\_ingress\_rule\_keys](#output\_managed\_ingress\_rule\_keys) | The managed ingress security group rule keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

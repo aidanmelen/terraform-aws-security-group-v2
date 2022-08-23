@@ -22,8 +22,9 @@ Note that this example may create resources which cost money. Run `terraform des
 
 ```hcl
 resource "aws_security_group" "pre_existing_sg" {
-  name   = "${local.name}-pre-existing-sg"
-  vpc_id = data.aws_vpc.default.id
+  name        = "${local.name}-pre-existing-sg"
+  description = "${local.name}-pre-existing-sg"
+  vpc_id      = data.aws_vpc.default.id
 
   tags = {
     "Name" = "${local.name}-pre-existing-sg"
@@ -68,7 +69,9 @@ module "security_group" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_managed_security_group_rule_keys"></a> [managed\_security\_group\_rule\_keys](#output\_managed\_security\_group\_rule\_keys) | The managed security group rule keys. |
+| <a name="output_egress_rule_keys"></a> [egress\_rule\_keys](#output\_egress\_rule\_keys) | The egress security group rule keys. |
+| <a name="output_ingress_rule_keys"></a> [ingress\_rule\_keys](#output\_ingress\_rule\_keys) | The ingress security group rule keys. |
+| <a name="output_managed_egress_rule_keys"></a> [managed\_egress\_rule\_keys](#output\_managed\_egress\_rule\_keys) | The managed egress security group rule keys. |
+| <a name="output_managed_ingress_rule_keys"></a> [managed\_ingress\_rule\_keys](#output\_managed\_ingress\_rule\_keys) | The managed ingress security group rule keys. |
 | <a name="output_pre_existing_sg_id"></a> [pre\_existing\_sg\_id](#output\_pre\_existing\_sg\_id) | The pre-existing security group ID. |
-| <a name="output_security_group_rule_keys"></a> [security\_group\_rule\_keys](#output\_security\_group\_rule\_keys) | The security group rule keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

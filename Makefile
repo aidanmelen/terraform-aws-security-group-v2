@@ -5,11 +5,11 @@ SHELL := /bin/bash
 .PHONY: help all
 
 help: ## This help.
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-35s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
 
-build: ## Build docker dev container
+build: ## Build docker dev image
 	cd .devcontainer && docker build -f Dockerfile . -t $(NAME)
 
 run: ## Run docker dev container
@@ -35,7 +35,9 @@ setup: ## Setup project
 	go mod tidy -go=1.16 && go mod tidy -go=1.17
 
 docs:
-	./bin/render-docs.sh
+	./bin/render-terraform-docs.sh
+	./bin/render-terratest-docs.sh
+	./bin/render-makefile-docs.sh
 
 lint: docs ## Lint with pre-commit
 	git add -A
@@ -55,7 +57,7 @@ test-complete: ## Test the complete example
 test-managed-rules: ## Test the managed_rules example
 	go test test/terraform_managed_rules_test.go -timeout 5m -v |& tee test/terraform_managed_rules_test.log
 
-test-custom-rules: ## Test the rules example
+test-custom-rules: ## Test the custom_rules example
 	go test test/terraform_custom_rules_test.go -timeout 5m -v |& tee test/terraform_custom_rules_test.log
 
 test-rules-only: ## Test the rules_only example

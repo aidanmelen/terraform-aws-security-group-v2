@@ -1,0 +1,12 @@
+help                 This help.
+build                Build docker dev image
+run                  Run docker dev container
+setup                Setup project
+lint                 Lint with pre-commit
+lint-all             Lint all files with pre-commit
+tests                Tests with Terratest
+test-complete        Test the complete example
+test-managed-rules   Test the managed_rules example
+test-custom-rules    Test the custom_rules example
+test-rules-only      Test the rules_only example
+clean                Clean project

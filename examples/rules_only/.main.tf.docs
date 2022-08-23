@@ -1,6 +1,7 @@
 resource "aws_security_group" "pre_existing_sg" {
-  name   = "${local.name}-pre-existing-sg"
-  vpc_id = data.aws_vpc.default.id
+  name        = "${local.name}-pre-existing-sg"
+  description = "${local.name}-pre-existing-sg"
+  vpc_id      = data.aws_vpc.default.id
 
   tags = {
     "Name" = "${local.name}-pre-existing-sg"

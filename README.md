@@ -168,8 +168,9 @@ Please see the [Custom Rules Example](examples/rules) for more information.
 
 ```hcl
 resource "aws_security_group" "pre_existing_sg" {
-  name   = "${local.name}-pre-existing-sg"
-  vpc_id = data.aws_vpc.default.id
+  name        = "${local.name}-pre-existing-sg"
+  description = "${local.name}-pre-existing-sg"
+  vpc_id      = data.aws_vpc.default.id
 
   tags = {
     "Name" = "${local.name}-pre-existing-sg"
@@ -203,16 +204,14 @@ Please see the [Rules Only Example](examples/rules_only) for more information.
 
 ## Limitations
 
-In Terraform, values in `for_each` loops must be known before the first apply. This module dynamically creates security group rules using `for_each` loops. As a consequence, the
+The following module security group rule arguments must be known before the first Terraform apply:
 
 - `cidr_blocks`
 - `ipv6_cidr_blocks`
 - `prefix_list_ids`
 - `source_security_group_id`
 
-`aws_security_group_rule` resource arguments must be known before the first apply terraform apply. For example, Terraform will fail if you try to create a security group and reference it with `source_security_group_id` rule in the same Terraform run. This can be avoided by creating the security then creating the `source_security_group_id` rule in another run.
-
-This explains why the complete example depends on pre-existing VPC, default security group, and s3 endpoint prefix list.
+They can be dynamic after the first Terraform apply.
 
 ## Tests
 
@@ -220,21 +219,30 @@ Run Terratest using the [Makefile](./Makefile) targets:
 1. `make setup`
 2. `make tests`
 
+### Results
+
+```
+--- PASS: TestTerraformCompleteExample (33.57s)
+--- PASS: TestTerraformCustomRulesExample (31.41s)
+--- PASS: TestTerraformManagedRulesExample (32.16s)
+--- PASS: TestTerraformRulesOnlyExample (18.84s)
+```
+
 ## Makefile Targets
 
 ```
-help                                This help.
-build                               Build docker dev container
-run                                 Run docker dev container
-setup                               Setup project
-lint                                Lint with pre-commit
-lint-all                            Lint all files with pre-commit
-tests                               Tests with Terratest
-test-complete                       Test the complete example
-test-managed-rules                  Test the managed_rules example
-test-custom-rules                   Test the rules example
-test-rules-only                     Test the rules_only example
-clean                               Clean project
+help                 This help.
+build                Build docker dev image
+run                  Run docker dev container
+setup                Setup project
+lint                 Lint with pre-commit
+lint-all             Lint all files with pre-commit
+tests                Tests with Terratest
+test-complete        Test the complete example
+test-managed-rules   Test the managed_rules example
+test-custom-rules    Test the custom_rules example
+test-rules-only      Test the rules_only example
+clean                Clean project
 ```
 
 ## Requirements
@@ -266,15 +274,19 @@ clean                               Clean project
 
 | Name | Description |
 |------|-------------|
-| <a name="output_managed_security_group_rule_ids"></a> [managed\_security\_group\_rule\_ids](#output\_managed\_security\_group\_rule\_ids) | The managed security group rule IDs. |
-| <a name="output_managed_security_group_rule_keys"></a> [managed\_security\_group\_rule\_keys](#output\_managed\_security\_group\_rule\_keys) | The managed security group rule keys. |
+| <a name="output_egress_rule_ids"></a> [egress\_rule\_ids](#output\_egress\_rule\_ids) | The security group rule IDs. |
+| <a name="output_egress_rule_keys"></a> [egress\_rule\_keys](#output\_egress\_rule\_keys) | The egress security group rule keys. |
+| <a name="output_ingress_rule_ids"></a> [ingress\_rule\_ids](#output\_ingress\_rule\_ids) | The security group rule IDs. |
+| <a name="output_ingress_rule_keys"></a> [ingress\_rule\_keys](#output\_ingress\_rule\_keys) | The ingress security group rule keys. |
+| <a name="output_managed_egress_rule_ids"></a> [managed\_egress\_rule\_ids](#output\_managed\_egress\_rule\_ids) | The managed egress security group rule IDs. |
+| <a name="output_managed_egress_rule_keys"></a> [managed\_egress\_rule\_keys](#output\_managed\_egress\_rule\_keys) | The managed egress security group rule keys. |
+| <a name="output_managed_ingress_rule_ids"></a> [managed\_ingress\_rule\_ids](#output\_managed\_ingress\_rule\_ids) | The managed ingress security group rule IDs. |
+| <a name="output_managed_ingress_rule_keys"></a> [managed\_ingress\_rule\_keys](#output\_managed\_ingress\_rule\_keys) | The managed ingress security group rule keys. |
 | <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | The ARN of the security group |
 | <a name="output_security_group_description"></a> [security\_group\_description](#output\_security\_group\_description) | The description of the security group |
 | <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | The ID of the security group |
 | <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | The name of the security group |
 | <a name="output_security_group_owner_id"></a> [security\_group\_owner\_id](#output\_security\_group\_owner\_id) | The owner ID |
-| <a name="output_security_group_rule_ids"></a> [security\_group\_rule\_ids](#output\_security\_group\_rule\_ids) | The security group rule IDs. |
-| <a name="output_security_group_rule_keys"></a> [security\_group\_rule\_keys](#output\_security\_group\_rule\_keys) | The security group rule keys. |
 | <a name="output_security_group_vpc_id"></a> [security\_group\_vpc\_id](#output\_security\_group\_vpc\_id) | The VPC ID |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
