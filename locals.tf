@@ -4,7 +4,7 @@ locals {
   /*
   Custom security group rules are created with this terraform ID format:
 
-  type-protocol-to_port-from_port-from-source
+  type-protocol-to_port-from_port-from|to-source
 
   for example:
 
@@ -54,7 +54,7 @@ locals {
   /*
   Managed security group rules are created with this terraform ID formats:
 
-  type-rule-from-source
+  type-rule-from|to-source
 
   for example:
 

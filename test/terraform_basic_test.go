@@ -29,8 +29,8 @@ func TestTerraformBasicExample(t *testing.T) {
 	actualManagedEgressRuleKeys := terraform.Output(t, terraformOptions, "managed_egress_rule_keys")
 
 	expectedIngressRuleKeys := "[]"
-	expectedEgressRuleKeys := "["
-	expectedManagedIngressRuleKeys := "[ingress-all-all-from-self ingress-https-tcp-from-10.0.0.0/24]"
+	expectedEgressRuleKeys := "[]"
+	expectedManagedIngressRuleKeys := "[ingress-all-all-from-self ingress-https-443-tcp-from-10.0.0.0/24]"
 	expectedManagedEgressRuleKeys := "[egress-all-all-to-0.0.0.0/0 egress-all-all-to-::/0]"
 
 	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)

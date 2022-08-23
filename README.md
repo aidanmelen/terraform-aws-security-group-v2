@@ -34,7 +34,7 @@ module "security_group" {
   managed_ingress_rules = [
     {
       rule        = "https-443-tcp"
-      description = "My Service."
+      description = "My Service"
       cidr_blocks = ["10.0.0.0/24"]
     },
     {
@@ -46,10 +46,12 @@ module "security_group" {
   managed_egress_rules = [
     {
       rule        = "all-all"
+      description = "Get security patches from WWW"
       cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:aws-ec2-no-public-egress-sgr
     },
     {
       rule             = "all-all"
+      description      = "Get security patches from WWW"
       ipv6_cidr_blocks = ["::/0"] #tfsec:ignore:aws-ec2-no-public-egress-sgr
     }
   ]
@@ -274,10 +276,11 @@ Run Terratest using the [Makefile](./Makefile) targets:
 ### Results
 
 ```
---- PASS: TestTerraformCompleteExample (33.57s)
---- PASS: TestTerraformCustomRulesExample (31.41s)
---- PASS: TestTerraformManagedRulesExample (32.16s)
---- PASS: TestTerraformRulesOnlyExample (18.84s)
+--- PASS: TestTerraformBasicExample (22.85s)
+--- PASS: TestTerraformCompleteExample (32.27s)
+--- PASS: TestTerraformCustomRulesExample (32.90s)
+--- PASS: TestTerraformManagedRulesExample (33.31s)
+--- PASS: TestTerraformRulesOnlyExample (19.73s)
 ```
 
 ## Makefile Targets
