@@ -1,0 +1,61 @@
+content: |-
+  {{ .Header }}
+
+  ## Examples
+
+  ### Complete
+
+  Please see the [Complete Example](examples/complete) for more information.
+
+  ### Security group with managed rules
+
+  ```hcl
+  {{ include "examples/managed_rules/.main.tf.docs" }}
+  ```
+
+  Please see the [Managed Rules Example](examples/managed_rules) for more information.
+
+  ### Security group with custom rules
+
+  ```hcl
+  {{ include "examples/custom_rules/.main.tf.docs" }}
+  ```
+
+  Please see the [Custom Rules Example](examples/rules) for more information.
+
+  ### Only rules with pre-existing security group
+
+  ```hcl
+  {{ include "examples/rules_only/.main.tf.docs" }}
+  ```
+
+  Please see the [Rules Only Example](examples/rules_only) for more information.
+
+  ## Limitations
+
+  In Terraform, values in `for_each` loops must be known before the first apply. This module dynamically creates security group rules using `for_each` loops. As a consequence, the
+
+  - `cidr_blocks`
+  - `ipv6_cidr_blocks`
+  - `prefix_list_ids`
+  - `source_security_group_id`
+
+  `aws_security_group_rule` resource arguments must be known before the first apply terraform apply. For example, Terraform will fail if you try to create a security group and reference it with `source_security_group_id` rule in the same Terraform run. This can be avoided by creating the security then creating the `source_security_group_id` rule in another run.
+
+  This explains why the complete example depends on pre-existing VPC, default security group, and s3 endpoint prefix list.
+
+  ## Tests
+
+  Run Terratest using the [Makefile](./Makefile) targets:
+  1. `make setup`
+  2. `make tests`
+
+  ## Makefile Targets
+
+  ```
+  {{ include ".make.docs" }}
+  ```
+
+  {{ .Requirements }}
+  {{ .Inputs }}
+  {{ .Outputs }}

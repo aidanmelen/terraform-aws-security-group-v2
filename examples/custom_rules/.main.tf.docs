@@ -1,30 +1,30 @@
-################################################################################
-# Security Group Module
-################################################################################
-
 module "security_group" {
-  source = "../../"
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.1.0"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress_rules = [
     {
-      rule        = "all-all"
+      protocol    = "tcp"
+      from_port   = 443
+      to_port     = 443
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
     },
     {
-      rule             = "postgresql-tcp"
+      protocol         = "tcp"
+      from_port        = 350
+      to_port          = 450
       ipv6_cidr_blocks = ["2001:db8::/64"]
     },
     {
-      rule            = "ssh-tcp"
+      protocol        = "tcp"
+      from_port       = 22
+      to_port         = 22
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  ingress_rules = [
+    },
     {
       protocol                 = "icmp"
       from_port                = -1
@@ -39,22 +39,25 @@ module "security_group" {
     }
   ]
 
-  managed_egress_rules = [
+  egress_rules = [
     {
-      rule        = "https-443-tcp"
+      protocol    = "tcp"
+      from_port   = 443
+      to_port     = 443
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
     },
     {
-      rule             = "postgresql-tcp"
+      protocol         = "tcp"
+      from_port        = 350
+      to_port          = 450
       ipv6_cidr_blocks = ["2001:db8::/64"]
     },
     {
-      rule            = "ssh-tcp"
+      protocol        = "tcp"
+      from_port       = 22
+      to_port         = 22
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  egress_rules = [
+    },
     {
       protocol                 = "icmp"
       from_port                = -1
@@ -72,13 +75,4 @@ module "security_group" {
   tags = {
     "Name" = local.name
   }
-}
-
-################################################################################
-# Disabled creation
-################################################################################
-
-module "disabled_sg" {
-  source = "../../"
-  create = false
 }

@@ -1,7 +1,3 @@
-################################################################################
-# Security Group Module
-################################################################################
-
 module "security_group" {
   source = "../../"
 
@@ -21,21 +17,14 @@ module "security_group" {
     {
       rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  ingress_rules = [
+    },
     {
-      protocol                 = "icmp"
-      from_port                = -1
-      to_port                  = -1
+      rule                     = "all-icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      protocol  = "-1"
-      from_port = -1
-      to_port   = -1
-      self      = true
+      rule = "all-all"
+      self = true
     }
   ]
 
@@ -51,34 +40,18 @@ module "security_group" {
     {
       rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  egress_rules = [
+    },
     {
-      protocol                 = "icmp"
-      from_port                = -1
-      to_port                  = -1
+      rule                     = "all-icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      protocol  = "-1"
-      from_port = -1
-      to_port   = -1
-      self      = true
+      rule = "all-all"
+      self = true
     }
   ]
 
   tags = {
     "Name" = local.name
   }
-}
-
-################################################################################
-# Disabled creation
-################################################################################
-
-module "disabled_sg" {
-  source = "../../"
-  create = false
 }
