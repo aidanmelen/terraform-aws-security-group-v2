@@ -197,7 +197,5 @@ locals {
     all-udp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "udp" }
     all-icmp      = { "to_port" = -1, "from_port" = -1, "protocol" = "icmp" }
     all-ipv6-icmp = { "to_port" = -1, "from_port" = -1, "protocol" = 58 }
-    # This is a fallback rule to pass to lookup() as default. It does not open anything, because it should never be used.
-    _ = { "to_port" = "", "from_port" = "", "protocol" = "" }
   }
 }

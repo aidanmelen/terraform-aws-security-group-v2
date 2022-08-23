@@ -18,6 +18,7 @@ run: ## Run docker dev container
 setup: ## Setup project
 	# terraform
 	terraform init
+	cd examples/basic && terraform init
 	cd examples/complete && terraform init
 	cd examples/managed_rules && terraform init
 	cd examples/rules && terraform init
@@ -49,7 +50,10 @@ lint-all: docs ## Lint all files with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-complete test-managed-rules test-custom-rules test-rules-only ## Tests with Terratest
+tests: test-basic test-complete test-managed-rules test-custom-rules test-rules-only ## Tests with Terratest
+
+test-basic: ## Test the basic example
+	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
 
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 5m -v |& tee test/terraform_complete_test.log
@@ -65,12 +69,14 @@ test-rules-only: ## Test the rules_only example
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
+	@rm -f examples/complete/.tebasiclock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
 	@rm -f examples/managed_rules/.terraform.lock.hcl
 	@rm -f examples/rules/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
 
 	@rm -rf .terraform
+	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/managed_rules/.terraform
 	@rm -rf examples/rules/.terraform

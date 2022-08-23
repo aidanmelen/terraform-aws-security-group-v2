@@ -1,7 +1,25 @@
 content: |-
   {{ .Header }}
 
+  ## Acknowledgments
+
+  This modules aims to improve on the venerable [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module. It does so by:
+
+  - Reduce code complexity with `for_each` loops.
+  - Create security group rule resources with descriptive and identifiable terraform resource IDs.
+  - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with source security groups.
+  - Test examples with [Terratest](https://terratest.gruntwork.io/).
+  - Make adding new managed rule definitions simple. No need for a [update_groups.sh](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/update_groups.sh) bash script.
+
   ## Examples
+
+  ### Basic
+
+  ```hcl
+  {{ include "examples/basic/.main.tf.docs" }}
+  ```
+
+  Please see the [Basic Example](examples/basic) for more information.
 
   ### Complete
 

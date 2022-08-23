@@ -21,10 +21,6 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
-################################################################################
-# Security Group Module
-################################################################################
-
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.1.0"

@@ -8,7 +8,59 @@ Terraform module which creates [EC2 security group within VPC](http://docs.aws.a
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 
+## Acknowledgments
+
+This modules aims to improve on the venerable [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module. It does so by:
+
+- Reduce code complexity with `for_each` loops.
+- Create security group rule resources with descriptive and identifiable terraform resource IDs.
+- Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with source security groups.
+- Test examples with [Terratest](https://terratest.gruntwork.io/).
+- Make adding new managed rule definitions simple. No need for a [update_groups.sh](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/update_groups.sh) bash script.
+
 ## Examples
+
+### Basic
+
+```hcl
+module "security_group" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.1.0"
+
+  name        = local.name
+  description = local.name
+  vpc_id      = data.aws_vpc.default.id
+
+  managed_ingress_rules = [
+    {
+      rule        = "https-443-tcp"
+      description = "My Service."
+      cidr_blocks = ["10.0.0.0/24"]
+    },
+    {
+      rule = "all-all"
+      self = true
+    }
+  ]
+
+  managed_egress_rules = [
+    {
+      rule        = "all-all"
+      cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:aws-ec2-no-public-egress-sgr
+    },
+    {
+      rule             = "all-all"
+      ipv6_cidr_blocks = ["::/0"] #tfsec:ignore:aws-ec2-no-public-egress-sgr
+    }
+  ]
+
+  tags = {
+    "Name" = local.name
+  }
+}
+```
+
+Please see the [Basic Example](examples/basic) for more information.
 
 ### Complete
 
@@ -238,6 +290,7 @@ setup                Setup project
 lint                 Lint with pre-commit
 lint-all             Lint all files with pre-commit
 tests                Tests with Terratest
+test-basic           Test the basic example
 test-complete        Test the complete example
 test-managed-rules   Test the managed_rules example
 test-custom-rules    Test the custom_rules example
