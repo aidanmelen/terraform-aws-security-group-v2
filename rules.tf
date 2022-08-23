@@ -1,7 +1,7 @@
 # Protocols (tcp, udp, icmp, all - are allowed keywords) or numbers (from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml):
 # All = -1, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
 locals {
-  managed_rules = {
+  managed_rule_definitions = {
     # ActiveMQ
     activemq-5671-tcp  = { "to_port" = 5671, "from_port" = 5671, "protocol" = "tcp" }
     activemq-8883-tcp  = { "to_port" = 8883, "from_port" = 8883, "protocol" = "tcp" }
@@ -71,10 +71,15 @@ locals {
     ipsec-500-udp  = { "to_port" = 500, "from_port" = 500, "protocol" = "udp" }
     ipsec-4500-udp = { "to_port" = 4500, "from_port" = 4500, "protocol" = "udp" }
     # Kafka
-    kafka-broker-tcp        = { "to_port" = 9092, "from_port" = 9092, "protocol" = "tcp" }
-    kafka-broker-tls-tcp    = { "to_port" = 9094, "from_port" = 9094, "protocol" = "tcp" }
-    kafka-jmx-exporter-tcp  = { "to_port" = 11001, "from_port" = 11001, "protocol" = "tcp" }
-    kafka-node-exporter-tcp = { "to_port" = 11002, "from_port" = 11002, "protocol" = "tcp" }
+    kafka-broker-tcp                   = { "to_port" = 9092, "from_port" = 9092, "protocol" = "tcp" }
+    kafka-broker-tls-tcp               = { "to_port" = 9094, "from_port" = 9094, "protocol" = "tcp" }
+    kafka-broker-tls-public-tcp        = { "to_port" = 9194, "from_port" = 9194, "protocol" = "tcp" }
+    kafka-broker-sasl-scram-tcp        = { "to_port" = 9096, "from_port" = 9096, "protocol" = "tcp" }
+    kafka-broker-sasl-scram-public-tcp = { "to_port" = 9196, "from_port" = 9196, "protocol" = "tcp" }
+    kafka-broker-sasl-iam-tcp          = { "to_port" = 9098, "from_port" = 9098, "protocol" = "tcp" }
+    kafka-broker-sasl-iam-public-tcp   = { "to_port" = 9198, "from_port" = 9198, "protocol" = "tcp" }
+    kafka-jmx-exporter-tcp             = { "to_port" = 11001, "from_port" = 11001, "protocol" = "tcp" }
+    kafka-node-exporter-tcp            = { "to_port" = 11002, "from_port" = 11002, "protocol" = "tcp" }
     # Kibana
     kibana-tcp = { "to_port" = 5601, "from_port" = 5601, "protocol" = "tcp" }
     # Kubernetes
@@ -181,10 +186,11 @@ locals {
     zipkin-query-tcp       = { "to_port" = 9411, "from_port" = 9411, "protocol" = "tcp" }
     zipkin-web-tcp         = { "to_port" = 8080, "from_port" = 8080, "protocol" = "tcp" }
     # Zookeeper
-    zookeeper-2181-tcp = { "to_port" = 2181, "from_port" = 2181, "protocol" = "tcp" }
-    zookeeper-2888-tcp = { "to_port" = 2888, "from_port" = 2888, "protocol" = "tcp" }
-    zookeeper-3888-tcp = { "to_port" = 3888, "from_port" = 3888, "protocol" = "tcp" }
-    zookeeper-jmx-tcp  = { "to_port" = 7199, "from_port" = 7199, "protocol" = "tcp" }
+    zookeeper-2181-tcp     = { "to_port" = 2181, "from_port" = 2181, "protocol" = "tcp" }
+    zookeeper-2182-tls-tcp = { "to_port" = 2182, "from_port" = 2182, "protocol" = "tcp" }
+    zookeeper-2888-tcp     = { "to_port" = 2888, "from_port" = 2888, "protocol" = "tcp" }
+    zookeeper-3888-tcp     = { "to_port" = 3888, "from_port" = 3888, "protocol" = "tcp" }
+    zookeeper-jmx-tcp      = { "to_port" = 7199, "from_port" = 7199, "protocol" = "tcp" }
     # Open all ports & protocols
     all-all       = { "to_port" = -1, "from_port" = -1, "protocol" = "-1" }
     all-tcp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "tcp" }

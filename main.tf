@@ -1,9 +1,9 @@
-locals {
-  self_sg_id = var.create_sg ? aws_security_group.self[0].id : var.security_group_id
-}
+###############################################################################
+# Security Group
+###############################################################################
 
 resource "aws_security_group" "self" {
-  count                  = var.create_sg ? 1 : 0
+  count                  = var.create && var.create_sg ? 1 : 0
   description            = var.description
   name_prefix            = var.name_prefix
   name                   = var.name
@@ -18,14 +18,16 @@ resource "aws_security_group" "self" {
 }
 
 ###############################################################################
-# Security Group Rules
+# Custom Security Group Rules
 ###############################################################################
-resource "aws_security_group_rule" "ingress_rules" {
-  for_each = var.ingress_rules
 
-  type              = "ingress"
+#tfsec:ignore:aws-ec2-no-public-ingress-sgr tfsec:ignore:aws-ec2-no-public-egress-sgr
+resource "aws_security_group_rule" "rules" {
+  for_each = var.create ? local.rules : local.rules_with_null_values
+
+  type              = split("-", each.key)[0]
   security_group_id = local.self_sg_id
-  description       = each.key
+  description       = lookup(each.value, "description", each.key)
 
   protocol  = each.value["protocol"]
   from_port = each.value["from_port"]
@@ -38,37 +40,22 @@ resource "aws_security_group_rule" "ingress_rules" {
   source_security_group_id = lookup(each.value, "source_security_group_id", null)
 }
 
-resource "aws_security_group_rule" "egress_rules" {
-  for_each = var.egress_rules
-
-  type              = "egress"
-  security_group_id = local.self_sg_id
-  description       = each.key
-
-  protocol  = each.value["protocol"]
-  from_port = each.value["from_port"]
-  to_port   = each.value["to_port"]
-
-  cidr_blocks              = lookup(each.value, "cidr_blocks", null)
-  ipv6_cidr_blocks         = lookup(each.value, "ipv6_cidr_blocks", null)
-  prefix_list_ids          = lookup(each.value, "prefix_list_ids", null)
-  self                     = lookup(each.value, "self", null)
-  source_security_group_id = lookup(each.value, "source_security_group_id", null)
-}
 
 ###############################################################################
 # Managed Security Group Rules
 ###############################################################################
-resource "aws_security_group_rule" "managed_ingress_rules" {
-  for_each = var.managed_ingress_rules
 
-  type              = "ingress"
+#tfsec:ignore:aws-ec2-no-public-ingress-sgr tfsec:ignore:aws-ec2-no-public-egress-sgr
+resource "aws_security_group_rule" "managed_rules" {
+  for_each = var.create ? local.managed_rules : local.managed_rules_with_null_values
+
+  type              = split("-", each.key)[0]
   security_group_id = local.self_sg_id
-  description       = each.key
+  description       = lookup(each.value, "description", each.key)
 
-  protocol  = local.managed_rules[each.value["rule"]]["protocol"]
-  from_port = local.managed_rules[each.value["rule"]]["from_port"]
-  to_port   = local.managed_rules[each.value["rule"]]["to_port"]
+  protocol  = local.managed_rule_definitions[each.value["rule"]]["protocol"]
+  from_port = local.managed_rule_definitions[each.value["rule"]]["from_port"]
+  to_port   = local.managed_rule_definitions[each.value["rule"]]["to_port"]
 
   cidr_blocks              = lookup(each.value, "cidr_blocks", null)
   ipv6_cidr_blocks         = lookup(each.value, "ipv6_cidr_blocks", null)
@@ -76,23 +63,3 @@ resource "aws_security_group_rule" "managed_ingress_rules" {
   self                     = lookup(each.value, "self", null)
   source_security_group_id = lookup(each.value, "source_security_group_id", null)
 }
-
-resource "aws_security_group_rule" "managed_egress_rules" {
-  for_each = var.managed_egress_rules
-
-  type              = "egress"
-  security_group_id = local.self_sg_id
-  description       = each.key
-
-  protocol  = local.managed_rules[each.value["rule"]]["protocol"]
-  from_port = local.managed_rules[each.value["rule"]]["from_port"]
-  to_port   = local.managed_rules[each.value["rule"]]["to_port"]
-
-  cidr_blocks              = lookup(each.value, "cidr_blocks", null)
-  ipv6_cidr_blocks         = lookup(each.value, "ipv6_cidr_blocks", null)
-  prefix_list_ids          = lookup(each.value, "prefix_list_ids", null)
-  self                     = lookup(each.value, "self", null)
-  source_security_group_id = lookup(each.value, "source_security_group_id", null)
-}
-
-

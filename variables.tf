@@ -1,6 +1,13 @@
 ###############################################################################
 # Security Group
 ###############################################################################
+
+variable "create" {
+  description = "Whether to create security group and all rules"
+  type        = bool
+  default     = true
+}
+
 variable "create_sg" {
   description = "Whether to create security group and all rules."
   type        = bool
@@ -64,29 +71,31 @@ variable "delete_timeout" {
 ###############################################################################
 # Ingress Rules
 ###############################################################################
+
 variable "ingress_rules" {
-  description = "Map of ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+  description = "List of ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
   type        = any
-  default     = {}
+  default     = []
 }
 
 variable "managed_ingress_rules" {
-  description = "Map of managed ingress rules. The key is the rule description and the value is the managed rule name."
+  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
   type        = any
-  default     = {}
+  default     = []
 }
 
 ###############################################################################
 # Egress Rules
 ###############################################################################
+
 variable "egress_rules" {
-  description = "Map of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+  description = "List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
   type        = any
-  default     = {}
+  default     = []
 }
 
 variable "managed_egress_rules" {
-  description = "Map of managed egress rules. The key is the rule description and the value is the managed rule name."
+  description = "List of managed egress rules. The key is the rule description and the value is the managed rule name."
   type        = any
-  default     = {}
+  default     = []
 }

@@ -1,0 +1,83 @@
+content: |-
+  {{ .Header }}
+
+  ## Acknowledgments
+
+  This modules aims to improve on the venerable [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module. It does so by:
+
+  - Reduce code complexity with `for_each` loops.
+  - Create security group rule resources with descriptive and identifiable terraform resource IDs.
+  - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with source security groups.
+  - Test examples with [Terratest](https://terratest.gruntwork.io/).
+  - Make adding new managed rule definitions simple. No need for a [update_groups.sh](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/update_groups.sh) bash script.
+
+  ## Examples
+
+  ### Basic
+
+  ```hcl
+  {{ include "examples/basic/.main.tf.docs" }}
+  ```
+
+  Please see the [Basic Example](examples/basic) for more information.
+
+  ### Complete
+
+  Please see the [Complete Example](examples/complete) for more information.
+
+  ### Security group with managed rules
+
+  ```hcl
+  {{ include "examples/managed_rules/.main.tf.docs" }}
+  ```
+
+  Please see the [Managed Rules Example](examples/managed_rules) for more information.
+
+  ### Security group with custom rules
+
+  ```hcl
+  {{ include "examples/custom_rules/.main.tf.docs" }}
+  ```
+
+  Please see the [Custom Rules Example](examples/rules) for more information.
+
+  ### Only rules with pre-existing security group
+
+  ```hcl
+  {{ include "examples/rules_only/.main.tf.docs" }}
+  ```
+
+  Please see the [Rules Only Example](examples/rules_only) for more information.
+
+  ## Limitations
+
+  The following module security group rule arguments must be known before the first Terraform apply:
+
+  - `cidr_blocks`
+  - `ipv6_cidr_blocks`
+  - `prefix_list_ids`
+  - `source_security_group_id`
+
+  They can be dynamic after the first Terraform apply.
+
+  ## Tests
+
+  Run Terratest using the [Makefile](./Makefile) targets:
+  1. `make setup`
+  2. `make tests`
+
+  ### Results
+
+  ```
+  {{ include "test/.terratest.docs" }}
+  ```
+
+  ## Makefile Targets
+
+  ```
+  {{ include ".makefile.docs" }}
+  ```
+
+  {{ .Requirements }}
+  {{ .Inputs }}
+  {{ .Outputs }}
