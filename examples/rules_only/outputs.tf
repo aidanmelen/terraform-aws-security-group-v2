@@ -57,24 +57,23 @@ output "computed_managed_egress_rule_ids" {
   value       = module.security_group.computed_managed_egress_rule_ids
 }
 
-
 ###############################################################################
 # Auto Group Rules
 ###############################################################################
 
-output "auto_group_ingress_all_from_self_rule_ids" {
-  description = "The auto group ingress all to self rule IDs."
-  value       = module.security_group.auto_group_ingress_all_from_self_rule_ids
-}
-
 output "auto_group_ingress_all_from_self_rule_keys" {
-  description = "The auto group ingress all to self rule keys."
+  description = "The auto group ingress all to self rule key."
   value       = module.security_group.auto_group_ingress_all_from_self_rule_keys
 }
 
-output "auto_group_egress_to_public_internet_rule_ids" {
-  description = "The auto group egress all to public internet rule IDs."
-  value       = module.security_group.auto_group_egress_to_public_internet_rule_ids
+output "auto_group_ingress_https_from_self_rule_keys" {
+  description = "The auto group ingress HTTPS from the public internet rule keys."
+  value       = module.security_group.auto_group_ingress_https_from_public_internet_rule_keys
+}
+
+output "auto_group_ingress_http_from_self_rule_keys" {
+  description = "The auto group ingress HTTP from the public internet rule keys."
+  value       = module.security_group.auto_group_ingress_http_from_public_internet_rule_keys
 }
 
 output "auto_group_egress_all_to_public_internet_rule_keys" {

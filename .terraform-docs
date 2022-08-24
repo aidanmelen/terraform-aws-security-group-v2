@@ -17,7 +17,7 @@ content: |-
 
   ### Security Group with basic rules
 
-  Create a security group with HTTPS from `10.0.0.0/24` and `all-all` to the public internet rules.
+  Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
 
   ```hcl
   {{ include "examples/basic/.main.tf.docs" }}
@@ -27,7 +27,7 @@ content: |-
 
   ### Security Group with complete rules
 
-  Create a security group with a combination of both managed and custom rules. This also demonstrates the conditional create functionality.
+  Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
 
   <details><summary>Click to show</summary>
 

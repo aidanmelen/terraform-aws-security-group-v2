@@ -25,7 +25,7 @@ This module aims to implement **ALL** combinations of arguments supported by AWS
 
 ### Security Group with basic rules
 
-Create a security group with HTTPS from `10.0.0.0/24` and `all-all` to the public internet rules.
+Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
 
 ```hcl
 module "security_group" {
@@ -57,7 +57,7 @@ Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-secur
 
 ### Security Group with complete rules
 
-Create a security group with a combination of both managed and custom rules. This also demonstrates the conditional create functionality.
+Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
 
 <details><summary>Click to show</summary>
 
@@ -486,12 +486,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (24.72s)
---- PASS: TestTerraformCompleteExample (48.69s)
---- PASS: TestTerraformCustomRulesExample (36.72s)
---- PASS: TestTerraformManagedRulesExample (37.11s)
---- PASS: TestTerraformComputedRulesExample (33.16s)
---- PASS: TestTerraformRulesOnlyExample (23.53s)
+FAIL
+FAIL
+FAIL
+FAIL
+FAIL
+FAIL
 ```
 
 ## Makefile Targets
@@ -501,8 +501,8 @@ help                 This help.
 build                Build docker dev image
 run                  Run docker dev container
 setup                Setup project
-lint                 Lint with pre-commit
-lint-all             Lint all files with pre-commit
+lint                 Lint with pre-commit and render docs
+lint-all             Lint all files with pre-commit and render docs
 tests                Tests with Terratest
 test-basic           Test the basic example
 test-complete        Test the complete example
@@ -529,7 +529,9 @@ clean                Clean project
 | <a name="input_computed_managed_ingress_rules"></a> [computed\_managed\_ingress\_rules](#input\_computed\_managed\_ingress\_rules) | List of dynamic managed ingress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_auto_group_egress_all_to_public_internet_rules"></a> [create\_auto\_group\_egress\_all\_to\_public\_internet\_rules](#input\_create\_auto\_group\_egress\_all\_to\_public\_internet\_rules) | Whether to create auto group egress all to public internet rules (IPV4/IPV6). | `bool` | `false` | no |
-| <a name="input_create_auto_group_ingress_all_from_self_rules"></a> [create\_auto\_group\_ingress\_all\_from\_self\_rules](#input\_create\_auto\_group\_ingress\_all\_from\_self\_rules) | Whether to create auto group ingress all to self rules. | `bool` | `false` | no |
+| <a name="input_create_auto_group_ingress_all_from_self_rules"></a> [create\_auto\_group\_ingress\_all\_from\_self\_rules](#input\_create\_auto\_group\_ingress\_all\_from\_self\_rules) | Whether to create auto group ingress all from self security group rules. | `bool` | `false` | no |
+| <a name="input_create_auto_group_ingress_http_from_public_internet_rules"></a> [create\_auto\_group\_ingress\_http\_from\_public\_internet\_rules](#input\_create\_auto\_group\_ingress\_http\_from\_public\_internet\_rules) | Whether to create auto group ingress HTTP from the public internet rules. | `bool` | `false` | no |
+| <a name="input_create_auto_group_ingress_https_from_public_internet_rules"></a> [create\_auto\_group\_ingress\_https\_from\_public\_internet\_rules](#input\_create\_auto\_group\_ingress\_https\_from\_public\_internet\_rules) | Whether to create auto group ingress HTTPS from the public internet rules. | `bool` | `false` | no |
 | <a name="input_create_sg"></a> [create\_sg](#input\_create\_sg) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
@@ -548,10 +550,14 @@ clean                Clean project
 
 | Name | Description |
 |------|-------------|
+| <a name="output_auto_group_egress_all_to_public_internet_rule_ids"></a> [auto\_group\_egress\_all\_to\_public\_internet\_rule\_ids](#output\_auto\_group\_egress\_all\_to\_public\_internet\_rule\_ids) | The auto group egress all to public internet rule IDs. |
 | <a name="output_auto_group_egress_all_to_public_internet_rule_keys"></a> [auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys](#output\_auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys) | The auto group egress all to public internet rule keys. |
-| <a name="output_auto_group_egress_to_public_internet_rule_ids"></a> [auto\_group\_egress\_to\_public\_internet\_rule\_ids](#output\_auto\_group\_egress\_to\_public\_internet\_rule\_ids) | The auto group egress all to public internet rule IDs. |
 | <a name="output_auto_group_ingress_all_from_self_rule_ids"></a> [auto\_group\_ingress\_all\_from\_self\_rule\_ids](#output\_auto\_group\_ingress\_all\_from\_self\_rule\_ids) | The auto group ingress all to self rule IDs. |
 | <a name="output_auto_group_ingress_all_from_self_rule_keys"></a> [auto\_group\_ingress\_all\_from\_self\_rule\_keys](#output\_auto\_group\_ingress\_all\_from\_self\_rule\_keys) | The auto group ingress all to self rule key. |
+| <a name="output_auto_group_ingress_http_from_public_internet_rule_ids"></a> [auto\_group\_ingress\_http\_from\_public\_internet\_rule\_ids](#output\_auto\_group\_ingress\_http\_from\_public\_internet\_rule\_ids) | The auto group ingress HTTP from the public internet rule IDs. |
+| <a name="output_auto_group_ingress_http_from_public_internet_rule_keys"></a> [auto\_group\_ingress\_http\_from\_public\_internet\_rule\_keys](#output\_auto\_group\_ingress\_http\_from\_public\_internet\_rule\_keys) | The auto group ingress HTTP from the public internet rule keys. |
+| <a name="output_auto_group_ingress_https_from_public_internet_rule_ids"></a> [auto\_group\_ingress\_https\_from\_public\_internet\_rule\_ids](#output\_auto\_group\_ingress\_https\_from\_public\_internet\_rule\_ids) | The auto group ingress HTTPS from the public internet rule IDs. |
+| <a name="output_auto_group_ingress_https_from_public_internet_rule_keys"></a> [auto\_group\_ingress\_https\_from\_public\_internet\_rule\_keys](#output\_auto\_group\_ingress\_https\_from\_public\_internet\_rule\_keys) | The auto group ingress HTTPS from the public internet rule keys. |
 | <a name="output_computed_egress_rule_ids"></a> [computed\_egress\_rule\_ids](#output\_computed\_egress\_rule\_ids) | The computed egress security group rule IDs. |
 | <a name="output_computed_ingress_rule_ids"></a> [computed\_ingress\_rule\_ids](#output\_computed\_ingress\_rule\_ids) | The computed ingress security group rule IDs. |
 | <a name="output_computed_managed_egress_rule_ids"></a> [computed\_managed\_egress\_rule\_ids](#output\_computed\_managed\_egress\_rule\_ids) | The computed managed egress security group rule IDs. |

@@ -1,6 +1,6 @@
 locals {
   /*
-  Custom security group rules are created with this terraform resource ID format:
+  Custom security group rules will have the following terraform resource ID format:
 
   type-protocol-to_port-from_port-from|to-source
 
@@ -49,9 +49,10 @@ locals {
     }
   )
 
-  # The true and false result expressions must have consistent types.
-  # So we create maps with the same keys but with null values to satisfy this constraint.
-  rules_with_null_values = { for k, v in local.rules : k => null }
+  # https://github.com/hashicorp/terraform/issues/28751
+  # The true and false result expressions must have consistent types. The given expressions are object and object, respectively.
+  # So we create objects with the same keys but with null values to satisfy this constraint.
+  rules_false_expr = { for k, v in local.rules : k => null }
 }
 
 ###############################################################################
@@ -60,7 +61,7 @@ locals {
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "rules" {
-  for_each = var.create ? local.rules : local.rules_with_null_values
+  for_each = var.create ? local.rules : local.rules_false_expr
 
   type              = split("-", each.key)[0]
   security_group_id = local.self_sg_id

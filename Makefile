@@ -41,12 +41,12 @@ docs:
 	./bin/render-terratest-docs.sh
 	./bin/render-makefile-docs.sh
 
-lint: docs ## Lint with pre-commit
+lint: docs ## Lint with pre-commit and render docs
 	git add -A
 	pre-commit run
 	git add -A
 
-lint-all: docs ## Lint all files with pre-commit
+lint-all: docs ## Lint all files with pre-commit and render docs
 	git add -A
 	pre-commit run --all-files
 	git add -A

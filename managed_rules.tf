@@ -1,6 +1,6 @@
 locals {
   /*
-  Managed security group rules are created with this terraform resource ID format:
+  Managed security group rules will have the following terraform resource ID format:
 
   type-rule-from|to-source
 
@@ -45,9 +45,10 @@ locals {
     }
   )
 
-  # The true and false result expressions must have consistent types.
-  # So we create maps with the same keys but with null values to satisfy this constraint.
-  managed_rules_with_null_values = { for k, v in local.managed_rules : k => null }
+  # https://github.com/hashicorp/terraform/issues/28751
+  # The true and false result expressions must have consistent types. The given expressions are object and object, respectively.
+  # So we create objects with the same keys but with null values to satisfy this constraint.
+  managed_rules_false_expr = { for k, v in local.managed_rules : k => null }
 }
 
 ###############################################################################
@@ -56,7 +57,7 @@ locals {
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "managed_rules" {
-  for_each = var.create ? local.managed_rules : local.managed_rules_with_null_values
+  for_each = var.create ? local.managed_rules : local.managed_rules_false_expr
 
   type              = split("-", each.key)[0]
   security_group_id = local.self_sg_id

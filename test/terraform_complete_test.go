@@ -31,6 +31,7 @@ func TestTerraformCompleteExample(t *testing.T) {
 	actualComputedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_ingress_rule_ids"))
 	actualComputedManagedIngressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_egress_rule_ids"))
 	actualComputedManagedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_ingress_rule_ids"))
+	actualAutoGroupIngressAllFromSelfRuleKeys := terraform.Output(t, terraformOptions, "auto_group_ingress_all_from_self_rule_keys")
 	actualAutoGroupEgressAllToPublicInternetRuleKeys := terraform.Output(t, terraformOptions, "auto_group_egress_all_to_public_internet_rule_keys")
 	actualDisabledSgId := terraform.Output(t, terraformOptions, "disabled_sg_id")
 
@@ -42,17 +43,19 @@ func TestTerraformCompleteExample(t *testing.T) {
 	expectedComputedEgressRuleLength := 1
 	expectedComputedManagedIngressRuleLength := 1
 	expectedComputedManagedEgressRuleLength := 1
-	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[egress-all-to-public-internet]"
+	expectedAutoGroupIngressAllFromSelfRuleKeys := "[ingress-all-all-from-self]"
+	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[egress-all-all-to-public-internet]"
 	expectedDisabledSgId := "I was not created"
 
 	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)
-	assert.Equal(t, expectedEgressRuleKeys, actualEgressRuleKeys, "Map %q should match %q", expectedEgressRuleKeys, actualEgressRuleKeys)
 	assert.Equal(t, expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys, "Map %q should match %q", expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys)
+	assert.Equal(t, expectedEgressRuleKeys, actualEgressRuleKeys, "Map %q should match %q", expectedEgressRuleKeys, actualEgressRuleKeys)
 	assert.Equal(t, expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys, "Map %q should match %q", expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys)
 	assert.Equal(t, expectedComputedIngressRuleLength, actualComputedIngressRuleLength, "Map %q should match %q", expectedComputedIngressRuleLength, actualComputedIngressRuleLength)
 	assert.Equal(t, expectedComputedEgressRuleLength, actualComputedEgressRuleLength, "Map %q should match %q", expectedComputedEgressRuleLength, actualComputedEgressRuleLength)
 	assert.Equal(t, expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength, "Map %q should match %q", expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength)
 	assert.Equal(t, expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength, "Map %q should match %q", expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength)
+	assert.Equal(t, expectedAutoGroupIngressAllFromSelfRuleKeys, actualAutoGroupIngressAllFromSelfRuleKeys, "Map %q should match %q", expectedAutoGroupIngressAllFromSelfRuleKeys, actualAutoGroupIngressAllFromSelfRuleKeys)
 	assert.Equal(t, expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys, "Map %q should match %q", expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys)
 	assert.Equal(t, expectedDisabledSgId, actualDisabledSgId, "Map %q should match %q", expectedDisabledSgId, actualDisabledSgId)
 }
