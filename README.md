@@ -162,7 +162,7 @@ module "security_group" {
     }
   ]
 
-  create_auto_group_ingress_all_from_self_rules         = true
+  create_auto_group_ingress_all_from_self_rules         = false # already created with a custom ingress rule
   create_auto_group_egress_all_to_public_internet_rules = true
 
   tags = {
@@ -487,7 +487,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 --- PASS: TestTerraformBasicExample (27.99s)
-FAIL
+--- PASS: TestTerraformCompleteExample (52.93s)
 --- PASS: TestTerraformCustomRulesExample (36.94s)
 --- PASS: TestTerraformManagedRulesExample (37.68s)
 --- PASS: TestTerraformComputedRulesExample (35.14s)
