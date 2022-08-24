@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "auto_group_ingress_https_from_public_interne
 resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules" {
 
   # create terraform resource with identifiable ID
-  for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+  for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 
   type              = "ingress"
   security_group_id = local.self_sg_id

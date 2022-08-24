@@ -34,7 +34,7 @@ TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66: Error: Reference to undeclared input variable
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66: An input variable with the name
 TestTerraformCustomRulesExample 2022-08-24T14:34:50Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" has not been
@@ -54,7 +54,7 @@ declared. This variable can be declared with a variable
 Error: Reference to undeclared input variable
 
   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 
 An input variable with the name
 "create_auto_group_ingress_http_from_public_internet_rules" has not been
@@ -78,7 +78,7 @@ declared. This variable can be declared with a variable
         	            	Error: Reference to undeclared input variable
 
         	            	  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 
         	            	An input variable with the name
         	            	"create_auto_group_ingress_http_from_public_internet_rules" has not been
@@ -101,7 +101,7 @@ TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66: Error: Reference to undeclared input variable
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66:
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66: An input variable with the name
 TestTerraformCustomRulesExample 2022-08-24T14:34:52Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" has not been
@@ -121,7 +121,7 @@ declared. This variable can be declared with a variable
 Error: Reference to undeclared input variable
 
   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 
 An input variable with the name
 "create_auto_group_ingress_http_from_public_internet_rules" has not been
@@ -148,7 +148,7 @@ declared. This variable can be declared with a variable
         	            	Error: Reference to undeclared input variable
 
         	            	  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-443-tcp-from-public-internet" = null } : {}
+        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
 
         	            	An input variable with the name
         	            	"create_auto_group_ingress_http_from_public_internet_rules" has not been
