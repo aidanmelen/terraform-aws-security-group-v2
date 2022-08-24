@@ -1,68 +1,103 @@
 content: |-
   {{ .Header }}
+  ## Features
 
-  ## Acknowledgments
+  This module aims to implement **ALL** combinations of arguments supported by AWS and latest stable version of Terraform:
 
-  This modules aims to improve on the venerable [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module. It does so by:
-
-  - Reduce code complexity with `for_each` loops.
-  - Create security group rule resources with descriptive and identifiable terraform resource IDs.
-  - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with source security groups.
-  - Test examples with [Terratest](https://terratest.gruntwork.io/).
-  - Make adding new managed rule definitions simple. No need for a [update_groups.sh](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/update_groups.sh) bash script.
+  - IPv4/IPv6 CIDR blocks
+  - [VPC endpoint prefix lists](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) (use data source [aws_prefix_list](https://www.terraform.io/docs/providers/aws/d/prefix_list.html))
+  - Access from source security groups
+  - Access from self
+  - Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
+  <!-- - Named groups of rules with ingress (inbound) and egress (outbound) ports open for common scenarios (eg, [ssh](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/ssh), [http-80](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/http-80), [mysql](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/mysql), see the whole list [here](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/modules/README.md)) -->
+  - Conditionally create security group and/or all required security group rules.
+  - Toggle creation of common egress to public internet IVP4/IPV6 rules.
 
   ## Examples
 
-  ### Basic
+  ### Security Group with basic rules
+
+  Create a security group with HTTPS from `10.0.0.0/24` and `all-all` to the public internet rules.
 
   ```hcl
   {{ include "examples/basic/.main.tf.docs" }}
   ```
 
-  Please see the [Basic Example](examples/basic) for more information.
+  Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
 
-  ### Complete
+  ### Security Group with complete rules
 
-  Please see the [Complete Example](examples/complete) for more information.
+  Create a security group with a combination of both managed and custom rules. This also demonstrates the conditional create functionality.
 
-  ### Security group with managed rules
+  <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/managed_rules/.main.tf.docs" }}
+  {{ include "examples/complete/.main.tf.docs" }}
   ```
 
-  Please see the [Managed Rules Example](examples/managed_rules) for more information.
+  </details><br/>
+
+  Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
 
   ### Security group with custom rules
+
+  Create a security group with custom rules.
+
+  <details><summary>Click to show</summary>
 
   ```hcl
   {{ include "examples/custom_rules/.main.tf.docs" }}
   ```
 
-  Please see the [Custom Rules Example](examples/rules) for more information.
+  </details><br/>
+
+  Please see the [Custom Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules) for more information.
+
+  ### Security group with managed rules
+
+  Create a security group with managed rules.
+
+  <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "examples/managed_rules/.main.tf.docs" }}
+  ```
+
+  </details><br/>
+
+  Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed_rules) for more information.
+
+  ### Security group with computed rules
+
+  Create a security group with a computed rules. Computed security group rules uses `count` to dynamically create rules with unknown values during the initial Terraform plan. Please see [Limitations on values used in for_each](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each).
+
+  <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "examples/computed_rules/.main.tf.docs" }}
+  ```
+
+  </details><br/>
+
+  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed_rules) for more information.
 
   ### Only rules with pre-existing security group
+
+  Use the module to create rules for a pre-existing security group.
+
+  <details><summary>Click to show</summary>
 
   ```hcl
   {{ include "examples/rules_only/.main.tf.docs" }}
   ```
 
-  Please see the [Rules Only Example](examples/rules_only) for more information.
+  </details><br/>
 
-  ## Limitations
-
-  The following module security group rule arguments must be known before the first Terraform apply:
-
-  - `cidr_blocks`
-  - `ipv6_cidr_blocks`
-  - `prefix_list_ids`
-  - `source_security_group_id`
-
-  They can be dynamic after the first Terraform apply.
+  Please see the [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only) for more information.
 
   ## Tests
 
-  Run Terratest using the [Makefile](./Makefile) targets:
+  Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/Makefile) targets:
   1. `make setup`
   2. `make tests`
 
@@ -81,3 +116,20 @@ content: |-
   {{ .Requirements }}
   {{ .Inputs }}
   {{ .Outputs }}
+
+  ## Acknowledgments
+
+  This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
+
+  - Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for).
+  - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments).
+  - Dynamically create custom and managed security group rule resources [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). This has 2 advantages over `count`:
+    1. The terraform resource IDs are descriptive rather than indexes with `count`.
+    2. Adding/Removing or even reordering rules can causes the count indexes to change possibly resulting in unwanted destruction and recreation of resources. Whereas `for_each` with map inputs use identifiable keys and do not suffer from this constraint.
+  - Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation of `count` dynamically uses the `length()` function rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
+  - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with computed rules for other rule resources.
+  - Test examples with [Terratest](https://terratest.gruntwork.io/).
+
+  ## License
+
+  Apache 2 Licensed. See [LICENSE](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/LICENSE) for full details.

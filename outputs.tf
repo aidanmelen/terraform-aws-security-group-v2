@@ -33,11 +33,11 @@ output "security_group_description" {
 }
 
 ###############################################################################
-# Ingress Rules
+# Custom Security Group Rules
 ###############################################################################
 
 output "ingress_rule_ids" {
-  description = "The security group rule IDs."
+  description = "The ingress security group rule IDs."
   value       = try([for rule in aws_security_group_rule.rules : rule["id"] if rule["type"] == "ingress"], null)
 }
 
@@ -45,6 +45,20 @@ output "ingress_rule_keys" {
   description = "The ingress security group rule keys."
   value       = try([for key, rule in aws_security_group_rule.rules : key if rule["type"] == "ingress"], null)
 }
+
+output "egress_rule_ids" {
+  description = "The egress security group rule IDs."
+  value       = try([for rule in aws_security_group_rule.rules : rule["id"] if rule["type"] == "egress"], null)
+}
+
+output "egress_rule_keys" {
+  description = "The egress security group rule keys."
+  value       = try([for key, rule in aws_security_group_rule.rules : key if rule["type"] == "egress"], null)
+}
+
+###############################################################################
+# Managed Security Group Rules
+###############################################################################
 
 output "managed_ingress_rule_ids" {
   description = "The managed ingress security group rule IDs."
@@ -56,20 +70,6 @@ output "managed_ingress_rule_keys" {
   value       = try([for key, rule in aws_security_group_rule.managed_rules : key if rule["type"] == "ingress"], null)
 }
 
-###############################################################################
-# Egress Rules
-###############################################################################
-
-output "egress_rule_ids" {
-  description = "The security group rule IDs."
-  value       = try([for rule in aws_security_group_rule.rules : rule["id"] if rule["type"] == "egress"], null)
-}
-
-output "egress_rule_keys" {
-  description = "The egress security group rule keys."
-  value       = try([for key, rule in aws_security_group_rule.rules : key if rule["type"] == "egress"], null)
-}
-
 output "managed_egress_rule_ids" {
   description = "The managed egress security group rule IDs."
   value       = try([for rule in aws_security_group_rule.managed_rules : rule["id"] if rule["type"] == "egress"], null)
@@ -78,4 +78,56 @@ output "managed_egress_rule_ids" {
 output "managed_egress_rule_keys" {
   description = "The managed egress security group rule keys."
   value       = try([for key, rule in aws_security_group_rule.managed_rules : key if rule["type"] == "egress"], null)
+}
+
+###############################################################################
+# Computed Security Group Rules
+###############################################################################
+
+output "computed_ingress_rule_ids" {
+  description = "The computed ingress security group rule IDs."
+  value       = try([for rule in aws_security_group_rule.computed_ingress_rules : rule["id"] if rule["type"] == "ingress"], null)
+}
+
+output "computed_egress_rule_ids" {
+  description = "The computed egress security group rule IDs."
+  value       = try([for rule in aws_security_group_rule.computed_egress_rules : rule["id"] if rule["type"] == "egress"], null)
+}
+
+###############################################################################
+# Managed Computed Security Group Rules
+###############################################################################
+
+output "computed_managed_ingress_rule_ids" {
+  description = "The computed managed ingress security group rule IDs."
+  value       = try([for rule in aws_security_group_rule.computed_managed_ingress_rules : rule["id"] if rule["type"] == "ingress"], null)
+}
+
+output "computed_managed_egress_rule_ids" {
+  description = "The computed managed egress security group rule IDs."
+  value       = try([for rule in aws_security_group_rule.computed_managed_egress_rules : rule["id"] if rule["type"] == "egress"], null)
+}
+
+###############################################################################
+# Auto Group Rules
+###############################################################################
+
+output "auto_group_ingress_all_from_self_rule_ids" {
+  description = "The auto group ingress all to self rule IDs."
+  value       = try([for rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : rule["id"] if rule["type"] == "egress"], null)
+}
+
+output "auto_group_ingress_all_from_self_rule_keys" {
+  description = "The auto group ingress all to self rule key."
+  value       = try([for key, rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : key if rule["type"] == "egress"], null)
+}
+
+output "auto_group_egress_to_public_internet_rule_ids" {
+  description = "The auto group egress all to public internet rule IDs."
+  value       = try([for rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : rule["id"] if rule["type"] == "egress"], null)
+}
+
+output "auto_group_egress_all_to_public_internet_rule_keys" {
+  description = "The auto group egress all to public internet rule keys."
+  value       = try([for key, rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : key if rule["type"] == "egress"], null)
 }

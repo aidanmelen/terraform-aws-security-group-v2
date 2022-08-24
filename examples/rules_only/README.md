@@ -1,6 +1,6 @@
-# Complete Security Group example
+# Rules only with pre-existing security group
 
-Configuration in this directory creates set of Security Group and Security Group Rules resources in various combinations.
+Use the module to create rules for a pre-existing security group.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -69,6 +69,14 @@ module "security_group" {
 
 | Name | Description |
 |------|-------------|
+| <a name="output_auto_group_egress_all_to_public_internet_rule_keys"></a> [auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys](#output\_auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys) | The auto group egress all to public internet rule keys. |
+| <a name="output_auto_group_egress_to_public_internet_rule_ids"></a> [auto\_group\_egress\_to\_public\_internet\_rule\_ids](#output\_auto\_group\_egress\_to\_public\_internet\_rule\_ids) | The auto group egress all to public internet rule IDs. |
+| <a name="output_auto_group_ingress_all_from_self_rule_ids"></a> [auto\_group\_ingress\_all\_from\_self\_rule\_ids](#output\_auto\_group\_ingress\_all\_from\_self\_rule\_ids) | The auto group ingress all to self rule IDs. |
+| <a name="output_auto_group_ingress_all_from_self_rule_keys"></a> [auto\_group\_ingress\_all\_from\_self\_rule\_keys](#output\_auto\_group\_ingress\_all\_from\_self\_rule\_keys) | The auto group ingress all to self rule keys. |
+| <a name="output_computed_egress_rule_ids"></a> [computed\_egress\_rule\_ids](#output\_computed\_egress\_rule\_ids) | The computed egress security group rule IDs. |
+| <a name="output_computed_ingress_rule_ids"></a> [computed\_ingress\_rule\_ids](#output\_computed\_ingress\_rule\_ids) | The computed ingress security group rule IDs. |
+| <a name="output_computed_managed_egress_rule_ids"></a> [computed\_managed\_egress\_rule\_ids](#output\_computed\_managed\_egress\_rule\_ids) | The computed managed egress security group rule IDs. |
+| <a name="output_computed_managed_ingress_rule_ids"></a> [computed\_managed\_ingress\_rule\_ids](#output\_computed\_managed\_ingress\_rule\_ids) | The computed managed ingress security group rule IDs. |
 | <a name="output_egress_rule_keys"></a> [egress\_rule\_keys](#output\_egress\_rule\_keys) | The egress security group rule keys. |
 | <a name="output_ingress_rule_keys"></a> [ingress\_rule\_keys](#output\_ingress\_rule\_keys) | The ingress security group rule keys. |
 | <a name="output_managed_egress_rule_keys"></a> [managed\_egress\_rule\_keys](#output\_managed\_egress\_rule\_keys) | The managed egress security group rule keys. |

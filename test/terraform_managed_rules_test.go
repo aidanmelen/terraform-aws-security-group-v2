@@ -27,14 +27,29 @@ func TestTerraformManagedRulesExample(t *testing.T) {
 	actualManagedIngressRuleKeys := terraform.Output(t, terraformOptions, "managed_ingress_rule_keys")
 	actualEgressRuleKeys := terraform.Output(t, terraformOptions, "egress_rule_keys")
 	actualManagedEgressRuleKeys := terraform.Output(t, terraformOptions, "managed_egress_rule_keys")
+	actualComputedIngressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_egress_rule_ids"))
+	actualComputedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_ingress_rule_ids"))
+	actualComputedManagedIngressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_egress_rule_ids"))
+	actualComputedManagedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_ingress_rule_ids"))
+	actualAutoGroupEgressAllToPublicInternetRuleKeys := terraform.Output(t, terraformOptions, "auto_group_egress_all_to_public_internet_rule_keys")
 
 	expectedIngressRuleKeys := "[]"
 	expectedManagedIngressRuleKeys := "[ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-all-all-from-self ingress-all-icmp-from-sg-b551fece ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-pl-68a54001]"
 	expectedEgressRuleKeys := "[]"
 	expectedManagedEgressRuleKeys := "[egress-all-all-to-self egress-all-icmp-to-sg-b551fece egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-pl-68a54001]"
+	expectedComputedIngressRuleLength := 0
+	expectedComputedEgressRuleLength := 0
+	expectedComputedManagedIngressRuleLength := 0
+	expectedComputedManagedEgressRuleLength := 0
+	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[]"
 
 	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)
 	assert.Equal(t, expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys, "Map %q should match %q", expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys)
 	assert.Equal(t, expectedEgressRuleKeys, actualEgressRuleKeys, "Map %q should match %q", expectedEgressRuleKeys, actualEgressRuleKeys)
 	assert.Equal(t, expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys, "Map %q should match %q", expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys)
+	assert.Equal(t, expectedComputedIngressRuleLength, actualComputedIngressRuleLength, "Map %q should match %q", expectedComputedIngressRuleLength, actualComputedIngressRuleLength)
+	assert.Equal(t, expectedComputedEgressRuleLength, actualComputedEgressRuleLength, "Map %q should match %q", expectedComputedEgressRuleLength, actualComputedEgressRuleLength)
+	assert.Equal(t, expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength, "Map %q should match %q", expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength)
+	assert.Equal(t, expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength, "Map %q should match %q", expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength)
+	assert.Equal(t, expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys, "Map %q should match %q", expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys)
 }
