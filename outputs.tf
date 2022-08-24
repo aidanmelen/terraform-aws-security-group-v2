@@ -114,15 +114,35 @@ output "computed_managed_egress_rule_ids" {
 
 output "auto_group_ingress_all_from_self_rule_ids" {
   description = "The auto group ingress all to self rule IDs."
-  value       = try([for rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : rule["id"] if rule["type"] == "egress"], null)
+  value       = try([for rule in aws_security_group_rule.auto_group_ingress_all_from_self_rules : rule["id"] if rule["type"] == "ingress"], null)
 }
 
 output "auto_group_ingress_all_from_self_rule_keys" {
   description = "The auto group ingress all to self rule key."
-  value       = try([for key, rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : key if rule["type"] == "egress"], null)
+  value       = try([for key, rule in aws_security_group_rule.auto_group_ingress_all_from_self_rules : key if rule["type"] == "ingress"], null)
 }
 
-output "auto_group_egress_to_public_internet_rule_ids" {
+output "auto_group_ingress_https_from_public_internet_rule_ids" {
+  description = "The auto group ingress HTTPS from the public internet rule IDs."
+  value       = try([for rule in aws_security_group_rule.auto_group_ingress_https_from_public_internet_rules : rule["id"] if rule["type"] == "ingress"], null)
+}
+
+output "auto_group_ingress_https_from_public_internet_rule_keys" {
+  description = "The auto group ingress HTTPS from the public internet rule keys."
+  value       = try([for key, rule in aws_security_group_rule.auto_group_ingress_https_from_public_internet_rules : key if rule["type"] == "ingress"], null)
+}
+
+output "auto_group_ingress_http_from_public_internet_rule_ids" {
+  description = "The auto group ingress HTTP from the public internet rule IDs."
+  value       = try([for rule in aws_security_group_rule.auto_group_ingress_http_from_public_internet_rules : rule["id"] if rule["type"] == "ingress"], null)
+}
+
+output "auto_group_ingress_http_from_public_internet_rule_keys" {
+  description = "The auto group ingress HTTP from the public internet rule keys."
+  value       = try([for key, rule in aws_security_group_rule.auto_group_ingress_http_from_public_internet_rules : key if rule["type"] == "ingress"], null)
+}
+
+output "auto_group_egress_all_to_public_internet_rule_ids" {
   description = "The auto group egress all to public internet rule IDs."
   value       = try([for rule in aws_security_group_rule.auto_group_egress_all_to_public_internet_rules : rule["id"] if rule["type"] == "egress"], null)
 }

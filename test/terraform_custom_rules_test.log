@@ -1,685 +1,688 @@
 === RUN   TestTerraformCustomRulesExample
-TestTerraformCustomRulesExample 2022-08-24T04:32:23Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:23Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:23Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformCustomRulesExample 2022-08-24T04:32:23Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:23Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformCustomRulesExample 2022-08-24T04:32:24Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:24Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformCustomRulesExample 2022-08-24T04:32:24Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: [0m[32m
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: should now work.
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:25Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:28Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:28Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:28Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-68a54001]
-TestTerraformCustomRulesExample 2022-08-24T04:32:28Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-9ce7cafb]
-TestTerraformCustomRulesExample 2022-08-24T04:32:28Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-b551fece]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + create
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: Terraform will perform the following actions:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description            = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                     = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + name                   = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + tags                   = {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "Name" = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + tags_all               = {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "Example"    = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "Name"       = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + vpc_id                 = "vpc-9ce7cafb"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + timeouts {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + create = "10m"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + delete = "15m"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "egress-22-22-tcp-to-pl-68a54001"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + prefix_list_ids          = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "egress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + cidr_blocks              = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "egress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "egress-450-350-tcp-to-2001:db8::/64"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 350
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 450
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "egress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "egress-all-all-all-to-self"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "-1"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = true
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "egress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "egress-all-all-icmp-to-sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "icmp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = "sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "egress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "ingress-22-22-tcp-from-pl-68a54001"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + prefix_list_ids          = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "ingress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + cidr_blocks              = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "ingress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "ingress-450-350-tcp-from-2001:db8::/64"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = 350
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:           + "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:         ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = 450
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "ingress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "ingress-all-all-all-from-self"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "-1"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = true
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "ingress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"] will be created
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + description              = "ingress-all-all-icmp-from-sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + from_port                = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + id                       = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + protocol                 = "icmp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + self                     = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + source_security_group_id = "sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + to_port                  = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:       + type                     = "ingress"
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: Plan: 11 to add, 0 to change, 0 to destroy.
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66: Changes to Outputs:
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + auto_group_egress_all_to_public_internet_rule_keys = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + auto_group_egress_to_public_internet_rule_ids      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + auto_group_ingress_all_from_self_rule_ids          = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + auto_group_ingress_all_from_self_rule_keys         = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + computed_egress_rule_ids                           = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + computed_ingress_rule_ids                          = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + computed_managed_egress_rule_ids                   = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + computed_managed_ingress_rule_ids                  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + egress_rule_keys                                   = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + ingress_rule_keys                                  = (known after apply)
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + managed_egress_rule_keys                           = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:29Z logger.go:66:   + managed_ingress_rule_keys                          = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:30Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-0200f6e96537821e3]
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:32Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Creating...
-TestTerraformCustomRulesExample 2022-08-24T04:32:33Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Creation complete after 1s [id=sgrule-755832399]
-TestTerraformCustomRulesExample 2022-08-24T04:32:33Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Creation complete after 2s [id=sgrule-631208236]
-TestTerraformCustomRulesExample 2022-08-24T04:32:34Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Creation complete after 2s [id=sgrule-2019231303]
-TestTerraformCustomRulesExample 2022-08-24T04:32:35Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Creation complete after 3s [id=sgrule-2991114536]
-TestTerraformCustomRulesExample 2022-08-24T04:32:35Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Creation complete after 4s [id=sgrule-4181641746]
-TestTerraformCustomRulesExample 2022-08-24T04:32:36Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Creation complete after 5s [id=sgrule-260900460]
-TestTerraformCustomRulesExample 2022-08-24T04:32:37Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Creation complete after 5s [id=sgrule-197402160]
-TestTerraformCustomRulesExample 2022-08-24T04:32:38Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Creation complete after 6s [id=sgrule-4032395407]
-TestTerraformCustomRulesExample 2022-08-24T04:32:38Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Creation complete after 7s [id=sgrule-2715543894]
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Creation complete after 8s [id=sgrule-2570896889]
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: Outputs:
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: auto_group_egress_all_to_public_internet_rule_keys = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: auto_group_egress_to_public_internet_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: auto_group_ingress_all_from_self_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: auto_group_ingress_all_from_self_rule_keys = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: computed_egress_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: computed_ingress_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: computed_managed_egress_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: computed_managed_ingress_rule_ids = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: egress_rule_keys = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "egress-22-22-tcp-to-pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "egress-450-350-tcp-to-2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "egress-all-all-all-to-self",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "egress-all-all-icmp-to-sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: ingress_rule_keys = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "ingress-22-22-tcp-from-pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "ingress-450-350-tcp-from-2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "ingress-all-all-all-from-self",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66:   "ingress-all-all-icmp-from-sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: managed_egress_rule_keys = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: managed_ingress_rule_keys = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z retry.go:91: terraform [output -no-color -json ingress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:39Z logger.go:66: Running command terraform with args [output -no-color -json ingress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:40Z logger.go:66: ["ingress-22-22-tcp-from-pl-68a54001","ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24","ingress-450-350-tcp-from-2001:db8::/64","ingress-all-all-all-from-self","ingress-all-all-icmp-from-sg-b551fece"]
-TestTerraformCustomRulesExample 2022-08-24T04:32:40Z retry.go:91: terraform [output -no-color -json managed_ingress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:40Z logger.go:66: Running command terraform with args [output -no-color -json managed_ingress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:41Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:41Z retry.go:91: terraform [output -no-color -json egress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:41Z logger.go:66: Running command terraform with args [output -no-color -json egress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z logger.go:66: ["egress-22-22-tcp-to-pl-68a54001","egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24","egress-450-350-tcp-to-2001:db8::/64","egress-all-all-all-to-self","egress-all-all-icmp-to-sg-b551fece"]
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z retry.go:91: terraform [output -no-color -json managed_egress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z logger.go:66: Running command terraform with args [output -no-color -json managed_egress_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z retry.go:91: terraform [output -no-color -json computed_egress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:42Z logger.go:66: Running command terraform with args [output -no-color -json computed_egress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:43Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:43Z retry.go:91: terraform [output -no-color -json computed_ingress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:43Z logger.go:66: Running command terraform with args [output -no-color -json computed_ingress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:44Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:44Z retry.go:91: terraform [output -no-color -json computed_managed_egress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:44Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_egress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:45Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:45Z retry.go:91: terraform [output -no-color -json computed_managed_ingress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:45Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_ingress_rule_ids]
-TestTerraformCustomRulesExample 2022-08-24T04:32:46Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:46Z retry.go:91: terraform [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:46Z logger.go:66: Running command terraform with args [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
-TestTerraformCustomRulesExample 2022-08-24T04:32:47Z logger.go:66: []
-TestTerraformCustomRulesExample 2022-08-24T04:32:47Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:47Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformCustomRulesExample 2022-08-24T04:32:49Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:49Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-68a54001]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-9ce7cafb]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-0200f6e96537821e3]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-b551fece]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Refreshing state... [id=sgrule-2715543894]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Refreshing state... [id=sgrule-2570896889]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Refreshing state... [id=sgrule-631208236]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Refreshing state... [id=sgrule-2019231303]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Refreshing state... [id=sgrule-2991114536]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Refreshing state... [id=sgrule-197402160]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Refreshing state... [id=sgrule-260900460]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Refreshing state... [id=sgrule-4181641746]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Refreshing state... [id=sgrule-755832399]
-TestTerraformCustomRulesExample 2022-08-24T04:32:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Refreshing state... [id=sgrule-4032395407]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - destroy
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66: Terraform will perform the following actions:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group" "self" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:326504147071:security-group/sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description            = "ex-custom-rules" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - egress                 = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "egress-22-22-tcp-to-pl-68a54001"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "egress-450-350-tcp-to-2001:db8::/64"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 350
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 450
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "egress-all-all-all-to-self"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 0
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "-1"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = true
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 0
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "egress-all-all-icmp-to-sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "icmp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                     = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - ingress                = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 443
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "ingress-22-22-tcp-from-pl-68a54001"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 22
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "ingress-450-350-tcp-from-2001:db8::/64"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 350
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "tcp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 450
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "ingress-all-all-all-from-self"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = 0
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "-1"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = true
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = 0
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - cidr_blocks      = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - description      = "ingress-all-all-icmp-from-sg-b551fece"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - from_port        = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - protocol         = "icmp"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - security_groups  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                   - "sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:                 ]
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - self             = false
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:               - to_port          = -1
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:             },
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - name                   = "ex-custom-rules" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - owner_id               = "326504147071" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - tags                   = {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "Name" = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         } -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - tags_all               = {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "Example"    = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "Name"       = "ex-custom-rules"
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         } -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - vpc_id                 = "vpc-9ce7cafb" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - timeouts {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - create = "10m" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - delete = "15m" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "egress-22-22-tcp-to-pl-68a54001" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 22 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-631208236" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - prefix_list_ids   = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 22 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "egress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - cidr_blocks       = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-2715543894" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "egress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "egress-450-350-tcp-to-2001:db8::/64" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 350 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-4181641746" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 450 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "egress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "egress-all-all-all-to-self" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-197402160" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = true -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "egress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description              = "egress-all-all-icmp-to-sg-b551fece" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port                = -1 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                       = "sgrule-4032395407" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol                 = "icmp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id        = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self                     = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - source_security_group_id = "sg-b551fece" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port                  = -1 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type                     = "egress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "ingress-22-22-tcp-from-pl-68a54001" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 22 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-260900460" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - prefix_list_ids   = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 22 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - cidr_blocks       = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "10.10.0.0/16",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-2570896889" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "ingress-450-350-tcp-from-2001:db8::/64" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 350 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-2991114536" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:           - "2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:         ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 450 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description       = "ingress-all-all-all-from-self" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                = "sgrule-755832399" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self              = true -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"] will be destroyed
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - description              = "ingress-all-all-icmp-from-sg-b551fece" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - from_port                = -1 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - id                       = "sgrule-2019231303" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - protocol                 = "icmp" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - security_group_id        = "sg-0200f6e96537821e3" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - self                     = false -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - source_security_group_id = "sg-b551fece" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - to_port                  = -1 -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - type                     = "ingress" -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     }
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66: Plan: 0 to add, 0 to change, 11 to destroy.
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66: Changes to Outputs:
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - auto_group_egress_all_to_public_internet_rule_keys = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - auto_group_egress_to_public_internet_rule_ids      = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - auto_group_ingress_all_from_self_rule_ids          = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - auto_group_ingress_all_from_self_rule_keys         = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - computed_egress_rule_ids                           = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - computed_ingress_rule_ids                          = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - computed_managed_egress_rule_ids                   = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - computed_managed_ingress_rule_ids                  = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - egress_rule_keys                                   = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "egress-22-22-tcp-to-pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "egress-450-350-tcp-to-2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "egress-all-all-all-to-self",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "egress-all-all-icmp-to-sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - ingress_rule_keys                                  = [
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "ingress-22-22-tcp-from-pl-68a54001",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "ingress-450-350-tcp-from-2001:db8::/64",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "ingress-all-all-all-from-self",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:       - "ingress-all-all-icmp-from-sg-b551fece",
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:     ] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - managed_egress_rule_keys                           = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:51Z logger.go:66:   - managed_ingress_rule_keys                          = [] -> null
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Destroying... [id=sgrule-2715543894]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Destroying... [id=sgrule-4032395407]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Destroying... [id=sgrule-4181641746]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Destroying... [id=sgrule-2991114536]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Destroying... [id=sgrule-260900460]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Destroying... [id=sgrule-631208236]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Destroying... [id=sgrule-2570896889]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Destroying... [id=sgrule-197402160]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Destroying... [id=sgrule-755832399]
-TestTerraformCustomRulesExample 2022-08-24T04:32:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Destroying... [id=sgrule-2019231303]
-TestTerraformCustomRulesExample 2022-08-24T04:32:53Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Destruction complete after 1s
-TestTerraformCustomRulesExample 2022-08-24T04:32:53Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Destruction complete after 2s
-TestTerraformCustomRulesExample 2022-08-24T04:32:54Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Destruction complete after 2s
-TestTerraformCustomRulesExample 2022-08-24T04:32:55Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Destruction complete after 3s
-TestTerraformCustomRulesExample 2022-08-24T04:32:55Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Destruction complete after 4s
-TestTerraformCustomRulesExample 2022-08-24T04:32:56Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Destruction complete after 4s
-TestTerraformCustomRulesExample 2022-08-24T04:32:56Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Destruction complete after 5s
-TestTerraformCustomRulesExample 2022-08-24T04:32:57Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Destruction complete after 6s
-TestTerraformCustomRulesExample 2022-08-24T04:32:58Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Destruction complete after 6s
-TestTerraformCustomRulesExample 2022-08-24T04:32:58Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Destruction complete after 7s
-TestTerraformCustomRulesExample 2022-08-24T04:32:59Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-0200f6e96537821e3]
-TestTerraformCustomRulesExample 2022-08-24T04:33:00Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
-TestTerraformCustomRulesExample 2022-08-24T04:33:00Z logger.go:66:
-TestTerraformCustomRulesExample 2022-08-24T04:33:00Z logger.go:66: Destroy complete! Resources: 11 destroyed.
---- PASS: TestTerraformCustomRulesExample (36.72s)
+TestTerraformCustomRulesExample 2022-08-24T15:15:39Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformCustomRulesExample 2022-08-24T15:15:39Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformCustomRulesExample 2022-08-24T15:15:39Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformCustomRulesExample 2022-08-24T15:15:39Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:39Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformCustomRulesExample 2022-08-24T15:15:40Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:40Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformCustomRulesExample 2022-08-24T15:15:40Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: [0m[32m
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: should now work.
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformCustomRulesExample 2022-08-24T15:15:41Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformCustomRulesExample 2022-08-24T15:15:43Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:15:43Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:15:43Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-68a54001]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-9ce7cafb]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: data.aws_security_group.default: Read complete after 1s [id=sg-b551fece]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + create
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: Terraform will perform the following actions:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description            = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                     = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + name                   = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + tags                   = {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "Name" = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + tags_all               = {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "Example"    = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "Name"       = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + vpc_id                 = "vpc-9ce7cafb"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + timeouts {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + create = "10m"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + delete = "15m"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "egress-22-22-tcp-to-pl-68a54001"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 22
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 22
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "egress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + cidr_blocks              = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 443
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 443
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "egress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "egress-450-350-tcp-to-2001:db8::/64"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 350
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 450
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "egress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "egress-all-all-all-to-self"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "-1"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = true
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "egress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "egress-all-all-icmp-to-sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "icmp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = "sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "egress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "ingress-22-22-tcp-from-pl-68a54001"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 22
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 22
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "ingress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + cidr_blocks              = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 443
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 443
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "ingress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "ingress-450-350-tcp-from-2001:db8::/64"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = 350
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:           + "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:         ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = 450
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "ingress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "ingress-all-all-all-from-self"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "-1"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = true
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "ingress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"] will be created
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + description              = "ingress-all-all-icmp-from-sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + from_port                = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + id                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + protocol                 = "icmp"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + self                     = false
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + source_security_group_id = "sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + to_port                  = -1
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:       + type                     = "ingress"
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: Plan: 11 to add, 0 to change, 0 to destroy.
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66: Changes to Outputs:
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + auto_group_egress_all_to_public_internet_rule_keys      = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + auto_group_ingress_all_from_self_rule_keys              = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + auto_group_ingress_http_from_public_internet_rule_keys  = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + auto_group_ingress_https_from_public_internet_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + computed_egress_rule_ids                                = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + computed_ingress_rule_ids                               = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + computed_managed_egress_rule_ids                        = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + computed_managed_ingress_rule_ids                       = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + egress_rule_keys                                        = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + ingress_rule_keys                                       = (known after apply)
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + managed_egress_rule_keys                                = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:44Z logger.go:66:   + managed_ingress_rule_keys                               = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:45Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-0aa3b28ad13660fc2]
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Creating...
+TestTerraformCustomRulesExample 2022-08-24T15:15:48Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Creation complete after 1s [id=sgrule-2021342283]
+TestTerraformCustomRulesExample 2022-08-24T15:15:49Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Creation complete after 2s [id=sgrule-3291010153]
+TestTerraformCustomRulesExample 2022-08-24T15:15:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Creation complete after 2s [id=sgrule-1879647203]
+TestTerraformCustomRulesExample 2022-08-24T15:15:50Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Creation complete after 3s [id=sgrule-1749409881]
+TestTerraformCustomRulesExample 2022-08-24T15:15:51Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Creation complete after 4s [id=sgrule-1649604954]
+TestTerraformCustomRulesExample 2022-08-24T15:15:52Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Creation complete after 4s [id=sgrule-3714588632]
+TestTerraformCustomRulesExample 2022-08-24T15:15:53Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Creation complete after 5s [id=sgrule-393440574]
+TestTerraformCustomRulesExample 2022-08-24T15:15:53Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Creation complete after 6s [id=sgrule-2420703426]
+TestTerraformCustomRulesExample 2022-08-24T15:15:54Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Creation complete after 6s [id=sgrule-3439538186]
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Creation complete after 7s [id=sgrule-2400461950]
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: Outputs:
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: auto_group_egress_all_to_public_internet_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: auto_group_ingress_all_from_self_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: auto_group_ingress_http_from_public_internet_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: auto_group_ingress_https_from_public_internet_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: computed_egress_rule_ids = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: computed_ingress_rule_ids = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: computed_managed_egress_rule_ids = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: computed_managed_ingress_rule_ids = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: egress_rule_keys = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "egress-22-22-tcp-to-pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "egress-450-350-tcp-to-2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "egress-all-all-all-to-self",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "egress-all-all-icmp-to-sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: ingress_rule_keys = [
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "ingress-22-22-tcp-from-pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "ingress-450-350-tcp-from-2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "ingress-all-all-all-from-self",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66:   "ingress-all-all-icmp-from-sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: ]
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: managed_egress_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: managed_ingress_rule_keys = []
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z retry.go:91: terraform [output -no-color -json ingress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:55Z logger.go:66: Running command terraform with args [output -no-color -json ingress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:56Z logger.go:66: ["ingress-22-22-tcp-from-pl-68a54001","ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24","ingress-450-350-tcp-from-2001:db8::/64","ingress-all-all-all-from-self","ingress-all-all-icmp-from-sg-b551fece"]
+TestTerraformCustomRulesExample 2022-08-24T15:15:56Z retry.go:91: terraform [output -no-color -json managed_ingress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:56Z logger.go:66: Running command terraform with args [output -no-color -json managed_ingress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z retry.go:91: terraform [output -no-color -json egress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z logger.go:66: Running command terraform with args [output -no-color -json egress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z logger.go:66: ["egress-22-22-tcp-to-pl-68a54001","egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24","egress-450-350-tcp-to-2001:db8::/64","egress-all-all-all-to-self","egress-all-all-icmp-to-sg-b551fece"]
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z retry.go:91: terraform [output -no-color -json managed_egress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:57Z logger.go:66: Running command terraform with args [output -no-color -json managed_egress_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:15:58Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:15:58Z retry.go:91: terraform [output -no-color -json computed_egress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:15:58Z logger.go:66: Running command terraform with args [output -no-color -json computed_egress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:15:59Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:15:59Z retry.go:91: terraform [output -no-color -json computed_ingress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:15:59Z logger.go:66: Running command terraform with args [output -no-color -json computed_ingress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:16:00Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:16:00Z retry.go:91: terraform [output -no-color -json computed_managed_egress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:16:00Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_egress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z retry.go:91: terraform [output -no-color -json computed_managed_ingress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_ingress_rule_ids]
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z retry.go:91: terraform [output -no-color -json auto_group_ingress_all_from_self_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:16:01Z logger.go:66: Running command terraform with args [output -no-color -json auto_group_ingress_all_from_self_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:16:02Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:16:02Z retry.go:91: terraform [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:16:02Z logger.go:66: Running command terraform with args [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
+TestTerraformCustomRulesExample 2022-08-24T15:16:03Z logger.go:66: []
+TestTerraformCustomRulesExample 2022-08-24T15:16:03Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformCustomRulesExample 2022-08-24T15:16:03Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformCustomRulesExample 2022-08-24T15:16:06Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:16:06Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:16:06Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-68a54001]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-9ce7cafb]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-0aa3b28ad13660fc2]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-b551fece]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Refreshing state... [id=sgrule-3439538186]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Refreshing state... [id=sgrule-3714588632]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Refreshing state... [id=sgrule-1879647203]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Refreshing state... [id=sgrule-3291010153]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Refreshing state... [id=sgrule-2420703426]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Refreshing state... [id=sgrule-2400461950]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Refreshing state... [id=sgrule-2021342283]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Refreshing state... [id=sgrule-1649604954]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Refreshing state... [id=sgrule-393440574]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Refreshing state... [id=sgrule-1749409881]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - destroy
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: Terraform will perform the following actions:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:326504147071:security-group/sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description            = "ex-custom-rules" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - egress                 = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 443
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 443
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "egress-22-22-tcp-to-pl-68a54001"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 22
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 22
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "egress-450-350-tcp-to-2001:db8::/64"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 350
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 450
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "egress-all-all-all-to-self"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 0
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "-1"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = true
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 0
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "egress-all-all-icmp-to-sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = -1
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "icmp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = -1
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                     = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - ingress                = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 443
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 443
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "ingress-22-22-tcp-from-pl-68a54001"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 22
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 22
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "ingress-450-350-tcp-from-2001:db8::/64"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 350
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "tcp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 450
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "ingress-all-all-all-from-self"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = 0
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "-1"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = true
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = 0
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - cidr_blocks      = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - description      = "ingress-all-all-icmp-from-sg-b551fece"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - from_port        = -1
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - protocol         = "icmp"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - security_groups  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                   - "sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:                 ]
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - self             = false
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:               - to_port          = -1
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:             },
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - name                   = "ex-custom-rules" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - owner_id               = "326504147071" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - tags                   = {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "Name" = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         } -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - tags_all               = {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "Example"    = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "Name"       = "ex-custom-rules"
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         } -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - vpc_id                 = "vpc-9ce7cafb" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - timeouts {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - create = "10m" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - delete = "15m" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "egress-22-22-tcp-to-pl-68a54001" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 22 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-3439538186" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 22 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "egress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - cidr_blocks       = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-1649604954" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "egress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "egress-450-350-tcp-to-2001:db8::/64" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 350 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-1879647203" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 450 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "egress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "egress-all-all-all-to-self" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-3291010153" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = true -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "egress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description              = "egress-all-all-icmp-to-sg-b551fece" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port                = -1 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                       = "sgrule-1749409881" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol                 = "icmp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id        = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self                     = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - source_security_group_id = "sg-b551fece" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port                  = -1 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type                     = "egress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "ingress-22-22-tcp-from-pl-68a54001" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 22 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-3714588632" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 22 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - cidr_blocks       = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "10.10.0.0/16",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-2420703426" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "ingress-450-350-tcp-from-2001:db8::/64" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 350 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-2021342283" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:           - "2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:         ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 450 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description       = "ingress-all-all-all-from-self" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                = "sgrule-2400461950" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self              = true -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   # module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"] will be destroyed
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - resource "aws_security_group_rule" "rules" {
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - description              = "ingress-all-all-icmp-from-sg-b551fece" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - from_port                = -1 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - id                       = "sgrule-393440574" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - protocol                 = "icmp" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - security_group_id        = "sg-0aa3b28ad13660fc2" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - self                     = false -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - source_security_group_id = "sg-b551fece" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - to_port                  = -1 -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     }
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: Plan: 0 to add, 0 to change, 11 to destroy.
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66: Changes to Outputs:
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - auto_group_egress_all_to_public_internet_rule_keys      = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - auto_group_ingress_all_from_self_rule_keys              = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - auto_group_ingress_http_from_public_internet_rule_keys  = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - auto_group_ingress_https_from_public_internet_rule_keys = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - computed_egress_rule_ids                                = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - computed_ingress_rule_ids                               = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - computed_managed_egress_rule_ids                        = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - computed_managed_ingress_rule_ids                       = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - egress_rule_keys                                        = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "egress-22-22-tcp-to-pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "egress-450-350-tcp-to-2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "egress-all-all-all-to-self",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "egress-all-all-icmp-to-sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - ingress_rule_keys                                       = [
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "ingress-22-22-tcp-from-pl-68a54001",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "ingress-450-350-tcp-from-2001:db8::/64",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "ingress-all-all-all-from-self",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:       - "ingress-all-all-icmp-from-sg-b551fece",
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:     ] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - managed_egress_rule_keys                                = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:07Z logger.go:66:   - managed_ingress_rule_keys                               = [] -> null
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Destroying... [id=sgrule-2021342283]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Destroying... [id=sgrule-2400461950]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Destroying... [id=sgrule-1879647203]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Destroying... [id=sgrule-1749409881]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Destroying... [id=sgrule-393440574]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Destroying... [id=sgrule-3439538186]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Destroying... [id=sgrule-1649604954]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Destroying... [id=sgrule-3714588632]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Destroying... [id=sgrule-2420703426]
+TestTerraformCustomRulesExample 2022-08-24T15:16:08Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Destroying... [id=sgrule-3291010153]
+TestTerraformCustomRulesExample 2022-08-24T15:16:09Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-icmp-to-sg-b551fece"]: Destruction complete after 0s
+TestTerraformCustomRulesExample 2022-08-24T15:16:10Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-icmp-from-sg-b551fece"]: Destruction complete after 1s
+TestTerraformCustomRulesExample 2022-08-24T15:16:10Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-450-350-tcp-from-2001:db8::/64"]: Destruction complete after 2s
+TestTerraformCustomRulesExample 2022-08-24T15:16:11Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-450-350-tcp-to-2001:db8::/64"]: Destruction complete after 2s
+TestTerraformCustomRulesExample 2022-08-24T15:16:12Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-all-all-all-from-self"]: Destruction complete after 3s
+TestTerraformCustomRulesExample 2022-08-24T15:16:12Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-22-22-tcp-to-pl-68a54001"]: Destruction complete after 4s
+TestTerraformCustomRulesExample 2022-08-24T15:16:13Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24"]: Destruction complete after 4s
+TestTerraformCustomRulesExample 2022-08-24T15:16:13Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24"]: Destruction complete after 5s
+TestTerraformCustomRulesExample 2022-08-24T15:16:14Z logger.go:66: module.security_group.aws_security_group_rule.rules["egress-all-all-all-to-self"]: Destruction complete after 6s
+TestTerraformCustomRulesExample 2022-08-24T15:16:15Z logger.go:66: module.security_group.aws_security_group_rule.rules["ingress-22-22-tcp-from-pl-68a54001"]: Destruction complete after 6s
+TestTerraformCustomRulesExample 2022-08-24T15:16:15Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-0aa3b28ad13660fc2]
+TestTerraformCustomRulesExample 2022-08-24T15:16:16Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformCustomRulesExample 2022-08-24T15:16:16Z logger.go:66:
+TestTerraformCustomRulesExample 2022-08-24T15:16:16Z logger.go:66: Destroy complete! Resources: 11 destroyed.
+--- PASS: TestTerraformCustomRulesExample (36.94s)
 PASS
-ok  	command-line-arguments	36.733s
+ok  	command-line-arguments	36.958s

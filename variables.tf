@@ -138,7 +138,19 @@ variable "computed_managed_egress_rules" {
 ###############################################################################
 
 variable "create_auto_group_ingress_all_from_self_rules" {
-  description = "Whether to create auto group ingress all to self rules."
+  description = "Whether to create auto group ingress all from self security group rules."
+  type        = bool
+  default     = false
+}
+
+variable "create_auto_group_ingress_https_from_public_internet_rules" {
+  description = "Whether to create auto group ingress HTTPS from the public internet rules."
+  type        = bool
+  default     = false
+}
+
+variable "create_auto_group_ingress_http_from_public_internet_rules" {
+  description = "Whether to create auto group ingress HTTP from the public internet rules."
   type        = bool
   default     = false
 }
