@@ -1,4 +1,0 @@
---- PASS: TestTerraformCompleteExample (33.57s)
---- PASS: TestTerraformCustomRulesExample (31.41s)
---- PASS: TestTerraformManagedRulesExample (32.16s)
---- PASS: TestTerraformRulesOnlyExample (18.84s)

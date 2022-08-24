@@ -69,7 +69,7 @@ variable "delete_timeout" {
 }
 
 ###############################################################################
-# Ingress Rules
+# Custom Rules
 ###############################################################################
 
 variable "ingress_rules" {
@@ -78,18 +78,19 @@ variable "ingress_rules" {
   default     = []
 }
 
-variable "managed_ingress_rules" {
-  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
+variable "egress_rules" {
+  description = "List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
   type        = any
   default     = []
 }
 
+
 ###############################################################################
-# Egress Rules
+# Managed Rules
 ###############################################################################
 
-variable "egress_rules" {
-  description = "List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+variable "managed_ingress_rules" {
+  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
   type        = any
   default     = []
 }
@@ -99,3 +100,61 @@ variable "managed_egress_rules" {
   type        = any
   default     = []
 }
+
+###############################################################################
+# Computed Rules
+###############################################################################
+
+variable "computed_ingress_rules" {
+  description = "List of dynamic ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+  type        = any
+  default     = []
+}
+
+variable "computed_egress_rules" {
+  description = "List of dynamic egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+  type        = any
+  default     = []
+}
+
+###############################################################################
+# Computed Managed Rules
+###############################################################################
+
+variable "computed_managed_ingress_rules" {
+  description = "List of dynamic managed ingress rules. The key is the rule description and the value is the managed rule name."
+  type        = any
+  default     = []
+}
+
+variable "computed_managed_egress_rules" {
+  description = "List of dynamic managed egress rules. The key is the rule description and the value is the managed rule name."
+  type        = any
+  default     = []
+}
+
+###############################################################################
+# Auto Group Rules
+###############################################################################
+
+variable "create_auto_group_ingress_all_from_self_rules" {
+  description = "Whether to create auto group ingress all to self rules."
+  type        = bool
+  default     = false
+}
+
+variable "create_auto_group_egress_all_to_public_internet_rules" {
+  description = "Whether to create auto group egress all to public internet rules (IPV4/IPV6)."
+  type        = bool
+  default     = false
+}
+
+# TODO implement all auto groups from https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/rules.tf#L218-L483
+
+# variable "create_auto_group_activemq_rules" {
+#   description = "Whether to create egress all to public internet rule (IPV4/IPV6)"
+#   type        = bool
+#   default     = false
+# }
+#
+# ...

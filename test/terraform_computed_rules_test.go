@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTerraformCustomRulesExample(t *testing.T) {
+func TestTerraformComputedRulesExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/custom_rules",
+		TerraformDir: "../examples/computed_rules",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,
@@ -33,14 +33,14 @@ func TestTerraformCustomRulesExample(t *testing.T) {
 	actualComputedManagedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_ingress_rule_ids"))
 	actualAutoGroupEgressAllToPublicInternetRuleKeys := terraform.Output(t, terraformOptions, "auto_group_egress_all_to_public_internet_rule_keys")
 
-	expectedIngressRuleKeys := "[ingress-22-22-tcp-from-pl-68a54001 ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24 ingress-450-350-tcp-from-2001:db8::/64 ingress-all-all-all-from-self ingress-all-all-icmp-from-sg-b551fece]"
+	expectedIngressRuleKeys := "[]"
 	expectedManagedIngressRuleKeys := "[]"
-	expectedEgressRuleKeys := "[egress-22-22-tcp-to-pl-68a54001 egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-450-350-tcp-to-2001:db8::/64 egress-all-all-all-to-self egress-all-all-icmp-to-sg-b551fece]"
+	expectedEgressRuleKeys := "[]"
 	expectedManagedEgressRuleKeys := "[]"
-	expectedComputedIngressRuleLength := 0
-	expectedComputedEgressRuleLength := 0
-	expectedComputedManagedIngressRuleLength := 0
-	expectedComputedManagedEgressRuleLength := 0
+	expectedComputedIngressRuleLength := 1
+	expectedComputedEgressRuleLength := 1
+	expectedComputedManagedIngressRuleLength := 1
+	expectedComputedManagedEgressRuleLength := 1
 	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[]"
 
 	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)
