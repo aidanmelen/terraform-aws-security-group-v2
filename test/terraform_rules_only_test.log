@@ -1,161 +1,230 @@
 === RUN   TestTerraformRulesOnlyExample
-TestTerraformRulesOnlyExample 2022-08-24T14:35:08Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:08Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:08Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:08Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:08Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:09Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:09Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:09Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: [0m[32m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: should now work.
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:10Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: Error: Reference to undeclared input variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:   on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:   26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: An input variable with the name
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: "create_auto_group_ingress_https_from_public_internet_rules" has not been
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: declared. This variable can be declared with a variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: "create_auto_group_ingress_https_from_public_internet_rules" {} block.
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: Error: Reference to undeclared input variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: An input variable with the name
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" has not been
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: declared. This variable can be declared with a variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" {} block.
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z retry.go:99: Returning due to fatal error: FatalError{Underlying: error while running command: exit status 1;
-Error: Reference to undeclared input variable
-
-  on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-  26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-
-An input variable with the name
-"create_auto_group_ingress_https_from_public_internet_rules" has not been
-declared. This variable can be declared with a variable
-"create_auto_group_ingress_https_from_public_internet_rules" {} block.
-
-Error: Reference to undeclared input variable
-
-  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-
-An input variable with the name
-"create_auto_group_ingress_http_from_public_internet_rules" has not been
-declared. This variable can be declared with a variable
-"create_auto_group_ingress_http_from_public_internet_rules" {} block.}
-    apply.go:15:
-        	Error Trace:	/workspaces/terraform-aws-security-group/test/apply.go:15
-        	            				/workspaces/terraform-aws-security-group/test/terraform_rules_only_test.go:23
-        	Error:      	Received unexpected error:
-        	            	FatalError{Underlying: error while running command: exit status 1;
-        	            	Error: Reference to undeclared input variable
-
-        	            	  on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-        	            	  26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-
-        	            	An input variable with the name
-        	            	"create_auto_group_ingress_https_from_public_internet_rules" has not been
-        	            	declared. This variable can be declared with a variable
-        	            	"create_auto_group_ingress_https_from_public_internet_rules" {} block.
-
-        	            	Error: Reference to undeclared input variable
-
-        	            	  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-
-        	            	An input variable with the name
-        	            	"create_auto_group_ingress_http_from_public_internet_rules" has not been
-        	            	declared. This variable can be declared with a variable
-        	            	"create_auto_group_ingress_http_from_public_internet_rules" {} block.}
-        	Test:       	TestTerraformRulesOnlyExample
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:12Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: Error: Reference to undeclared input variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:   on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:   26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: An input variable with the name
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: "create_auto_group_ingress_https_from_public_internet_rules" has not been
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: declared. This variable can be declared with a variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: "create_auto_group_ingress_https_from_public_internet_rules" {} block.
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: Error: Reference to undeclared input variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:   on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:   44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: An input variable with the name
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" has not been
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: declared. This variable can be declared with a variable
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z logger.go:66: "create_auto_group_ingress_http_from_public_internet_rules" {} block.
-TestTerraformRulesOnlyExample 2022-08-24T14:35:13Z retry.go:99: Returning due to fatal error: FatalError{Underlying: error while running command: exit status 1;
-Error: Reference to undeclared input variable
-
-  on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-  26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-
-An input variable with the name
-"create_auto_group_ingress_https_from_public_internet_rules" has not been
-declared. This variable can be declared with a variable
-"create_auto_group_ingress_https_from_public_internet_rules" {} block.
-
-Error: Reference to undeclared input variable
-
-  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-
-An input variable with the name
-"create_auto_group_ingress_http_from_public_internet_rules" has not been
-declared. This variable can be declared with a variable
-"create_auto_group_ingress_http_from_public_internet_rules" {} block.}
-    destroy.go:11:
-        	Error Trace:	/workspaces/terraform-aws-security-group/test/destroy.go:11
-        	            				/workspaces/terraform-aws-security-group/test/panic.go:642
-        	            				/workspaces/terraform-aws-security-group/test/testing.go:756
-        	            				/workspaces/terraform-aws-security-group/test/apply.go:15
-        	            				/workspaces/terraform-aws-security-group/test/terraform_rules_only_test.go:23
-        	Error:      	Received unexpected error:
-        	            	FatalError{Underlying: error while running command: exit status 1;
-        	            	Error: Reference to undeclared input variable
-
-        	            	  on ../../auto_group_rules.tf line 26, in resource "aws_security_group_rule" "auto_group_ingress_https_from_public_internet_rules":
-        	            	  26:   for_each = var.create && var.create_auto_group_ingress_https_from_public_internet_rules ? { "ingress-https-443-tcp-from-public-internet" = null } : {}
-
-        	            	An input variable with the name
-        	            	"create_auto_group_ingress_https_from_public_internet_rules" has not been
-        	            	declared. This variable can be declared with a variable
-        	            	"create_auto_group_ingress_https_from_public_internet_rules" {} block.
-
-        	            	Error: Reference to undeclared input variable
-
-        	            	  on ../../auto_group_rules.tf line 44, in resource "aws_security_group_rule" "auto_group_ingress_http_from_public_internet_rules":
-        	            	  44:   for_each = var.create && var.create_auto_group_ingress_http_from_public_internet_rules ? { "ingress-http-80-tcp-from-public-internet" = null } : {}
-
-        	            	An input variable with the name
-        	            	"create_auto_group_ingress_http_from_public_internet_rules" has not been
-        	            	declared. This variable can be declared with a variable
-        	            	"create_auto_group_ingress_http_from_public_internet_rules" {} block.}
-        	Test:       	TestTerraformRulesOnlyExample
---- FAIL: TestTerraformRulesOnlyExample (5.81s)
-FAIL
-FAIL	command-line-arguments	5.835s
-FAIL
+TestTerraformRulesOnlyExample 2022-08-24T15:17:32Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:32Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:32Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:32Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:32Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:33Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:33Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:33Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: [0m[32m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: should now work.
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:34Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:36Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-9ce7cafb]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: data.aws_security_group.default: Read complete after 1s [id=sg-b551fece]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + create
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: Terraform will perform the following actions:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   # aws_security_group.pre_existing_sg will be created
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + resource "aws_security_group" "pre_existing_sg" {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + description            = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + id                     = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + name                   = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + tags                   = {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:           + "Name" = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:         }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + tags_all               = {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:           + "Example"    = "ex-rules-only"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:           + "Name"       = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:         }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + vpc_id                 = "vpc-9ce7cafb"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:     }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   # module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"] will be created
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + resource "aws_security_group_rule" "managed_rules" {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + description              = "ingress-http-80-tcp-from-sg-b551fece"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + from_port                = 80
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + id                       = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + self                     = false
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + source_security_group_id = "sg-b551fece"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + to_port                  = 80
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:       + type                     = "ingress"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:     }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: Plan: 2 to add, 0 to change, 0 to destroy.
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66: Changes to Outputs:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + auto_group_egress_all_to_public_internet_rule_keys      = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + auto_group_ingress_all_from_self_rule_keys              = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + auto_group_ingress_http_from_public_internet_rule_keys  = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + auto_group_ingress_https_from_public_internet_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + computed_egress_rule_ids                                = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + computed_ingress_rule_ids                               = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + computed_managed_egress_rule_ids                        = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + computed_managed_ingress_rule_ids                       = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + egress_rule_keys                                        = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + ingress_rule_keys                                       = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + managed_egress_rule_keys                                = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + managed_ingress_rule_keys                               = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:37Z logger.go:66:   + pre_existing_sg_id                                      = (known after apply)
+TestTerraformRulesOnlyExample 2022-08-24T15:17:38Z logger.go:66: aws_security_group.pre_existing_sg: Creating...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:40Z logger.go:66: aws_security_group.pre_existing_sg: Creation complete after 2s [id=sg-0fe32e35938e3bdf5]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:40Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"]: Creating...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"]: Creation complete after 1s [id=sgrule-1451296666]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: Outputs:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: auto_group_egress_all_to_public_internet_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: auto_group_ingress_all_from_self_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: auto_group_ingress_http_from_public_internet_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: auto_group_ingress_https_from_public_internet_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: computed_egress_rule_ids = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: computed_ingress_rule_ids = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: computed_managed_egress_rule_ids = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: computed_managed_ingress_rule_ids = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: egress_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: ingress_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: managed_egress_rule_keys = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: managed_ingress_rule_keys = [
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66:   "ingress-http-80-tcp-from-sg-b551fece",
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: ]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: pre_existing_sg_id = "sg-0fe32e35938e3bdf5"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z retry.go:91: terraform [output -no-color -json ingress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:41Z logger.go:66: Running command terraform with args [output -no-color -json ingress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:42Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:42Z retry.go:91: terraform [output -no-color -json managed_ingress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:42Z logger.go:66: Running command terraform with args [output -no-color -json managed_ingress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:43Z logger.go:66: ["ingress-http-80-tcp-from-sg-b551fece"]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:43Z retry.go:91: terraform [output -no-color -json egress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:43Z logger.go:66: Running command terraform with args [output -no-color -json egress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:44Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:44Z retry.go:91: terraform [output -no-color -json managed_egress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:44Z logger.go:66: Running command terraform with args [output -no-color -json managed_egress_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:45Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:45Z retry.go:91: terraform [output -no-color -json computed_egress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:45Z logger.go:66: Running command terraform with args [output -no-color -json computed_egress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z retry.go:91: terraform [output -no-color -json computed_ingress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z logger.go:66: Running command terraform with args [output -no-color -json computed_ingress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z retry.go:91: terraform [output -no-color -json computed_managed_egress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:46Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_egress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:47Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:47Z retry.go:91: terraform [output -no-color -json computed_managed_ingress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:47Z logger.go:66: Running command terraform with args [output -no-color -json computed_managed_ingress_rule_ids]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:48Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:48Z retry.go:91: terraform [output -no-color -json auto_group_ingress_all_from_self_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:48Z logger.go:66: Running command terraform with args [output -no-color -json auto_group_ingress_all_from_self_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:49Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:49Z retry.go:91: terraform [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:49Z logger.go:66: Running command terraform with args [output -no-color -json auto_group_egress_all_to_public_internet_rule_keys]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:50Z logger.go:66: []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:50Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:50Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:52Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:53Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-9ce7cafb]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:53Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformRulesOnlyExample 2022-08-24T15:17:53Z logger.go:66: aws_security_group.pre_existing_sg: Refreshing state... [id=sg-0fe32e35938e3bdf5]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:53Z logger.go:66: data.aws_security_group.default: Read complete after 1s [id=sg-b551fece]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:53Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"]: Refreshing state... [id=sgrule-1451296666]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - destroy
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66: Terraform will perform the following actions:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   # aws_security_group.pre_existing_sg will be destroyed
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - resource "aws_security_group" "pre_existing_sg" {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:326504147071:security-group/sg-0fe32e35938e3bdf5" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - description            = "ex-rules-only-pre-existing-sg" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - egress                 = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - id                     = "sg-0fe32e35938e3bdf5" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - ingress                = [
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - cidr_blocks      = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - description      = "ingress-http-80-tcp-from-sg-b551fece"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - from_port        = 80
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - protocol         = "tcp"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - security_groups  = [
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:                   - "sg-b551fece",
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:                 ]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - self             = false
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:               - to_port          = 80
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:             },
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:         ] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - name                   = "ex-rules-only-pre-existing-sg" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - owner_id               = "326504147071" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - tags                   = {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - "Name" = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:         } -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - tags_all               = {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - "Example"    = "ex-rules-only"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:           - "Name"       = "ex-rules-only-pre-existing-sg"
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:         } -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - vpc_id                 = "vpc-9ce7cafb" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:     }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   # module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"] will be destroyed
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - resource "aws_security_group_rule" "managed_rules" {
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - description              = "ingress-http-80-tcp-from-sg-b551fece" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - from_port                = 80 -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - id                       = "sgrule-1451296666" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - security_group_id        = "sg-0fe32e35938e3bdf5" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - self                     = false -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - source_security_group_id = "sg-b551fece" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - to_port                  = 80 -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:     }
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66: Plan: 0 to add, 0 to change, 2 to destroy.
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66: Changes to Outputs:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - auto_group_egress_all_to_public_internet_rule_keys      = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - auto_group_ingress_all_from_self_rule_keys              = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - auto_group_ingress_http_from_public_internet_rule_keys  = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - auto_group_ingress_https_from_public_internet_rule_keys = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - computed_egress_rule_ids                                = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - computed_ingress_rule_ids                               = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - computed_managed_egress_rule_ids                        = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - computed_managed_ingress_rule_ids                       = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - egress_rule_keys                                        = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - ingress_rule_keys                                       = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - managed_egress_rule_keys                                = [] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - managed_ingress_rule_keys                               = [
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:       - "ingress-http-80-tcp-from-sg-b551fece",
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:     ] -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:54Z logger.go:66:   - pre_existing_sg_id                                      = "sg-0fe32e35938e3bdf5" -> null
+TestTerraformRulesOnlyExample 2022-08-24T15:17:55Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"]: Destroying... [id=sgrule-1451296666]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:55Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-b551fece"]: Destruction complete after 1s
+TestTerraformRulesOnlyExample 2022-08-24T15:17:55Z logger.go:66: aws_security_group.pre_existing_sg: Destroying... [id=sg-0fe32e35938e3bdf5]
+TestTerraformRulesOnlyExample 2022-08-24T15:17:56Z logger.go:66: aws_security_group.pre_existing_sg: Destruction complete after 1s
+TestTerraformRulesOnlyExample 2022-08-24T15:17:56Z logger.go:66:
+TestTerraformRulesOnlyExample 2022-08-24T15:17:56Z logger.go:66: Destroy complete! Resources: 2 destroyed.
+--- PASS: TestTerraformRulesOnlyExample (24.34s)
+PASS
+ok  	command-line-arguments	24.358s

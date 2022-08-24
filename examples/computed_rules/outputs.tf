@@ -61,12 +61,12 @@ output "auto_group_ingress_all_from_self_rule_keys" {
   value       = module.security_group.auto_group_ingress_all_from_self_rule_keys
 }
 
-output "auto_group_ingress_https_from_self_rule_keys" {
+output "auto_group_ingress_https_from_public_internet_rule_keys" {
   description = "The auto group ingress HTTPS from the public internet rule keys."
   value       = module.security_group.auto_group_ingress_https_from_public_internet_rule_keys
 }
 
-output "auto_group_ingress_http_from_self_rule_keys" {
+output "auto_group_ingress_http_from_public_internet_rule_keys" {
   description = "The auto group ingress HTTP from the public internet rule keys."
   value       = module.security_group.auto_group_ingress_http_from_public_internet_rule_keys
 }

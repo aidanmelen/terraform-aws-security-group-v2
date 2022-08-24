@@ -42,7 +42,7 @@ func TestTerraformBasicExample(t *testing.T) {
 	expectedComputedEgressRuleLength := 0
 	expectedComputedManagedIngressRuleLength := 0
 	expectedComputedManagedEgressRuleLength := 0
-	expectedAutoGroupIngressAllFromSelfRuleKeys := "[egress-all-to-public-internet]"
+	expectedAutoGroupIngressAllFromSelfRuleKeys := "[ingress-all-all-from-self]"
 	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[egress-all-all-to-public-internet]"
 
 	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)

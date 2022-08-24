@@ -486,12 +486,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
+--- PASS: TestTerraformBasicExample (27.99s)
 FAIL
-FAIL
-FAIL
-FAIL
-FAIL
-FAIL
+--- PASS: TestTerraformCustomRulesExample (36.94s)
+--- PASS: TestTerraformManagedRulesExample (37.68s)
+--- PASS: TestTerraformComputedRulesExample (35.14s)
+--- PASS: TestTerraformRulesOnlyExample (24.34s)
 ```
 
 ## Makefile Targets
