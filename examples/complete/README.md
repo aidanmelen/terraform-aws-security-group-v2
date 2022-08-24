@@ -121,7 +121,7 @@ module "security_group" {
     }
   ]
 
-  create_auto_group_ingress_all_from_self_rules         = true
+  create_auto_group_ingress_all_from_self_rules         = false # already created with a custom ingress rule
   create_auto_group_egress_all_to_public_internet_rules = true
 
   tags = {

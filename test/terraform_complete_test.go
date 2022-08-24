@@ -43,7 +43,7 @@ func TestTerraformCompleteExample(t *testing.T) {
 	expectedComputedEgressRuleLength := 1
 	expectedComputedManagedIngressRuleLength := 1
 	expectedComputedManagedEgressRuleLength := 1
-	expectedAutoGroupIngressAllFromSelfRuleKeys := "[ingress-all-all-from-self]"
+	expectedAutoGroupIngressAllFromSelfRuleKeys := "[]"
 	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[egress-all-all-to-public-internet]"
 	expectedDisabledSgId := "I was not created"
 
