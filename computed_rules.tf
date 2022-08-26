@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "computed_ingress_rules" {
 
   type              = "ingress"
   security_group_id = local.self_sg_id
-  description       = lookup(var.computed_ingress_rules[count.index], "description", null)
+  description       = lookup(var.computed_ingress_rules[count.index], "description", "Managed by Terraform")
 
   from_port = var.computed_ingress_rules[count.index]["from_port"]
   to_port   = var.computed_ingress_rules[count.index]["to_port"]
@@ -47,7 +47,7 @@ resource "aws_security_group_rule" "computed_egress_rules" {
 
   type              = "egress"
   security_group_id = local.self_sg_id
-  description       = lookup(var.computed_egress_rules[count.index], "description", null)
+  description       = lookup(var.computed_egress_rules[count.index], "description", "Managed by Terraform")
 
   from_port = var.computed_egress_rules[count.index]["from_port"]
   to_port   = var.computed_egress_rules[count.index]["to_port"]

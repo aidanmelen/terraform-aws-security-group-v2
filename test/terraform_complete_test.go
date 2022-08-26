@@ -34,12 +34,12 @@ func TestTerraformCompleteExample(t *testing.T) {
 	actualDisabledSgId := terraform.Output(t, terraformOptions, "disabled_sg_id")
 
 	expectedIngressKeys := fmt.Sprintf(
-		"[ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s ingress-all-all-all-from-self ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-all-all-icmp-from-%s ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-%s]",
-		actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId, actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
+		"[ingress-0-0-all-from-self ingress-0-0-icmp-from-%s ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-%s]",
+		actualDataAwsSecurityGroupDefaultId, actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId, actualDataAwsPrefixListPrivateS3Id,
 	)
 	expectedEgressKeys := fmt.Sprintf(
-		"[egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s egress-all-all-all-to-self egress-all-all-icmp-to-%s egress-all-all-to-public egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-%s]",
-		actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId, actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
+		"[egress-0-0-all-to-self egress-0-0-icmp-to-%s egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s egress-all-all-to-public egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-%s]",
+		actualDataAwsSecurityGroupDefaultId, actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId, actualDataAwsPrefixListPrivateS3Id,
 	)
 	expectedDisabledSgId := "I was not created"
 

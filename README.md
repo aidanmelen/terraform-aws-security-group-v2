@@ -86,14 +86,14 @@ module "sg" {
 
   ingress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -116,14 +116,14 @@ module "sg" {
 
   egress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -251,14 +251,14 @@ module "sg" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -284,14 +284,14 @@ module "sg" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -517,12 +517,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (28.75s)
---- PASS: TestTerraformCompleteExample (51.96s)
---- PASS: TestTerraformCustomRulesExample (40.68s)
---- PASS: TestTerraformManagedRulesExample (40.54s)
---- PASS: TestTerraformComputedRulesExample (37.78s)
---- PASS: TestTerraformRulesOnlyExample (26.76s)
+--- PASS: TestTerraformBasicExample (30.34s)
+--- PASS: TestTerraformCompleteExample (55.77s)
+--- PASS: TestTerraformCustomRulesExample (42.34s)
+--- PASS: TestTerraformManagedRulesExample (41.20s)
+--- PASS: TestTerraformComputedRulesExample (36.59s)
+--- PASS: TestTerraformRulesOnlyExample (25.74s)
 ```
 
 ## Makefile Targets

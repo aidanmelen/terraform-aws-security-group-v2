@@ -31,12 +31,12 @@ func TestTerraformCustomRulesExample(t *testing.T) {
 	actualEgressKeys := terraform.Output(t, terraformOptions, "egress_keys")
 
 	expectedIngressKeys := fmt.Sprintf(
-		"[ingress-22-22-tcp-from-%s ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24 ingress-450-350-tcp-from-2001:db8::/64 ingress-all-all-all-from-self ingress-all-all-icmp-from-%s]",
-		actualDataAwsPrefixListPrivateS3Id, actualDataAwsSecurityGroupDefaultId,
+		"[ingress-0-0-all-from-self ingress-0-0-icmp-from-%s ingress-22-22-tcp-from-%s ingress-443-443-tcp-from-10.10.0.0/16,10.20.0.0/24 ingress-450-350-tcp-from-2001:db8::/64]",
+		actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
 	)
 	expectedEgressKeys := fmt.Sprintf(
-		"[egress-22-22-tcp-to-%s egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-450-350-tcp-to-2001:db8::/64 egress-all-all-all-to-self egress-all-all-icmp-to-%s]",
-		actualDataAwsPrefixListPrivateS3Id, actualDataAwsSecurityGroupDefaultId,
+		"[egress-0-0-all-to-self egress-0-0-icmp-to-%s egress-22-22-tcp-to-%s egress-443-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-450-350-tcp-to-2001:db8::/64]",
+		actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
 	)
 
 	assert.Equal(t, expectedIngressKeys, actualIngressKeys, "Map %q should match %q", expectedIngressKeys, actualIngressKeys)

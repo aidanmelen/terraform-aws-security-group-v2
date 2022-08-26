@@ -1,8 +1,8 @@
 module "public_https_sg" {
   source = "../../"
 
-  name        = local.name
-  description = local.name
+  name        = "${local.name}-https"
+  description = "${local.name}-https"
   vpc_id      = data.aws_vpc.default.id
 
   create_ingress_https_from_public_rules = true
@@ -10,15 +10,15 @@ module "public_https_sg" {
   create_egress_all_to_public_rules      = true
 
   tags = {
-    "Name" = "${local.name}-http"
+    "Name" = "${local.name}-https"
   }
 }
 
 module "public_http_sg" {
   source = "../../"
 
-  name        = local.name
-  description = local.name
+  name        = "${local.name}-http"
+  description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
   create_ingress_http_from_public_rules = true
@@ -33,8 +33,8 @@ module "public_http_sg" {
 module "ssh_sg" {
   source = "../../"
 
-  name        = local.name
-  description = local.name
+  name        = "${local.name}-ssh"
+  description = "${local.name}-ssh"
   vpc_id      = data.aws_vpc.default.id
 
   managed_ingress_rules = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }]
