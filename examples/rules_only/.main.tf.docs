@@ -10,7 +10,7 @@ resource "aws_security_group" "pre_existing" {
 
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   create_sg         = false
   security_group_id = aws_security_group.pre_existing.id

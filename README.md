@@ -29,7 +29,7 @@ Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and 
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -63,7 +63,7 @@ Create a security group with a combination of both managed, custom, computed, an
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -175,7 +175,7 @@ module "sg" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
   create = false
 }
 ```
@@ -191,7 +191,7 @@ Create security groups with common rules.
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -225,7 +225,7 @@ Create a security group with custom rules.
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -316,7 +316,7 @@ Create a security group with managed rules.
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -416,7 +416,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -483,7 +483,7 @@ resource "aws_security_group" "pre_existing" {
 
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   create_sg         = false
   security_group_id = aws_security_group.pre_existing.id

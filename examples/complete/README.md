@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
 
   name        = local.name
   description = local.name
@@ -135,7 +135,7 @@ module "sg" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.4.0"
+  version = ">= 0.5.0"
   create = false
 }
 ```
