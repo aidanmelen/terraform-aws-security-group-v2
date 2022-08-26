@@ -24,25 +24,28 @@ func TestTerraformCompleteExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualDataAwsSecurityGroupDefaultId := terraform.Output(t, terraformOptions, "data_aws_security_group_default_id")
-	actualDataAwsPrefixListPrivateS3Id := terraform.Output(t, terraformOptions, "data_aws_prefix_list_private_s3_id")
-	actualAwsSecurityGroupOtherId := terraform.Output(t, terraformOptions, "aws_security_group_other_id")
-	actualAwsEc2ManagedPrefixListOtherId := terraform.Output(t, terraformOptions, "aws_ec2_managed_prefix_list_other_id")
-	actualIngress := terraform.Output(t, terraformOptions, "ingress_keys")
-	actualEgress := terraform.Output(t, terraformOptions, "egress_keys")
+	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
+	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
+	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
+	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
+	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
+	actualIngressKeys := terraform.Output(t, terraformOptions, "ingress_keys")
+	actualEgressKeys := terraform.Output(t, terraformOptions, "egress_keys")
 	actualDisabledSgId := terraform.Output(t, terraformOptions, "disabled_sg_id")
 
-	expectedIngress := fmt.Sprintf(
-		"[ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s ingress-all-all-all-from-self ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-all-all-icmp-from-%s ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-%s]",
-		actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId, actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
+	expectedIngressKeys := fmt.Sprintf(
+		"[ingress-0-0-all-from-self ingress-0-0-icmp-from-%s ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-%s]",
+		actualDataAwsSecurityGroupDefaultId, actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId, actualDataAwsPrefixListPrivateS3Id,
 	)
-	expectedEgress := fmt.Sprintf(
-		"[egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s egress-all-all-all-to-self egress-all-all-icmp-to-%s egress-all-all-to-public egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-%s]",
-		actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId, actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
+	expectedEgressKeys := fmt.Sprintf(
+		"[egress-0-0-all-to-self egress-0-0-icmp-to-%s egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s egress-all-all-to-public egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-%s]",
+		actualDataAwsSecurityGroupDefaultId, actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId, actualDataAwsPrefixListPrivateS3Id,
 	)
 	expectedDisabledSgId := "I was not created"
 
-	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
-	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
+	assert.Equal(t, expectedIngressKeys, actualIngressKeys, "Map %q should match %q", expectedIngressKeys, actualIngressKeys)
+	assert.Equal(t, expectedEgressKeys, actualEgressKeys, "Map %q should match %q", expectedEgressKeys, actualEgressKeys)
 	assert.Equal(t, expectedDisabledSgId, actualDisabledSgId, "Map %q should match %q", expectedDisabledSgId, actualDisabledSgId)
+
+	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

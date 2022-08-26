@@ -1,4 +1,4 @@
-module "security_group" {
+module "sg" {
   source = "../../"
 
   name        = local.name
@@ -22,14 +22,14 @@ module "security_group" {
 
   ingress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -52,14 +52,14 @@ module "security_group" {
 
   egress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -97,8 +97,8 @@ module "security_group" {
     }
   ]
 
-  create_ingress_all_from_self_rules = false # already created with a custom ingress rule
-  create_egress_all_to_public_rules  = true
+  create_ingress_all_from_self_rule = false # already created with a custom ingress rule
+  create_egress_all_to_public_rules = true
 
   tags = {
     "Name" = local.name

@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"regexp"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -24,13 +25,24 @@ func TestTerraformRulesOnlyExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualDataAwsSecurityGroupDefaultId := terraform.Output(t, terraformOptions, "data_aws_security_group_default_id")
-	actualIngress := terraform.Output(t, terraformOptions, "ingress_keys")
-	actualEgress := terraform.Output(t, terraformOptions, "egress_keys")
+	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
+	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
+	actualAwsSecurityGroupPreExistingSgId := actualTerratest["aws_security_group_pre_existing_id"]
+	actualIngress := terraform.Output(t, terraformOptions, "ingress")
+	actualEgress := terraform.Output(t, terraformOptions, "egress")
 
-	expectedIngress := fmt.Sprintf("[ingress-http-80-tcp-from-%s]", actualDataAwsSecurityGroupDefaultId)
-	expectedEgress := "[]"
+	regexp, _ := regexp.Compile(`sgrule-[a-z0-9]*`)
+	actualIngressWithStaticSgrules := regexp.ReplaceAllString(actualIngress, "sgrule-1111111111")
+	actualEgressWithStaticSgrules := regexp.ReplaceAllString(actualEgress, "sgrule-1111111111")
 
-	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
-	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
+	expectedIngress := fmt.Sprintf(
+		"map[ingress-http-80-tcp-from-%s:map[cidr_blocks:<nil> description:ingress-http-80-tcp-from-%s from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:sg-b551fece timeouts:<nil> to_port:80 type:ingress]]",
+		actualDataAwsSecurityGroupDefaultId, actualDataAwsSecurityGroupDefaultId, actualAwsSecurityGroupPreExistingSgId,
+	)
+	expectedEgress := "map[]"
+
+	assert.Equal(t, expectedIngress, actualIngressWithStaticSgrules, "Map %q should match %q", expectedIngress, actualIngressWithStaticSgrules)
+	assert.Equal(t, expectedEgress, actualEgressWithStaticSgrules, "Map %q should match %q", expectedEgress, actualEgressWithStaticSgrules)
+
+	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

@@ -21,22 +21,22 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Example
 
 ```hcl
-resource "aws_security_group" "pre_existing_sg" {
-  name        = "${local.name}-pre-existing-sg"
-  description = "${local.name}-pre-existing-sg"
+resource "aws_security_group" "pre_existing" {
+  name        = "${local.name}-pre-existing"
+  description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
 
   tags = {
-    "Name" = "${local.name}-pre-existing-sg"
+    "Name" = "${local.name}-pre-existing"
   }
 }
 
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
   create_sg         = false
-  security_group_id = aws_security_group.pre_existing_sg.id
+  security_group_id = aws_security_group.pre_existing.id
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
@@ -70,11 +70,10 @@ module "security_group" {
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
-| <a name="output_data_aws_security_group_default_id"></a> [data\_aws\_security\_group\_default\_id](#output\_data\_aws\_security\_group\_default\_id) | The ID of the security group data resource. |
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
 | <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
-| <a name="output_pre_existing_sg_id"></a> [pre\_existing\_sg\_id](#output\_pre\_existing\_sg\_id) | The pre-existing security group ID. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

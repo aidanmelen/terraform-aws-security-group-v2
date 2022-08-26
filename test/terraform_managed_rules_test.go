@@ -24,20 +24,23 @@ func TestTerraformManagedRulesExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualDataAwsSecurityGroupDefaultId := terraform.Output(t, terraformOptions, "data_aws_security_group_default_id")
-	actualDataAwsPrefixListPrivateS3Id := terraform.Output(t, terraformOptions, "data_aws_prefix_list_private_s3_id")
-	actualIngress := terraform.Output(t, terraformOptions, "ingress_keys")
-	actualEgress := terraform.Output(t, terraformOptions, "egress_keys")
+	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
+	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
+	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
+	actualIngressKeys := terraform.Output(t, terraformOptions, "ingress_keys")
+	actualEgressKeys := terraform.Output(t, terraformOptions, "egress_keys")
 
-	expectedIngress := fmt.Sprintf(
+	expectedIngressKeys := fmt.Sprintf(
 		"[ingress-all-all-from-10.10.0.0/16,10.20.0.0/24 ingress-all-all-from-self ingress-all-icmp-from-%s ingress-postgresql-tcp-from-2001:db8::/64 ingress-ssh-tcp-from-%s]",
 		actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
 	)
-	expectedEgress := fmt.Sprintf(
+	expectedEgressKeys := fmt.Sprintf(
 		"[egress-all-all-to-self egress-all-icmp-to-%s egress-https-443-tcp-to-10.10.0.0/16,10.20.0.0/24 egress-postgresql-tcp-to-2001:db8::/64 egress-ssh-tcp-to-%s]",
 		actualDataAwsSecurityGroupDefaultId, actualDataAwsPrefixListPrivateS3Id,
 	)
 
-	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
-	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
+	assert.Equal(t, expectedIngressKeys, actualIngressKeys, "Map %q should match %q", expectedIngressKeys, actualIngressKeys)
+	assert.Equal(t, expectedEgressKeys, actualEgressKeys, "Map %q should match %q", expectedEgressKeys, actualEgressKeys)
+
+	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

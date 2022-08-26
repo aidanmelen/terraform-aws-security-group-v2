@@ -1,4 +1,4 @@
-module "security_group" {
+module "sg" {
   source = "../../"
 
   name        = local.name
@@ -25,14 +25,14 @@ module "security_group" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -58,14 +58,14 @@ module "security_group" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }

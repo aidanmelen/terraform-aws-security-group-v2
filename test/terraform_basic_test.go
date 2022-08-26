@@ -23,12 +23,14 @@ func TestTerraformBasicExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualIngress := terraform.Output(t, terraformOptions, "ingress_keys")
-	actualEgress := terraform.Output(t, terraformOptions, "egress_keys")
+	actualIngressKeys := terraform.Output(t, terraformOptions, "ingress_keys")
+	actualEgressKeys := terraform.Output(t, terraformOptions, "egress_keys")
 
-	expectedIngress := "[ingress-all-all-from-self ingress-https-443-tcp-from-10.0.0.0/24]"
-	expectedEgress := "[egress-all-all-to-public]"
+	expectedIngressKeys := "[ingress-all-all-from-self ingress-https-443-tcp-from-10.0.0.0/24]"
+	expectedEgressKeys := "[egress-all-all-to-public]"
 
-	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
-	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
+	assert.Equal(t, expectedIngressKeys, actualIngressKeys, "Map %q should match %q", expectedIngressKeys, actualIngressKeys)
+	assert.Equal(t, expectedEgressKeys, actualEgressKeys, "Map %q should match %q", expectedEgressKeys, actualEgressKeys)
+
+	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

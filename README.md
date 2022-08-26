@@ -27,7 +27,7 @@ This module aims to implement **ALL** combinations of arguments supported by AWS
 Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
 
 ```hcl
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -43,8 +43,8 @@ module "security_group" {
     }
   ]
 
-  create_ingress_all_from_self_rules = true
-  create_egress_all_to_public_rules  = true
+  create_ingress_all_from_self_rule = true
+  create_egress_all_to_public_rules = true
 
   tags = {
     "Name" = local.name
@@ -61,7 +61,7 @@ Create a security group with a combination of both managed, custom, computed, an
 <details><summary>Click to show</summary>
 
 ```hcl
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -86,14 +86,14 @@ module "security_group" {
 
   ingress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -116,14 +116,14 @@ module "security_group" {
 
   egress_rules = [
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -161,8 +161,8 @@ module "security_group" {
     }
   ]
 
-  create_ingress_all_from_self_rules = false # already created with a custom ingress rule
-  create_egress_all_to_public_rules  = true
+  create_ingress_all_from_self_rule = false # already created with a custom ingress rule
+  create_egress_all_to_public_rules = true
 
   tags = {
     "Name" = local.name
@@ -184,6 +184,38 @@ module "disabled_sg" {
 
 Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
 
+### Security Group with common rules
+
+Create security groups with common rules.
+
+```hcl
+module "sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.4.0"
+
+  name        = local.name
+  description = local.name
+  vpc_id      = data.aws_vpc.default.id
+
+  managed_ingress_rules = [
+    {
+      rule        = "https-443-tcp"
+      description = "My Service"
+      cidr_blocks = ["10.0.0.0/24"]
+    }
+  ]
+
+  create_ingress_all_from_self_rule = true
+  create_egress_all_to_public_rules = true
+
+  tags = {
+    "Name" = local.name
+  }
+}
+```
+
+Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
+
 ### Security group with custom rules
 
 Create a security group with custom rules.
@@ -191,7 +223,7 @@ Create a security group with custom rules.
 <details><summary>Click to show</summary>
 
 ```hcl
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -219,14 +251,14 @@ module "security_group" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -252,14 +284,14 @@ module "security_group" {
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = -1
-      to_port                  = -1
+      from_port                = 0
+      to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = -1
-      to_port   = -1
+      from_port = 0
+      to_port   = 0
       protocol  = "-1"
       self      = true
     }
@@ -282,7 +314,7 @@ Create a security group with managed rules.
 <details><summary>Click to show</summary>
 
 ```hcl
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -382,7 +414,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -439,22 +471,22 @@ Use the module to create rules for a pre-existing security group.
 <details><summary>Click to show</summary>
 
 ```hcl
-resource "aws_security_group" "pre_existing_sg" {
-  name        = "${local.name}-pre-existing-sg"
-  description = "${local.name}-pre-existing-sg"
+resource "aws_security_group" "pre_existing" {
+  name        = "${local.name}-pre-existing"
+  description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
 
   tags = {
-    "Name" = "${local.name}-pre-existing-sg"
+    "Name" = "${local.name}-pre-existing"
   }
 }
 
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
   create_sg         = false
-  security_group_id = aws_security_group.pre_existing_sg.id
+  security_group_id = aws_security_group.pre_existing.id
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
@@ -485,12 +517,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (20.92s)
---- PASS: TestTerraformCompleteExample (44.47s)
---- PASS: TestTerraformCustomRulesExample (33.39s)
---- PASS: TestTerraformManagedRulesExample (34.46s)
---- PASS: TestTerraformComputedRulesExample (30.37s)
---- PASS: TestTerraformRulesOnlyExample (19.65s)
+--- PASS: TestTerraformBasicExample (30.34s)
+--- PASS: TestTerraformCompleteExample (55.77s)
+--- PASS: TestTerraformCustomRulesExample (42.34s)
+--- PASS: TestTerraformManagedRulesExample (41.20s)
+--- PASS: TestTerraformComputedRulesExample (36.59s)
+--- PASS: TestTerraformRulesOnlyExample (25.74s)
 ```
 
 ## Makefile Targets
@@ -505,6 +537,7 @@ lint-all             Lint all files with pre-commit and render docs
 tests                Tests with Terratest
 test-basic           Test the basic example
 test-complete        Test the complete example
+test-common-rules    Test the common_rules example
 test-custom-rules    Test the custom_rules example
 test-managed-rules   Test the managed_rules example
 test-computed-rules  Test the computed_rules example
@@ -528,7 +561,7 @@ clean                Clean project
 | [aws_security_group_rule.computed_managed_egress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_managed_ingress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.egress_all_to_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_all_from_self_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_all_from_self_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_http_from_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_https_from_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.managed_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
@@ -543,7 +576,7 @@ clean                Clean project
 | <a name="input_computed_managed_ingress_rules"></a> [computed\_managed\_ingress\_rules](#input\_computed\_managed\_ingress\_rules) | List of dynamic managed ingress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_egress_all_to_public_rules"></a> [create\_egress\_all\_to\_public\_rules](#input\_create\_egress\_all\_to\_public\_rules) | Whether to create the common egress all to public internet rules (IPV4/IPV6). | `bool` | `false` | no |
-| <a name="input_create_ingress_all_from_self_rules"></a> [create\_ingress\_all\_from\_self\_rules](#input\_create\_ingress\_all\_from\_self\_rules) | Whether to create the common ingress all from self security group rules. | `bool` | `false` | no |
+| <a name="input_create_ingress_all_from_self_rule"></a> [create\_ingress\_all\_from\_self\_rule](#input\_create\_ingress\_all\_from\_self\_rule) | Whether to create the common ingress all from self security group rule. | `bool` | `false` | no |
 | <a name="input_create_ingress_http_from_public_rules"></a> [create\_ingress\_http\_from\_public\_rules](#input\_create\_ingress\_http\_from\_public\_rules) | Whether to create the common ingress HTTP from the public internet rules. | `bool` | `false` | no |
 | <a name="input_create_ingress_https_from_public_rules"></a> [create\_ingress\_https\_from\_public\_rules](#input\_create\_ingress\_https\_from\_public\_rules) | Whether to create the common ingress HTTPS from the public internet rules. | `bool` | `false` | no |
 | <a name="input_create_sg"></a> [create\_sg](#input\_create\_sg) | Whether to create security group and all rules. | `bool` | `true` | no |
@@ -564,11 +597,11 @@ clean                Clean project
 
 | Name | Description |
 |------|-------------|
-| <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
-| <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
 | <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | The ARN of the security group |
 | <a name="output_security_group_description"></a> [security\_group\_description](#output\_security\_group\_description) | The description of the security group |
+| <a name="output_security_group_egress_rules"></a> [security\_group\_egress\_rules](#output\_security\_group\_egress\_rules) | The security group egress rules. |
 | <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | The ID of the security group |
+| <a name="output_security_group_ingress_rules"></a> [security\_group\_ingress\_rules](#output\_security\_group\_ingress\_rules) | The security group ingress rules. |
 | <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | The name of the security group |
 | <a name="output_security_group_owner_id"></a> [security\_group\_owner\_id](#output\_security\_group\_owner\_id) | The owner ID |
 | <a name="output_security_group_vpc_id"></a> [security\_group\_vpc\_id](#output\_security\_group\_vpc\_id) | The VPC ID |
@@ -584,6 +617,7 @@ This modules aims to improve on the venerable [terraform-aws-modules/terraform-a
 2. Adding/Removing or even reordering rules can causes the count indexes to change possibly resulting in unwanted destruction and recreation of resources. Whereas `for_each` with map inputs use identifiable keys and do not suffer from this constraint.
 - Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation of `count` dynamically uses the `length()` function rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
 - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with computed rules for other rule resources.
+- Set common rules default values; such as `create_egress_all_to_public_rules`, to `false` so that users can easily **opt-in**. This will promote the security best practice of restrict privileges. Please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
 - Test examples with [Terratest](https://terratest.gruntwork.io/).
 
 ## License

@@ -27,7 +27,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "security_group" {
+module "sg" {
   source = "../../"
 
   name        = local.name

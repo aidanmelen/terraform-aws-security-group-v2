@@ -50,7 +50,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -106,7 +106,7 @@ module "security_group" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
+| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -117,11 +117,10 @@ module "security_group" {
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
-| <a name="output_aws_ec2_managed_prefix_list_other_id"></a> [aws\_ec2\_managed\_prefix\_list\_other\_id](#output\_aws\_ec2\_managed\_prefix\_list\_other\_id) | The ID of the computed prefix list. |
-| <a name="output_aws_security_group_other_id"></a> [aws\_security\_group\_other\_id](#output\_aws\_security\_group\_other\_id) | The ID of the computed security group. |
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
 | <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

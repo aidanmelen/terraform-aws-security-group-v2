@@ -4,34 +4,34 @@
 
 output "arn" {
   description = "The ARN of the security group."
-  value       = try(module.security_group.arn, null)
+  value       = try(module.sg.security_group_arn, null)
 }
 
 output "id" {
   description = "The ID of the security group."
-  value       = try(module.security_group.id, null)
+  value       = try(module.sg.security_group_id, null)
 }
 
 ###############################################################################
-# Rules
+# Security Group Rules
 ###############################################################################
 
 output "ingress" {
   description = "The security group ingress rules."
-  value       = try(module.security_group.ingress, null)
+  value       = try(module.sg.security_group_ingress_rules, null)
 }
 
 output "ingress_keys" {
   description = "The security group ingress rules keys."
-  value       = try(keys(module.security_group.ingress), null)
+  value       = try(keys(module.sg.security_group_ingress_rules), null)
 }
 
 output "egress" {
   description = "The security group egress rules."
-  value       = try(module.security_group.egress, null)
+  value       = try(module.sg.security_group_egress_rules, null)
 }
 
 output "egress_keys" {
   description = "The security group egress rules keys."
-  value       = try(keys(module.security_group.egress), null)
+  value       = try(keys(module.sg.security_group_egress_rules), null)
 }
