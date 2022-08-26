@@ -640,12 +640,12 @@ This modules aims to improve on the venerable [terraform-aws-modules/terraform-a
 
 - Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for).
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments).
-- Dynamically create custom and managed security group rule resources [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). This has 2 advantages over `count`:
+- Dynamically create custom and managed security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). This has 2 advantages over `count`:
 1. The terraform resource IDs are descriptive rather than indexes with `count`.
 2. Adding/Removing or even reordering rules can causes the count indexes to change possibly resulting in unwanted destruction and recreation of resources. Whereas `for_each` with map inputs use identifiable keys and do not suffer from this constraint.
-- Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation of `count` dynamically uses the `length()` function rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
-- Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with computed rules for other rule resources.
+- Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length()` function to dynamically set the `count` rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
 - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like `create_egress_all_to_public_rules`. Please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
+- Improve security by having users declare granular custom or managed security group rules.
 - Test examples with [Terratest](https://terratest.gruntwork.io/).
 
 ## License
