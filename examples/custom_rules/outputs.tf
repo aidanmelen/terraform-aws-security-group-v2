@@ -1,77 +1,52 @@
 ###############################################################################
-# Custom Security Group Rules
+# Security Group
 ###############################################################################
 
-output "ingress_rule_keys" {
-  description = "The ingress security group rule keys."
-  value       = module.security_group.ingress_rule_keys
-}
-output "egress_rule_keys" {
-  description = "The egress security group rule keys."
-  value       = module.security_group.egress_rule_keys
+output "arn" {
+  description = "The ARN of the security group."
+  value       = try(module.security_group.arn, null)
 }
 
-###############################################################################
-# Managed Security Group Rules
-###############################################################################
-
-output "managed_ingress_rule_keys" {
-  description = "The managed ingress security group rule keys."
-  value       = module.security_group.managed_ingress_rule_keys
-}
-output "managed_egress_rule_keys" {
-  description = "The managed egress security group rule keys."
-  value       = module.security_group.managed_egress_rule_keys
+output "id" {
+  description = "The ID of the security group."
+  value       = try(module.security_group.id, null)
 }
 
 ###############################################################################
-# Computed Security Group Rules
+# Rules
 ###############################################################################
 
-output "computed_ingress_rule_ids" {
-  description = "The computed ingress security group rule IDs."
-  value       = module.security_group.computed_ingress_rule_ids
+output "ingress" {
+  description = "The security group ingress rules."
+  value       = try(module.security_group.ingress, null)
 }
 
-output "computed_egress_rule_ids" {
-  description = "The computed egress security group rule IDs."
-  value       = module.security_group.computed_egress_rule_ids
+output "ingress_keys" {
+  description = "The security group ingress rules keys."
+  value       = try(keys(module.security_group.ingress), null)
 }
+
+output "egress" {
+  description = "The security group egress rules."
+  value       = try(module.security_group.egress, null)
+}
+
+output "egress_keys" {
+  description = "The security group egress rules keys."
+  value       = try(keys(module.security_group.egress), null)
+}
+
 
 ###############################################################################
-# Managed Computed Security Group Rules
+# Computed Resource IDs
 ###############################################################################
 
-output "computed_managed_ingress_rule_ids" {
-  description = "The computed managed ingress security group rule IDs."
-  value       = module.security_group.computed_managed_ingress_rule_ids
+output "data_aws_security_group_default_id" {
+  description = "The ID of the security group data resource."
+  value       = data.aws_security_group.default.id
 }
 
-output "computed_managed_egress_rule_ids" {
-  description = "The computed managed egress security group rule IDs."
-  value       = module.security_group.computed_managed_egress_rule_ids
-}
-
-###############################################################################
-# Auto Group Rules
-###############################################################################
-
-output "auto_group_ingress_all_from_self_rule_keys" {
-  description = "The auto group ingress all to self rule key."
-  value       = module.security_group.auto_group_ingress_all_from_self_rule_keys
-}
-
-output "auto_group_ingress_https_from_public_internet_rule_keys" {
-  description = "The auto group ingress HTTPS from the public internet rule keys."
-  value       = module.security_group.auto_group_ingress_https_from_public_internet_rule_keys
-}
-
-output "auto_group_ingress_http_from_public_internet_rule_keys" {
-  description = "The auto group ingress HTTP from the public internet rule keys."
-  value       = module.security_group.auto_group_ingress_http_from_public_internet_rule_keys
-}
-
-output "auto_group_egress_all_to_public_internet_rule_keys" {
-  description = "The auto group egress all to public internet rule keys."
-  value       = module.security_group.auto_group_egress_all_to_public_internet_rule_keys
+output "data_aws_prefix_list_private_s3_id" {
+  description = "The ID of the prefix list data resource."
+  value       = data.aws_prefix_list.private_s3.id
 }

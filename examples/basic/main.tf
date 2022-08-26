@@ -13,8 +13,8 @@ module "security_group" {
     }
   ]
 
-  create_auto_group_ingress_all_from_self_rules         = true
-  create_auto_group_egress_all_to_public_internet_rules = true
+  create_ingress_all_from_self_rules = true
+  create_egress_all_to_public_rules  = true
 
   tags = {
     "Name" = local.name

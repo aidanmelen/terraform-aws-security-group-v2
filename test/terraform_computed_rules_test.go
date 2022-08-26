@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -23,36 +24,14 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
-	actualIngressRuleKeys := terraform.Output(t, terraformOptions, "ingress_rule_keys")
-	actualManagedIngressRuleKeys := terraform.Output(t, terraformOptions, "managed_ingress_rule_keys")
-	actualEgressRuleKeys := terraform.Output(t, terraformOptions, "egress_rule_keys")
-	actualManagedEgressRuleKeys := terraform.Output(t, terraformOptions, "managed_egress_rule_keys")
-	actualComputedIngressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_egress_rule_ids"))
-	actualComputedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_ingress_rule_ids"))
-	actualComputedManagedIngressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_egress_rule_ids"))
-	actualComputedManagedEgressRuleLength := len(terraform.OutputList(t, terraformOptions, "computed_managed_ingress_rule_ids"))
-	actualAutoGroupIngressAllFromSelfRuleKeys := terraform.Output(t, terraformOptions, "auto_group_ingress_all_from_self_rule_keys")
-	actualAutoGroupEgressAllToPublicInternetRuleKeys := terraform.Output(t, terraformOptions, "auto_group_egress_all_to_public_internet_rule_keys")
+	actualAwsSecurityGroupOtherId := terraform.Output(t, terraformOptions, "aws_security_group_other_id")
+	actualAwsEc2ManagedPrefixListOtherId := terraform.Output(t, terraformOptions, "aws_ec2_managed_prefix_list_other_id")
+	actualIngress := terraform.Output(t, terraformOptions, "ingress_keys")
+	actualEgress := terraform.Output(t, terraformOptions, "egress_keys")
 
-	expectedIngressRuleKeys := "[]"
-	expectedManagedIngressRuleKeys := "[]"
-	expectedEgressRuleKeys := "[]"
-	expectedManagedEgressRuleKeys := "[]"
-	expectedComputedIngressRuleLength := 1
-	expectedComputedEgressRuleLength := 1
-	expectedComputedManagedIngressRuleLength := 1
-	expectedComputedManagedEgressRuleLength := 1
-	expectedAutoGroupIngressAllFromSelfRuleKeys := "[]"
-	expectedAutoGroupEgressAllToPublicInternetRuleKeys := "[]"
+	expectedIngress := fmt.Sprintf("[ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s]", actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId)
+	expectedEgress := fmt.Sprintf("[egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s]", actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId)
 
-	assert.Equal(t, expectedIngressRuleKeys, actualIngressRuleKeys, "Map %q should match %q", expectedIngressRuleKeys, actualIngressRuleKeys)
-	assert.Equal(t, expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys, "Map %q should match %q", expectedManagedIngressRuleKeys, actualManagedIngressRuleKeys)
-	assert.Equal(t, expectedEgressRuleKeys, actualEgressRuleKeys, "Map %q should match %q", expectedEgressRuleKeys, actualEgressRuleKeys)
-	assert.Equal(t, expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys, "Map %q should match %q", expectedManagedEgressRuleKeys, actualManagedEgressRuleKeys)
-	assert.Equal(t, expectedComputedIngressRuleLength, actualComputedIngressRuleLength, "Map %q should match %q", expectedComputedIngressRuleLength, actualComputedIngressRuleLength)
-	assert.Equal(t, expectedComputedEgressRuleLength, actualComputedEgressRuleLength, "Map %q should match %q", expectedComputedEgressRuleLength, actualComputedEgressRuleLength)
-	assert.Equal(t, expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength, "Map %q should match %q", expectedComputedManagedIngressRuleLength, actualComputedManagedIngressRuleLength)
-	assert.Equal(t, expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength, "Map %q should match %q", expectedComputedManagedEgressRuleLength, actualComputedManagedEgressRuleLength)
-	assert.Equal(t, expectedAutoGroupIngressAllFromSelfRuleKeys, actualAutoGroupIngressAllFromSelfRuleKeys, "Map %q should match %q", expectedAutoGroupIngressAllFromSelfRuleKeys, actualAutoGroupIngressAllFromSelfRuleKeys)
-	assert.Equal(t, expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys, "Map %q should match %q", expectedAutoGroupEgressAllToPublicInternetRuleKeys, actualAutoGroupEgressAllToPublicInternetRuleKeys)
+	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
+	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
 }

@@ -1,6 +1,6 @@
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -14,8 +14,8 @@ module "security_group" {
     }
   ]
 
-  create_auto_group_ingress_all_from_self_rules         = true
-  create_auto_group_egress_all_to_public_internet_rules = true
+  create_ingress_all_from_self_rules = true
+  create_egress_all_to_public_rules  = true
 
   tags = {
     "Name" = local.name
