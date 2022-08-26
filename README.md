@@ -17,9 +17,8 @@ This module aims to implement **ALL** combinations of arguments supported by AWS
 - Access from source security groups
 - Access from self
 - Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
-<!-- - Named groups of rules with ingress (inbound) and egress (outbound) ports open for common scenarios (eg, [ssh](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/ssh), [http-80](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/http-80), [mysql](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/mysql), see the whole list [here](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/modules/README.md)) -->
+- Toggle creation of common rules like egress all to the public internet.
 - Conditionally create security group and/or all required security group rules.
-- Toggle creation of common egress to public internet IVP4/IPV6 rules.
 
 ## Examples
 
@@ -30,7 +29,7 @@ Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and 
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -64,7 +63,7 @@ Create a security group with a combination of both managed, custom, computed, an
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -176,7 +175,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
   create = false
 }
 ```
@@ -194,7 +193,7 @@ Create a security group with custom rules.
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -285,7 +284,7 @@ Create a security group with managed rules.
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -385,7 +384,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
@@ -452,7 +451,7 @@ resource "aws_security_group" "pre_existing_sg" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   create_sg         = false
   security_group_id = aws_security_group.pre_existing_sg.id
@@ -490,7 +489,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 --- PASS: TestTerraformCompleteExample (44.47s)
 --- PASS: TestTerraformCustomRulesExample (33.39s)
 --- PASS: TestTerraformManagedRulesExample (34.46s)
---- PASS: TestTerraformComputedRulesExample (30.86s)
+--- PASS: TestTerraformComputedRulesExample (30.37s)
 --- PASS: TestTerraformRulesOnlyExample (19.65s)
 ```
 

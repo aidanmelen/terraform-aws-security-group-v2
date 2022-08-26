@@ -9,9 +9,8 @@ content: |-
   - Access from source security groups
   - Access from self
   - Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
-  <!-- - Named groups of rules with ingress (inbound) and egress (outbound) ports open for common scenarios (eg, [ssh](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/ssh), [http-80](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/http-80), [mysql](https://github.com/terraform-aws-modules/terraform-aws-security-group/tree/master/modules/mysql), see the whole list [here](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/modules/README.md)) -->
+  - Toggle creation of common rules like egress all to the public internet.
   - Conditionally create security group and/or all required security group rules.
-  - Toggle creation of common egress to public internet IVP4/IPV6 rules.
 
   ## Examples
 

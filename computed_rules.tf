@@ -2,7 +2,6 @@
 # Computed Custom Security Group Rules
 ###############################################################################
 
-
 locals {
   computed_rules = {
     for rule in concat(
@@ -93,9 +92,9 @@ resource "aws_security_group_rule" "computed_managed_ingress_rules" {
   security_group_id = local.self_sg_id
   description       = lookup(var.computed_managed_ingress_rules[count.index], "description", var.computed_managed_ingress_rules[count.index]["rule"])
 
-  from_port = local.managed_rule_definitions[var.computed_managed_ingress_rules[count.index]["rule"]]["from_port"]
-  to_port   = local.managed_rule_definitions[var.computed_managed_ingress_rules[count.index]["rule"]]["to_port"]
-  protocol  = local.managed_rule_definitions[var.computed_managed_ingress_rules[count.index]["rule"]]["protocol"]
+  from_port = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["from_port"]
+  to_port   = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["to_port"]
+  protocol  = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["protocol"]
 
   cidr_blocks              = lookup(var.computed_managed_ingress_rules[count.index], "cidr_blocks", null)
   ipv6_cidr_blocks         = lookup(var.computed_managed_ingress_rules[count.index], "ipv6_cidr_blocks", null)
@@ -112,9 +111,9 @@ resource "aws_security_group_rule" "computed_managed_egress_rules" {
   security_group_id = local.self_sg_id
   description       = lookup(var.computed_managed_egress_rules[count.index], "description", var.computed_managed_egress_rules[count.index]["rule"])
 
-  from_port = local.managed_rule_definitions[var.computed_managed_egress_rules[count.index]["rule"]]["from_port"]
-  to_port   = local.managed_rule_definitions[var.computed_managed_egress_rules[count.index]["rule"]]["to_port"]
-  protocol  = local.managed_rule_definitions[var.computed_managed_egress_rules[count.index]["rule"]]["protocol"]
+  from_port = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["from_port"]
+  to_port   = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["to_port"]
+  protocol  = local.managed_rule_definitions[lookup(var.computed_managed_ingress_rules[count.index], "rule", "_")]["protocol"]
 
   cidr_blocks              = lookup(var.computed_managed_egress_rules[count.index], "cidr_blocks", null)
   ipv6_cidr_blocks         = lookup(var.computed_managed_egress_rules[count.index], "ipv6_cidr_blocks", null)
