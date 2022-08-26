@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.1.0"
+  version = ">= 0.4.0"
 
   name        = local.name
   description = local.name
