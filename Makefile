@@ -40,6 +40,7 @@ docs:
 	./bin/render-terraform-docs.sh
 	./bin/render-terratest-docs.sh
 	./bin/render-makefile-docs.sh
+	./bin/scrub-terratest-logs.sh
 
 lint: docs ## Lint with pre-commit and render docs
 	git add -A
@@ -55,21 +56,27 @@ tests: test-basic test-complete test-custom-rules test-managed-rules test-comput
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
+	make docs
 
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 5m -v |& tee test/terraform_complete_test.log
+	make docs
 
 test-custom-rules: ## Test the custom_rules example
 	go test test/terraform_custom_rules_test.go -timeout 5m -v |& tee test/terraform_custom_rules_test.log
+	make docs
 
 test-managed-rules: ## Test the managed_rules example
 	go test test/terraform_managed_rules_test.go -timeout 5m -v |& tee test/terraform_managed_rules_test.log
+	make docs
 
 test-computed-rules: ## Test the computed_rules example
 	go test test/terraform_computed_rules_test.go -timeout 5m -v |& tee test/terraform_computed_rules_test.log
+	make docs
 
 test-rules-only: ## Test the rules_only example
 	go test test/terraform_rules_only_test.go -timeout 5m -v |& tee test/terraform_rules_only_test.log
+	make docs
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl

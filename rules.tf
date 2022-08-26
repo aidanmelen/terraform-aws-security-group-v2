@@ -192,10 +192,10 @@ locals {
     zookeeper-3888-tcp     = { "to_port" = 3888, "from_port" = 3888, "protocol" = "tcp" }
     zookeeper-jmx-tcp      = { "to_port" = 7199, "from_port" = 7199, "protocol" = "tcp" }
     # Open all ports & protocols
-    all-all       = { "to_port" = -1, "from_port" = -1, "protocol" = "-1" }
+    all-all       = { "to_port" = 0, "from_port" = 0, "protocol" = "-1" }
     all-tcp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "tcp" }
     all-udp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "udp" }
-    all-icmp      = { "to_port" = -1, "from_port" = -1, "protocol" = "icmp" }
-    all-ipv6-icmp = { "to_port" = -1, "from_port" = -1, "protocol" = 58 }
+    all-icmp      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp" }
+    all-ipv6-icmp = { "to_port" = 0, "from_port" = 0, "protocol" = 58 }
   }
 }

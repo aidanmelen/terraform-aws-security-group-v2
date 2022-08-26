@@ -121,8 +121,8 @@ module "security_group" {
     }
   ]
 
-  create_auto_group_ingress_all_from_self_rules         = false # already created with a custom ingress rule
-  create_auto_group_egress_all_to_public_internet_rules = true
+  create_ingress_all_from_self_rules = false # already created with a custom ingress rule
+  create_egress_all_to_public_rules  = true
 
   tags = {
     "Name" = local.name
@@ -161,17 +161,15 @@ module "disabled_sg" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_auto_group_egress_all_to_public_internet_rule_keys"></a> [auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys](#output\_auto\_group\_egress\_all\_to\_public\_internet\_rule\_keys) | The auto group egress all to public internet rule keys. |
-| <a name="output_auto_group_ingress_all_from_self_rule_keys"></a> [auto\_group\_ingress\_all\_from\_self\_rule\_keys](#output\_auto\_group\_ingress\_all\_from\_self\_rule\_keys) | The auto group ingress all to self rule key. |
-| <a name="output_auto_group_ingress_http_from_public_internet_rule_keys"></a> [auto\_group\_ingress\_http\_from\_public\_internet\_rule\_keys](#output\_auto\_group\_ingress\_http\_from\_public\_internet\_rule\_keys) | The auto group ingress HTTP from the public internet rule keys. |
-| <a name="output_auto_group_ingress_https_from_public_internet_rule_keys"></a> [auto\_group\_ingress\_https\_from\_public\_internet\_rule\_keys](#output\_auto\_group\_ingress\_https\_from\_public\_internet\_rule\_keys) | The auto group ingress HTTPS from the public internet rule keys. |
-| <a name="output_computed_egress_rule_ids"></a> [computed\_egress\_rule\_ids](#output\_computed\_egress\_rule\_ids) | The computed egress security group rule IDs. |
-| <a name="output_computed_ingress_rule_ids"></a> [computed\_ingress\_rule\_ids](#output\_computed\_ingress\_rule\_ids) | The computed ingress security group rule IDs. |
-| <a name="output_computed_managed_egress_rule_ids"></a> [computed\_managed\_egress\_rule\_ids](#output\_computed\_managed\_egress\_rule\_ids) | The computed managed egress security group rule IDs. |
-| <a name="output_computed_managed_ingress_rule_ids"></a> [computed\_managed\_ingress\_rule\_ids](#output\_computed\_managed\_ingress\_rule\_ids) | The computed managed ingress security group rule IDs. |
+| <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
+| <a name="output_aws_ec2_managed_prefix_list_other_id"></a> [aws\_ec2\_managed\_prefix\_list\_other\_id](#output\_aws\_ec2\_managed\_prefix\_list\_other\_id) | The ID of the computed prefix list. |
+| <a name="output_aws_security_group_other_id"></a> [aws\_security\_group\_other\_id](#output\_aws\_security\_group\_other\_id) | The ID of the computed security group. |
+| <a name="output_data_aws_prefix_list_private_s3_id"></a> [data\_aws\_prefix\_list\_private\_s3\_id](#output\_data\_aws\_prefix\_list\_private\_s3\_id) | The ID of the prefix list data resource. |
+| <a name="output_data_aws_security_group_default_id"></a> [data\_aws\_security\_group\_default\_id](#output\_data\_aws\_security\_group\_default\_id) | The ID of the security group data resource. |
 | <a name="output_disabled_sg_id"></a> [disabled\_sg\_id](#output\_disabled\_sg\_id) | The disabled security group IDs. |
-| <a name="output_egress_rule_keys"></a> [egress\_rule\_keys](#output\_egress\_rule\_keys) | The egress security group rule keys. |
-| <a name="output_ingress_rule_keys"></a> [ingress\_rule\_keys](#output\_ingress\_rule\_keys) | The ingress security group rule keys. |
-| <a name="output_managed_egress_rule_keys"></a> [managed\_egress\_rule\_keys](#output\_managed\_egress\_rule\_keys) | The managed egress security group rule keys. |
-| <a name="output_managed_ingress_rule_keys"></a> [managed\_ingress\_rule\_keys](#output\_managed\_ingress\_rule\_keys) | The managed ingress security group rule keys. |
+| <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
+| <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
+| <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
+| <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

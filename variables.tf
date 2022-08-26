@@ -134,39 +134,29 @@ variable "computed_managed_egress_rules" {
 }
 
 ###############################################################################
-# Auto Group Rules
+# Common Rules
 ###############################################################################
 
-variable "create_auto_group_ingress_all_from_self_rules" {
-  description = "Whether to create auto group ingress all from self security group rules."
+variable "create_ingress_all_from_self_rules" {
+  description = "Whether to create the common ingress all from self security group rules."
   type        = bool
   default     = false
 }
 
-variable "create_auto_group_ingress_https_from_public_internet_rules" {
-  description = "Whether to create auto group ingress HTTPS from the public internet rules."
+variable "create_ingress_https_from_public_rules" {
+  description = "Whether to create the common ingress HTTPS from the public internet rules."
   type        = bool
   default     = false
 }
 
-variable "create_auto_group_ingress_http_from_public_internet_rules" {
-  description = "Whether to create auto group ingress HTTP from the public internet rules."
+variable "create_ingress_http_from_public_rules" {
+  description = "Whether to create the common ingress HTTP from the public internet rules."
   type        = bool
   default     = false
 }
 
-variable "create_auto_group_egress_all_to_public_internet_rules" {
-  description = "Whether to create auto group egress all to public internet rules (IPV4/IPV6)."
+variable "create_egress_all_to_public_rules" {
+  description = "Whether to create the common egress all to public internet rules (IPV4/IPV6)."
   type        = bool
   default     = false
 }
-
-# TODO implement all auto groups from https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/rules.tf#L218-L483
-
-# variable "create_auto_group_activemq_rules" {
-#   description = "Whether to create egress all to public internet rule (IPV4/IPV6)"
-#   type        = bool
-#   default     = false
-# }
-#
-# ...

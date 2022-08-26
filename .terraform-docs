@@ -114,6 +114,7 @@ content: |-
   ```
 
   {{ .Requirements }}
+  {{ .Resources }}
   {{ .Inputs }}
   {{ .Outputs }}
 
