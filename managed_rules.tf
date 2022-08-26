@@ -22,11 +22,11 @@ locals {
     {
       for rule in var.managed_ingress_rules : join("-", compact([
         "ingress",
-        lookup(rule, "rule", "_"),
+        rule["rule"],
         "from",
-        join(",", lookup(rule, "cidr_blocks", [])),
-        join(",", lookup(rule, "ipv6_cidr_blocks", [])),
-        join(",", lookup(rule, "prefix_list_ids", [])),
+        try(join(",", rule["cidr_blocks"]), ""),
+        try(join(",", rule["ipv6_cidr_blocks"]), ""),
+        try(join(",", rule["prefix_list_ids"]), ""),
         lookup(rule, "self", false) == true ? "self" : lookup(rule, "self", null),
         lookup(rule, "source_security_group_id", null)
       ])) => rule
@@ -34,11 +34,11 @@ locals {
     {
       for rule in var.managed_egress_rules : join("-", compact([
         "egress",
-        lookup(rule, "rule", "_"),
+        try(rule["rule"], "_"),
         "to",
-        join(",", lookup(rule, "cidr_blocks", [])),
-        join(",", lookup(rule, "ipv6_cidr_blocks", [])),
-        join(",", lookup(rule, "prefix_list_ids", [])),
+        try(join(",", rule["cidr_blocks"]), ""),
+        try(join(",", rule["ipv6_cidr_blocks"]), ""),
+        try(join(",", rule["prefix_list_ids"]), ""),
         lookup(rule, "self", false) == true ? "self" : lookup(rule, "self", null),
         lookup(rule, "source_security_group_id", null)
       ])) => rule
@@ -46,8 +46,6 @@ locals {
   )
 
   # https://github.com/hashicorp/terraform/issues/28751
-  # The true and false result expressions must have consistent types. The given expressions are object and object, respectively.
-  # So we create objects with the same keys but with null values to satisfy this constraint.
   managed_rules_false_expr = { for k, v in local.managed_rules : k => null }
 }
 

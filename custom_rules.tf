@@ -22,8 +22,8 @@ locals {
     {
       for rule in var.ingress_rules : join("-", compact([
         "ingress",
-        lookup(rule, "to_port", null) == -1 ? "all" : lookup(rule, "to_port", null),
-        lookup(rule, "from_port", null) == -1 ? "all" : lookup(rule, "from_port", null),
+        contains([-1, 0], lookup(rule, "to_port", null)) ? "all" : lookup(rule, "to_port", null),
+        contains([-1, 0], lookup(rule, "from_port", null)) ? "all" : lookup(rule, "from_port", null),
         lookup(rule, "protocol", null) == "-1" ? "all" : lookup(rule, "protocol", null),
         "from",
         join(",", lookup(rule, "cidr_blocks", [])),
@@ -36,8 +36,8 @@ locals {
     {
       for rule in var.egress_rules : join("-", compact([
         "egress",
-        lookup(rule, "to_port", null) == -1 ? "all" : lookup(rule, "to_port", null),
-        lookup(rule, "from_port", null) == -1 ? "all" : lookup(rule, "from_port", null),
+        contains([-1, 0], lookup(rule, "to_port", null)) ? "all" : lookup(rule, "to_port", null),
+        contains([-1, 0], lookup(rule, "from_port", null)) ? "all" : lookup(rule, "from_port", null),
         lookup(rule, "protocol", null) == "-1" ? "all" : lookup(rule, "protocol", null),
         "to",
         join(",", lookup(rule, "cidr_blocks", [])),
@@ -50,8 +50,6 @@ locals {
   )
 
   # https://github.com/hashicorp/terraform/issues/28751
-  # The true and false result expressions must have consistent types. The given expressions are object and object, respectively.
-  # So we create objects with the same keys but with null values to satisfy this constraint.
   rules_false_expr = { for k, v in local.rules : k => null }
 }
 

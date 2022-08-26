@@ -54,6 +54,66 @@ module "sg" {
 
 Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
 
+### Security Group with common rules
+
+Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
+
+```hcl
+module "public_https_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.0"
+
+  name        = "${local.name}-https"
+  description = "${local.name}-https"
+  vpc_id      = data.aws_vpc.default.id
+
+  create_ingress_https_from_public_rules = true
+  create_ingress_all_from_self_rule      = true
+  create_egress_all_to_public_rules      = true
+
+  tags = {
+    "Name" = "${local.name}-https"
+  }
+}
+
+module "public_http_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.0"
+
+  name        = "${local.name}-http"
+  description = "${local.name}-http"
+  vpc_id      = data.aws_vpc.default.id
+
+  create_ingress_http_from_public_rules = true
+  create_ingress_all_from_self_rule     = true
+  create_egress_all_to_public_rules     = true
+
+  tags = {
+    "Name" = "${local.name}-http"
+  }
+}
+
+module "ssh_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.0"
+
+  name        = "${local.name}-ssh"
+  description = "${local.name}-ssh"
+  vpc_id      = data.aws_vpc.default.id
+
+  managed_ingress_rules = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }]
+
+  create_ingress_all_from_self_rule = true
+  create_egress_all_to_public_rules = true
+
+  tags = {
+    "Name" = "${local.name}-ssh"
+  }
+}
+```
+
+Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
+
 ### Security Group with complete rules
 
 Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
@@ -183,66 +243,6 @@ module "disabled_sg" {
 </details><br/>
 
 Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
-
-### Security Group with common rules
-
-Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
-
-```hcl
-module "public_https_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
-
-  name        = "${local.name}-https"
-  description = "${local.name}-https"
-  vpc_id      = data.aws_vpc.default.id
-
-  create_ingress_https_from_public_rules = true
-  create_ingress_all_from_self_rule      = true
-  create_egress_all_to_public_rules      = true
-
-  tags = {
-    "Name" = "${local.name}-https"
-  }
-}
-
-module "public_http_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
-
-  name        = "${local.name}-http"
-  description = "${local.name}-http"
-  vpc_id      = data.aws_vpc.default.id
-
-  create_ingress_http_from_public_rules = true
-  create_ingress_all_from_self_rule     = true
-  create_egress_all_to_public_rules     = true
-
-  tags = {
-    "Name" = "${local.name}-http"
-  }
-}
-
-module "ssh_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
-
-  name        = "${local.name}-ssh"
-  description = "${local.name}-ssh"
-  vpc_id      = data.aws_vpc.default.id
-
-  managed_ingress_rules = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }]
-
-  create_ingress_all_from_self_rule = true
-  create_egress_all_to_public_rules = true
-
-  tags = {
-    "Name" = "${local.name}-ssh"
-  }
-}
-```
-
-Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
 
 ### Security group with custom rules
 
@@ -545,12 +545,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (30.34s)
---- PASS: TestTerraformCompleteExample (55.77s)
---- PASS: TestTerraformCustomRulesExample (42.34s)
---- PASS: TestTerraformManagedRulesExample (41.20s)
---- PASS: TestTerraformComputedRulesExample (36.59s)
---- PASS: TestTerraformRulesOnlyExample (25.74s)
+--- PASS: TestTerraformBasicExample (28.83s)
+FAIL
+FAIL
+--- PASS: TestTerraformManagedRulesExample (41.35s)
+--- PASS: TestTerraformComputedRulesExample (41.60s)
+--- PASS: TestTerraformRulesOnlyExample (31.74s)
 ```
 
 ## Makefile Targets

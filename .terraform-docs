@@ -24,6 +24,16 @@ content: |-
 
   Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
 
+  ### Security Group with common rules
+
+  Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
+
+  ```hcl
+  {{ include "examples/common_rules/.main.tf.docs" }}
+  ```
+
+  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
+
   ### Security Group with complete rules
 
   Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
@@ -37,16 +47,6 @@ content: |-
   </details><br/>
 
   Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
-
-  ### Security Group with common rules
-
-  Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
-
-  ```hcl
-  {{ include "examples/common_rules/.main.tf.docs" }}
-  ```
-
-  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
 
   ### Security group with custom rules
 
