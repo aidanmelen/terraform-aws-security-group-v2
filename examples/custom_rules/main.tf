@@ -1,4 +1,4 @@
-module "security_group" {
+module "sg" {
   source = "../../"
 
   name        = local.name

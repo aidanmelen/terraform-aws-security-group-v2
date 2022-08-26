@@ -1,18 +1,18 @@
-resource "aws_security_group" "pre_existing_sg" {
-  name        = "${local.name}-pre-existing-sg"
-  description = "${local.name}-pre-existing-sg"
+resource "aws_security_group" "pre_existing" {
+  name        = "${local.name}-pre-existing"
+  description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
 
   tags = {
-    "Name" = "${local.name}-pre-existing-sg"
+    "Name" = "${local.name}-pre-existing"
   }
 }
 
-module "security_group" {
+module "sg" {
   source = "../../"
 
   create_sg         = false
-  security_group_id = aws_security_group.pre_existing_sg.id
+  security_group_id = aws_security_group.pre_existing.id
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id

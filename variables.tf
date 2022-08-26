@@ -137,8 +137,8 @@ variable "computed_managed_egress_rules" {
 # Common Rules
 ###############################################################################
 
-variable "create_ingress_all_from_self_rules" {
-  description = "Whether to create the common ingress all from self security group rules."
+variable "create_ingress_all_from_self_rule" {
+  description = "Whether to create the common ingress all from self security group rule."
   type        = bool
   default     = false
 }

@@ -21,7 +21,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
-module "security_group" {
+module "sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.4.0"
 
@@ -37,8 +37,8 @@ module "security_group" {
     }
   ]
 
-  create_ingress_all_from_self_rules = true
-  create_egress_all_to_public_rules  = true
+  create_ingress_all_from_self_rule = true
+  create_egress_all_to_public_rules = true
 
   tags = {
     "Name" = local.name
@@ -56,7 +56,7 @@ module "security_group" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
+| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

@@ -36,7 +36,7 @@ output "security_group_description" {
 # Security Group Rules
 ###############################################################################
 
-output "ingress" {
+output "security_group_ingress_rules" {
   description = "The security group ingress rules."
   value = merge(
     {
@@ -47,13 +47,13 @@ output "ingress" {
         local.computed_managed_rules,
       ) : k => rule if rule["type"] == "ingress"
     },
-    aws_security_group_rule.ingress_all_from_self_rules,
+    aws_security_group_rule.ingress_all_from_self_rule,
     aws_security_group_rule.ingress_https_from_public_rules,
     aws_security_group_rule.ingress_http_from_public_rules,
   )
 }
 
-output "egress" {
+output "security_group_egress_rules" {
   description = "The security group egress rules."
   value = merge(
     {

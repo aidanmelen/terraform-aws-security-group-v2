@@ -3,10 +3,10 @@
 ###############################################################################
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr tfsec:ignore:aws-ec2-no-public-egress-sgr
-resource "aws_security_group_rule" "ingress_all_from_self_rules" {
+resource "aws_security_group_rule" "ingress_all_from_self_rule" {
 
   # create terraform resource with identifiable ID
-  for_each = var.create && var.create_ingress_all_from_self_rules ? { "ingress-all-all-from-self" = null } : {}
+  for_each = var.create && var.create_ingress_all_from_self_rule ? { "ingress-all-all-from-self" = null } : {}
 
   type              = "ingress"
   security_group_id = local.self_sg_id
