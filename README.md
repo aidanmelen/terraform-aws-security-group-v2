@@ -186,30 +186,58 @@ Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-se
 
 ### Security Group with common rules
 
-Create security groups with common rules.
+Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
 
 ```hcl
-module "sg" {
+module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.5.0"
 
-  name        = local.name
-  description = local.name
+  name        = "${local.name}-https"
+  description = "${local.name}-https"
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
-    {
-      rule        = "https-443-tcp"
-      description = "My Service"
-      cidr_blocks = ["10.0.0.0/24"]
-    }
-  ]
+  create_ingress_https_from_public_rules = true
+  create_ingress_all_from_self_rule      = true
+  create_egress_all_to_public_rules      = true
+
+  tags = {
+    "Name" = "${local.name}-https"
+  }
+}
+
+module "public_http_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.0"
+
+  name        = "${local.name}-http"
+  description = "${local.name}-http"
+  vpc_id      = data.aws_vpc.default.id
+
+  create_ingress_http_from_public_rules = true
+  create_ingress_all_from_self_rule     = true
+  create_egress_all_to_public_rules     = true
+
+  tags = {
+    "Name" = "${local.name}-http"
+  }
+}
+
+module "ssh_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.0"
+
+  name        = "${local.name}-ssh"
+  description = "${local.name}-ssh"
+  vpc_id      = data.aws_vpc.default.id
+
+  managed_ingress_rules = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }]
 
   create_ingress_all_from_self_rule = true
   create_egress_all_to_public_rules = true
 
   tags = {
-    "Name" = local.name
+    "Name" = "${local.name}-ssh"
   }
 }
 ```
