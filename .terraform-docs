@@ -138,7 +138,7 @@ content: |-
     2. Adding/Removing or even reordering rules can causes the count indexes to change possibly resulting in unwanted destruction and recreation of resources. Whereas `for_each` with map inputs use identifiable keys and do not suffer from this constraint.
   - Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation of `count` dynamically uses the `length()` function rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
   - Improve security by declaring granular security group rules. Use [AWS Prefix Lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) to apply rules to many IPV4/IPV6 CIDRs or use the `for` expression with computed rules for other rule resources.
-  - Set common rules default values; such as `create_egress_all_to_public_rules`, to `false` so that users can easily **opt-in**. This will promote the security best practice of restrict privileges. Please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
+  - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like `create_egress_all_to_public_rules`. Please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
   - Test examples with [Terratest](https://terratest.gruntwork.io/).
 
   ## License
