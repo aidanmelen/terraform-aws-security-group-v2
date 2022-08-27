@@ -32,8 +32,8 @@ module "security_group" {
   ingress = [
     {
       rule        = "https-443-tcp"
-      description = "My Private Service"
       cidr_blocks = ["10.0.0.0/24"]
+      description = "My Private Service"
     },
     { rule = "all-from-self" }
   ]
@@ -70,8 +70,6 @@ module "security_group" {
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
-| <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

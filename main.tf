@@ -6,15 +6,13 @@ locals {
   security_group_id  = var.create && var.create_security_group ? aws_security_group.self[0].id : var.security_group_id
   ingress_true_expr  = { for rule in var.ingress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule }
   egress_true_expr   = { for rule in var.egress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule }
-  ingress_false_expr = { for k, v in local.ingress_true_expr : k => null }
-  egress_false_expr  = { for k, v in local.egress_true_expr : k => null } # https://github.com/hashicorp/terraform/issues/28751
+  ingress_false_expr = { for k, rule in local.ingress_true_expr : k => null }
+  egress_false_expr  = { for k, rule in local.egress_true_expr : k => null } # https://github.com/hashicorp/terraform/issues/28751
 }
 
 resource "aws_security_group" "self" {
   count                  = var.create && var.create_security_group ? 1 : 0
   description            = var.description
-  egress                 = var.egress
-  ingress                = var.ingress
   name_prefix            = var.name_prefix
   name                   = var.name
   revoke_rules_on_delete = var.revoke_rules_on_delete

@@ -1,6 +1,6 @@
---- PASS: TestTerraformBasicExample (28.83s)
 FAIL
 FAIL
---- PASS: TestTerraformManagedRulesExample (41.35s)
---- PASS: TestTerraformComputedRulesExample (41.60s)
---- PASS: TestTerraformRulesOnlyExample (31.74s)
+FAIL
+FAIL
+FAIL
+FAIL

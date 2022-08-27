@@ -62,6 +62,9 @@ module "security_group" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_security_group"></a> [security\_group](#output\_security\_group) | The security group. |
+| <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
+| <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
+| <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
 | <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

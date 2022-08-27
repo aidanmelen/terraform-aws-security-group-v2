@@ -38,8 +38,8 @@ module "security_group" {
   ingress = [
     {
       rule        = "https-443-tcp"
-      description = "My Private Service"
       cidr_blocks = ["10.0.0.0/24"]
+      description = "My Private Service"
     },
     { rule = "all-from-self" }
   ]
@@ -507,12 +507,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (28.83s)
 FAIL
 FAIL
---- PASS: TestTerraformManagedRulesExample (41.35s)
---- PASS: TestTerraformComputedRulesExample (41.60s)
---- PASS: TestTerraformRulesOnlyExample (31.74s)
+FAIL
+FAIL
+FAIL
+FAIL
 ```
 
 ## Makefile Targets
@@ -553,8 +553,8 @@ clean                Clean project
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
-| <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either custom, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either custom, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |

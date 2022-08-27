@@ -27,14 +27,14 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
 	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
 	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
-	actualIngressKeys := terraform.Output(t, terraformOptions, "ingress_keys")
-	actualEgressKeys := terraform.Output(t, terraformOptions, "egress_keys")
+	actualIngress := terraform.Output(t, terraformOptions, "ingress")
+	actualEgress := terraform.Output(t, terraformOptions, "egress")
 
-	expectedIngressKeys := fmt.Sprintf("[ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s]", actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId)
-	expectedEgressKeys := fmt.Sprintf("[egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s]", actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId)
+	expectedIngress := fmt.Sprintf("[ingress-443-443-tcp-from-%s ingress-80-80-tcp-from-%s]", actualAwsSecurityGroupOtherId, actualAwsSecurityGroupOtherId)
+	expectedEgress := fmt.Sprintf("[egress-443-443-tcp-to-%s egress-80-80-tcp-to-%s]", actualAwsEc2ManagedPrefixListOtherId, actualAwsEc2ManagedPrefixListOtherId)
 
-	assert.Equal(t, expectedIngressKeys, actualIngressKeys, "Map %q should match %q", expectedIngressKeys, actualIngressKeys)
-	assert.Equal(t, expectedEgressKeys, actualEgressKeys, "Map %q should match %q", expectedEgressKeys, actualEgressKeys)
+	assert.Equal(t, expectedIngress, actualIngress, "Map %q should match %q", expectedIngress, actualIngress)
+	assert.Equal(t, expectedEgress, actualEgress, "Map %q should match %q", expectedEgress, actualEgress)
 
 	terraform.ApplyAndIdempotent(t, terraformOptions)
 }
