@@ -21,24 +21,26 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "https-443-tcp"
-      description = "My Service"
+      description = "My Private Service"
       cidr_blocks = ["10.0.0.0/24"]
-    }
+    },
+    { rule = "all-from-self" }
   ]
 
-  create_ingress_all_from_self_rule = true
-  create_egress_all_to_public_rules = true
+  egress = [
+    { rule = "all-to-public" }
+  ]
 
   tags = {
     "Name" = local.name
@@ -56,7 +58,7 @@ module "sg" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

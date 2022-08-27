@@ -8,7 +8,7 @@ variable "create" {
   default     = true
 }
 
-variable "create_sg" {
+variable "create_security_group" {
   description = "Whether to create security group and all rules."
   type        = bool
   default     = true
@@ -69,94 +69,29 @@ variable "delete_timeout" {
 }
 
 ###############################################################################
-# Custom Rules
+# Security Group Rules
 ###############################################################################
 
-variable "ingress_rules" {
-  description = "List of ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+variable "ingress" {
+  description = "The security group ingress rules. Can be either custom, managed, or common rule."
   type        = any
   default     = []
 }
 
-variable "egress_rules" {
-  description = "List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
+variable "egress" {
+  description = "The security group egress rules. Can be either custom, managed, or common rule."
   type        = any
   default     = []
 }
 
-
-###############################################################################
-# Managed Rules
-###############################################################################
-
-variable "managed_ingress_rules" {
-  description = "List of managed ingress rules. The key is the rule description and the value is the managed rule name."
+variable "computed_ingress" {
+  description = "The security group ingress rules. Can be either custom, managed, or common rule."
   type        = any
   default     = []
 }
 
-variable "managed_egress_rules" {
-  description = "List of managed egress rules. The key is the rule description and the value is the managed rule name."
+variable "computed_egress" {
+  description = "The security group egress rules. Can be either custom, managed, or common rule. "
   type        = any
   default     = []
-}
-
-###############################################################################
-# Computed Rules
-###############################################################################
-
-variable "computed_ingress_rules" {
-  description = "List of dynamic ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
-  type        = any
-  default     = []
-}
-
-variable "computed_egress_rules" {
-  description = "List of dynamic egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments."
-  type        = any
-  default     = []
-}
-
-###############################################################################
-# Computed Managed Rules
-###############################################################################
-
-variable "computed_managed_ingress_rules" {
-  description = "List of dynamic managed ingress rules. The key is the rule description and the value is the managed rule name."
-  type        = any
-  default     = []
-}
-
-variable "computed_managed_egress_rules" {
-  description = "List of dynamic managed egress rules. The key is the rule description and the value is the managed rule name."
-  type        = any
-  default     = []
-}
-
-###############################################################################
-# Common Rules
-###############################################################################
-
-variable "create_ingress_all_from_self_rule" {
-  description = "Whether to create the common ingress all from self security group rule."
-  type        = bool
-  default     = false
-}
-
-variable "create_ingress_https_from_public_rules" {
-  description = "Whether to create the common ingress HTTPS from the public internet rules."
-  type        = bool
-  default     = false
-}
-
-variable "create_ingress_http_from_public_rules" {
-  description = "Whether to create the common ingress HTTP from the public internet rules."
-  type        = bool
-  default     = false
-}
-
-variable "create_egress_all_to_public_rules" {
-  description = "Whether to create the common egress all to public internet rules (IPV4/IPV6)."
-  type        = bool
-  default     = false
 }

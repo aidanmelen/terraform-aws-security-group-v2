@@ -27,24 +27,26 @@ This module aims to implement **ALL** combinations of arguments supported by AWS
 Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "https-443-tcp"
-      description = "My Service"
+      description = "My Private Service"
       cidr_blocks = ["10.0.0.0/24"]
-    }
+    },
+    { rule = "all-from-self" }
   ]
 
-  create_ingress_all_from_self_rule = true
-  create_egress_all_to_public_rules = true
+  egress = [
+    { rule = "all-to-public" }
+  ]
 
   tags = {
     "Name" = local.name
@@ -61,15 +63,14 @@ Create security groups with common scenario rules (e.g. `https`, `http`, and `ss
 ```hcl
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
   vpc_id      = data.aws_vpc.default.id
 
-  create_ingress_https_from_public_rules = true
-  create_ingress_all_from_self_rule      = true
-  create_egress_all_to_public_rules      = true
+  ingress = [{ rule = "all-from-https" }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-https"
@@ -78,15 +79,14 @@ module "public_https_sg" {
 
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
-  create_ingress_http_from_public_rules = true
-  create_ingress_all_from_self_rule     = true
-  create_egress_all_to_public_rules     = true
+  ingress = [{ rule = "all-from-http" }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-http"
@@ -95,16 +95,14 @@ module "public_http_sg" {
 
 module "ssh_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = "${local.name}-ssh"
   description = "${local.name}-ssh"
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }]
-
-  create_ingress_all_from_self_rule = true
-  create_egress_all_to_public_rules = true
+  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-ssh"
@@ -121,15 +119,15 @@ Create a security group with a combination of both managed, custom, computed, an
 <details><summary>Click to show</summary>
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "all-all"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
@@ -141,25 +139,32 @@ module "sg" {
     {
       rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  ingress_rules = [
+    },
     {
       from_port                = 0
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
+    { rule = "https-from-public" },
+    { rule = "http-from-public" },
+    { rule = "all-from-self" }
+  ]
+
+  computed_ingress = [
     {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
+      from_port                = 80
+      to_port                  = 80
+      protocol                 = "tcp"
+      source_security_group_id = aws_security_group.other.id
+    },
+    {
+      rule                     = "https-443-tcp"
+      source_security_group_id = aws_security_group.other.id
     }
   ]
 
-  managed_egress_rules = [
+  egress = [
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
@@ -171,58 +176,28 @@ module "sg" {
     {
       rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    }
-  ]
-
-  egress_rules = [
+    },
     {
       from_port                = 0
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
-    {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
-    }
+    { rule = "all-to-public" }
   ]
 
-  computed_ingress_rules = [
-    {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = "tcp"
-      source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_egress_rules = [
+  computed_egress = [
     {
       from_port       = 80
       to_port         = 80
       protocol        = "tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
-  ]
-
-  computed_managed_ingress_rules = [
-    {
-      rule                     = "https-443-tcp"
-      source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_managed_egress_rules = [
+    },
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
     }
   ]
-
-  create_ingress_all_from_self_rule = false # already created with a custom ingress rule
-  create_egress_all_to_public_rules = true
 
   tags = {
     "Name" = local.name
@@ -235,7 +210,7 @@ module "sg" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
   create = false
 }
 ```
@@ -251,15 +226,15 @@ Create a security group with custom rules.
 <details><summary>Click to show</summary>
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  ingress_rules = [
+  ingress = [
     {
       from_port   = 443
       to_port     = 443
@@ -292,7 +267,7 @@ module "sg" {
     }
   ]
 
-  egress_rules = [
+  egress = [
     {
       from_port   = 443
       to_port     = 443
@@ -342,15 +317,15 @@ Create a security group with managed rules.
 <details><summary>Click to show</summary>
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "all-all"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
@@ -373,7 +348,7 @@ module "sg" {
     }
   ]
 
-  managed_egress_rules = [
+  egress = [
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
@@ -442,40 +417,34 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  computed_ingress_rules = [
+  computed_ingress = [
     {
       from_port                = 80
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_egress_rules = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
-  ]
-
-  computed_managed_ingress_rules = [
+    },
     {
       rule                     = "https-443-tcp"
       source_security_group_id = aws_security_group.other.id
     }
   ]
 
-  computed_managed_egress_rules = [
+  computed_egress = [
+    {
+      from_port       = 80
+      to_port         = 80
+      protocol        = "tcp"
+      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+    },
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
@@ -509,22 +478,15 @@ resource "aws_security_group" "pre_existing" {
   }
 }
 
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
-  create_sg         = false
-  security_group_id = aws_security_group.pre_existing.id
+  create_security_group = false
+  security_group_id     = aws_security_group.pre_existing.id
 
-  name   = local.name
-  vpc_id = data.aws_vpc.default.id
-
-  managed_ingress_rules = [
-    {
-      rule                     = "http-80-tcp"
-      source_security_group_id = data.aws_security_group.default.id
-    }
-  ]
+  ingress = [{ rule = "https-from-public" }]
+  egress  = [{ rule = "all-to-public" }]
 
   tags = {
     "Name" = local.name
@@ -565,7 +527,6 @@ lint-all             Lint all files with pre-commit and render docs
 tests                Tests with Terratest
 test-basic           Test the basic example
 test-complete        Test the complete example
-test-common-rules    Test the common_rules example
 test-custom-rules    Test the custom_rules example
 test-managed-rules   Test the managed_rules example
 test-computed-rules  Test the computed_rules example
@@ -584,37 +545,23 @@ clean                Clean project
 | Name | Type |
 |------|------|
 | [aws_security_group.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group_rule.computed_egress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_ingress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_managed_egress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_managed_ingress_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.egress_all_to_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_all_from_self_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_http_from_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.ingress_https_from_public_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.managed_rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_computed_egress_rules"></a> [computed\_egress\_rules](#input\_computed\_egress\_rules) | List of dynamic egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments. | `any` | `[]` | no |
-| <a name="input_computed_ingress_rules"></a> [computed\_ingress\_rules](#input\_computed\_ingress\_rules) | List of dynamic ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments. | `any` | `[]` | no |
-| <a name="input_computed_managed_egress_rules"></a> [computed\_managed\_egress\_rules](#input\_computed\_managed\_egress\_rules) | List of dynamic managed egress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
-| <a name="input_computed_managed_ingress_rules"></a> [computed\_managed\_ingress\_rules](#input\_computed\_managed\_ingress\_rules) | List of dynamic managed ingress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
+| <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
-| <a name="input_create_egress_all_to_public_rules"></a> [create\_egress\_all\_to\_public\_rules](#input\_create\_egress\_all\_to\_public\_rules) | Whether to create the common egress all to public internet rules (IPV4/IPV6). | `bool` | `false` | no |
-| <a name="input_create_ingress_all_from_self_rule"></a> [create\_ingress\_all\_from\_self\_rule](#input\_create\_ingress\_all\_from\_self\_rule) | Whether to create the common ingress all from self security group rule. | `bool` | `false` | no |
-| <a name="input_create_ingress_http_from_public_rules"></a> [create\_ingress\_http\_from\_public\_rules](#input\_create\_ingress\_http\_from\_public\_rules) | Whether to create the common ingress HTTP from the public internet rules. | `bool` | `false` | no |
-| <a name="input_create_ingress_https_from_public_rules"></a> [create\_ingress\_https\_from\_public\_rules](#input\_create\_ingress\_https\_from\_public\_rules) | Whether to create the common ingress HTTPS from the public internet rules. | `bool` | `false` | no |
-| <a name="input_create_sg"></a> [create\_sg](#input\_create\_sg) | Whether to create security group and all rules. | `bool` | `true` | no |
+| <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
-| <a name="input_egress_rules"></a> [egress\_rules](#input\_egress\_rules) | List of egress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments. | `any` | `[]` | no |
-| <a name="input_ingress_rules"></a> [ingress\_rules](#input\_ingress\_rules) | List of ingress rules. The key is the rule description and the value are the `aws_security_group_rule` resource arguments. | `any` | `[]` | no |
-| <a name="input_managed_egress_rules"></a> [managed\_egress\_rules](#input\_managed\_egress\_rules) | List of managed egress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
-| <a name="input_managed_ingress_rules"></a> [managed\_ingress\_rules](#input\_managed\_ingress\_rules) | List of managed ingress rules. The key is the rule description and the value is the managed rule name. | `any` | `[]` | no |
+| <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_ingress"></a> [ingress](#input\_ingress) | The security group ingress rules. Can be either custom, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | (Optional, Forces new resource) Creates a unique name beginning with the specified prefix. Conflicts with name. | `string` | `null` | no |
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
@@ -625,14 +572,9 @@ clean                Clean project
 
 | Name | Description |
 |------|-------------|
-| <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | The ARN of the security group |
-| <a name="output_security_group_description"></a> [security\_group\_description](#output\_security\_group\_description) | The description of the security group |
+| <a name="output_security_group"></a> [security\_group](#output\_security\_group) | The security group attributes. |
 | <a name="output_security_group_egress_rules"></a> [security\_group\_egress\_rules](#output\_security\_group\_egress\_rules) | The security group egress rules. |
-| <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | The ID of the security group |
 | <a name="output_security_group_ingress_rules"></a> [security\_group\_ingress\_rules](#output\_security\_group\_ingress\_rules) | The security group ingress rules. |
-| <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | The name of the security group |
-| <a name="output_security_group_owner_id"></a> [security\_group\_owner\_id](#output\_security\_group\_owner\_id) | The owner ID |
-| <a name="output_security_group_vpc_id"></a> [security\_group\_vpc\_id](#output\_security\_group\_vpc\_id) | The VPC ID |
 
 ## Acknowledgments
 

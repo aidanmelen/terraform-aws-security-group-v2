@@ -73,7 +73,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:         }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + vpc_id                 = "vpc-11111111"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.sg.aws_security_group.self[0] will be created
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group" "self" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + arn                    = (known after apply)
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + description            = "ex-computed-rules"
@@ -101,7 +101,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:           +
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:         }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.sg.aws_security_group_rule.computed_egress_rules[0] will be created
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress_rules[0] will be created
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + description              = "Managed by Terraform"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + from_port                = 80
@@ -115,7 +115,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + type                     = "egress"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.sg.aws_security_group_rule.computed_ingress_rules[0] will be created
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress_rules[0] will be created
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + description              = "Managed by Terraform"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + from_port                = 80
@@ -128,8 +128,8 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + type                     = "ingress"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.sg.aws_security_group_rule.computed_managed_egress_rules[0] will be created
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_managed_egress_rules" {
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress_rules[0] will be created
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + description              = "https-443-tcp"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + from_port                = 443
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + id                       = (known after apply)
@@ -142,8 +142,8 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + type                     = "egress"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.sg.aws_security_group_rule.computed_managed_ingress_rules[0] will be created
-TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_managed_ingress_rules" {
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress_rules[0] will be created
+TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + description              = "https-443-tcp"
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + from_port                = 443
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + id                       = (known after apply)
@@ -168,20 +168,20 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:   + terrate
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + aws_ec2_managed_prefix_list_other_id = (known after apply)
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:       + aws_security_group_other_id          = (known after apply)
 TestTerraformComputedRulesExample 2022-08-26T22:30:32Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-26T22:30:34Z logger.go:66: module.sg.aws_security_group.self[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-26T22:30:34Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
 TestTerraformComputedRulesExample 2022-08-26T22:30:34Z logger.go:66: aws_ec2_managed_prefix_list.other: Creating...
 TestTerraformComputedRulesExample 2022-08-26T22:30:34Z logger.go:66: aws_security_group.other: Creating...
 TestTerraformComputedRulesExample 2022-08-26T22:30:35Z logger.go:66: aws_ec2_managed_prefix_list.other: Creation complete after 2s [id=pl-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: aws_security_group.other: Creation complete after 3s [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.sg.aws_security_group.self[0]: Creation complete after 3s [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-26T22:30:37Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:38Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:39Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:40Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Creation complete after 3s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 3s [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-26T22:30:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-26T22:30:37Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:38Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:39Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:40Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Creation complete after 3s [id=sgrule-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:40Z logger.go:66:
 TestTerraformComputedRulesExample 2022-08-26T22:30:40Z logger.go:66: Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 TestTerraformComputedRulesExample 2022-08-26T22:30:40Z logger.go:66:
@@ -284,11 +284,11 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:45Z logger.go:66: data.aws_vp
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-11111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.sg.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66:
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66: No changes. Your infrastructure matches the configuration.
 TestTerraformComputedRulesExample 2022-08-26T22:30:46Z logger.go:66:
@@ -387,11 +387,11 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:50Z logger.go:66: data.aws_vp
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-11111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.sg.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66:
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66: No changes. Your infrastructure matches the configuration.
 TestTerraformComputedRulesExample 2022-08-26T22:30:51Z logger.go:66:
@@ -403,11 +403,11 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:54Z logger.go:66: data.aws_vp
 TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-11111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.sg.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:55Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66: Terraform used the selected providers to generate the following execution
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66: plan. Resource actions are indicated with the following symbols:
@@ -459,7 +459,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:         } -
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - vpc_id                 = "vpc-11111111" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.sg.aws_security_group.self[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group" "self" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - description            = "ex-computed-rules" -> null
@@ -540,7 +540,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:           -
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:         }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.sg.aws_security_group_rule.computed_egress_rules[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress_rules[0] will be destroyed
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - description       = "Managed by Terraform" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - from_port         = 80 -> null
@@ -555,7 +555,7 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - type              = "egress" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.sg.aws_security_group_rule.computed_ingress_rules[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress_rules[0] will be destroyed
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_ingress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - description              = "Managed by Terraform" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - from_port                = 80 -> null
@@ -568,8 +568,8 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - type                     = "ingress" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.sg.aws_security_group_rule.computed_managed_egress_rules[0] will be destroyed
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_managed_egress_rules" {
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress_rules[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - description       = "https-443-tcp" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - from_port         = 443 -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - id                = "sgrule-1111111111" -> null
@@ -583,8 +583,8 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - to_
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - type              = "egress" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     }
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.sg.aws_security_group_rule.computed_managed_ingress_rules[0] will be destroyed
-TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_managed_ingress_rules" {
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress_rules[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - resource "aws_security_group_rule" "computed_ingress_rules" {
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - description              = "https-443-tcp" -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - from_port                = 443 -> null
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
@@ -681,19 +681,19 @@ TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:   - terrate
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - aws_ec2_managed_prefix_list_other_id = "pl-1111111111"
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:       - aws_security_group_other_id          = "sg-1111111111111111"
 TestTerraformComputedRulesExample 2022-08-26T22:30:56Z logger.go:66:     } -> null
-TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Destroying... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Destroying... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Destroying... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Destroying... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:30:58Z logger.go:66: module.sg.aws_security_group_rule.computed_ingress_rules[0]: Destruction complete after 0s
-TestTerraformComputedRulesExample 2022-08-26T22:30:58Z logger.go:66: module.sg.aws_security_group_rule.computed_egress_rules[0]: Destruction complete after 1s
-TestTerraformComputedRulesExample 2022-08-26T22:30:59Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_ingress_rules[0]: Destruction complete after 2s
-TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: module.sg.aws_security_group_rule.computed_managed_egress_rules[0]: Destruction complete after 2s
+TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:57Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:30:58Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Destruction complete after 0s
+TestTerraformComputedRulesExample 2022-08-26T22:30:58Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-26T22:30:59Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress_rules[0]: Destruction complete after 2s
+TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress_rules[0]: Destruction complete after 2s
 TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: aws_security_group.other: Destroying... [id=sg-1111111111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: aws_ec2_managed_prefix_list.other: Destroying... [id=pl-1111111111]
-TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: module.sg.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-26T22:31:00Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
 TestTerraformComputedRulesExample 2022-08-26T22:31:01Z logger.go:66: aws_security_group.other: Destruction complete after 1s
-TestTerraformComputedRulesExample 2022-08-26T22:31:01Z logger.go:66: module.sg.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-26T22:31:01Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
 TestTerraformComputedRulesExample 2022-08-26T22:31:07Z logger.go:66: aws_ec2_managed_prefix_list.other: Destruction complete after 7s
 TestTerraformComputedRulesExample 2022-08-26T22:31:07Z logger.go:66:
 TestTerraformComputedRulesExample 2022-08-26T22:31:07Z logger.go:66: Destroy complete! Resources: 7 destroyed.

@@ -1,7 +1,7 @@
 # Protocols (tcp, udp, icmp, all - are allowed keywords) or numbers (from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml):
 # All = -1, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
 locals {
-  managed_rule_definitions = {
+  rules = {
     # ActiveMQ
     activemq-5671-tcp  = { "to_port" = 5671, "from_port" = 5671, "protocol" = "tcp" }
     activemq-8883-tcp  = { "to_port" = 8883, "from_port" = 8883, "protocol" = "tcp" }
@@ -192,10 +192,19 @@ locals {
     zookeeper-3888-tcp     = { "to_port" = 3888, "from_port" = 3888, "protocol" = "tcp" }
     zookeeper-jmx-tcp      = { "to_port" = 7199, "from_port" = 7199, "protocol" = "tcp" }
     # Open all ports & protocols
-    all-all       = { "to_port" = 0, "from_port" = 0, "protocol" = "-1" }
+    all-all       = { "to_port" = 0, "from_port" = 0, "protocol" = "all" }
     all-tcp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "tcp" }
     all-udp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "udp" }
     all-icmp      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp" }
     all-ipv6-icmp = { "to_port" = 0, "from_port" = 0, "protocol" = 58 }
+    # Common Ingress
+    all-from-self     = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    https-from-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    http-from-public  = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    icmp-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    ping-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    # Common Egress
+    all-to-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    all-to-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
   }
 }

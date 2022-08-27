@@ -50,40 +50,34 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.5.1"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  computed_ingress_rules = [
+  computed_ingress = [
     {
       from_port                = 80
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_egress_rules = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
-  ]
-
-  computed_managed_ingress_rules = [
+    },
     {
       rule                     = "https-443-tcp"
       source_security_group_id = aws_security_group.other.id
     }
   ]
 
-  computed_managed_egress_rules = [
+  computed_egress = [
+    {
+      from_port       = 80
+      to_port         = 80
+      protocol        = "tcp"
+      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+    },
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
@@ -106,7 +100,7 @@ module "sg" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

@@ -53,16 +53,13 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-common-rules test-complete test-custom-rules test-managed-rules test-computed-rules test-rules-only lint ## Tests with Terratest
+tests: test-basic test-complete test-custom-rules test-managed-rules test-computed-rules test-rules-only lint ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
 
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 5m -v |& tee test/terraform_complete_test.log
-
-test-common-rules: ## Test the common_rules example
-	go test test/terraform_common_rules_test.go -timeout 5m -v |& tee test/terraform_common_rules_test.log
 
 test-custom-rules: ## Test the custom_rules example
 	go test test/terraform_custom_rules_test.go -timeout 5m -v |& tee test/terraform_custom_rules_test.log

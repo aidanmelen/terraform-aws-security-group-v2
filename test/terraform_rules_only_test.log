@@ -54,7 +54,7 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:         }
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:       + vpc_id                 = "vpc-11111111"
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:     }
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:   # module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"] will be created
+TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:   # module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"] will be created
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:   + resource "aws_security_group_rule" "managed_rules" {
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:       + description              = "ingress-http-80-tcp-from-sg-1111111111111111"
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:       + from_port                = 80
@@ -80,8 +80,8 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:       + data_aw
 TestTerraformRulesOnlyExample 2022-08-26T22:31:14Z logger.go:66:     }
 TestTerraformRulesOnlyExample 2022-08-26T22:31:16Z logger.go:66: aws_security_group.pre_existing: Creating...
 TestTerraformRulesOnlyExample 2022-08-26T22:31:18Z logger.go:66: aws_security_group.pre_existing: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-26T22:31:18Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Creating...
-TestTerraformRulesOnlyExample 2022-08-26T22:31:19Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformRulesOnlyExample 2022-08-26T22:31:18Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Creating...
+TestTerraformRulesOnlyExample 2022-08-26T22:31:19Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Creation complete after 1s [id=sgrule-1111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:19Z logger.go:66:
 TestTerraformRulesOnlyExample 2022-08-26T22:31:19Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 TestTerraformRulesOnlyExample 2022-08-26T22:31:19Z logger.go:66:
@@ -129,7 +129,7 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: data.aws_vpc.de
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: data.aws_security_group.default: Reading...
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66:
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66: No changes. Your infrastructure matches the configuration.
 TestTerraformRulesOnlyExample 2022-08-26T22:31:26Z logger.go:66:
@@ -173,7 +173,7 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: data.aws_vpc.de
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: data.aws_security_group.default: Reading...
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66:
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66: No changes. Your infrastructure matches the configuration.
 TestTerraformRulesOnlyExample 2022-08-26T22:31:32Z logger.go:66:
@@ -186,7 +186,7 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: data.aws_vpc.de
 TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: data.aws_security_group.default: Reading...
 TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformRulesOnlyExample 2022-08-26T22:31:36Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66: Terraform used the selected providers to generate the following execution
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66: plan. Resource actions are indicated with the following symbols:
@@ -230,7 +230,7 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:         } -> nu
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:       - vpc_id                 = "vpc-11111111" -> null
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:     }
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:   # module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"] will be destroyed
+TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:   # module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"] will be destroyed
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:   - resource "aws_security_group_rule" "managed_rules" {
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:       - description              = "ingress-http-80-tcp-from-sg-1111111111111111" -> null
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:       - from_port                = 80 -> null
@@ -272,8 +272,8 @@ TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:   - terratest  
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:       - aws_security_group_pre_existing_id = "sg-1111111111111111"
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
 TestTerraformRulesOnlyExample 2022-08-26T22:31:37Z logger.go:66:     } -> null
-TestTerraformRulesOnlyExample 2022-08-26T22:31:38Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-26T22:31:39Z logger.go:66: module.sg.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Destruction complete after 0s
+TestTerraformRulesOnlyExample 2022-08-26T22:31:38Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformRulesOnlyExample 2022-08-26T22:31:39Z logger.go:66: module.security_group.aws_security_group_rule.managed_rules["ingress-http-80-tcp-from-sg-1111111111111111"]: Destruction complete after 0s
 TestTerraformRulesOnlyExample 2022-08-26T22:31:39Z logger.go:66: aws_security_group.pre_existing: Destroying... [id=sg-1111111111111111]
 TestTerraformRulesOnlyExample 2022-08-26T22:31:40Z logger.go:66: aws_security_group.pre_existing: Destruction complete after 1s
 TestTerraformRulesOnlyExample 2022-08-26T22:31:40Z logger.go:66:
