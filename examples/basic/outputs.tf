@@ -4,12 +4,12 @@
 
 output "arn" {
   description = "The ARN of the security group."
-  value       = try(module.security_group.security_group_arn, null)
+  value       = try(module.security_group.security_group.arn, null)
 }
 
 output "id" {
   description = "The ID of the security group."
-  value       = try(module.security_group.security_group_id, null)
+  value       = try(module.security_group.security_group.id, null)
 }
 
 ###############################################################################

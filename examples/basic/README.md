@@ -1,6 +1,9 @@
 # Basic Security Group example
 
-Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
+Create a security group using:
+- The `https-443-tcp` managed ingress rule
+- The `all-from-self` common ingress rule
+- The `all-to-public` common egress rule
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 

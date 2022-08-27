@@ -1,6 +1,12 @@
 # Complete Security Group example
 
-Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
+Create a AWS Security Group with a broad mix of various features and settings provided by this module:
+
+- Custom ingress/egress rules.
+- Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
+- Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
+- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports Custom, Managed, and Common rules.
+- Conditionally create security group and/or all required security group rules.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 

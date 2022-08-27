@@ -3,11 +3,11 @@
 ###############################################################################
 output "security_group" {
   description = "The security group attributes."
-  value       = try(aws_security_group.self[0].id, null)
+  value       = try(aws_security_group.self[0], null)
 }
 
 ###############################################################################
-# Security Group Ingress Rules
+# Security Group Rules
 ###############################################################################
 output "security_group_ingress_rules" {
   description = "The security group ingress rules."
@@ -17,9 +17,6 @@ output "security_group_ingress_rules" {
   )
 }
 
-###############################################################################
-# Security Group Egress Rules
-###############################################################################
 output "security_group_egress_rules" {
   description = "The security group egress rules."
   value = concat(

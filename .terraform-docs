@@ -4,19 +4,23 @@ content: |-
 
   This module aims to implement **ALL** combinations of arguments supported by AWS and latest stable version of Terraform:
 
-  - IPv4/IPv6 CIDR blocks
-  - [VPC endpoint prefix lists](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) (use data source [aws_prefix_list](https://www.terraform.io/docs/providers/aws/d/prefix_list.html))
-  - Access from source security groups
-  - Access from self
-  - Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
-  - Toggle creation of common rules like egress all to the public internet.
+  - Custom ingress/egress rules.
+  - Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
+  - Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
+  - Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports Custom, Managed, and Common rules.
   - Conditionally create security group and/or all required security group rules.
+
+  What's more, this module was modeled on the [terraform-aws-modules/terraform-aws-security-group](hhttps://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody.
 
   ## Examples
 
   ### Security Group with basic rules
 
-  Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
+  Create a security group using:
+
+  - The `https-443-tcp` managed ingress rule
+  - The `all-from-self` common ingress rule
+  - The `all-to-public` common egress rule
 
   ```hcl
   {{ include "examples/basic/.main.tf.docs" }}
@@ -24,29 +28,29 @@ content: |-
 
   Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
 
-  ### Security Group with common rules
-
-  Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
-
-  ```hcl
-  {{ include "examples/common_rules/.main.tf.docs" }}
-  ```
-
-  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
-
   ### Security Group with complete rules
 
-  Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
-
-  <details><summary>Click to show</summary>
+  Create a AWS Security Group with a broad mix of various features and settings provided by this module.
 
   ```hcl
   {{ include "examples/complete/.main.tf.docs" }}
   ```
 
+  Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
+
+  ### Security Group with common rules
+
+  Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
+
+    <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "examples/common/.main.tf.docs" }}
+  ```
+
   </details><br/>
 
-  Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
+  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common) for more information.
 
   ### Security group with custom rules
 
@@ -55,7 +59,7 @@ content: |-
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/custom_rules/.main.tf.docs" }}
+  {{ include "examples/custom/.main.tf.docs" }}
   ```
 
   </details><br/>
@@ -69,12 +73,12 @@ content: |-
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/managed_rules/.main.tf.docs" }}
+  {{ include "examples/managed/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed_rules) for more information.
+  Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed) for more information.
 
   ### Security group with computed rules
 
@@ -83,12 +87,12 @@ content: |-
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/computed_rules/.main.tf.docs" }}
+  {{ include "examples/computed/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed_rules) for more information.
+  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
 
   ### Only rules with pre-existing security group
 

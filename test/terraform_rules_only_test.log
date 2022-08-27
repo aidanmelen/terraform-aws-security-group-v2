@@ -1,443 +1,335 @@
-=== RUN   TestTerraformRulesOnlyExample
-TestTerraformRulesOnlyExample 2022-08-27T19:25:59Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:25:59Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:25:59Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformRulesOnlyExample 2022-08-27T19:25:59Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:25:59Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformRulesOnlyExample 2022-08-27T19:26:00Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:00Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformRulesOnlyExample 2022-08-27T19:26:00Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: [0m[32m
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: should now work.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:01Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:04Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:04Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-11111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:04Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:04Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + create
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66: Terraform will perform the following actions:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   # aws_security_group.pre_existing will be created
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + resource "aws_security_group" "pre_existing" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + description            = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + id                     = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + name                   = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + tags                   = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "Name" = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + tags_all               = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "Example"    = "ex-rules-only"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "Name"       = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + vpc_id                 = "vpc-11111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["all-to-public"] will be created
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + cidr_blocks              = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + from_port                = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + id                       = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + protocol                 = "-1"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + self                     = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + to_port                  = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + type                     = "egress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["https-from-public"] will be created
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + cidr_blocks              = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + from_port                = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + id                       = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:           + "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:         ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + self                     = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + to_port                  = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + type                     = "ingress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66: Changes to Outputs:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + egress    = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:   + terratest = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + aws_security_group_pre_existing_id = (known after apply)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:05Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:06Z logger.go:66: aws_security_group.pre_existing: Creating...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:08Z logger.go:66: aws_security_group.pre_existing: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:08Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Creating...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:08Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Creating...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: Outputs:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: egress = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:       "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "description" = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "from_port" = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:       "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "protocol" = "-1"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "self" = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "to_port" = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "type" = "egress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: ingress = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:       "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "description" = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "from_port" = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:       "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "protocol" = "tcp"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "self" = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "to_port" = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:     "type" = "ingress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: terratest = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   "aws_security_group_pre_existing_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z retry.go:91: terraform [output -no-color -json terratest]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:09Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:10Z logger.go:66: {"aws_security_group_pre_existing_id":"sg-1111111111111111","data_aws_security_group_default_id":"sg-1111111111111111"}
-TestTerraformRulesOnlyExample 2022-08-27T19:26:10Z retry.go:91: terraform [output -no-color -json ingress]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:10Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:11Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"managed by Terraform","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:11Z retry.go:91: terraform [output -no-color -json egress]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:11Z logger.go:66: Running command terraform with args [output -no-color -json egress]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:12Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"managed by Terraform","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
-    terraform_rules_only_test.go:44:
-        	Error Trace:	/workspaces/terraform-aws-security-group-v2/test/terraform_rules_only_test.go:44
-        	Error:      	Not equal:
-        	            	expected: "map[ingress-http-80-tcp-from-sg-1111111111111111:map[cidr_blocks:<nil> description:ingress-http-80-tcp-from-sg-1111111111111111 from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:sg-1111111111111111 timeouts:<nil> to_port:80 type:ingress]]"
-        	            	actual  : "[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]]"
-
-        	            	Diff:
-        	            	--- Expected
-        	            	+++ Actual
-        	            	@@ -1 +1 @@
-        	            	-map[ingress-http-80-tcp-from-sg-1111111111111111:map[cidr_blocks:<nil> description:ingress-http-80-tcp-from-sg-1111111111111111 from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:sg-1111111111111111 timeouts:<nil> to_port:80 type:ingress]]
-        	            	+[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]]
-        	Test:       	TestTerraformRulesOnlyExample
-        	Messages:   	Map "map[ingress-http-80-tcp-from-sg-1111111111111111:map[cidr_blocks:<nil> description:ingress-http-80-tcp-from-sg-1111111111111111 from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:sg-1111111111111111 timeouts:<nil> to_port:80 type:ingress]]" should match "[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]]"
-    terraform_rules_only_test.go:45:
-        	Error Trace:	/workspaces/terraform-aws-security-group-v2/test/terraform_rules_only_test.go:45
-        	Error:      	Not equal:
-        	            	expected: "map[]"
-        	            	actual  : "[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]]"
-
-        	            	Diff:
-        	            	--- Expected
-        	            	+++ Actual
-        	            	@@ -1 +1 @@
-        	            	-map[]
-        	            	+[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]]
-        	Test:       	TestTerraformRulesOnlyExample
-        	Messages:   	Map "map[]" should match "[map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:sg-1111111111111111 self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]]"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:12Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:12Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-11111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:15Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:16Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:16Z logger.go:66: No changes. Your infrastructure matches the configuration.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:16Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:16Z logger.go:66: Terraform has compared your real infrastructure against your configuration
-TestTerraformRulesOnlyExample 2022-08-27T19:26:16Z logger.go:66: and found no differences, so no changes are needed.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: Outputs:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: egress = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:       "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "description" = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "from_port" = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:       "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "protocol" = "-1"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "self" = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "to_port" = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "type" = "egress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: ingress = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:       "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "description" = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "from_port" = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:       "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     ])
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "protocol" = "tcp"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "self" = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "to_port" = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:     "type" = "ingress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: terratest = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   "aws_security_group_pre_existing_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: Running terraform with args [plan -input=false -detailed-exitcode -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:17Z logger.go:66: Running command terraform with args [plan -input=false -detailed-exitcode -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-11111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: No changes. Your infrastructure matches the configuration.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: Terraform has compared your real infrastructure against your configuration
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: and found no differences, so no changes are needed.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:20Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:23Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-11111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - destroy
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: Terraform will perform the following actions:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   # aws_security_group.pre_existing will be destroyed
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - resource "aws_security_group" "pre_existing" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - description            = "ex-rules-only-pre-existing" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - egress                 = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - cidr_blocks      = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                   - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                 ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - description      = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - from_port        = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                   - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                 ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - protocol         = "-1"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - security_groups  = []
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - self             = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - to_port          = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - ingress                = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - cidr_blocks      = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                   - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                 ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - description      = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - from_port        = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                   - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:                 ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - protocol         = "tcp"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - security_groups  = []
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - self             = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - to_port          = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - name                   = "ex-rules-only-pre-existing" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - tags                   = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "Name" = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         } -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - tags_all               = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "Example"    = "ex-rules-only"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "Name"       = "ex-rules-only-pre-existing"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         } -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - vpc_id                 = "vpc-11111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["all-to-public"] will be destroyed
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - cidr_blocks       = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - description       = "managed by Terraform" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - self              = false -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - type              = "egress" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["https-from-public"] will be destroyed
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - cidr_blocks       = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - description       = "managed by Terraform" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - self              = false -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     }
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66: Changes to Outputs:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - egress    = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - cidr_blocks              = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - description              = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - from_port                = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - protocol                 = "-1"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - self                     = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - source_security_group_id = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - timeouts                 = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - to_port                  = 0
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - type                     = "egress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - ingress   = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - cidr_blocks              = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - "0.0.0.0/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - description              = "managed by Terraform"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - from_port                = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:               - "::/0",
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:             ]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - self                     = false
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - source_security_group_id = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - timeouts                 = null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - to_port                  = 443
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:           - type                     = "ingress"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:         },
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     ] -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:   - terratest = {
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - aws_security_group_pre_existing_id = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformRulesOnlyExample 2022-08-27T19:26:24Z logger.go:66:     } -> null
-TestTerraformRulesOnlyExample 2022-08-27T19:26:26Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Destroying... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:26Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Destroying... [id=sgrule-1111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:26Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Destruction complete after 1s
-TestTerraformRulesOnlyExample 2022-08-27T19:26:27Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Destruction complete after 1s
-TestTerraformRulesOnlyExample 2022-08-27T19:26:27Z logger.go:66: aws_security_group.pre_existing: Destroying... [id=sg-1111111111111111]
-TestTerraformRulesOnlyExample 2022-08-27T19:26:28Z logger.go:66: aws_security_group.pre_existing: Destruction complete after 1s
-TestTerraformRulesOnlyExample 2022-08-27T19:26:28Z logger.go:66:
-TestTerraformRulesOnlyExample 2022-08-27T19:26:28Z logger.go:66: Destroy complete! Resources: 3 destroyed.
---- FAIL: TestTerraformRulesOnlyExample (28.95s)
-FAIL
-FAIL	command-line-arguments	28.963s
-FAIL
+=== RUN   TestTerraformdRulesOnlyExample
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:40Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:40Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:40Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:40Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:40Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:41Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:41Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:41Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: [0m[32m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: should now work.
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:42Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:44Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + create
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: Terraform will perform the following actions:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   # aws_security_group.pre_existing will be created
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + resource "aws_security_group" "pre_existing" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + description            = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + id                     = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + name                   = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + tags                   = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "Name" = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + tags_all               = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "Example"    = "ex-rules-only"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "Name"       = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["all-to-public"] will be created
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + cidr_blocks              = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + description              = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + from_port                = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + id                       = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + protocol                 = "-1"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + self                     = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + to_port                  = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + type                     = "egress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["https-from-public"] will be created
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + cidr_blocks              = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + description              = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + from_port                = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + id                       = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:           + "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:         ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + self                     = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + to_port                  = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + type                     = "ingress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66: Changes to Outputs:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + egress    = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:   + terratest = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + aws_security_group_pre_existing_id = (known after apply)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:45Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:46Z logger.go:66: aws_security_group.pre_existing: Creating...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:48Z logger.go:66: aws_security_group.pre_existing: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:48Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Creating...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:48Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Creating...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:49Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: Outputs:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: egress = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:       "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     ])
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "from_port" = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:       "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     ])
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "protocol" = "-1"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "self" = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "to_port" = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "type" = "egress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: ingress = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:       "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     ])
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "from_port" = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:       "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     ])
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "protocol" = "tcp"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "self" = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "to_port" = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:     "type" = "ingress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: terratest = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   "aws_security_group_pre_existing_id" = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:50Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:51Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"managed by Terraform","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:51Z retry.go:91: terraform [output -no-color -json egress]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:51Z logger.go:66: Running command terraform with args [output -no-color -json egress]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:52Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"managed by Terraform","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:52Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:52Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:52Z logger.go:66: {"aws_security_group_pre_existing_id":"sg-1111111111111111","data_aws_security_group_default_id":"sg-1111111111111111"}
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:53Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:53Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:55Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: aws_security_group.pre_existing: Refreshing state... [id=sg-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:56Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - destroy
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66: Terraform will perform the following actions:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   # aws_security_group.pre_existing will be destroyed
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - resource "aws_security_group" "pre_existing" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - description            = "ex-rules-only-pre-existing" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - egress                 = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - cidr_blocks      = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                   - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                 ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - from_port        = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                   - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                 ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - protocol         = "-1"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - security_groups  = []
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - self             = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - to_port          = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - ingress                = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - cidr_blocks      = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                   - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                 ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - from_port        = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                   - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:                 ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - protocol         = "tcp"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - security_groups  = []
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - self             = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - to_port          = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - name                   = "ex-rules-only-pre-existing" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - tags                   = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "Name" = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         } -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - tags_all               = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "Example"    = "ex-rules-only"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "Name"       = "ex-rules-only-pre-existing"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         } -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["all-to-public"] will be destroyed
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - cidr_blocks       = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - self              = false -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - type              = "egress" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["https-from-public"] will be destroyed
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - cidr_blocks       = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - self              = false -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     }
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66: Changes to Outputs:
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - egress    = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - cidr_blocks              = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - from_port                = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - protocol                 = "-1"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - self                     = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - source_security_group_id = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - timeouts                 = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - to_port                  = 0
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - type                     = "egress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - ingress   = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - cidr_blocks              = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - "0.0.0.0/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - from_port                = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:               - "::/0",
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:             ]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - self                     = false
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - source_security_group_id = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - timeouts                 = null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - to_port                  = 443
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:           - type                     = "ingress"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:         },
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     ] -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:   - terratest = {
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - aws_security_group_pre_existing_id = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:57Z logger.go:66:     } -> null
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:58Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Destroying... [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:58Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Destroying... [id=sgrule-1111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:58Z logger.go:66: module.security_group.aws_security_group_rule.egress["all-to-public"]: Destruction complete after 1s
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:59Z logger.go:66: module.security_group.aws_security_group_rule.ingress["https-from-public"]: Destruction complete after 1s
+TestTerraformdRulesOnlyExample 2022-08-27T23:26:59Z logger.go:66: aws_security_group.pre_existing: Destroying... [id=sg-1111111111111111]
+TestTerraformdRulesOnlyExample 2022-08-27T23:27:00Z logger.go:66: aws_security_group.pre_existing: Destruction complete after 1s
+TestTerraformdRulesOnlyExample 2022-08-27T23:27:00Z logger.go:66:
+TestTerraformdRulesOnlyExample 2022-08-27T23:27:00Z logger.go:66: Destroy complete! Resources: 3 destroyed.
+--- PASS: TestTerraformdRulesOnlyExample (20.30s)
+PASS
+ok  	command-line-arguments	20.320s

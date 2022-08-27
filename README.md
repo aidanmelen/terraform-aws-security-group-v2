@@ -12,19 +12,23 @@ Terraform module which creates [EC2 security group within VPC](http://docs.aws.a
 
 This module aims to implement **ALL** combinations of arguments supported by AWS and latest stable version of Terraform:
 
-- IPv4/IPv6 CIDR blocks
-- [VPC endpoint prefix lists](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) (use data source [aws_prefix_list](https://www.terraform.io/docs/providers/aws/d/prefix_list.html))
-- Access from source security groups
-- Access from self
-- Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
-- Toggle creation of common rules like egress all to the public internet.
+- Custom ingress/egress rules.
+- Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
+- Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
+- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports Custom, Managed, and Common rules.
 - Conditionally create security group and/or all required security group rules.
+
+What's more, this module was modeled on the [terraform-aws-modules/terraform-aws-security-group](hhttps://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody.
 
 ## Examples
 
 ### Security Group with basic rules
 
-Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
+Create a security group using:
+
+- The `https-443-tcp` managed ingress rule
+- The `all-from-self` common ingress rule
+- The `all-to-public` common egress rule
 
 ```hcl
 module "security_group" {
@@ -56,67 +60,9 @@ module "security_group" {
 
 Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
 
-### Security Group with common rules
-
-Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
-
-```hcl
-module "public_https_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
-
-  name        = "${local.name}-https"
-  description = "${local.name}-https"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "all-from-https" }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-https"
-  }
-}
-
-module "public_http_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
-
-  name        = "${local.name}-http"
-  description = "${local.name}-http"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "all-from-http" }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-http"
-  }
-}
-
-module "ssh_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
-
-  name        = "${local.name}-ssh"
-  description = "${local.name}-ssh"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-ssh"
-  }
-}
-```
-
-Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
-
 ### Security Group with complete rules
 
-Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
-
-<details><summary>Click to show</summary>
+Create a AWS Security Group with a broad mix of various features and settings provided by this module.
 
 ```hcl
 module "security_group" {
@@ -215,9 +161,67 @@ module "disabled_sg" {
 }
 ```
 
+Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
+
+### Security Group with common rules
+
+Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
+
+<details><summary>Click to show</summary>
+
+```hcl
+module "public_https_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.1"
+
+  name        = "${local.name}-https"
+  description = "${local.name}-https"
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [{ rule = "all-from-https" }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
+
+  tags = {
+    "Name" = "${local.name}-https"
+  }
+}
+
+module "public_http_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.1"
+
+  name        = "${local.name}-http"
+  description = "${local.name}-http"
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [{ rule = "all-from-http" }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
+
+  tags = {
+    "Name" = "${local.name}-http"
+  }
+}
+
+module "ssh_sg" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.5.1"
+
+  name        = "${local.name}-ssh"
+  description = "${local.name}-ssh"
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-from-self" }]
+  egress  = [{ rule = "all-to-public" }]
+
+  tags = {
+    "Name" = "${local.name}-ssh"
+  }
+}
+```
+
 </details><br/>
 
-Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
+Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common) for more information.
 
 ### Security group with custom rules
 
@@ -379,7 +383,7 @@ module "security_group" {
 
 </details><br/>
 
-Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed_rules) for more information.
+Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed) for more information.
 
 ### Security group with computed rules
 
@@ -459,7 +463,7 @@ module "security_group" {
 
 </details><br/>
 
-Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed_rules) for more information.
+Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
 
 ### Only rules with pre-existing security group
 
@@ -507,12 +511,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-FAIL
-FAIL
-FAIL
-FAIL
-FAIL
-FAIL
+--- PASS: TestTerraformBasicExample (24.15s)
+--- PASS: TestTerraformCompleteExample (48.83s)
+--- PASS: TestTerraformCustomRulesExample (33.22s)
+--- PASS: TestTerraformManagedRulesExample (33.45s)
+--- PASS: TestTerraformComputedRulesExample (30.26s)
+--- PASS: TestTerraformdRulesOnlyExample (20.30s)
 ```
 
 ## Makefile Targets
@@ -527,9 +531,9 @@ lint-all             Lint all files with pre-commit and render docs
 tests                Tests with Terratest
 test-basic           Test the basic example
 test-complete        Test the complete example
-test-custom-rules    Test the custom_rules example
-test-managed-rules   Test the managed_rules example
-test-computed-rules  Test the computed_rules example
+test-custom          Test the custom example
+test-managed         Test the managed example
+test-computed        Test the computed example
 test-rules-only      Test the rules_only example
 clean                Clean project
 ```
