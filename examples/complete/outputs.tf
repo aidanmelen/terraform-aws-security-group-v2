@@ -25,6 +25,7 @@ output "egress" {
   description = "The security group egress rules."
   value       = try(module.security_group.security_group_egress_rules, null)
 }
+
 ################################################################################
 # Disabled creation
 ################################################################################
