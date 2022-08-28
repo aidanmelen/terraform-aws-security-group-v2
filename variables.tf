@@ -40,7 +40,7 @@ variable "name" {
 
 variable "revoke_rules_on_delete" {
   description = "(Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false."
-  type        = string
+  type        = bool
   default     = null
 }
 
@@ -71,6 +71,24 @@ variable "delete_timeout" {
 ###############################################################################
 # Security Group Rules
 ###############################################################################
+
+variable "default_cidr_blocks" {
+  description = "The default CIDR blocks that will be appended to any rule specfying `cidr_blocks`."
+  type        = any
+  default     = []
+}
+
+variable "default_ipv6_cidr_blocks" {
+  description = "The default IPV6 CIDR blocks that will be appended to any rule specfying `ipv6_cidr_blocks`."
+  type        = any
+  default     = []
+}
+
+variable "default_prefix_list_ids" {
+  description = "The default IPV6 CIDR blocks that will be appended to any rule specfying `prefix_list_ids`."
+  type        = any
+  default     = []
+}
 
 # https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count
 variable "ingress" {
