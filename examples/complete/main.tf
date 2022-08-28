@@ -40,6 +40,7 @@ module "security_group" {
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
+      description              = "This rule must be computed because it is created in the same terraform run as this module and is unknown at plan time."
     },
     {
       rule                     = "https-443-tcp"
@@ -85,8 +86,18 @@ module "security_group" {
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+      description     = "computed (managed) rule example"
     }
   ]
+
+  # uncomment the to add 10.20.0.0/24 to every rule that specifies cidr_blocks.
+  # default_cidr_blocks = ["10.20.0.0/24"]
+
+  # uncomment to add fc00::/116 to every rule that specifies ipv6_cidr_blocks.
+  # default_ipv6_cidr_blocks = ["fc00::/116"]
+
+  # uncomment to add aws_ec2_managed_prefix_list.other.id to every rule that specifies prefix_list_ids.
+  # default_prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
 
   tags = {
     "Name" = local.name

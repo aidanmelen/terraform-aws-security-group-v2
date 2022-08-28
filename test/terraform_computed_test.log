@@ -1,598 +1,678 @@
 === RUN   TestTerraformComputedRulesExample
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformComputedRulesExample 2022-08-28T18:02:22Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: [0m[32m
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: should now work.
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:23Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:26Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + create
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: Terraform will perform the following actions:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_ec2_managed_prefix_list" "other" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + address_family = "IPv4"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + arn            = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id             = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + max_entries    = 5
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + name           = "ex-computed-other"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + owner_id       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + tags_all       = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Example"    = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + version        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + entry {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + cidr        = "172.31.0.0/16"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + description = "Primary"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # aws_security_group.other will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group" "other" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description            = "ex-computed-other"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + name                   = "ex-computed-other"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + tags                   = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Name" = "ex-computed-other"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + tags_all               = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Example"    = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Name"       = "ex-computed-other"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description            = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + name                   = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + tags                   = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Name" = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + tags_all               = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Example"    = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + "Name"       = "ex-computed"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + timeouts {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + create = "10m"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:           + delete = "15m"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:         }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[0] will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + cidr_blocks              = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + from_port                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + prefix_list_ids          = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + protocol                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + self                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + to_port                  = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + type                     = "egress"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[1] will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + cidr_blocks              = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + from_port                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + prefix_list_ids          = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + protocol                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + self                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + to_port                  = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + type                     = "egress"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[0] will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + cidr_blocks              = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + from_port                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + prefix_list_ids          = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + protocol                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + self                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + to_port                  = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + type                     = "ingress"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[1] will be created
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress" {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + cidr_blocks              = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + description              = "managed by Terraform"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + from_port                = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + id                       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + prefix_list_ids          = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + protocol                 = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + self                     = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + to_port                  = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + type                     = "ingress"
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: Plan: 7 to add, 0 to change, 0 to destroy.
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66: Changes to Outputs:
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + arn       = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + egress    = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + id        = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:   + terratest = {
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + aws_ec2_managed_prefix_list_other_id = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:       + aws_security_group_other_id          = (known after apply)
-TestTerraformComputedRulesExample 2022-08-28T18:02:27Z logger.go:66:     }
-TestTerraformComputedRulesExample 2022-08-28T18:02:28Z logger.go:66: aws_security_group.other: Creating...
-TestTerraformComputedRulesExample 2022-08-28T18:02:28Z logger.go:66: aws_ec2_managed_prefix_list.other: Creating...
-TestTerraformComputedRulesExample 2022-08-28T18:02:28Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-28T18:02:29Z logger.go:66: aws_ec2_managed_prefix_list.other: Creation complete after 1s [id=pl-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:30Z logger.go:66: aws_security_group.other: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:30Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:30Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Creating...
-TestTerraformComputedRulesExample 2022-08-28T18:02:30Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Creating...
-TestTerraformComputedRulesExample 2022-08-28T18:02:30Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  100:   cidr_blocks              = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  103:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  104:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  100:   cidr_blocks              = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  103:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  104:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  105:   ipv6_cidr_blocks         = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  108:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  109:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "ipv6_cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  105:   ipv6_cidr_blocks         = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  108:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  109:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "ipv6_cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "source_security_group_id": conflicts with cidr_blocks
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:   on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:  116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: "source_security_group_id": conflicts with cidr_blocks
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z retry.go:99: Returning due to fatal error: FatalError{Underlying: error while running command: exit status 1;
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
- 100:   cidr_blocks              = try(
- 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
- 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
- 103:     null
- 104:   )
-
-"cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
- 100:   cidr_blocks              = try(
- 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
- 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
- 103:     null
- 104:   )
-
-"cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
- 105:   ipv6_cidr_blocks         = try(
- 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 108:     null
- 109:   )
-
-"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
- 105:   ipv6_cidr_blocks         = try(
- 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 108:     null
- 109:   )
-
-"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
- 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-"source_security_group_id": conflicts with cidr_blocks
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
- 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-"source_security_group_id": conflicts with cidr_blocks}
-    apply.go:15:
-        	Error Trace:	/workspaces/terraform-aws-security-group-v2/test/apply.go:15
-        	            				/workspaces/terraform-aws-security-group-v2/test/terraform_computed_test.go:25
-        	Error:      	Received unexpected error:
-        	            	FatalError{Underlying: error while running command: exit status 1;
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 100:   cidr_blocks              = try(
-        	            	 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 103:     null
-        	            	 104:   )
-
-        	            	"cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 100:   cidr_blocks              = try(
-        	            	 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 103:     null
-        	            	 104:   )
-
-        	            	"cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 105:   ipv6_cidr_blocks         = try(
-        	            	 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 108:     null
-        	            	 109:   )
-
-        	            	"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 105:   ipv6_cidr_blocks         = try(
-        	            	 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 108:     null
-        	            	 109:   )
-
-        	            	"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-        	            	"source_security_group_id": conflicts with cidr_blocks
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-        	            	"source_security_group_id": conflicts with cidr_blocks}
-        	Test:       	TestTerraformComputedRulesExample
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:31Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformComputedRulesExample 2022-08-28T18:02:34Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformComputedRulesExample 2022-08-28T18:02:34Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:34Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:34Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:34Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  100:   cidr_blocks              = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  103:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  104:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  100:   cidr_blocks              = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  103:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  104:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  105:   ipv6_cidr_blocks         = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  108:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  109:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "ipv6_cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  105:   ipv6_cidr_blocks         = try(
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  108:     null
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  109:   )
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "ipv6_cidr_blocks": conflicts with source_security_group_id
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[0],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "source_security_group_id": conflicts with cidr_blocks
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: Error: Conflicting configuration arguments
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   with module.security_group.aws_security_group_rule.computed_ingress[1],
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:   on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:  116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66:
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z logger.go:66: "source_security_group_id": conflicts with cidr_blocks
-TestTerraformComputedRulesExample 2022-08-28T18:02:35Z retry.go:99: Returning due to fatal error: FatalError{Underlying: error while running command: exit status 1;
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
- 100:   cidr_blocks              = try(
- 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
- 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
- 103:     null
- 104:   )
-
-"cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
- 100:   cidr_blocks              = try(
- 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
- 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
- 103:     null
- 104:   )
-
-"cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
- 105:   ipv6_cidr_blocks         = try(
- 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 108:     null
- 109:   )
-
-"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
- 105:   ipv6_cidr_blocks         = try(
- 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
- 108:     null
- 109:   )
-
-"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[0],
-  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
- 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-"source_security_group_id": conflicts with cidr_blocks
-
-Error: Conflicting configuration arguments
-
-  with module.security_group.aws_security_group_rule.computed_ingress[1],
-  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
- 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-"source_security_group_id": conflicts with cidr_blocks}
-    destroy.go:11:
-        	Error Trace:	/workspaces/terraform-aws-security-group-v2/test/destroy.go:11
-        	            				/workspaces/terraform-aws-security-group-v2/test/panic.go:642
-        	            				/workspaces/terraform-aws-security-group-v2/test/testing.go:756
-        	            				/workspaces/terraform-aws-security-group-v2/test/apply.go:15
-        	            				/workspaces/terraform-aws-security-group-v2/test/terraform_computed_test.go:25
-        	Error:      	Received unexpected error:
-        	            	FatalError{Underlying: error while running command: exit status 1;
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 100:   cidr_blocks              = try(
-        	            	 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 103:     null
-        	            	 104:   )
-
-        	            	"cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 100, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 100:   cidr_blocks              = try(
-        	            	 101:     distinct(concat(lookup(var.computed_ingress[count.index], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 102:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "cidr_blocks", []), var.default_cidr_blocks)),
-        	            	 103:     null
-        	            	 104:   )
-
-        	            	"cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 105:   ipv6_cidr_blocks         = try(
-        	            	 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 108:     null
-        	            	 109:   )
-
-        	            	"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 105, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 105:   ipv6_cidr_blocks         = try(
-        	            	 106:     distinct(concat(lookup(var.computed_ingress[count.index], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 107:     distinct(concat(lookup(local.rules[lookup(var.computed_ingress[count.index], "rule")], "ipv6_cidr_blocks", []), var.default_ipv6_cidr_blocks)),
-        	            	 108:     null
-        	            	 109:   )
-
-        	            	"ipv6_cidr_blocks": conflicts with source_security_group_id
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[0],
-        	            	  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-        	            	"source_security_group_id": conflicts with cidr_blocks
-
-        	            	Error: Conflicting configuration arguments
-
-        	            	  with module.security_group.aws_security_group_rule.computed_ingress[1],
-        	            	  on ../../main.tf line 116, in resource "aws_security_group_rule" "computed_ingress":
-        	            	 116:   source_security_group_id = try(var.computed_ingress[count.index]["source_security_group_id"], null)
-
-        	            	"source_security_group_id": conflicts with cidr_blocks}
-        	Test:       	TestTerraformComputedRulesExample
---- FAIL: TestTerraformComputedRulesExample (13.55s)
-FAIL
-FAIL	command-line-arguments	13.561s
-FAIL
+TestTerraformComputedRulesExample 2022-08-28T22:16:54Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformComputedRulesExample 2022-08-28T22:16:54Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformComputedRulesExample 2022-08-28T22:16:54Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformComputedRulesExample 2022-08-28T22:16:55Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:16:55Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformComputedRulesExample 2022-08-28T22:16:55Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:16:55Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformComputedRulesExample 2022-08-28T22:16:55Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: - Using previously-installed hashicorp/aws v4.27.0
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: [0m[32m
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: should now work.
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformComputedRulesExample 2022-08-28T22:16:56Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformComputedRulesExample 2022-08-28T22:16:59Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformComputedRulesExample 2022-08-28T22:16:59Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:16:59Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:16:59Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:16:59Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Note: Objects have changed outside of Terraform
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Terraform detected the following changes made outside of Terraform since the
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: last "terraform apply" which may have affected this plan:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # aws_security_group.other has been deleted
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   - resource "aws_security_group" "other" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         name                   = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:             "Name" = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         # (8 unchanged attributes hidden)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group.self[0] has been deleted
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - description            = "ex-computed" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - egress                 = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - ingress                = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - name                   = "ex-computed" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "Name" = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - tags_all               = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "Name"       = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - timeouts {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - create = "10m" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - delete = "15m" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[0] has been deleted
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - cidr_blocks       = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - from_port         = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - self              = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - to_port           = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - type              = "egress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[1] has been deleted
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - cidr_blocks       = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - self              = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - type              = "egress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Unless you have made equivalent changes to your configuration, or ignored the
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: relevant attributes using ignore_changes, the following plan may include
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: actions to undo or respond to these changes.
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: ─────────────────────────────────────────────────────────────────────────────
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + create
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Terraform will perform the following actions:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # aws_security_group.other will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group" "other" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description            = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                     = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + name                   = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Name" = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + tags_all               = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Name"       = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description            = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                     = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + name                   = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Name" = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + tags_all               = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "Name"       = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + timeouts {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + create = "10m"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + delete = "15m"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[0] will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + from_port                = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                       = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + to_port                  = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[1] will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + from_port                = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                       = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           + "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + to_port                  = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[0] will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + cidr_blocks              = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description              = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + from_port                = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                       = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + prefix_list_ids          = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + protocol                 = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + self                     = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + to_port                  = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + type                     = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[1] will be created
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + resource "aws_security_group_rule" "computed_ingress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + cidr_blocks              = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + description              = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + from_port                = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + id                       = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + ipv6_cidr_blocks         = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + prefix_list_ids          = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + protocol                 = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + self                     = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + to_port                  = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       + type                     = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Plan: 6 to add, 0 to change, 0 to destroy.
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66: Changes to Outputs:
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   ~ arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   ~ egress    = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - cidr_blocks              = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - from_port                = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - ipv6_cidr_blocks         = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:             ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - source_security_group_id = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - to_port                  = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - cidr_blocks              = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - from_port                = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - ipv6_cidr_blocks         = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:             ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - source_security_group_id = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - to_port                  = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:           - type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     ] -> (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   ~ id        = "sg-1111111111111111" -> (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:   ~ terratest = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:       ~ aws_security_group_other_id          = "sg-1111111111111111" -> (known after apply)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:         # (1 unchanged element hidden)
+TestTerraformComputedRulesExample 2022-08-28T22:17:00Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:01Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:01Z logger.go:66: aws_security_group.other: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: aws_security_group.other: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[0]: Creating...
+TestTerraformComputedRulesExample 2022-08-28T22:17:04Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:05Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:06Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[0]: Creation complete after 3s [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: Outputs:
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: egress = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   {
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "from_port" = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "prefix_list_ids" = tolist([
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:       "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     ])
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "protocol" = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "self" = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "to_port" = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "type" = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   },
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   {
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "from_port" = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "prefix_list_ids" = tolist([
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:       "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     ])
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "protocol" = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "self" = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "to_port" = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "type" = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   },
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: id = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: ingress = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   {
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "from_port" = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "protocol" = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "self" = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "to_port" = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "type" = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   },
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   {
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "description" = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "from_port" = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "protocol" = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "self" = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "to_port" = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:     "type" = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   },
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: terratest = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   "aws_ec2_managed_prefix_list_other_id" = "pl-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66:   "aws_security_group_other_id" = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: }
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z retry.go:91: terraform [output -no-color -json id]
+TestTerraformComputedRulesExample 2022-08-28T22:17:07Z logger.go:66: Running command terraform with args [output -no-color -json id]
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z logger.go:66: "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z logger.go:66: [{"cidr_blocks":null,"description":"managed by Terraform","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":80,"type":"ingress"},{"cidr_blocks":null,"description":"managed by Terraform","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"ingress"}]
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z retry.go:91: terraform [output -no-color -json egress]
+TestTerraformComputedRulesExample 2022-08-28T22:17:08Z logger.go:66: Running command terraform with args [output -no-color -json egress]
+TestTerraformComputedRulesExample 2022-08-28T22:17:09Z logger.go:66: [{"cidr_blocks":null,"description":"managed by Terraform","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":80,"type":"egress"},{"cidr_blocks":null,"description":"managed by Terraform","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"egress"}]
+TestTerraformComputedRulesExample 2022-08-28T22:17:09Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformComputedRulesExample 2022-08-28T22:17:09Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformComputedRulesExample 2022-08-28T22:17:10Z logger.go:66: {"aws_ec2_managed_prefix_list_other_id":"pl-1111111111111111","aws_security_group_other_id":"sg-1111111111111111"}
+TestTerraformComputedRulesExample 2022-08-28T22:17:10Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformComputedRulesExample 2022-08-28T22:17:10Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformComputedRulesExample 2022-08-28T22:17:13Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformComputedRulesExample 2022-08-28T22:17:13Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:13Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:13Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:13Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - destroy
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: Terraform will perform the following actions:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_ec2_managed_prefix_list" "other" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - address_family = "IPv4" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - arn            = "arn:aws:ec2:us-west-2:111111111111:prefix-list/pl-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id             = "pl-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - max_entries    = 5 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - name           = "ex-computed-other" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - owner_id       = "111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags           = {} -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags_all       = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - version        = 1 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - entry {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - cidr        = "172.31.0.0/16" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - description = "Primary" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # aws_security_group.other will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group" "other" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description            = "ex-computed-other" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - egress                 = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - ingress                = [] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - name                   = "ex-computed-other" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Name" = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags_all               = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Name"       = "ex-computed-other"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description            = "ex-computed" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - egress                 = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - cidr_blocks      = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - from_port        = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                   - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                 ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - protocol         = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - security_groups  = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - self             = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - to_port          = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - cidr_blocks      = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - from_port        = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                   - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                 ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - protocol         = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - security_groups  = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - self             = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - to_port          = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - ingress                = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - cidr_blocks      = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - from_port        = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - protocol         = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - security_groups  = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                 ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - self             = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - to_port          = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - cidr_blocks      = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - description      = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - from_port        = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - protocol         = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - security_groups  = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:                 ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - self             = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - to_port          = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - name                   = "ex-computed" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags                   = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Name" = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - tags_all               = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Example"    = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "Name"       = "ex-computed"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - timeouts {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - create = "10m" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - delete = "15m" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - from_port         = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - self              = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - to_port           = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - type              = "egress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_egress[1] will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group_rule" "computed_egress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description       = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - self              = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - type              = "egress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[0] will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group_rule" "computed_ingress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description              = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - from_port                = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - self                     = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - to_port                  = 80 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   # module.security_group.aws_security_group_rule.computed_ingress[1] will be destroyed
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - resource "aws_security_group_rule" "computed_ingress" {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - description              = "managed by Terraform" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - from_port                = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - self                     = false -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - to_port                  = 443 -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     }
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: Plan: 0 to add, 0 to change, 7 to destroy.
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66: Changes to Outputs:
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - egress    = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - cidr_blocks              = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - from_port                = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - source_security_group_id = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - to_port                  = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - cidr_blocks              = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - from_port                = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:             ]
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - source_security_group_id = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - to_port                  = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - type                     = "egress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - id        = "sg-1111111111111111" -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - ingress   = [
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - cidr_blocks              = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - from_port                = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - to_port                  = 80
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - type                     = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - cidr_blocks              = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - description              = "managed by Terraform"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - from_port                = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - self                     = false
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - timeouts                 = null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - to_port                  = 443
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:           - type                     = "ingress"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:         },
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     ] -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:   - terratest = {
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - aws_ec2_managed_prefix_list_other_id = "pl-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:       - aws_security_group_other_id          = "sg-1111111111111111"
+TestTerraformComputedRulesExample 2022-08-28T22:17:14Z logger.go:66:     } -> null
+TestTerraformComputedRulesExample 2022-08-28T22:17:16Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:16Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:16Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:16Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[0]: Destroying... [id=sgrule-1111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:16Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[1]: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-28T22:17:17Z logger.go:66: module.security_group.aws_security_group_rule.computed_egress[0]: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-28T22:17:17Z logger.go:66: aws_ec2_managed_prefix_list.other: Destroying... [id=pl-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:17Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[0]: Destruction complete after 2s
+TestTerraformComputedRulesExample 2022-08-28T22:17:18Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Destruction complete after 3s
+TestTerraformComputedRulesExample 2022-08-28T22:17:18Z logger.go:66: aws_security_group.other: Destroying... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:18Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformComputedRulesExample 2022-08-28T22:17:19Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-28T22:17:19Z logger.go:66: aws_security_group.other: Destruction complete after 1s
+TestTerraformComputedRulesExample 2022-08-28T22:17:24Z logger.go:66: aws_ec2_managed_prefix_list.other: Destruction complete after 7s
+TestTerraformComputedRulesExample 2022-08-28T22:17:24Z logger.go:66:
+TestTerraformComputedRulesExample 2022-08-28T22:17:24Z logger.go:66: Destroy complete! Resources: 7 destroyed.
+--- PASS: TestTerraformComputedRulesExample (29.65s)
+PASS
+ok  	command-line-arguments	29.667s

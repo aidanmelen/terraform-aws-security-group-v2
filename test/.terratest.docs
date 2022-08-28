@@ -1,6 +1,6 @@
-FAIL
-FAIL
-FAIL
-FAIL
-FAIL
-	/go/pkg/mod/github.com/gruntwork-io/terratest@v0.40.20/modules/shell/command.go:141 +0x51d
+--- PASS: TestTerraformBasicExample (21.93s)
+--- PASS: TestTerraformCompleteExample (49.69s)
+--- PASS: TestTerraformCustomerRulesExample (33.69s)
+--- PASS: TestTerraformManagedRulesExample (32.42s)
+--- PASS: TestTerraformComputedRulesExample (29.65s)
+--- PASS: TestTerraformRulesOnlyExample (20.64s)

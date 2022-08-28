@@ -108,6 +108,7 @@ module "security_group" {
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
+      description              = "This rule must be computed because it is created in the same terraform run as this module and is unknown at plan time."
     },
     {
       rule                     = "https-443-tcp"
@@ -153,8 +154,18 @@ module "security_group" {
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+      description     = "computed (managed) rule example"
     }
   ]
+
+  # uncomment the to add 10.20.0.0/24 to every rule that specifies cidr_blocks.
+  # default_cidr_blocks = ["10.20.0.0/24"]
+
+  # uncomment to add fc00::/116 to every rule that specifies ipv6_cidr_blocks.
+  # default_ipv6_cidr_blocks = ["fc00::/116"]
+
+  # uncomment to add aws_ec2_managed_prefix_list.other.id to every rule that specifies prefix_list_ids.
+  # default_prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
 
   tags = {
     "Name" = local.name
@@ -522,12 +533,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-FAIL
-FAIL
-FAIL
-FAIL
-FAIL
-	/go/pkg/mod/github.com/gruntwork-io/terratest@v0.40.20/modules/shell/command.go:141 +0x51d
+--- PASS: TestTerraformBasicExample (21.93s)
+--- PASS: TestTerraformCompleteExample (49.69s)
+--- PASS: TestTerraformCustomerRulesExample (33.69s)
+--- PASS: TestTerraformManagedRulesExample (32.42s)
+--- PASS: TestTerraformComputedRulesExample (29.65s)
+--- PASS: TestTerraformRulesOnlyExample (20.64s)
 ```
 
 ## Makefile Targets
