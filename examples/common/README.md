@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.0"
+  version = ">= 0.6.1"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -39,7 +39,7 @@ module "public_https_sg" {
 
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.0"
+  version = ">= 0.6.1"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -55,7 +55,7 @@ module "public_http_sg" {
 
 module "ssh_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.0"
+  version = ">= 0.6.1"
 
   name        = "${local.name}-ssh"
   description = "${local.name}-ssh"
