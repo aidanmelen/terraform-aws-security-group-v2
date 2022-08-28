@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTerraformdRulesOnlyExample(t *testing.T) {
+func TestTerraformRulesOnlyExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
 		TerraformDir: "../examples/rules_only",

@@ -7,7 +7,7 @@ lint-all             Lint all files with pre-commit and render docs
 tests                Tests with Terratest
 test-basic           Test the basic example
 test-complete        Test the complete example
-test-custom          Test the custom example
+test-customer        Test the customer example
 test-managed         Test the managed example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example

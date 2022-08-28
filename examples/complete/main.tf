@@ -9,6 +9,7 @@ module "security_group" {
     {
       rule        = "all-all"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+      description = "managed rule example"
     },
     {
       rule             = "postgresql-tcp"
@@ -23,8 +24,12 @@ module "security_group" {
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
+      description              = "customer rule example"
     },
-    { rule = "https-from-public" },
+    {
+      rule        = "https-from-public"
+      description = "common rule example"
+    },
     { rule = "http-from-public" },
     { rule = "all-from-self" }
   ]
@@ -46,6 +51,7 @@ module "security_group" {
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+      description = "managed rule example"
     },
     {
       rule             = "postgresql-tcp"
@@ -60,8 +66,12 @@ module "security_group" {
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
+      description              = "customer rule example"
     },
-    { rule = "all-to-public" }
+    {
+      rule        = "all-to-public"
+      description = "common rule example"
+    }
   ]
 
   computed_egress = [
@@ -70,6 +80,7 @@ module "security_group" {
       to_port         = 80
       protocol        = "tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+      description     = "computed (customer) rule example"
     },
     {
       rule            = "https-443-tcp"

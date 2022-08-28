@@ -1,4 +1,4 @@
-# Computed Security Group example
+# Security Group with computed rules
 
 Create a security group with a computed rules. Computed security group rules uses `count` to dynamically create rules with unknown values during the initial Terraform plan. Please see [Limitations on values used in for_each](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each).
 
@@ -114,5 +114,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

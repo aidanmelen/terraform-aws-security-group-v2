@@ -1,11 +1,11 @@
-# Complete Security Group example
+# Security Group with complete rules
 
 Create a AWS Security Group with a broad mix of various features and settings provided by this module:
 
-- Custom ingress/egress rules.
+- customer ingress/egress rules.
 - Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
 - Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
-- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports Custom, Managed, and Common rules.
+- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports customer, Managed, and Common rules.
 - Conditionally create security group and/or all required security group rules.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
@@ -39,6 +39,7 @@ module "security_group" {
     {
       rule        = "all-all"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+      description = "managed rule example"
     },
     {
       rule             = "postgresql-tcp"
@@ -53,8 +54,12 @@ module "security_group" {
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
+      description              = "customer rule example"
     },
-    { rule = "https-from-public" },
+    {
+      rule        = "https-from-public"
+      description = "common rule example"
+    },
     { rule = "http-from-public" },
     { rule = "all-from-self" }
   ]
@@ -76,6 +81,7 @@ module "security_group" {
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+      description = "managed rule example"
     },
     {
       rule             = "postgresql-tcp"
@@ -90,8 +96,12 @@ module "security_group" {
       to_port                  = 0
       protocol                 = "icmp"
       source_security_group_id = data.aws_security_group.default.id
+      description              = "customer rule example"
     },
-    { rule = "all-to-public" }
+    {
+      rule        = "all-to-public"
+      description = "common rule example"
+    }
   ]
 
   computed_egress = [
@@ -100,6 +110,7 @@ module "security_group" {
       to_port         = 80
       protocol        = "tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+      description     = "computed (customer) rule example"
     },
     {
       rule            = "https-443-tcp"
@@ -149,5 +160,5 @@ module "disabled_sg" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -1,6 +1,7 @@
-# Basic Security Group example
+# Security Group with basic rules
 
 Create a security group using:
+
 - The `https-443-tcp` managed ingress rule
 - The `all-from-self` common ingress rule
 - The `all-to-public` common egress rule

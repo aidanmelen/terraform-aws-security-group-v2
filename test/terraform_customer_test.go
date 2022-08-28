@@ -9,10 +9,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTerraformCustomRulesExample(t *testing.T) {
+func TestTerraformCustomerRulesExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/custom",
+		TerraformDir: "../examples/customer",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,

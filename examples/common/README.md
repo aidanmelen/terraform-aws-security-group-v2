@@ -1,6 +1,6 @@
-# Common Scenarios Security Group example
+# Security Group with customer rules
 
-Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
+Create security group with common scenario rules (e.g. `https-from-public`, `all-from-self`, `all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 

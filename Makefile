@@ -21,7 +21,7 @@ setup: ## Setup project
 	cd examples/basic && terraform init
 	cd examples/complete && terraform init
 	cd examples/common && terraform init
-	cd examples/custom && terraform init
+	cd examples/customer && terraform init
 	cd examples/managed && terraform init
 	cd examples/computed && terraform init
 	cd examples/rules_only && terraform init
@@ -53,7 +53,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-complete test-custom test-managed test-computed test-rules-only lint ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-computed test-rules-only lint ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
@@ -61,8 +61,8 @@ test-basic: ## Test the basic example
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 5m -v |& tee test/terraform_complete_test.log
 
-test-custom: ## Test the custom example
-	go test test/terraform_custom_test.go -timeout 5m -v |& tee test/terraform_custom_test.log
+test-customer: ## Test the customer example
+	go test test/terraform_customer_test.go -timeout 5m -v |& tee test/terraform_customer_test.log
 
 test-managed: ## Test the managed example
 	go test test/terraform_managed_test.go -timeout 5m -v |& tee test/terraform_managed_test.log
@@ -78,7 +78,7 @@ clean: ## Clean project
 	@rm -f examples/basic/.tebasiclock.hcl
 	@rm -f examples/complete/.tebasiclock.hcl
 	@rm -f examples/common/.terraform.lock.hcl
-	@rm -f examples/custom/.terraform.lock.hcl
+	@rm -f examples/customer/.terraform.lock.hcl
 	@rm -f examples/managed/.terraform.lock.hcl
 	@rm -f examples/computed/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
@@ -87,7 +87,7 @@ clean: ## Clean project
 	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/common/.terraform
-	@rm -rf examples/custom/.terraform
+	@rm -rf examples/customer/.terraform
 	@rm -rf examples/managed/.terraform
 	@rm -rf examples/computed/.terraform
 	@rm -rf examples/rules_only/.terraform
