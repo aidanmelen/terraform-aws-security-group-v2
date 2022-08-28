@@ -33,7 +33,7 @@ Create a security group using:
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
@@ -67,7 +67,7 @@ Create a AWS Security Group with a broad mix of various features and settings pr
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
@@ -167,7 +167,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
   create = false
 }
 ```
@@ -183,7 +183,7 @@ Create security group with common scenario rules (e.g. `https-from-public`, `all
 ```hcl
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -199,7 +199,7 @@ module "public_https_sg" {
 
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -215,7 +215,7 @@ module "public_http_sg" {
 
 module "ssh_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = "${local.name}-ssh"
   description = "${local.name}-ssh"
@@ -243,7 +243,7 @@ Create a security group with customer rules. customer rules for security groups 
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
@@ -334,7 +334,7 @@ Create a security group with managed rules. Managed rules for security groups ar
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
@@ -434,7 +434,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
@@ -495,7 +495,7 @@ resource "aws_security_group" "pre_existing" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.1"
+  version = ">= 0.6.0"
 
   create_security_group = false
   security_group_id     = aws_security_group.pre_existing.id
@@ -595,7 +595,7 @@ clean                Clean project
 
 This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
 
-- Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines compared to the ~800 lines in the terraform-aws-security-group module.
+- Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines when compared to the [~800 lines in the terraform-aws-security-group module](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/main.tf).
 
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
 
