@@ -40,6 +40,7 @@ module "security_group" {
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
+      description              = "This rule must be computed because it is created in the same terraform run as this module and is unknown at plan time."
     },
     {
       rule                     = "https-443-tcp"
@@ -85,6 +86,7 @@ module "security_group" {
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+      description     = "computed (managed) rule example"
     }
   ]
 
