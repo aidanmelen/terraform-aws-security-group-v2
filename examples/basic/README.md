@@ -1,6 +1,10 @@
-# Basic Security Group example
+# Security Group with basic rules
 
-Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
+Create a security group using:
+
+- The `https-443-tcp` managed ingress rule
+- The `all-from-self` common ingress rule
+- The `all-to-public` common egress rule
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -21,24 +25,26 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "https-443-tcp"
-      description = "My Service"
       cidr_blocks = ["10.0.0.0/24"]
-    }
+      description = "My Private Service"
+    },
+    { rule = "all-from-self" }
   ]
 
-  create_ingress_all_from_self_rule = true
-  create_egress_all_to_public_rules = true
+  egress = [
+    { rule = "all-to-public" }
+  ]
 
   tags = {
     "Name" = local.name
@@ -56,7 +62,7 @@ module "sg" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -68,8 +74,6 @@ module "sg" {
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
-| <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

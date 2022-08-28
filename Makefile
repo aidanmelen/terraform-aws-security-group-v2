@@ -20,10 +20,10 @@ setup: ## Setup project
 	terraform init
 	cd examples/basic && terraform init
 	cd examples/complete && terraform init
-	cd examples/common_rules && terraform init
-	cd examples/custom_rules && terraform init
-	cd examples/managed_rules && terraform init
-	cd examples/computed_rules && terraform init
+	cd examples/common && terraform init
+	cd examples/customer && terraform init
+	cd examples/managed && terraform init
+	cd examples/computed && terraform init
 	cd examples/rules_only && terraform init
 
 	# pre-commit
@@ -53,7 +53,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-common-rules test-complete test-custom-rules test-managed-rules test-computed-rules test-rules-only lint ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-computed test-rules-only lint ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
@@ -61,17 +61,14 @@ test-basic: ## Test the basic example
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 5m -v |& tee test/terraform_complete_test.log
 
-test-common-rules: ## Test the common_rules example
-	go test test/terraform_common_rules_test.go -timeout 5m -v |& tee test/terraform_common_rules_test.log
+test-customer: ## Test the customer example
+	go test test/terraform_customer_test.go -timeout 5m -v |& tee test/terraform_customer_test.log
 
-test-custom-rules: ## Test the custom_rules example
-	go test test/terraform_custom_rules_test.go -timeout 5m -v |& tee test/terraform_custom_rules_test.log
+test-managed: ## Test the managed example
+	go test test/terraform_managed_test.go -timeout 5m -v |& tee test/terraform_managed_test.log
 
-test-managed-rules: ## Test the managed_rules example
-	go test test/terraform_managed_rules_test.go -timeout 5m -v |& tee test/terraform_managed_rules_test.log
-
-test-computed-rules: ## Test the computed_rules example
-	go test test/terraform_computed_rules_test.go -timeout 5m -v |& tee test/terraform_computed_rules_test.log
+test-computed: ## Test the computed example
+	go test test/terraform_computed_test.go -timeout 5m -v |& tee test/terraform_computed_test.log
 
 test-rules-only: ## Test the rules_only example
 	go test test/terraform_rules_only_test.go -timeout 5m -v |& tee test/terraform_rules_only_test.log
@@ -80,19 +77,19 @@ clean: ## Clean project
 	@rm -f .terraform.lock.hcl
 	@rm -f examples/basic/.tebasiclock.hcl
 	@rm -f examples/complete/.tebasiclock.hcl
-	@rm -f examples/common_rules/.terraform.lock.hcl
-	@rm -f examples/custom_rules/.terraform.lock.hcl
-	@rm -f examples/managed_rules/.terraform.lock.hcl
-	@rm -f examples/computed_rules/.terraform.lock.hcl
+	@rm -f examples/common/.terraform.lock.hcl
+	@rm -f examples/customer/.terraform.lock.hcl
+	@rm -f examples/managed/.terraform.lock.hcl
+	@rm -f examples/computed/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
-	@rm -rf examples/common_rules/.terraform
-	@rm -rf examples/custom_rules/.terraform
-	@rm -rf examples/managed_rules/.terraform
-	@rm -rf examples/computed_rules/.terraform
+	@rm -rf examples/common/.terraform
+	@rm -rf examples/customer/.terraform
+	@rm -rf examples/managed/.terraform
+	@rm -rf examples/computed/.terraform
 	@rm -rf examples/rules_only/.terraform
 
 	@rm -f go.mod

@@ -8,21 +8,14 @@ resource "aws_security_group" "pre_existing" {
   }
 }
 
-module "sg" {
+module "security_group" {
   source = "../../"
 
-  create_sg         = false
-  security_group_id = aws_security_group.pre_existing.id
+  create_security_group = false
+  security_group_id     = aws_security_group.pre_existing.id
 
-  name   = local.name
-  vpc_id = data.aws_vpc.default.id
-
-  managed_ingress_rules = [
-    {
-      rule                     = "http-80-tcp"
-      source_security_group_id = data.aws_security_group.default.id
-    }
-  ]
+  ingress = [{ rule = "https-from-public" }]
+  egress  = [{ rule = "all-to-public" }]
 
   tags = {
     "Name" = local.name

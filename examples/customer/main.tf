@@ -1,12 +1,11 @@
-module "sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+module "security_group" {
+  source = "../../"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  ingress_rules = [
+  ingress = [
     {
       from_port   = 443
       to_port     = 443
@@ -39,7 +38,7 @@ module "sg" {
     }
   ]
 
-  egress_rules = [
+  egress = [
     {
       from_port   = 443
       to_port     = 443

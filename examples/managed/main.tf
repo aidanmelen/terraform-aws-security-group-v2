@@ -1,12 +1,11 @@
-module "sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+module "security_group" {
+  source = "../../"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  managed_ingress_rules = [
+  ingress = [
     {
       rule        = "all-all"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
@@ -29,7 +28,7 @@ module "sg" {
     }
   ]
 
-  managed_egress_rules = [
+  egress = [
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]

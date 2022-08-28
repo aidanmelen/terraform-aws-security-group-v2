@@ -1,4 +1,4 @@
-# Computed Security Group example
+# Security Group with computed rules
 
 Create a security group with a computed rules. Computed security group rules uses `count` to dynamically create rules with unknown values during the initial Terraform plan. Please see [Limitations on values used in for_each](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each).
 
@@ -50,40 +50,34 @@ resource "aws_ec2_managed_prefix_list" "other" {
 # Security Group
 ###############################################################################
 
-module "sg" {
+module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.5.0"
+  version = ">= 0.6.0"
 
   name        = local.name
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
-  computed_ingress_rules = [
+  computed_ingress = [
     {
       from_port                = 80
       to_port                  = 80
       protocol                 = "tcp"
       source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_egress_rules = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
-  ]
-
-  computed_managed_ingress_rules = [
+    },
     {
       rule                     = "https-443-tcp"
       source_security_group_id = aws_security_group.other.id
     }
   ]
 
-  computed_managed_egress_rules = [
+  computed_egress = [
+    {
+      from_port       = 80
+      to_port         = 80
+      protocol        = "tcp"
+      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+    },
     {
       rule            = "https-443-tcp"
       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
@@ -106,7 +100,7 @@ module "sg" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_sg"></a> [sg](#module\_sg) | ../../ | n/a |
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -118,9 +112,7 @@ module "sg" {
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the security group. |
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
-| <a name="output_egress_keys"></a> [egress\_keys](#output\_egress\_keys) | The security group egress rules keys. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_ingress_keys"></a> [ingress\_keys](#output\_ingress\_keys) | The security group ingress rules keys. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of uknown aws resource to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

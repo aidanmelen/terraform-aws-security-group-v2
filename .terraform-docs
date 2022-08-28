@@ -4,19 +4,23 @@ content: |-
 
   This module aims to implement **ALL** combinations of arguments supported by AWS and latest stable version of Terraform:
 
-  - IPv4/IPv6 CIDR blocks
-  - [VPC endpoint prefix lists](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) (use data source [aws_prefix_list](https://www.terraform.io/docs/providers/aws/d/prefix_list.html))
-  - Access from source security groups
-  - Access from self
-  - Named rules ([see the rules here](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf))
-  - Toggle creation of common rules like egress all to the public internet.
+  - Customer ingress/egress rules.
+  - Managed ingress/egress rules (e.g. `all-all`, `https-443-tcp`, `postgresql-tcp`, and `ssh-tcp`  just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
+  - Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
+  - Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. computed rules support all customer, managed, and common rules.
   - Conditionally create security group and/or all required security group rules.
+
+  What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](hhttps://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody.
 
   ## Examples
 
   ### Security Group with basic rules
 
-  Create a security group with HTTPS from `10.0.0.0/24`, `all-all` from self, and `all-all` to the public internet rules.
+  Create a security group using:
+
+  - The `https-443-tcp` managed ingress rule
+  - The `all-from-self` common ingress rule
+  - The `all-to-public` common egress rule
 
   ```hcl
   {{ include "examples/basic/.main.tf.docs" }}
@@ -26,69 +30,69 @@ content: |-
 
   ### Security Group with complete rules
 
-  Create a security group with a combination of both managed, custom, computed, and auto group rules. This also demonstrates the conditional create functionality.
-
-  <details><summary>Click to show</summary>
+  Create a AWS Security Group with a broad mix of various features and settings provided by this module.
 
   ```hcl
   {{ include "examples/complete/.main.tf.docs" }}
   ```
 
-  </details><br/>
-
   Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
 
-  ### Security Group with common rules
+  ### Security Group with common scenario rules
 
-  Create security groups with common scenario rules (e.g. `https`, `http`, and `ssh`).
-
-  ```hcl
-  {{ include "examples/common_rules/.main.tf.docs" }}
-  ```
-
-  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common_rules) for more information.
-
-  ### Security group with custom rules
-
-  Create a security group with custom rules.
+  Create security group with common scenario rules (e.g. `https-from-public`, `all-from-self`, `all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/custom_rules/.main.tf.docs" }}
+  {{ include "examples/common/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Custom Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules) for more information.
+  Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common) for more information.
 
-  ### Security group with managed rules
+  ### Security Group with customer rules
 
-  Create a security group with managed rules.
+  Create a security group with customer rules. customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
 
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/managed_rules/.main.tf.docs" }}
+  {{ include "examples/customer/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed_rules) for more information.
+  Please see the [customer Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules) for more information.
 
-  ### Security group with computed rules
+  ### Security Group with managed rules
+
+  Create a security group with managed rules. Managed rules for security groups are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
+
+  <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "examples/managed/.main.tf.docs" }}
+  ```
+
+  </details><br/>
+
+  Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed) for more information.
+
+  ### Security Group with computed rules
 
   Create a security group with a computed rules. Computed security group rules uses `count` to dynamically create rules with unknown values during the initial Terraform plan. Please see [Limitations on values used in for_each](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each).
 
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/computed_rules/.main.tf.docs" }}
+  {{ include "examples/computed/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed_rules) for more information.
+  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
 
   ### Only rules with pre-existing security group
 
@@ -131,14 +135,21 @@ content: |-
 
   This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
 
-  - Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for).
-  - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments).
-  - Dynamically create custom and managed security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). This has 2 advantages over `count`:
-    1. The terraform resource IDs are descriptive rather than indexes with `count`.
-    2. Adding/Removing or even reordering rules can causes the count indexes to change possibly resulting in unwanted destruction and recreation of resources. Whereas `for_each` with map inputs use identifiable keys and do not suffer from this constraint.
-  - Computed security group rule resources still must still use `count` due to [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length()` function to dynamically set the `count` rather than relying on the user to provided `number_of_computed` variables. [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
-  - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like `create_egress_all_to_public_rules`. Please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
-  - Improve security by having users declare granular custom or managed security group rules.
+  - Reduce amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines when compared to the [~800 lines in the terraform-aws-security-group module](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/main.tf).
+
+  - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
+
+  - Dynamically create customer, managed and common security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). `for_each` has two advantages over `count`:
+
+  1. Resources created with `count` are identified by their index instead of the string values in the list. If an element is removed from the middle of the list, every security group rule after that element would see its values change, resulting in more remote object changes than intended. Using `for_each` gives the same flexibility without the extra churn. Please see [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count)
+  2. Resources created with `for_each` are given an identifiable id in terraform state.
+
+  - Computed security group rule resources still must use `count` due to the [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length` function to dynamically set the `count` which is an improvement of the `number_of_computed_` variables used by the [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#note-about-value-of-count-cannot-be-computed) module.
+
+  - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like the `all-to-public`. This approach is consistent with the implementation of the `aws_security_group_rule` resource as described in the [NOTE on Egress rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#basic-usage). Moreover, please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
+
+  - Improve security by making it easy for users to declare granular customer, managed, common, and computed security group rules.
+
   - Test examples with [Terratest](https://terratest.gruntwork.io/).
 
   ## License

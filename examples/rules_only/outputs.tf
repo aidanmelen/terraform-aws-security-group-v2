@@ -4,12 +4,12 @@
 
 output "arn" {
   description = "The ARN of the security group."
-  value       = try(module.sg.security_group_arn, null)
+  value       = try(module.security_group.security_group.arn, null)
 }
 
 output "id" {
   description = "The ID of the security group."
-  value       = try(module.sg.security_group_id, null)
+  value       = try(module.security_group.security_group.id, null)
 }
 
 ###############################################################################
@@ -18,31 +18,20 @@ output "id" {
 
 output "ingress" {
   description = "The security group ingress rules."
-  value       = try(module.sg.security_group_ingress_rules, null)
-}
-
-output "ingress_keys" {
-  description = "The security group ingress rules keys."
-  value       = try(keys(module.sg.security_group_ingress_rules), null)
+  value       = try(module.security_group.security_group_ingress_rules, null)
 }
 
 output "egress" {
   description = "The security group egress rules."
-  value       = try(module.sg.security_group_egress_rules, null)
+  value       = try(module.security_group.security_group_egress_rules, null)
 }
-
-output "egress_keys" {
-  description = "The security group egress rules keys."
-  value       = try(keys(module.sg.security_group_egress_rules), null)
-}
-
 
 ###############################################################################
 # Terratest
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of uknown aws resource to be used by Terratest."
+  description = "The IDs of unknown aws resource to be used by Terratest."
   value = {
     "data_aws_security_group_default_id" = data.aws_security_group.default.id,
     "aws_security_group_pre_existing_id" = aws_security_group.pre_existing.id,
