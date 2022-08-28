@@ -23,7 +23,7 @@ module "security_group" {
     {
       rule        = "https-443-tcp"
       cidr_blocks = ["10.30.0.0/24"]
-      description = "Open egress HTTPS from 10.10.0.0/24, 10.20.0.0/24 and 10.30.0.0/24"
+      description = "Open egress HTTPS to 10.10.0.0/24, 10.20.0.0/24 and 10.30.0.0/24"
 
       # the defaults will be ignored when the value is commented out or null
       # ipv6_cidr_blocks = null
