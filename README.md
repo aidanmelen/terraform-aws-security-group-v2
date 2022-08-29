@@ -207,7 +207,7 @@ module "public_http_sg" {
   description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }, { rule = "asdasd" }]
+  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }]
   egress  = [{ rule = "all-to-public" }]
 
   tags = {
@@ -525,7 +525,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 --- PASS: TestTerraformBasicExample (22.12s)
---- PASS: TestTerraformCompleteExample (44.80s)
+--- PASS: TestTerraformCompleteExample (47.65s)
 --- PASS: TestTerraformCustomerRulesExample (33.21s)
 --- PASS: TestTerraformManagedRulesExample (34.57s)
 --- PASS: TestTerraformComputedRulesExample (29.22s)
