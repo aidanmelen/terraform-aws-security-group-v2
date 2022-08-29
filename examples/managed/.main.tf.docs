@@ -1,6 +1,6 @@
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.1"
+  version = ">= 0.6.2"
 
   name        = local.name
   description = local.name
