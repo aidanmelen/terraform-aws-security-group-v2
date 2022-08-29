@@ -1,6 +1,6 @@
 # Security Group with customer rules
 
-Create security group with common scenario rules (e.g. `https-from-public`, `all-from-self`, `all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
+Create security group with common scenario rules (e.g. `https-tcp-from-public`, `all-all-from-self`, `all-all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -29,8 +29,8 @@ module "public_https_sg" {
   description = "${local.name}-https"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "https-from-public" }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
+  ingress = [{ rule = "https-tcp-from-public" }, { rule = "all-all-from-self" }]
+  egress  = [{ rule = "all-all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-https"
@@ -45,8 +45,8 @@ module "public_http_sg" {
   description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
+  ingress = [{ rule = "http-tcp-from-public" }, { rule = "all-all-from-self" }]
+  egress  = [{ rule = "all-all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-http"
@@ -61,8 +61,8 @@ module "ssh_sg" {
   description = "${local.name}-ssh"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-from-self" }]
-  egress  = [{ rule = "all-to-public" }]
+  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-all-from-self" }]
+  egress  = [{ rule = "all-all-to-public" }]
 
   tags = {
     "Name" = "${local.name}-ssh"

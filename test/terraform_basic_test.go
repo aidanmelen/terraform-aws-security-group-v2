@@ -32,16 +32,16 @@ func TestTerraformBasicExample(t *testing.T) {
 	actualEgress := terraform.OutputList(t, terraformOptions, "egress")
 	regexp, _ := regexp.Compile(`sgrule-[a-z0-9]*`)
 	actualIngress0 := regexp.ReplaceAllString(actualIngress[0], "sgrule-1111111111")
-	actualIngress1 := regexp.ReplaceAllString(actualIngress[1], "sgrule-1111111111")
 	actualEgress0 := regexp.ReplaceAllString(actualEgress[0], "sgrule-1111111111")
+	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
+	actualDataAwsVpcDefaultCidrBlock := actualTerratest["data_aws_vpc_default_cidr_block"]
+	actualDataAwsVpcDefaultPpv6CidrBlock := actualTerratest["data_aws_vpc_default_ipv6_cidr_block"]
 
 	// assign expected
-	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24] description:My Private Service from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupId)
-	expectedIngress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:0 type:ingress]", actualSecurityGroupId)
+	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[%s] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[%s] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualDataAwsVpcDefaultCidrBlock, actualDataAwsVpcDefaultPpv6CidrBlock, actualSecurityGroupId)
 	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualSecurityGroupId)
 
 	// assert
 	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)
-	assert.Equal(t, expectedIngress1, actualIngress1, "Map %q should match %q", expectedIngress1, actualIngress1)
 	assert.Equal(t, expectedEgress0, actualEgress0, "Map %q should match %q", expectedEgress0, actualEgress0)
 }

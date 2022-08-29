@@ -62,9 +62,11 @@ locals {
     graphite-8125-udp = { "to_port" = 8125, "from_port" = 8125, "protocol" = "udp" }
     graphite-8126-tcp = { "to_port" = 8126, "from_port" = 8126, "protocol" = "tcp" }
     # HTTP
+    http-tcp      = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp" }
     http-80-tcp   = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp" }
     http-8080-tcp = { "to_port" = 8080, "from_port" = 8080, "protocol" = "tcp" }
     # HTTPS
+    https-tcp      = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp" }
     https-443-tcp  = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp" }
     https-8443-tcp = { "to_port" = 8443, "from_port" = 8443, "protocol" = "tcp" }
     # IPSEC
@@ -198,13 +200,13 @@ locals {
     all-icmp      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp" }
     all-ipv6-icmp = { "to_port" = 0, "from_port" = 0, "protocol" = 58 }
     # Common Ingress
-    all-from-self     = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    https-from-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    http-from-public  = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    icmp-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    ping-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-from-self     = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    https-tcp-from-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    http-tcp-from-public  = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-icmp-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-ping-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     # Common Egress
-    all-to-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    all-to-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-to-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    all-all-to-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
   }
 }

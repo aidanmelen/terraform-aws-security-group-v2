@@ -1,7 +1,3 @@
-###############################################################################
-# Security Group
-###############################################################################
-
 locals {
   security_group_id = var.create && var.create_security_group ? aws_security_group.self[0].id : var.security_group_id
   ingress_true_expr = { for rule in var.ingress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule }
@@ -11,6 +7,10 @@ locals {
   ingress_false_expr = { for k, rule in local.ingress_true_expr : k => null }
   egress_false_expr  = { for k, rule in local.egress_true_expr : k => null }
 }
+
+###############################################################################
+# Security Group
+###############################################################################
 
 resource "aws_security_group" "self" {
   count                  = var.create && var.create_security_group ? 1 : 0

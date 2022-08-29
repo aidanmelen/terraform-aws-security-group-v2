@@ -1,10 +1,9 @@
 # Security Group with basic rules
 
-Create a security group using:
+Recreate the [Basic Usage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#basic-usage) example from the `aws_security_group` resource with:
 
-- The `https-443-tcp` managed ingress rule
-- The `all-from-self` common ingress rule
-- The `all-to-public` common egress rule
+- Ingress `https-443-tcp` managed rules (ipv4/ipv6)
+- Egress `all-all-to-public` common rule
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -30,20 +29,19 @@ module "security_group" {
   version = ">= 0.6.2"
 
   name        = local.name
-  description = local.name
+  description = "Allow TLS inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
   ingress = [
     {
-      rule        = "https-443-tcp"
-      cidr_blocks = ["10.0.0.0/24"]
-      description = "My Private Service"
-    },
-    { rule = "all-from-self" }
+      rule             = "https-443-tcp"
+      cidr_blocks      = [data.aws_vpc.default.cidr_block]
+      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    }
   ]
 
   egress = [
-    { rule = "all-to-public" }
+    { rule = "all-all-to-public" }
   ]
 
   tags = {
@@ -76,4 +74,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

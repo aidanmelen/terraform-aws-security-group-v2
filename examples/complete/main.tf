@@ -27,11 +27,11 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "https-from-public"
+      rule        = "https-tcp-from-public"
       description = "common rule example"
     },
-    { rule = "http-from-public" },
-    { rule = "all-from-self" }
+    { rule = "http-tcp-from-public" },
+    { rule = "all-all-from-self" }
   ]
 
   computed_ingress = [
@@ -70,7 +70,7 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "all-to-public"
+      rule        = "all-all-to-public"
       description = "common rule example"
     }
   ]
