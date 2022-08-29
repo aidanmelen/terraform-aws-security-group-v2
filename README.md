@@ -207,7 +207,7 @@ module "public_http_sg" {
   description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }]
+  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }, { rule = "asdasd" }]
   egress  = [{ rule = "all-to-public" }]
 
   tags = {
