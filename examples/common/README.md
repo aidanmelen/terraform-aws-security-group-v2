@@ -29,7 +29,7 @@ module "public_https_sg" {
   description = "${local.name}-https"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "all-from-https" }, { rule = "all-from-self" }]
+  ingress = [{ rule = "https-from-public" }, { rule = "all-from-self" }]
   egress  = [{ rule = "all-to-public" }]
 
   tags = {
@@ -45,7 +45,7 @@ module "public_http_sg" {
   description = "${local.name}-http"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "all-from-http" }, { rule = "all-from-self" }]
+  ingress = [{ rule = "http-from-public" }, { rule = "all-from-self" }]
   egress  = [{ rule = "all-to-public" }]
 
   tags = {
