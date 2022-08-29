@@ -33,7 +33,7 @@ resource "aws_security_group" "pre_existing" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   create_security_group = false
   security_group_id     = aws_security_group.pre_existing.id

@@ -34,7 +34,7 @@ Recreate the [Basic Usage](https://registry.terraform.io/providers/hashicorp/aws
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -67,7 +67,7 @@ Create a AWS Security Group with a broad mix of various features and settings pr
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -169,7 +169,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
   create = false
 }
 ```
@@ -185,7 +185,7 @@ Create security group with common scenario rules (e.g. `https-tcp-from-public`, 
 ```hcl
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -201,7 +201,7 @@ module "public_https_sg" {
 
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -217,7 +217,7 @@ module "public_http_sg" {
 
 module "ssh_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = "${local.name}-ssh"
   description = "${local.name}-ssh"
@@ -245,7 +245,7 @@ Create a security group with customer rules. Customer rules for security groups 
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -336,7 +336,7 @@ Create a security group with managed rules. Managed rules for security groups ar
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -436,7 +436,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -497,7 +497,7 @@ resource "aws_security_group" "pre_existing" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   create_security_group = false
   security_group_id     = aws_security_group.pre_existing.id
