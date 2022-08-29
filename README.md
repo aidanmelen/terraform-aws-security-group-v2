@@ -20,7 +20,7 @@ Ingress and egress rules can be configured in a variety of ways:
 - Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. computed rules support all customer, managed, and common rules.
 - Conditionally create security group and/or all required security group rules.
 
-What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](hhttps://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/README.md#Acknowledgments) section for more information.
+What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](hhttps://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
 
 ## Examples
 
