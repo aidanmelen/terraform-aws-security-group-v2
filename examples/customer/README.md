@@ -1,6 +1,6 @@
 # Security Group with customer rules
 
-Create a security group with customer rules. customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
+Create a security group with customer rules. Customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name

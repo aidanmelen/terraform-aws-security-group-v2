@@ -4,7 +4,7 @@ Create a AWS Security Group with a broad mix of various features and settings pr
 
 - customer ingress/egress rules.
 - Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
-- Common Ingress/Egress for common scenarios sech as `all-from-self`, `https-from-public`, and `all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
+- Common Ingress/Egress for common scenarios sech as `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
 - Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports customer, Managed, and Common rules.
 - Conditionally create security group and/or all required security group rules.
 
@@ -29,7 +29,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -57,11 +57,11 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "https-from-public"
+      rule        = "https-tcp-from-public"
       description = "common rule example"
     },
-    { rule = "http-from-public" },
-    { rule = "all-from-self" }
+    { rule = "http-tcp-from-public" },
+    { rule = "all-all-from-self" }
   ]
 
   computed_ingress = [
@@ -100,7 +100,7 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "all-to-public"
+      rule        = "all-all-to-public"
       description = "common rule example"
     }
   ]
@@ -131,7 +131,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
   create = false
 }
 ```

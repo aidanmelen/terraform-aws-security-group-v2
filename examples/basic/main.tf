@@ -2,20 +2,19 @@ module "security_group" {
   source = "../../"
 
   name        = local.name
-  description = local.name
+  description = "Allow TLS inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
   ingress = [
     {
-      rule        = "https-443-tcp"
-      cidr_blocks = ["10.0.0.0/24"]
-      description = "My Private Service"
-    },
-    { rule = "all-from-self" }
+      rule             = "https-443-tcp"
+      cidr_blocks      = [data.aws_vpc.default.cidr_block]
+      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    }
   ]
 
   egress = [
-    { rule = "all-to-public" }
+    { rule = "all-all-to-public" }
   ]
 
   tags = {

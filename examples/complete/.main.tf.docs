@@ -1,6 +1,6 @@
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
 
   name        = local.name
   description = local.name
@@ -28,11 +28,11 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "https-from-public"
+      rule        = "https-tcp-from-public"
       description = "common rule example"
     },
-    { rule = "http-from-public" },
-    { rule = "all-from-self" }
+    { rule = "http-tcp-from-public" },
+    { rule = "all-all-from-self" }
   ]
 
   computed_ingress = [
@@ -71,7 +71,7 @@ module "security_group" {
       description              = "customer rule example"
     },
     {
-      rule        = "all-to-public"
+      rule        = "all-all-to-public"
       description = "common rule example"
     }
   ]
@@ -102,6 +102,6 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.2"
+  version = ">= 0.6.3"
   create = false
 }
