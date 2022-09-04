@@ -95,7 +95,23 @@ variable "computed_ingress" {
 
 # https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each
 variable "computed_egress" {
-  description = "The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. "
+  description = "The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
   default     = []
+}
+
+###############################################################################
+# Security Group Matix Rules
+###############################################################################
+
+variable "computed_matrix_ingress" {
+  description = "The security group matrix ingress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule."
+  type        = any
+  default     = {}
+}
+
+variable "computed_matrix_egress" {
+  description = "The security group matrix egress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule."
+  type        = any
+  default     = {}
 }

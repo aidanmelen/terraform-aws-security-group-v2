@@ -525,7 +525,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 --- PASS: TestTerraformBasicExample (21.71s)
---- PASS: TestTerraformCompleteExample (44.53s)
+--- PASS: TestTerraformCompleteExample (52.16s)
 --- PASS: TestTerraformCustomerRulesExample (34.06s)
 --- PASS: TestTerraformManagedRulesExample (36.36s)
 --- PASS: TestTerraformComputedRulesExample (28.72s)
@@ -564,6 +564,9 @@ clean                Clean project
 | [aws_security_group.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.computed_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_source_security_group_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 ## Inputs
@@ -572,6 +575,8 @@ clean                Clean project
 |------|-------------|------|---------|:--------:|
 | <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_computed_matrix_egress"></a> [computed\_matrix\_egress](#input\_computed\_matrix\_egress) | The security group matrix egress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
+| <a name="input_computed_matrix_ingress"></a> [computed\_matrix\_ingress](#input\_computed\_matrix\_ingress) | The security group matrix ingress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
