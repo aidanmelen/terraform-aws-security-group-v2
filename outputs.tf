@@ -17,8 +17,8 @@ output "security_group_ingress_rules" {
     # try(aws_security_group_rule.matrix_ingress_with_cidr_blocks_and_prefix_list_ids, []),
     # try(aws_security_group_rule.matrix_ingress_with_source_security_group_ids, []),
     # try(aws_security_group_rule.matrix_ingress_with_self, []),
-    try(aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids, []),
-    try(aws_security_group_rule.computed_matrix_ingress_with_source_security_group_ids, []),
+    # try(aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids, []),
+    # try(aws_security_group_rule.computed_matrix_ingress_with_source_security_group_ids, []),
     try(aws_security_group_rule.computed_matrix_ingress_with_self, []),
   )
 }
