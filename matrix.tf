@@ -19,6 +19,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   ]) ? length(var.computed_matrix_ingress.rules) : 0
   security_group_id = local.security_group_id
   type              = "ingress"
+  description       = null
 
   # customer, managed or common rules
   from_port = try(
@@ -40,7 +41,6 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   prefix_list_ids          = try(var.computed_matrix_ingress.prefix_list_ids, null)
   source_security_group_id = null # Cannot be specified with cidr_blocks, ipv6_cidr_blocks
   self                     = null # Cannot be specified with cidr_blocks, ipv6_cidr_blocks
-  description              = null
 }
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
@@ -48,6 +48,8 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   count             = try(length(var.computed_matrix_ingress.source_security_group_ids) * length(var.computed_matrix_ingress.rules), 0)
   security_group_id = local.security_group_id
   type              = "ingress"
+  description       = null
+
 
   # customer, managed or common rules
   from_port = try(
@@ -69,7 +71,6 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   prefix_list_ids          = null # Cannot be specified with source_security_group_id
   source_security_group_id = var.computed_matrix_ingress.source_security_group_ids[count.index % length(var.computed_matrix_ingress.rules)]
   self                     = null # Cannot be specified with source_security_group_id
-  description              = null
 }
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
@@ -77,6 +78,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
   count             = try(var.computed_matrix_ingress.self ? length(var.computed_matrix_ingress.rules) : 0, 0)
   security_group_id = local.security_group_id
   type              = "ingress"
+  description       = null
 
   # customer, managed or common rules
   from_port = try(
@@ -98,7 +100,6 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
   prefix_list_ids          = null # Cannot be specified with self
   source_security_group_id = null # Cannot be specified with self
   self                     = true
-  description              = null
 }
 
 ###############################################################################
@@ -114,6 +115,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   ]) ? length(var.computed_matrix_egress.rules) : 0
   security_group_id = local.security_group_id
   type              = "egress"
+  description       = null
 
   # customer, managed or common rules
   from_port = try(
@@ -135,7 +137,6 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   prefix_list_ids          = try(var.computed_matrix_egress.prefix_list_ids, null)
   source_security_group_id = null # Cannot be specified with cidr_blocks, ipv6_cidr_blocks
   self                     = null # Cannot be specified with cidr_blocks, ipv6_cidr_blocks
-  description              = null
 }
 
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
@@ -143,6 +144,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   count             = try(length(var.computed_matrix_egress.source_security_group_ids) * length(var.computed_matrix_egress.rules), 0)
   security_group_id = local.security_group_id
   type              = "egress"
+  description       = null
 
   # customer, managed or common rules
   from_port = try(
@@ -164,7 +166,6 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   prefix_list_ids          = null # Cannot be specified with source_security_group_id
   source_security_group_id = var.computed_matrix_egress.source_security_group_ids[count.index % length(var.computed_matrix_egress.rules)]
   self                     = null # Cannot be specified with source_security_group_id
-  description              = null
 }
 
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
@@ -172,6 +173,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   count             = try(var.computed_matrix_egress.self ? length(var.computed_matrix_egress.rules) : 0, 0)
   security_group_id = local.security_group_id
   type              = "egress"
+  description       = null
 
   # customer, managed or common rules
   from_port = try(
@@ -193,5 +195,4 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   prefix_list_ids          = null # Cannot be specified with self
   source_security_group_id = null # Cannot be specified with self
   self                     = true
-  description              = null
 }
