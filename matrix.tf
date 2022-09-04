@@ -1,5 +1,13 @@
 ###############################################################################
-# Computed Security Group Ingress Rules
+# Matrix Security Group Ingress Rules
+###############################################################################
+
+###############################################################################
+# Matrix Security Group Egress Rules
+###############################################################################
+
+###############################################################################
+# Matrix Computed Security Group Ingress Rules
 ###############################################################################
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
@@ -12,6 +20,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   security_group_id = local.security_group_id
   type              = "ingress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
@@ -25,6 +34,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
   )
 
+  # sources
   cidr_blocks              = try(var.computed_matrix_ingress.cidr_blocks, null)
   ipv6_cidr_blocks         = try(var.computed_matrix_ingress.ipv6_cidr_blocks, null)
   prefix_list_ids          = try(var.computed_matrix_ingress.prefix_list_ids, null)
@@ -39,6 +49,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   security_group_id = local.security_group_id
   type              = "ingress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
@@ -52,6 +63,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
   )
 
+  # sources
   cidr_blocks              = null # Cannot be specified with source_security_group_id
   ipv6_cidr_blocks         = null # Cannot be specified with source_security_group_id
   prefix_list_ids          = null # Cannot be specified with source_security_group_id
@@ -66,6 +78,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
   security_group_id = local.security_group_id
   type              = "ingress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
@@ -79,6 +92,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
   )
 
+  # sources
   cidr_blocks              = null # Cannot be specified with self
   ipv6_cidr_blocks         = null # Cannot be specified with self
   prefix_list_ids          = null # Cannot be specified with self
@@ -88,7 +102,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
 }
 
 ###############################################################################
-# Computed Security Group Egress Rules
+# Matrix Computed Security Group Egress Rules
 ###############################################################################
 
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
@@ -101,6 +115,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   security_group_id = local.security_group_id
   type              = "egress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
@@ -114,6 +129,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
   )
 
+  # destinations
   cidr_blocks              = try(var.computed_matrix_egress.cidr_blocks, null)
   ipv6_cidr_blocks         = try(var.computed_matrix_egress.ipv6_cidr_blocks, null)
   prefix_list_ids          = try(var.computed_matrix_egress.prefix_list_ids, null)
@@ -128,6 +144,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   security_group_id = local.security_group_id
   type              = "egress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
@@ -141,6 +158,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
   )
 
+  # destinations
   cidr_blocks              = null # Cannot be specified with source_security_group_id
   ipv6_cidr_blocks         = null # Cannot be specified with source_security_group_id
   prefix_list_ids          = null # Cannot be specified with source_security_group_id
@@ -155,6 +173,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   security_group_id = local.security_group_id
   type              = "egress"
 
+  # customer, managed or common rules
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
@@ -168,6 +187,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
   )
 
+  # destinations
   cidr_blocks              = null # Cannot be specified with self
   ipv6_cidr_blocks         = null # Cannot be specified with self
   prefix_list_ids          = null # Cannot be specified with self
