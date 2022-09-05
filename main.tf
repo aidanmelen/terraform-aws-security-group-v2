@@ -33,17 +33,13 @@ resource "aws_security_group" "self" {
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
 resource "aws_security_group_rule" "ingress" {
-  for_each          = var.create ? local.ingress_true_expr : local.ingress_false_expr
-  security_group_id = local.security_group_id
-  type              = "ingress"
-  description       = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
-
-  # customer, managed or common rules
-  from_port = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
-  to_port   = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
-  protocol  = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
-
-  # sources
+  for_each                 = var.create ? local.ingress_true_expr : local.ingress_false_expr
+  security_group_id        = local.security_group_id
+  type                     = "ingress"
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
+  to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
+  protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
   cidr_blocks              = try(each.value["cidr_blocks"], local.rules[each.value["rule"]]["cidr_blocks"], null)
   ipv6_cidr_blocks         = try(each.value["ipv6_cidr_blocks"], local.rules[each.value["rule"]]["ipv6_cidr_blocks"], null)
   prefix_list_ids          = try(each.value["prefix_list_ids"], local.rules[each.value["rule"]]["prefix_list_ids"], null)
@@ -51,19 +47,15 @@ resource "aws_security_group_rule" "ingress" {
   source_security_group_id = try(each.value["source_security_group_id"], local.rules[each.value["rule"]]["source_security_group_id"], null)
 }
 
-# tfsec:ignore:aws-ec2-no-public-egress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "egress" {
-  for_each          = var.create ? local.egress_true_expr : local.egress_false_expr
-  security_group_id = local.security_group_id
-  type              = "egress"
-  description       = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
-
-  # customer, managed or common rules
-  from_port = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
-  to_port   = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
-  protocol  = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
-
-  # destinations
+  for_each                 = var.create ? local.egress_true_expr : local.egress_false_expr
+  security_group_id        = local.security_group_id
+  type                     = "egress"
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
+  to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
+  protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
   cidr_blocks              = try(each.value["cidr_blocks"], local.rules[each.value["rule"]]["cidr_blocks"], null)
   ipv6_cidr_blocks         = try(each.value["ipv6_cidr_blocks"], local.rules[each.value["rule"]]["ipv6_cidr_blocks"], null)
   prefix_list_ids          = try(each.value["prefix_list_ids"], local.rules[each.value["rule"]]["prefix_list_ids"], null)
@@ -85,8 +77,6 @@ resource "aws_security_group_rule" "computed_ingress" {
     local.rules[var.computed_ingress[count.index]["rule"]]["description"],
     "managed by Terraform"
   )
-
-  # customer, managed or common rules
   from_port = try(
     var.computed_ingress[count.index]["from_port"],
     local.rules[var.computed_ingress[count.index]["rule"]]["from_port"]
@@ -99,8 +89,6 @@ resource "aws_security_group_rule" "computed_ingress" {
     var.computed_ingress[count.index]["protocol"],
     local.rules[var.computed_ingress[count.index]["rule"]]["protocol"]
   )
-
-  # sources
   cidr_blocks = try(
     var.computed_ingress[count.index]["cidr_blocks"],
     local.rules[var.computed_ingress[count.index]["rule"]]["cidr_blocks"],
@@ -128,7 +116,7 @@ resource "aws_security_group_rule" "computed_ingress" {
   )
 }
 
-# tfsec:ignore:aws-ec2-no-public-egress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "computed_egress" {
   count             = var.create ? length(var.computed_egress) : 0
   security_group_id = local.security_group_id
@@ -138,8 +126,6 @@ resource "aws_security_group_rule" "computed_egress" {
     local.rules[var.computed_egress[count.index]["rule"]]["description"],
     "managed by Terraform"
   )
-
-  # customer, managed or common rules
   from_port = try(
     var.computed_egress[count.index]["from_port"],
     local.rules[var.computed_egress[count.index]["rule"]]["from_port"]
@@ -152,8 +138,6 @@ resource "aws_security_group_rule" "computed_egress" {
     var.computed_egress[count.index]["protocol"],
     local.rules[var.computed_egress[count.index]["rule"]]["protocol"]
   )
-
-  # destinations
   cidr_blocks = try(
     var.computed_egress[count.index]["cidr_blocks"],
     local.rules[var.computed_egress[count.index]["rule"]]["cidr_blocks"],

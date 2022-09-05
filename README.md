@@ -524,12 +524,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (21.71s)
---- PASS: TestTerraformCompleteExample (52.16s)
---- PASS: TestTerraformCustomerRulesExample (34.06s)
---- PASS: TestTerraformManagedRulesExample (36.36s)
---- PASS: TestTerraformComputedRulesExample (28.72s)
---- PASS: TestTerraformRulesOnlyExample (19.39s)
+--- PASS: TestTerraformBasicExample (21.66s)
+--- PASS: TestTerraformCompleteExample (51.69s)
+--- PASS: TestTerraformCustomerRulesExample (32.31s)
+--- PASS: TestTerraformManagedRulesExample (34.67s)
+--- PASS: TestTerraformComputedRulesExample (29.42s)
+--- PASS: TestTerraformRulesOnlyExample (20.82s)
 ```
 
 ## Makefile Targets
@@ -564,22 +564,16 @@ clean                Clean project
 | [aws_security_group.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.computed_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_egress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_egress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_egress_with_source_security_group_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_ingress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.computed_matrix_ingress_with_source_security_group_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
-| <a name="input_computed_matrix_egress"></a> [computed\_matrix\_egress](#input\_computed\_matrix\_egress) | The security group matrix egress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
-| <a name="input_computed_matrix_ingress"></a> [computed\_matrix\_ingress](#input\_computed\_matrix\_ingress) | The security group matrix ingress rules. A rule will be created for every permutation of rule to source. sources. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
@@ -587,6 +581,8 @@ clean                Clean project
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
 | <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_ingress"></a> [ingress](#input\_ingress) | The security group ingress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_matrix_egress"></a> [matrix\_egress](#input\_matrix\_egress) | The security group matrix egress rules. A rule will be created for every permutation of rule and destination. sources. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
+| <a name="input_matrix_ingress"></a> [matrix\_ingress](#input\_matrix\_ingress) | The security group matrix ingress rules. A rule will be created for every permutation of rule to source. The rules can be either customer, managed, or common rule. | `any` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | (Optional, Forces new resource) Creates a unique name beginning with the specified prefix. Conflicts with name. | `string` | `null` | no |
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |

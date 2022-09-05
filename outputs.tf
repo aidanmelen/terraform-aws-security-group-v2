@@ -14,12 +14,7 @@ output "security_group_ingress_rules" {
   value = concat(
     try(values(aws_security_group_rule.ingress), []),
     try(aws_security_group_rule.computed_ingress, []),
-    # try(aws_security_group_rule.matrix_ingress_with_cidr_blocks_and_prefix_list_ids, []),
-    # try(aws_security_group_rule.matrix_ingress_with_source_security_group_ids, []),
-    # try(aws_security_group_rule.matrix_ingress_with_self, []),
-    # try(aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids, []),
-    # try(aws_security_group_rule.computed_matrix_ingress_with_source_security_group_ids, []),
-    try(aws_security_group_rule.computed_matrix_ingress_with_self, []),
+    try(aws_security_group_rule.matrix_ingress, []),
   )
 }
 
@@ -28,11 +23,6 @@ output "security_group_egress_rules" {
   value = concat(
     try(values(aws_security_group_rule.egress), []),
     try(aws_security_group_rule.computed_egress, []),
-    # try(aws_security_group_rule.matrix_egress_with_cidr_blocks_and_prefix_list_ids, []),
-    # try(aws_security_group_rule.matrix_egress_with_source_security_group_ids, []),
-    # try(aws_security_group_rule.matrix_egress_with_self, []),
-    try(aws_security_group_rule.computed_matrix_egress_with_cidr_blocks_and_prefix_list_ids, []),
-    try(aws_security_group_rule.computed_matrix_egress_with_source_security_group_ids, []),
-    try(aws_security_group_rule.computed_matrix_egress_with_self, []),
+    try(aws_security_group_rule.matrix_egress, []),
   )
 }
