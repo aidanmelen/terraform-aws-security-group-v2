@@ -26,14 +26,14 @@ matrix_ingress = {
 
 would create the following matrix with 6 rules
 
-| rule                                                      | cidr_blocks                      | ipv6_cidr_blocks | prefix_list_ids                      | source_security_group_id | self   |
-|-----------------------------------------------------------|----------------------------------|------------------|--------------------------------------|--------------------------|--------|
-| `rule = "https-443-tcp"`                                  | `["10.0.0.0/24", "10.0.1.0/24"]` | `[]`             | `["pl-1111111111", "pl-2222222222"]` |                          |        |
-| `rule = "https-443-tcp"`                                  |                                  |                  |                                      | `"sg-1111111111"`        |        |
-| `rule = "https-443-tcp"`                                  |                                  |                  |                                      |                          | `true` |
-| ``` from_port = 80, to_port   = 80, protocol  = "tcp" ``` | `["10.0.0.0/24", "10.0.1.0/24"]` | `[]`             | `["pl-1111111111", "pl-2222222222"]` |                          |        |
-| ``` from_port = 80, to_port   = 80, protocol  = "tcp" ``` |                                  |                  |                                      | `"sg-1111111111"`        |        |
-| ``` from_port = 80, to_port   = 80, protocol  = "tcp" ``` |                                  |                  |                                      |                          | `true` |
+| `      **rule**        ` | **cidr_blocks** | **ipv6_cidr_blocks** | **prefix_list_ids** | **source_security_group_id** | **self** |
+|---|---|---|---|---|---|
+| `rule = "https-443-tcp"` | `["10.0.0.0/24","10.0.1.0/24"]` | `[]` | `["pl-1111111111", "pl-2222222222"]` |  |  |
+| `rule = "https-443-tcp"` |  |  |  | `"sg-1111111111"` |  |
+| `rule = "https-443-tcp"` |  |  |  |  | `true` |
+| `from_port = 80` `to_port = 80` `protocol = "tcp"` | `["10.0.0.0/24","10.0.1.0/24"]` | `[]` | `["pl-1111111111", "pl-2222222222"]` |  |  |
+| `from_port = 80` `to_port = 80` `protocol = "tcp"` |  |  |  | `"sg-1111111111"` |  |
+| `from_port = 80` `to_port = 80` `protocol = "tcp"` |  |  |  |  | `true` |
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
