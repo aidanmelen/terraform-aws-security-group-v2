@@ -21,22 +21,13 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Example
 
 ```hcl
-# resource "aws_security_group" "pre_existing" {
-#   name        = "${local.name}-pre-existing"
-#   description = "${local.name}-pre-existing"
-#   vpc_id      = data.aws_vpc.default.id
-
-#   tags = {
-#     "Name" = "${local.name}-pre-existing"
-#   }
-# }
-
 module "pre_existing" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.6.3"
 
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
+
   tags = {
     "Name" = local.name
   }

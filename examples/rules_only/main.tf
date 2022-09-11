@@ -1,18 +1,9 @@
-# resource "aws_security_group" "pre_existing" {
-#   name        = "${local.name}-pre-existing"
-#   description = "${local.name}-pre-existing"
-#   vpc_id      = data.aws_vpc.default.id
-
-#   tags = {
-#     "Name" = "${local.name}-pre-existing"
-#   }
-# }
-
 module "pre_existing" {
   source = "../../"
 
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
+
   tags = {
     "Name" = local.name
   }
