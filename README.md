@@ -482,67 +482,24 @@ Create a security group with matrix rules. More specifically, create a matrix of
 <details><summary>Click to show</summary>
 
 ```hcl
-###############################################################################
-# Resources That Must Use Computed Security Group Rules
-###############################################################################
-
-resource "aws_security_group" "other" {
-  name        = "${local.name}-other"
-  description = "${local.name}-other"
-  vpc_id      = data.aws_vpc.default.id
-
-  tags = {
-    "Name" = "${local.name}-other"
-  }
-}
-
-resource "aws_ec2_managed_prefix_list" "other" {
-  name           = "${local.name}-other"
-  address_family = "IPv4"
-  max_entries    = 5
-
-  entry {
-    cidr        = data.aws_vpc.default.cidr_block
-    description = "Primary"
-  }
-}
-
-###############################################################################
-# Security Group
-###############################################################################
-
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 0.6.3"
 
   name        = local.name
-  description = local.name
+  description = "Allow TLS inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
-  computed_ingress = [
+  ingress = [
     {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = "tcp"
-      source_security_group_id = aws_security_group.other.id
-    },
-    {
-      rule                     = "https-443-tcp"
-      source_security_group_id = aws_security_group.other.id
+      rule             = "https-443-tcp"
+      cidr_blocks      = [data.aws_vpc.default.cidr_block]
+      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
     }
   ]
 
-  computed_egress = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    },
-    {
-      rule            = "https-443-tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
+  egress = [
+    { rule = "all-all-to-public" }
   ]
 
   tags = {
@@ -553,7 +510,7 @@ module "security_group" {
 
 </details><br/>
 
-Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
+Please see the [Matrix Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/matrix) for more information.
 
 ### Only rules with pre-existing security group
 

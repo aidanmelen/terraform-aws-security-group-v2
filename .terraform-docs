@@ -99,12 +99,12 @@ content: |-
   <details><summary>Click to show</summary>
 
   ```hcl
-  {{ include "examples/computed/.main.tf.docs" }}
+  {{ include "examples/matrix/.main.tf.docs" }}
   ```
 
   </details><br/>
 
-  Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
+  Please see the [Matrix Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/matrix) for more information.
 
   ### Only rules with pre-existing security group
 
