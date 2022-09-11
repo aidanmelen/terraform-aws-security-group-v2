@@ -27,25 +27,25 @@ module "security_group" {
   }
 }
 
-# module "additional_sg_matrix_ingress" {
-#   source = "../../"
+module "additional_sg_matrix_ingress" {
+  source = "../../"
 
-#   create_security_group = false
-#   security_group_id     = module.security_group.security_group.id
+  create_security_group = false
+  security_group_id     = module.security_group.security_group.id
 
-#   matrix_ingress = {
-#     description = "Matix Ingress rules for PostgreSQL"
-#     rules = [
-#       {
-#         from_port = 5432
-#         to_port   = 5432
-#         protocol  = "tcp"
-#       },
-#     ],
-#     cidr_blocks = ["10.0.0.0/24", "10.0.1.0/24"]
-#   }
+  matrix_ingress = {
+    description = "Matix Ingress rules for PostgreSQL"
+    rules = [
+      {
+        from_port = 5432
+        to_port   = 5432
+        protocol  = "tcp"
+      },
+    ],
+    cidr_blocks = ["10.0.0.0/24", "10.0.1.0/24"]
+  }
 
-#   tags = {
-#     "Name" = local.name
-#   }
-# }
+  tags = {
+    "Name" = local.name
+  }
+}

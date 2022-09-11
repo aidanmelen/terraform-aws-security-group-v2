@@ -57,23 +57,52 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
-  name        = local.name
-  description = "Allow TLS inbound traffic"
-  vpc_id      = data.aws_vpc.default.id
+  name   = local.name
+  vpc_id = data.aws_vpc.default.id
 
-  ingress = [
-    {
-      rule             = "https-443-tcp"
-      cidr_blocks      = [data.aws_vpc.default.cidr_block]
-      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
-    }
-  ]
+  matrix_ingress = {
+    rules = [
+      { rule = "https-443-tcp" },
+      { rule = "http-80-tcp" },
+    ],
+    cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+    ipv6_cidr_blocks         = []
+    prefix_list_ids          = [aws_ec2_managed_prefix_list.other.id]
+    source_security_group_id = aws_security_group.other.id
+    self                     = true
+  }
 
-  egress = [
-    { rule = "all-all-to-public" }
-  ]
+  matrix_egress = {
+    rules                    = [{ rule = "https-443-tcp" }],
+    cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+    source_security_group_id = aws_security_group.other.id
+  }
+
+  tags = {
+    "Name" = local.name
+  }
+}
+
+module "additional_sg_matrix_ingress" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.7.0"
+
+  create_security_group = false
+  security_group_id     = module.security_group.security_group.id
+
+  matrix_ingress = {
+    description = "Matix Ingress rules for PostgreSQL"
+    rules = [
+      {
+        from_port = 5432
+        to_port   = 5432
+        protocol  = "tcp"
+      },
+    ],
+    cidr_blocks = ["10.0.0.0/24", "10.0.1.0/24"]
+  }
 
   tags = {
     "Name" = local.name
@@ -91,6 +120,7 @@ module "security_group" {
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_additional_sg_matrix_ingress"></a> [additional\_sg\_matrix\_ingress](#module\_additional\_sg\_matrix\_ingress) | ../../ | n/a |
 | <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 

@@ -20,9 +20,10 @@ setup: ## Setup project
 	terraform init
 	cd examples/basic && terraform init
 	cd examples/complete && terraform init
-	cd examples/common && terraform init
 	cd examples/customer && terraform init
 	cd examples/managed && terraform init
+	cd examples/common && terraform init
+	cd examples/matrix && terraform init
 	cd examples/computed && terraform init
 	cd examples/rules_only && terraform init
 
@@ -77,18 +78,20 @@ clean: ## Clean project
 	@rm -f .terraform.lock.hcl
 	@rm -f examples/basic/.tebasiclock.hcl
 	@rm -f examples/complete/.tebasiclock.hcl
-	@rm -f examples/common/.terraform.lock.hcl
 	@rm -f examples/customer/.terraform.lock.hcl
 	@rm -f examples/managed/.terraform.lock.hcl
+	@rm -f examples/common/.terraform.lock.hcl
+	@rm -f examples/matrix/.terraform.lock.hcl
 	@rm -f examples/computed/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
-	@rm -rf examples/common/.terraform
 	@rm -rf examples/customer/.terraform
 	@rm -rf examples/managed/.terraform
+	@rm -rf examples/common/.terraform
+	@rm -rf examples/matrix/.terraform
 	@rm -rf examples/computed/.terraform
 	@rm -rf examples/rules_only/.terraform
 
