@@ -12,13 +12,13 @@ Terraform module which creates [EC2 security group within VPC](http://docs.aws.a
 
 This module aims to implement **ALL** combinations of `aws_security_group` and `aws_security_group_rule` arguments supported by AWS and latest stable version of Terraform.
 
-What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
+What's more, this module was designed after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
 
 ## Examples
 
 Create a Security Group with the following rules:
 
-- Ingress `https-443-tcp` managed rules (ipv4/ipv6)
+- Ingress `https-443-tcp` managed rules (ipv4 and ipv6)
 - Egress `all-all-to-public` common rule
 
 ```hcl
@@ -48,7 +48,7 @@ module "security_group" {
 }
 ```
 
-Please see all other examples for more information:
+Please see the full examples for more information:
 
 - [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic)
 
@@ -80,6 +80,7 @@ Please see all other examples for more information:
 ## Tests
 
 Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/Makefile) targets:
+
 1. `make setup`
 2. `make tests`
 
