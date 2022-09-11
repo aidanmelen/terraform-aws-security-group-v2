@@ -37,7 +37,7 @@ module "pre_existing" {
 
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
-  tags        = {
+  tags = {
     "Name" = local.name
   }
 }

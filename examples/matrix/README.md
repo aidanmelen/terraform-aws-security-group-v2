@@ -1,6 +1,6 @@
 # Security Group with matrix rules
 
-Create a security group with matrix rules. The matrix supports customer, managed and common rules.
+Create a security group with matrix rules. More specifically, create a matrix of rules for every permutation of rules to source/destination.
 
 ## Details
 

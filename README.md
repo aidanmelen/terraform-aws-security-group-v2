@@ -14,10 +14,11 @@ This module aims to implement **ALL** combinations of arguments supported by AWS
 
 Ingress and egress rules can be configured in a variety of ways:
 
-- Customer ingress/egress rules. Customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
-- Managed ingress/egress rules (e.g. `all-all`, `https-443-tcp`, `postgresql-tcp`, and `ssh-tcp`  just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules. Managed rules for security groups are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
+- Customer ingress/egress rules. These are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
+- Managed ingress/egress rules (e.g. `all-all`, `https-443-tcp`, `postgresql-tcp`, and `ssh-tcp` just to name a few). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules. These analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
 - Common egress/egress for common scenarios sech as `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
-- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. computed rules support all customer, managed, and common rules.
+- Computed ingress/egress rules even when inputs reference [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. computed rules support all customer, managed, and common rules.
+- Matrix ingress/egress rules (i.e. a matrix of security group rules for every permutation of customer/managed rules to source/destination.
 - Conditionally create security group and/or all required security group rules.
 
 What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
@@ -474,6 +475,82 @@ module "security_group" {
 }
 ```
 
+### Security Group with matrix rules
+
+Create a security group with matrix rules. More specifically, create a matrix of rules for every permutation of rules to source/destination.
+
+<details><summary>Click to show</summary>
+
+```hcl
+###############################################################################
+# Resources That Must Use Computed Security Group Rules
+###############################################################################
+
+resource "aws_security_group" "other" {
+  name        = "${local.name}-other"
+  description = "${local.name}-other"
+  vpc_id      = data.aws_vpc.default.id
+
+  tags = {
+    "Name" = "${local.name}-other"
+  }
+}
+
+resource "aws_ec2_managed_prefix_list" "other" {
+  name           = "${local.name}-other"
+  address_family = "IPv4"
+  max_entries    = 5
+
+  entry {
+    cidr        = data.aws_vpc.default.cidr_block
+    description = "Primary"
+  }
+}
+
+###############################################################################
+# Security Group
+###############################################################################
+
+module "security_group" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.6.3"
+
+  name        = local.name
+  description = local.name
+  vpc_id      = data.aws_vpc.default.id
+
+  computed_ingress = [
+    {
+      from_port                = 80
+      to_port                  = 80
+      protocol                 = "tcp"
+      source_security_group_id = aws_security_group.other.id
+    },
+    {
+      rule                     = "https-443-tcp"
+      source_security_group_id = aws_security_group.other.id
+    }
+  ]
+
+  computed_egress = [
+    {
+      from_port       = 80
+      to_port         = 80
+      protocol        = "tcp"
+      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+    },
+    {
+      rule            = "https-443-tcp"
+      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+    }
+  ]
+
+  tags = {
+    "Name" = local.name
+  }
+}
+```
+
 </details><br/>
 
 Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
@@ -501,7 +578,7 @@ module "pre_existing" {
 
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
-  tags        = {
+  tags = {
     "Name" = local.name
   }
 }
