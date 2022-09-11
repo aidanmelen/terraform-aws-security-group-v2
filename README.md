@@ -475,6 +475,10 @@ module "security_group" {
 }
 ```
 
+</details><br/>
+
+Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
+
 ### Security Group with matrix rules
 
 Create a security group with matrix rules. More specifically, create a matrix of rules for every permutation of rules to source/destination.
