@@ -74,7 +74,7 @@ Please see the full examples for more information:
 | **Customer Rule** | A module rule where the customer explicitly declares all of the SG rule arguments. <br/><br/>These rules are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM. |
 | **Managed Rule** | A module rule that references an alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see  [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf)  for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
 | **Common Rule** | A module rule that references an alias for common scenarios where all SG rule arguments, including the source/destination, are known and managed. <br/><br/>E.g. `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules. |
-| **Matrix Rules** | A list of module `rules` are multiplexed with a many source/destinations creating a matrix of SG rules. |
+| **Matrix Rules** | A list of module rules are multiplexed with a many source/destinations creating a matrix of SG rules. |
 | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
 
 ## Tests
@@ -175,9 +175,7 @@ This modules aims to improve on the venerable [terraform-aws-modules/terraform-a
 - Dynamically create customer, managed and common security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). `for_each` has two advantages over `count`:
 
 1. Resources created with `for_each` are identified by a list of string values instead of by index with `count`.
-2. If an element is removed from the middle of the list, every security group rule after that element would see its values change, resulting in more remote object changes than intended. Using `for_each` gives the same flexibility without the extra churn. Please see [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
-
-Please see [#30937](https://github.com/hashicorp/terraform/issues/30937) for more information on unknown values.
+2. If an element is removed from the middle of the list, every security group rule after that element would see its values change, resulting in more remote object changes than intended. Using `for_each` gives the same flexibility without the extra churn. Please see [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count) and [#30937](https://github.com/hashicorp/terraform/issues/30937) for more information on unknown values.
 
 - Computed security group rule resources must use `count` due to the [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length` function to dynamically set the `count` which is an improvement from the `number_of_computed_` variables used by the [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#note-about-value-of-count-cannot-be-computed) module.
 
