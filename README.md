@@ -14,9 +14,9 @@ This module aims to implement **ALL** combinations of `aws_security_group` and `
 
 What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
 
-## Glossary
+## Key Concepts
 
-|  |  |
+| Terminology | Description |
 |---|---|
 | **AWS Security Group Rule** | The Security Group (SG) rule resource (ingress/egress). |
 | **Customer Rule** | A module rule where the customer explicitly declares the all of the SG rule arguments. <br/><br/>These rules are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM. |
