@@ -34,6 +34,6 @@ output "terratest" {
   description = "The IDs of unknown aws resource to be used by Terratest."
   value = {
     "data_aws_security_group_default_id" = data.aws_security_group.default.id,
-    "aws_security_group_pre_existing_id" = aws_security_group.pre_existing.id,
+    "pre_existing_security_group_id"     = module.pre_existing.security_group.id,
   }
 }

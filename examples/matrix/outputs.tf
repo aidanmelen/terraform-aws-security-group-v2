@@ -30,10 +30,14 @@ output "egress" {
 # Terratest
 ###############################################################################
 
+###############################################################################
+# Terratest
+###############################################################################
+
 output "terratest" {
   description = "The IDs of unknown aws resource to be used by Terratest."
   value = {
-    "data_aws_vpc_default_cidr_block"      = data.aws_vpc.default.cidr_block
-    "data_aws_vpc_default_ipv6_cidr_block" = data.aws_vpc.default.ipv6_cidr_block
+    "aws_security_group_other_id"          = aws_security_group.other.id,
+    "aws_ec2_managed_prefix_list_other_id" = aws_ec2_managed_prefix_list.other.id,
   }
 }

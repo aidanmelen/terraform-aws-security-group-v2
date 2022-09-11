@@ -485,13 +485,24 @@ Use the module to create rules for a pre-existing security group.
 <details><summary>Click to show</summary>
 
 ```hcl
-resource "aws_security_group" "pre_existing" {
-  name        = "${local.name}-pre-existing"
+# resource "aws_security_group" "pre_existing" {
+#   name        = "${local.name}-pre-existing"
+#   description = "${local.name}-pre-existing"
+#   vpc_id      = data.aws_vpc.default.id
+
+#   tags = {
+#     "Name" = "${local.name}-pre-existing"
+#   }
+# }
+
+module "pre_existing" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.6.3"
+
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
-
-  tags = {
-    "Name" = "${local.name}-pre-existing"
+  tags        = {
+    "Name" = local.name
   }
 }
 
@@ -500,7 +511,7 @@ module "security_group" {
   version = ">= 0.6.3"
 
   create_security_group = false
-  security_group_id     = aws_security_group.pre_existing.id
+  security_group_id     = module.pre_existing.security_group.id
 
   ingress = [{ rule = "https-tcp-from-public" }]
   egress  = [{ rule = "all-all-to-public" }]
@@ -524,12 +535,12 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (21.66s)
---- PASS: TestTerraformCompleteExample (51.69s)
---- PASS: TestTerraformCustomerRulesExample (32.31s)
---- PASS: TestTerraformManagedRulesExample (34.67s)
---- PASS: TestTerraformComputedRulesExample (29.42s)
---- PASS: TestTerraformRulesOnlyExample (20.82s)
+--- PASS: TestTerraformBasicExample (21.93s)
+--- PASS: TestTerraformCompleteExample (44.18s)
+--- PASS: TestTerraformCustomerRulesExample (33.98s)
+--- PASS: TestTerraformManagedRulesExample (33.71s)
+--- PASS: TestTerraformComputedRulesExample (30.66s)
+--- PASS: TestTerraformRulesOnlyExample (19.38s)
 ```
 
 ## Makefile Targets
@@ -566,8 +577,12 @@ clean                Clean project
 | [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.matrix_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.matrix_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_egress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_egress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_egress_with_source_security_group_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_ingress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_ingress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_ingress_with_source_security_group_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
