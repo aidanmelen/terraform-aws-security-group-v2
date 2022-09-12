@@ -62,7 +62,7 @@ module "security_group" {
   name   = local.name
   vpc_id = data.aws_vpc.default.id
 
-  matrix_ingress = {
+  computed_matrix_ingress = {
     rules = [
       { rule = "https-443-tcp" },
       { rule = "http-80-tcp" },
@@ -74,34 +74,10 @@ module "security_group" {
     self                     = true
   }
 
-  matrix_egress = {
+  computed_matrix_egress = {
     rules                    = [{ rule = "https-443-tcp" }],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     source_security_group_id = aws_security_group.other.id
-  }
-
-  tags = {
-    "Name" = local.name
-  }
-}
-
-module "additional_sg_matrix_ingress" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
-
-  create_security_group = false
-  security_group_id     = module.security_group.security_group.id
-
-  matrix_ingress = {
-    description = "Matix Ingress rules for PostgreSQL"
-    rules = [
-      {
-        from_port = 5432
-        to_port   = 5432
-        protocol  = "tcp"
-      },
-    ],
-    cidr_blocks = ["10.0.0.0/24", "10.0.1.0/24"]
   }
 
   tags = {
@@ -120,7 +96,6 @@ module "additional_sg_matrix_ingress" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_additional_sg_matrix_ingress"></a> [additional\_sg\_matrix\_ingress](#module\_additional\_sg\_matrix\_ingress) | ../../ | n/a |
 | <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 

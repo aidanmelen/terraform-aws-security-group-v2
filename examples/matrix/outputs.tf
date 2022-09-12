@@ -18,12 +18,12 @@ output "id" {
 
 output "ingress" {
   description = "The security group ingress rules."
-  value       = try(module.security_group.security_group_ingress_rules, null)
+  value       = try(module.security_group.security_group_ingress_rules, [])
 }
 
 output "egress" {
   description = "The security group egress rules."
-  value       = try(module.security_group.security_group_egress_rules, null)
+  value       = try(module.security_group.security_group_egress_rules, [])
 }
 
 ###############################################################################

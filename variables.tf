@@ -96,14 +96,14 @@ variable "computed_egress" {
   default     = []
 }
 
-variable "matrix_ingress" {
-  description = "The security group matrix ingress rules. A rule will be created for every permutation of rule to source. The rules can be either customer, managed, or common rule."
+variable "computed_matrix_ingress" {
+  description = "The security group matrix ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). The list of module rules will be multiplexed with a many source/destinations creating a matrix of SG rules. Can be either customer, managed, or common rule."
   type        = any
   default     = {}
 }
 
-variable "matrix_egress" {
-  description = "The security group matrix egress rules. A rule will be created for every permutation of rule and destination. sources. The rules can be either customer, managed, or common rule."
+variable "computed_matrix_egress" {
+  description = "The security group matrix egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). The list of module rules will be multiplexed with a many source/destinations creating a matrix of SG rules. Can be either customer, managed, or common rule."
   type        = any
   default     = {}
 }
