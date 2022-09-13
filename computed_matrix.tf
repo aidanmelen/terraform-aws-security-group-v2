@@ -15,6 +15,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
+    var.computed_matrix_ingress["description"],
     "managed by Terraform"
   )
 
@@ -48,6 +49,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
+    var.computed_matrix_ingress["description"],
     "managed by Terraform"
   )
 
@@ -80,6 +82,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
+    var.computed_matrix_ingress["description"],
     "managed by Terraform"
   )
 
@@ -120,6 +123,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
+    var.computed_matrix_egress["description"],
     "managed by Terraform"
   )
 
@@ -153,6 +157,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
+    var.computed_matrix_egress["description"],
     "managed by Terraform"
   )
 
@@ -185,6 +190,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
+    var.computed_matrix_egress["description"],
     "managed by Terraform"
   )
 

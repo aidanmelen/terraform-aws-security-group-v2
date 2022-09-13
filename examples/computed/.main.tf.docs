@@ -61,6 +61,29 @@ module "security_group" {
     }
   ]
 
+  matrix_ingress = {
+    rules = [
+      { rule = "postgresql-tcp" },
+      {
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        description = "customer rule example"
+      }
+    ],
+    cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+    ipv6_cidr_blocks         = []
+    prefix_list_ids          = [aws_ec2_managed_prefix_list.other.id]
+    source_security_group_id = aws_security_group.other.id
+    self                     = true
+    description              = "computed matrix default rule example"
+  }
+
+  computed_matrix_egress = {
+    rules                    = [{ rule = "postgresql-tcp" }],
+    source_security_group_id = aws_security_group.other.id
+  }
+
   tags = {
     "Name" = local.name
   }

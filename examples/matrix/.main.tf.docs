@@ -5,22 +5,28 @@ module "security_group" {
   name   = local.name
   vpc_id = data.aws_vpc.default.id
 
-  computed_matrix_ingress = {
+  matrix_ingress = {
     rules = [
       { rule = "https-443-tcp" },
-      { rule = "http-80-tcp" },
+      {
+        from_port   = 80
+        to_port     = 80
+        protocol    = "tcp"
+        description = "customer rule example"
+      }
     ],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     ipv6_cidr_blocks         = []
-    prefix_list_ids          = [aws_ec2_managed_prefix_list.other.id]
-    source_security_group_id = aws_security_group.other.id
+    prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
+    source_security_group_id = data.aws_security_group.default.id
     self                     = true
+    description              = "matrix default rule example"
   }
 
-  computed_matrix_egress = {
+  matrix_egress = {
     rules                    = [{ rule = "https-443-tcp" }],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
-    source_security_group_id = aws_security_group.other.id
+    source_security_group_id = data.aws_security_group.default.id
   }
 
   tags = {

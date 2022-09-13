@@ -84,6 +84,18 @@ variable "egress" {
   default     = []
 }
 
+variable "matrix_ingress" {
+  description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules."
+  type        = any
+  default     = {}
+}
+
+variable "matrix_egress" {
+  description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules."
+  type        = any
+  default     = {}
+}
+
 variable "computed_ingress" {
   description = "The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
@@ -97,13 +109,13 @@ variable "computed_egress" {
 }
 
 variable "computed_matrix_ingress" {
-  description = "The security group matrix ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). The list of module rules will be multiplexed with a many source/destinations creating a matrix of SG rules. Can be either customer, managed, or common rule."
+  description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
   type        = any
   default     = {}
 }
 
 variable "computed_matrix_egress" {
-  description = "The security group matrix egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). The list of module rules will be multiplexed with a many source/destinations creating a matrix of SG rules. Can be either customer, managed, or common rule."
+  description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
   type        = any
   default     = {}
 }
