@@ -18,11 +18,11 @@ matrix_ingress = {
       protocol  = "tcp"
     }
   ],
-  cidr_blocks = ["10.0.0.0/24", "10.0.1.0/24"]
-  ipv6_cidr_blocks = []
-  prefix_list_ids = [data.aws_prefix_list.private_s3.id]
+  cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+  ipv6_cidr_blocks         = []
+  prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
   source_security_group_id = data.aws_security_group.default.id
-  self = true
+  self                     = true
 }
 ```
 
