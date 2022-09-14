@@ -72,30 +72,50 @@ variable "delete_timeout" {
 # Security Group Rules
 ###############################################################################
 
-# https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count
 variable "ingress" {
   description = "The security group ingress rules. Can be either customer, managed, or common rule."
   type        = any
   default     = []
 }
 
-# https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count
 variable "egress" {
   description = "The security group egress rules. Can be either customer, managed, or common rule."
   type        = any
   default     = []
 }
 
-# https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each
+variable "matrix_ingress" {
+  description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules."
+  type        = any
+  default     = {}
+}
+
+variable "matrix_egress" {
+  description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules."
+  type        = any
+  default     = {}
+}
+
 variable "computed_ingress" {
   description = "The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
   default     = []
 }
 
-# https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each
 variable "computed_egress" {
-  description = "The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. "
+  description = "The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
   default     = []
+}
+
+variable "computed_matrix_ingress" {
+  description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
+  type        = any
+  default     = {}
+}
+
+variable "computed_matrix_egress" {
+  description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
+  type        = any
+  default     = {}
 }

@@ -18,12 +18,12 @@ output "id" {
 
 output "ingress" {
   description = "The security group ingress rules."
-  value       = try(module.security_group.security_group_ingress_rules, null)
+  value       = try(module.security_group.security_group_ingress_rules, [])
 }
 
 output "egress" {
   description = "The security group egress rules."
-  value       = try(module.security_group.security_group_egress_rules, null)
+  value       = try(module.security_group.security_group_egress_rules, [])
 }
 
 ###############################################################################
@@ -34,6 +34,6 @@ output "terratest" {
   description = "The IDs of unknown aws resources to be used by Terratest."
   value = {
     "data_aws_security_group_default_id" = data.aws_security_group.default.id,
-    "pre_existing_security_group_id"     = module.pre_existing.security_group.id,
+    "data_aws_prefix_list_private_s3_id" = data.aws_prefix_list.private_s3.id,
   }
 }

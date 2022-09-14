@@ -9,6 +9,7 @@ test-basic           Test the basic example
 test-complete        Test the complete example
 test-customer        Test the customer example
 test-managed         Test the managed example
+test-matrix          Test the matrix example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example
 clean                Clean project

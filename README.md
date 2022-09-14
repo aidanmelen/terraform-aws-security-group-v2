@@ -10,31 +10,21 @@ Terraform module which creates [EC2 security group within VPC](http://docs.aws.a
 
 ## Features
 
-This module aims to implement **ALL** combinations of arguments supported by AWS and latest stable version of Terraform.
+This module aims to implement **ALL** combinations of `aws_security_group` and `aws_security_group_rule` arguments supported by AWS and latest stable version of Terraform.
 
-Ingress and egress rules can be configured in a variety of ways:
-
-- Customer ingress/egress rules. Customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
-- Managed ingress/egress rules (e.g. `all-all`, `https-443-tcp`, `postgresql-tcp`, and `ssh-tcp`  just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules. Managed rules for security groups are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
-- Common egress/egress for common scenarios sech as `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
-- Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. computed rules support all customer, managed, and common rules.
-- Conditionally create security group and/or all required security group rules.
-
-What's more, this module was modeled after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
+What's more, this module was designed after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
 
 ## Examples
 
-### Security Group with basic rules
+Create a Security Group with the following rules:
 
-Recreate the [Basic Usage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#basic-usage) example from the `aws_security_group` resource with:
-
-- Ingress `https-443-tcp` managed rules (ipv4/ipv6)
+- Ingress `https-443-tcp` managed rules (ipv4 and ipv6)
 - Egress `all-all-to-public` common rule
 
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -58,478 +48,52 @@ module "security_group" {
 }
 ```
 
-Please see the [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic) for more information.
+Please see the full examples for more information:
 
-### Security Group with complete rules
+- [Basic Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/basic)
 
-Create a AWS Security Group with a broad mix of various features and settings provided by this module.
+- [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete)
 
-```hcl
-module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+- [Customer Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules)
 
-  name        = local.name
-  description = local.name
-  vpc_id      = data.aws_vpc.default.id
+- [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed)
 
-  ingress = [
-    {
-      rule        = "all-all"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-      description = "managed rule example"
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
-      source_security_group_id = data.aws_security_group.default.id
-      description              = "customer rule example"
-    },
-    {
-      rule        = "https-tcp-from-public"
-      description = "common rule example"
-    },
-    { rule = "http-tcp-from-public" },
-    { rule = "all-all-from-self" }
-  ]
+- [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common)
 
-  computed_ingress = [
-    {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = "tcp"
-      source_security_group_id = aws_security_group.other.id
-      description              = "This rule must be computed because it is created in the same terraform run as this module and is unknown at plan time."
-    },
-    {
-      rule                     = "https-443-tcp"
-      source_security_group_id = aws_security_group.other.id
-    }
-  ]
+- [Matrix Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/matrix)
 
-  egress = [
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-      description = "managed rule example"
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
-      source_security_group_id = data.aws_security_group.default.id
-      description              = "customer rule example"
-    },
-    {
-      rule        = "all-all-to-public"
-      description = "common rule example"
-    }
-  ]
+- [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed)
 
-  computed_egress = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-      description     = "computed (customer) rule example"
-    },
-    {
-      rule            = "https-443-tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-      description     = "computed (managed) rule example"
-    }
-  ]
+- [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only)
 
-  tags = {
-    "Name" = local.name
-  }
-}
+## Key Concepts
 
-################################################################################
-# Disabled creation
-################################################################################
-
-module "disabled_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-  create = false
-}
-```
-
-Please see the [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete) for more information.
-
-### Security Group with common scenario rules
-
-Create security group with common scenario rules (e.g. `https-tcp-from-public`, `all-all-from-self`, `all-all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
-
-<details><summary>Click to show</summary>
-
-```hcl
-module "public_https_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = "${local.name}-https"
-  description = "${local.name}-https"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "https-tcp-from-public" }, { rule = "all-all-from-self" }]
-  egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-https"
-  }
-}
-
-module "public_http_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = "${local.name}-http"
-  description = "${local.name}-http"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "http-tcp-from-public" }, { rule = "all-all-from-self" }]
-  egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-http"
-  }
-}
-
-module "ssh_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = "${local.name}-ssh"
-  description = "${local.name}-ssh"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-all-from-self" }]
-  egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-ssh"
-  }
-}
-```
-
-</details><br/>
-
-Please see the [Common Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/common) for more information.
-
-### Security Group with customer rules
-
-Create a security group with customer rules. Customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
-
-<details><summary>Click to show</summary>
-
-```hcl
-module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = local.name
-  description = local.name
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [
-    {
-      from_port   = 443
-      to_port     = 443
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    },
-    {
-      from_port        = 350
-      to_port          = 450
-      protocol         = "tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      from_port       = 22
-      to_port         = 22
-      protocol        = "tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
-      source_security_group_id = data.aws_security_group.default.id
-    },
-    {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
-    }
-  ]
-
-  egress = [
-    {
-      from_port   = 443
-      to_port     = 443
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    },
-    {
-      from_port        = 350
-      to_port          = 450
-      protocol         = "tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      from_port       = 22
-      to_port         = 22
-      protocol        = "tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
-      source_security_group_id = data.aws_security_group.default.id
-    },
-    {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
-    }
-  ]
-
-  tags = {
-    "Name" = local.name
-  }
-}
-```
-
-</details><br/>
-
-Please see the [customer Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules) for more information.
-
-### Security Group with managed rules
-
-Create a security group with managed rules. Managed rules for security groups are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
-
-<details><summary>Click to show</summary>
-
-```hcl
-module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = local.name
-  description = local.name
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [
-    {
-      rule        = "all-all"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      rule                     = "all-icmp"
-      source_security_group_id = data.aws_security_group.default.id
-    },
-    {
-      rule = "all-all"
-      self = true
-    }
-  ]
-
-  egress = [
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      rule                     = "all-icmp"
-      source_security_group_id = data.aws_security_group.default.id
-    },
-    {
-      rule = "all-all"
-      self = true
-    }
-  ]
-
-  tags = {
-    "Name" = local.name
-  }
-}
-```
-
-</details><br/>
-
-Please see the [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed) for more information.
-
-### Security Group with computed rules
-
-Create a security group with a computed rules. Computed security group rules uses `count` to dynamically create rules with unknown values during the initial Terraform plan. Please see [Limitations on values used in for_each](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each).
-
-<details><summary>Click to show</summary>
-
-```hcl
-###############################################################################
-# Resources That Must Use Computed Security Group Rules
-###############################################################################
-
-resource "aws_security_group" "other" {
-  name        = "${local.name}-other"
-  description = "${local.name}-other"
-  vpc_id      = data.aws_vpc.default.id
-
-  tags = {
-    "Name" = "${local.name}-other"
-  }
-}
-
-resource "aws_ec2_managed_prefix_list" "other" {
-  name           = "${local.name}-other"
-  address_family = "IPv4"
-  max_entries    = 5
-
-  entry {
-    cidr        = data.aws_vpc.default.cidr_block
-    description = "Primary"
-  }
-}
-
-###############################################################################
-# Security Group
-###############################################################################
-
-module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  name        = local.name
-  description = local.name
-  vpc_id      = data.aws_vpc.default.id
-
-  computed_ingress = [
-    {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = "tcp"
-      source_security_group_id = aws_security_group.other.id
-    },
-    {
-      rule                     = "https-443-tcp"
-      source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  computed_egress = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    },
-    {
-      rule            = "https-443-tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-    }
-  ]
-
-  tags = {
-    "Name" = local.name
-  }
-}
-```
-
-</details><br/>
-
-Please see the [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed) for more information.
-
-### Only rules with pre-existing security group
-
-Use the module to create rules for a pre-existing security group.
-
-<details><summary>Click to show</summary>
-
-```hcl
-resource "aws_security_group" "pre_existing" {
-  name        = "${local.name}-pre-existing"
-  description = "${local.name}-pre-existing"
-  vpc_id      = data.aws_vpc.default.id
-
-  tags = {
-    "Name" = "${local.name}-pre-existing"
-  }
-}
-
-module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
-
-  create_security_group = false
-  security_group_id     = aws_security_group.pre_existing.id
-
-  ingress = [{ rule = "https-tcp-from-public" }]
-  egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = local.name
-  }
-}
-```
-
-</details><br/>
-
-Please see the [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only) for more information.
+| Terminology | Description |
+|---|---|
+| **AWS Security Group Rule** | The Security Group (SG) rule resource (ingress/egress). |
+| **Customer Rule** | A module rule where the customer explicitly declares all of the SG rule arguments. <br/><br/>These rules are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM. |
+| **Managed Rule** | A module rule that references an alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see  [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf)  for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
+| **Common Rule** | A module rule that references an alias for common scenarios where all SG rule arguments, including the source/destination, are known and managed. <br/><br/>E.g. `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules. |
+| **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
+| **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
 
 ## Tests
 
 Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/Makefile) targets:
+
 1. `make setup`
 2. `make tests`
 
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (21.71s)
---- PASS: TestTerraformCompleteExample (44.53s)
---- PASS: TestTerraformCustomerRulesExample (34.06s)
---- PASS: TestTerraformManagedRulesExample (36.36s)
---- PASS: TestTerraformComputedRulesExample (28.72s)
---- PASS: TestTerraformRulesOnlyExample (19.39s)
+--- PASS: TestTerraformBasicExample (20.24s)
+--- PASS: TestTerraformCompleteExample (43.12s)
+--- PASS: TestTerraformCustomerRulesExample (32.44s)
+--- PASS: TestTerraformManagedRulesExample (32.51s)
+--- PASS: TestTerraformMatrixRulesExample (30.72s)
+--- PASS: TestTerraformComputedRulesExample (40.40s)
+--- PASS: TestTerraformRulesOnlyExample (20.10s)
 ```
 
 ## Makefile Targets
@@ -546,6 +110,7 @@ test-basic           Test the basic example
 test-complete        Test the complete example
 test-customer        Test the customer example
 test-managed         Test the managed example
+test-matrix          Test the matrix example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example
 clean                Clean project
@@ -564,14 +129,24 @@ clean                Clean project
 | [aws_security_group.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.computed_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_egress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_egress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_egress_with_source_security_group_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.computed_matrix_ingress_with_source_security_group_id](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.matrix_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_computed_egress"></a> [computed\_egress](#input\_computed\_egress) | The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_computed_ingress"></a> [computed\_ingress](#input\_computed\_ingress) | The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_computed_matrix_egress"></a> [computed\_matrix\_egress](#input\_computed\_matrix\_egress) | A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). | `any` | `{}` | no |
+| <a name="input_computed_matrix_ingress"></a> [computed\_matrix\_ingress](#input\_computed\_matrix\_ingress) | A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
@@ -579,6 +154,8 @@ clean                Clean project
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
 | <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_ingress"></a> [ingress](#input\_ingress) | The security group ingress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_matrix_egress"></a> [matrix\_egress](#input\_matrix\_egress) | A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. | `any` | `{}` | no |
+| <a name="input_matrix_ingress"></a> [matrix\_ingress](#input\_matrix\_ingress) | A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. | `any` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | (Optional, Forces new resource) Creates a unique name beginning with the specified prefix. Conflicts with name. | `string` | `null` | no |
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
@@ -597,20 +174,20 @@ clean                Clean project
 
 This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
 
-- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines when compared to the [~800 lines in the terraform-aws-security-group module](https://github.com/terraform-aws-modules/terraform-aws-security-group/blob/master/main.tf).
+- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) and [matrix.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/matrix.tf) are both ~100 lines.
 
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
 
 - Dynamically create customer, managed and common security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). `for_each` has two advantages over `count`:
 
 1. Resources created with `for_each` are identified by a list of string values instead of by index with `count`.
-2. If an element is removed from the middle of the list, every security group rule after that element would see its values change, resulting in more remote object changes than intended. Using `for_each` gives the same flexibility without the extra churn. Please see [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count).
+2. If an element is removed from the middle of the list, every security group rule after that element would see its values change, resulting in more remote object changes than intended. Using `for_each` gives the same flexibility without the extra churn. Please see [When to Use for_each Instead of count](https://www.terraform.io/language/meta-arguments/count#when-to-use-for_each-instead-of-count) for more information.
 
-- Computed security group rule resources must use `count` due to the [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length` function to dynamically set the `count` which is an improvement from the `number_of_computed_` variables used by the [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#note-about-value-of-count-cannot-be-computed) module.
+- Computed security group rule resources must use `count` due to the [Limitations on values used in `for_each`](https://www.terraform.io/language/meta-arguments/for_each#limitations-on-values-used-in-for_each). However, this implementation uses the `length` function to dynamically set the `count` which is an improvement from the `number_of_computed_` variables used by the [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#note-about-value-of-count-cannot-be-computed) module. Please see [#30937](https://github.com/hashicorp/terraform/issues/30937) for more information on unknown values.
 
 - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like `all-all-to-public`. This approach is consistent with the implementation of the `aws_security_group_rule` resource as described in the [NOTE on Egress rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#basic-usage). Moreover, please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
 
-- Improve security by making it easy for users to declare granular customer, managed, common, and computed security group rules.
+- Improve security by making it easy for users to declare granular customer, managed, common, matrix, and computed security group rules.
 
 - Test examples with [Terratest](https://terratest.gruntwork.io/).
 

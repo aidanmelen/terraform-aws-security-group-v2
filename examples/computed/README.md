@@ -52,7 +52,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   name        = local.name
   description = local.name
@@ -84,6 +84,29 @@ module "security_group" {
     }
   ]
 
+  computed_matrix_ingress = {
+    rules = [
+      { rule = "postgresql-tcp" },
+      {
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        description = "customer rule example"
+      }
+    ],
+    cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+    ipv6_cidr_blocks         = []
+    prefix_list_ids          = [aws_ec2_managed_prefix_list.other.id]
+    source_security_group_id = aws_security_group.other.id
+    self                     = true
+    description              = "computed matrix default rule example"
+  }
+
+  computed_matrix_egress = {
+    rules                    = [{ rule = "postgresql-tcp" }],
+    source_security_group_id = aws_security_group.other.id
+  }
+
   tags = {
     "Name" = local.name
   }
@@ -114,5 +137,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

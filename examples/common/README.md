@@ -1,4 +1,4 @@
-# Security Group with customer rules
+# Security Group with common rules
 
 Create security group with common scenario rules (e.g. `https-tcp-from-public`, `all-all-from-self`, `all-all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -39,7 +39,7 @@ module "public_https_sg" {
 
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -55,7 +55,7 @@ module "public_http_sg" {
 
 module "ssh_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   name        = "${local.name}-ssh"
   description = "${local.name}-ssh"

@@ -33,11 +33,11 @@ func TestTerraformRulesOnlyExample(t *testing.T) {
 	actualIngress0 := regexp.ReplaceAllString(actualIngress[0], "sgrule-1111111111")
 	actualEgress0 := regexp.ReplaceAllString(actualEgress[0], "sgrule-1111111111")
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
-	actualAwsSecurityGroupPreExistingSgId := actualTerratest["aws_security_group_pre_existing_id"]
+	actualPreExistingSecurityGroupId := actualTerratest["pre_existing_security_group_id"]
 
 	// assign expected
-	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualAwsSecurityGroupPreExistingSgId)
-	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualAwsSecurityGroupPreExistingSgId)
+	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualPreExistingSecurityGroupId)
+	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualPreExistingSecurityGroupId)
 
 	// assert
 	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)

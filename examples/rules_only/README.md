@@ -21,22 +21,24 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Example
 
 ```hcl
-resource "aws_security_group" "pre_existing" {
-  name        = "${local.name}-pre-existing"
+module "pre_existing" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 0.7.0"
+
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
 
   tags = {
-    "Name" = "${local.name}-pre-existing"
+    "Name" = local.name
   }
 }
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.6.3"
+  version = ">= 0.7.0"
 
   create_security_group = false
-  security_group_id     = aws_security_group.pre_existing.id
+  security_group_id     = module.pre_existing.security_group.id
 
   ingress = [{ rule = "https-tcp-from-public" }]
   egress  = [{ rule = "all-all-to-public" }]
@@ -66,5 +68,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resource to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -31,7 +31,7 @@ output "egress" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resource to be used by Terratest."
+  description = "The IDs of unknown aws resources to be used by Terratest."
   value = {
     "data_aws_vpc_default_cidr_block"      = data.aws_vpc.default.cidr_block
     "data_aws_vpc_default_ipv6_cidr_block" = data.aws_vpc.default.ipv6_cidr_block
