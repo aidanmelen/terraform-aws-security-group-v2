@@ -1,4 +1,4 @@
-# Security Group with customer rules
+# Security Group with common rules
 
 Create security group with common scenario rules (e.g. `https-tcp-from-public`, `all-all-from-self`, `all-all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
