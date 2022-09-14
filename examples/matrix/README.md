@@ -6,7 +6,7 @@ Create a security group with a multi-dimensional matrix rules.
 
 The input of
 
-```
+```hcl
 matrix_ingress = {
   rules = [
     {
