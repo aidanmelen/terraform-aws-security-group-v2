@@ -1,0 +1,65 @@
+package test
+
+import (
+	"fmt"
+	"regexp"
+	"testing"
+
+	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestTerraformMatrixRulesExample(t *testing.T) {
+	terraformOptions := &terraform.Options{
+		// website::tag::1:: Set the path to the Terraform code that will be tested.
+		TerraformDir: "../examples/matrix",
+
+		// Disable colors in Terraform commands so its easier to parse stdout/stderr
+		NoColor: true,
+	}
+
+	// website::tag::4:: Clean up resources with "terraform destroy" at the end of the test.
+	defer terraform.Destroy(t, terraformOptions)
+
+	// website::tag::2:: Run "terraform init" and "terraform apply". Fail the test if there are any errors.
+	terraform.InitAndApply(t, terraformOptions)
+
+	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected valuesObjectSpec.
+
+	// assign actual
+	actualSecurityGroupId := terraform.Output(t, terraformOptions, "id")
+	actualIngress := terraform.OutputList(t, terraformOptions, "ingress")
+	actualEgress := terraform.OutputList(t, terraformOptions, "egress")
+	regexp, _ := regexp.Compile(`sgrule-[a-z0-9]*`)
+	actualIngress0 := regexp.ReplaceAllString(actualIngress[0], "sgrule-1111111111")
+	actualIngress1 := regexp.ReplaceAllString(actualIngress[1], "sgrule-1111111111")
+	actualIngress2 := regexp.ReplaceAllString(actualIngress[2], "sgrule-1111111111")
+	actualIngress3 := regexp.ReplaceAllString(actualIngress[3], "sgrule-1111111111")
+	actualIngress4 := regexp.ReplaceAllString(actualIngress[4], "sgrule-1111111111")
+	actualIngress5 := regexp.ReplaceAllString(actualIngress[5], "sgrule-1111111111")
+	actualEgress0 := regexp.ReplaceAllString(actualEgress[0], "sgrule-1111111111")
+	actualEgress1 := regexp.ReplaceAllString(actualEgress[1], "sgrule-1111111111")
+	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
+	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
+	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
+
+	// assign expected
+	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:matrix default rule example from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:80 type:ingress]", actualDataAwsPrefixListPrivateS3Id, actualSecurityGroupId)
+	expectedIngress1 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:matrix default rule example from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualDataAwsPrefixListPrivateS3Id, actualSecurityGroupId)
+	expectedIngress2 := fmt.Sprintf("map[cidr_blocks:<nil> description:matrix default rule example from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:80 type:ingress]", actualSecurityGroupId, actualDataAwsSecurityGroupDefaultId)
+	expectedIngress3 := fmt.Sprintf("map[cidr_blocks:<nil> description:matrix default rule example from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:80 type:ingress]", actualSecurityGroupId)
+	expectedIngress4 := fmt.Sprintf("map[cidr_blocks:<nil> description:matrix default rule example from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupId, actualDataAwsSecurityGroupDefaultId)
+	expectedIngress5 := fmt.Sprintf("map[cidr_blocks:<nil> description:matrix default rule example from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupId)
+	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualSecurityGroupId)
+	expectedEgress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:sg-b551fece timeouts:<nil> to_port:443 type:egress]", actualSecurityGroupId)
+
+	// assert
+	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)
+	assert.Equal(t, expectedIngress1, actualIngress1, "Map %q should match %q", expectedIngress1, actualIngress1)
+	assert.Equal(t, expectedIngress2, actualIngress2, "Map %q should match %q", expectedIngress2, actualIngress2)
+	assert.Equal(t, expectedIngress3, actualIngress3, "Map %q should match %q", expectedIngress3, actualIngress3)
+	assert.Equal(t, expectedIngress4, actualIngress4, "Map %q should match %q", expectedIngress4, actualIngress4)
+	assert.Equal(t, expectedIngress5, actualIngress5, "Map %q should match %q", expectedIngress5, actualIngress5)
+	assert.Equal(t, expectedEgress0, actualEgress0, "Map %q should match %q", expectedEgress0, actualEgress0)
+	assert.Equal(t, expectedEgress1, actualEgress1, "Map %q should match %q", expectedEgress1, actualEgress1)
+}

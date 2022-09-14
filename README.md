@@ -87,12 +87,13 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (21.93s)
---- PASS: TestTerraformCompleteExample (44.18s)
---- PASS: TestTerraformCustomerRulesExample (33.98s)
---- PASS: TestTerraformManagedRulesExample (33.71s)
---- PASS: TestTerraformComputedRulesExample (30.66s)
---- PASS: TestTerraformRulesOnlyExample (19.38s)
+--- PASS: TestTerraformBasicExample (20.24s)
+--- PASS: TestTerraformCompleteExample (43.12s)
+--- PASS: TestTerraformCustomerRulesExample (32.44s)
+--- PASS: TestTerraformManagedRulesExample (32.51s)
+--- PASS: TestTerraformMatrixRulesExample (30.28s)
+--- PASS: TestTerraformComputedRulesExample (40.40s)
+--- PASS: TestTerraformRulesOnlyExample (20.10s)
 ```
 
 ## Makefile Targets
@@ -109,6 +110,7 @@ test-basic           Test the basic example
 test-complete        Test the complete example
 test-customer        Test the customer example
 test-managed         Test the managed example
+test-matrix          Test the matrix example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example
 clean                Clean project

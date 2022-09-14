@@ -6,7 +6,7 @@ sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  ve
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/customer/main.tf > examples/customer/.main.tf.docs
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/managed/main.tf > examples/managed/.main.tf.docs
-sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/common/main.tf > examples/common/.main.tf.docs
+# sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/common/main.tf > examples/common/.main.tf.docs
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/matrix/main.tf > examples/matrix/.main.tf.docs
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/computed/main.tf > examples/computed/.main.tf.docs
 sed -z 's/source = [^\r\n]*/source  = "aidanmelen\/security-group-v2\/aws"\n  version = ">= 0.7.0"/g' examples/rules_only/main.tf > examples/rules_only/.main.tf.docs

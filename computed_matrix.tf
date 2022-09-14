@@ -42,7 +42,10 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
 resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security_group_id" {
   # This is count statement is bizarre but it was the only combinatons of functions that I found to dynamically handles unknown values.
-  count             = var.create ? length(flatten([lookup(var.computed_matrix_ingress, "source_security_group_id", [])])) : 0
+  count = var.create ? (
+    length(flatten([lookup(var.computed_matrix_ingress, "source_security_group_id", [])])) *
+    length(try(var.computed_matrix_ingress.rules, []))
+  ) : 0
   security_group_id = local.security_group_id
   type              = "ingress"
 
@@ -75,7 +78,10 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
 resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
-  count             = try(var.create && var.computed_matrix_ingress.self == true ? length(var.computed_matrix_ingress.rules) : 0, 0)
+  count = var.create ? (
+    length(flatten([lookup(var.computed_matrix_ingress, "source_security_group_id", [])])) *
+    length(try(var.computed_matrix_ingress.rules, []))
+  ) : 0
   security_group_id = local.security_group_id
   type              = "ingress"
 
@@ -110,7 +116,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
 # Computed Security Group Egress Rules
 ###############################################################################
 
-#tfsec:ignore:aws-ec2-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_prefix_list_ids" {
   count = anytrue([
     length(lookup(var.computed_matrix_egress, "cidr_blocks", [])) > 0,
@@ -147,10 +153,13 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   self                     = null # Cannot be specified with cidr_blocks, ipv6_cidr_blocks
 }
 
-#tfsec:ignore:aws-ec2-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_group_id" {
   # This is count statement is bizarre but it was the only combinatons of functions that I found to dynamically handles unknown values.
-  count             = var.create ? length(flatten([lookup(var.computed_matrix_ingress, "source_security_group_id", [])])) : 0
+  count = var.create ? (
+    length(flatten([lookup(var.computed_matrix_egress, "source_security_group_id", [])])) *
+    length(try(var.computed_matrix_egress.rules, []))
+  ) : 0
   security_group_id = local.security_group_id
   type              = "egress"
 
@@ -181,7 +190,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   self                     = null # Cannot be specified with source_security_group_id
 }
 
-#tfsec:ignore:aws-ec2-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   count             = try(var.create && var.computed_matrix_egress.self == true ? length(var.computed_matrix_egress.rules) : 0, 0)
   security_group_id = local.security_group_id

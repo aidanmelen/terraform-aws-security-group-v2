@@ -31,7 +31,7 @@ output "egress" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resource to be used by Terratest."
+  description = "The IDs of unknown aws resources to be used by Terratest."
   value = {
     "data_aws_security_group_default_id" = data.aws_security_group.default.id,
     "pre_existing_security_group_id"     = module.pre_existing.security_group.id,

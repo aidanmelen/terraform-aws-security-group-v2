@@ -31,7 +31,7 @@ output "egress" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resource to be used by Terratest."
+  description = "The IDs of unknown aws resources to be used by Terratest."
   value = {
     "aws_security_group_other_id"          = aws_security_group.other.id,
     "aws_ec2_managed_prefix_list_other_id" = aws_ec2_managed_prefix_list.other.id,

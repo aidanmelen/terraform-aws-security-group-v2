@@ -60,7 +60,7 @@ module "security_group" {
     }
   ]
 
-  matrix_ingress = {
+  computed_matrix_ingress = {
     rules = [
       { rule = "postgresql-tcp" },
       {
