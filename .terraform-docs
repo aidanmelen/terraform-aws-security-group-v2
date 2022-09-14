@@ -87,7 +87,7 @@ content: |-
 
   - Encourage the security best practice of restrictive rules by making users **opt-in** to common rules like `all-all-to-public`. This approach is consistent with the implementation of the `aws_security_group_rule` resource as described in the [NOTE on Egress rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#basic-usage). Moreover, please see [no-public-egress-sgr](https://aquasecurity.github.io/tfsec/v0.61.3/checks/aws/vpc/no-public-egress-sgr/) for more information.
 
-  - Improve security by making it easy for users to declare granular customer, managed, common, and computed security group rules.
+  - Improve security by making it easy for users to declare granular customer, managed, common, matrix, and computed security group rules.
 
   - Test examples with [Terratest](https://terratest.gruntwork.io/).
 
