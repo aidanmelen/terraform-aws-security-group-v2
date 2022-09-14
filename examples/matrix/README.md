@@ -28,7 +28,7 @@ matrix_ingress = {
 
 will create 6 security group rules (see table below):
 
-| **rule** | **cidr_blocks** | **ipv6_cidr_blocks** | **prefix_list_ids** | **source_security_group_id** | **self** |
+| **module rule** | **cidr_blocks** | **ipv6_cidr_blocks** | **prefix_list_ids** | **source_security_group_id** | **self** |
 |---|---|---|---|---|---|
 | `rule = "https-443-tcp"` | `["10.0.0.0/24", "10.0.1.0/24"]` | `[]` | `["pl-1111111111", "pl-2222222222"]` |  |  |
 | `rule = "https-443-tcp"` |  |  |  | `"sg-1111111111"` |  |
