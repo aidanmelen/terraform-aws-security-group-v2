@@ -91,7 +91,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 --- PASS: TestTerraformCompleteExample (43.12s)
 --- PASS: TestTerraformCustomerRulesExample (32.44s)
 --- PASS: TestTerraformManagedRulesExample (32.51s)
---- PASS: TestTerraformMatrixRulesExample (30.28s)
+--- PASS: TestTerraformMatrixRulesExample (30.72s)
 --- PASS: TestTerraformComputedRulesExample (40.40s)
 --- PASS: TestTerraformRulesOnlyExample (20.10s)
 ```
