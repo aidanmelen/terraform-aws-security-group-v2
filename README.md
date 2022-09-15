@@ -54,7 +54,7 @@ Please see the full examples for more information:
 
 - [Complete Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/complete)
 
-- [Customer Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules)
+- [Customer Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/customer)
 
 - [Managed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/managed)
 
