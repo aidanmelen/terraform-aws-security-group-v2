@@ -1,12 +1,17 @@
 {
     "build": { "dockerfile": "Dockerfile" },
     "extensions": [
-        "hashicorp.terraform",
-        "golang.Go",
-        "streetsidesoftware.code-spell-checker"
-    ],
+		"hashicorp.terraform",
+		"golang.Go",
+		"streetsidesoftware.code-spell-checker",
+		"bierner.markdown-preview-github-styles"
+	],
+    "settings": {
+        "cSpell.enabledLanguageIds": ["markdown"],
+        "markdown-preview-github-styles.colorTheme": "light"
+    },
     "mounts": [
         "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind",
-        "source=${localEnv:HOME}/.cache/pre-commit,target=/root/.cache/pre-commit,type=bind",
+        "source=${localEnv:HOME}/.cache/pre-commit,target=/root/.cache/pre-commit,type=bind"
     ]
 }

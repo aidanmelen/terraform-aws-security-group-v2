@@ -22,9 +22,10 @@ Create a Security Group with the following rules:
 - Egress `all-all-to-public` common rule
 
 ```hcl
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
+  version = ">= 1.1.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -87,13 +88,14 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
---- PASS: TestTerraformBasicExample (20.24s)
---- PASS: TestTerraformCompleteExample (43.12s)
---- PASS: TestTerraformCustomerRulesExample (32.44s)
---- PASS: TestTerraformManagedRulesExample (32.51s)
---- PASS: TestTerraformMatrixRulesExample (30.72s)
---- PASS: TestTerraformComputedRulesExample (40.40s)
---- PASS: TestTerraformRulesOnlyExample (20.10s)
+--- PASS: TestTerraformBasicExample (20.64s)
+--- PASS: TestTerraformCompleteExample (44.10s)
+--- PASS: TestTerraformCustomerRulesExample (32.84s)
+--- PASS: TestTerraformManagedRulesExample (32.43s)
+--- PASS: TestTerraformCommonRulesExample (27.24s)
+--- PASS: TestTerraformMatrixRulesExample (30.40s)
+--- PASS: TestTerraformComputedRulesExample (40.27s)
+--- PASS: TestTerraformRulesOnlyExample (20.12s)
 ```
 
 ## Makefile Targets
@@ -110,6 +112,7 @@ test-basic           Test the basic example
 test-complete        Test the complete example
 test-customer        Test the customer example
 test-managed         Test the managed example
+test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example

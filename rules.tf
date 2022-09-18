@@ -199,14 +199,15 @@ locals {
     all-udp       = { "to_port" = 0, "from_port" = 65535, "protocol" = "udp" }
     all-icmp      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp" }
     all-ipv6-icmp = { "to_port" = 0, "from_port" = 0, "protocol" = 58 }
+
     # Common Ingress
-    all-all-from-self     = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    https-tcp-from-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    http-tcp-from-public  = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    all-icmp-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    all-ping-from-public  = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-from-self     = { "type" = "ingress", "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    https-tcp-from-public = { "type" = "ingress", "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    http-tcp-from-public  = { "type" = "ingress", "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-icmp-from-public  = { "type" = "ingress", "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-ping-from-public  = { "type" = "ingress", "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     # Common Egress
-    all-all-to-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    all-all-to-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-to-self   = { "type" = "egress", "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
+    all-all-to-public = { "type" = "egress", "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
   }
 }

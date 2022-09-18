@@ -31,11 +31,10 @@ resource "aws_security_group" "self" {
 # Security Group Rules
 ###############################################################################
 
-#tfsec:ignore:aws-ec2-no-public-ingress-sgr
 resource "aws_security_group_rule" "ingress" {
   for_each                 = var.create ? local.ingress_true_expr : local.ingress_false_expr
   security_group_id        = local.security_group_id
-  type                     = "ingress"
+  type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "ingress")
   description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
@@ -47,11 +46,10 @@ resource "aws_security_group_rule" "ingress" {
   source_security_group_id = try(each.value["source_security_group_id"], local.rules[each.value["rule"]]["source_security_group_id"], null)
 }
 
-#tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group_rule" "egress" {
   for_each                 = var.create ? local.egress_true_expr : local.egress_false_expr
   security_group_id        = local.security_group_id
-  type                     = "egress"
+  type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "egress")
   description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
