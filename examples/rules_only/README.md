@@ -33,6 +33,7 @@ module "pre_existing" {
   }
 }
 
+#tfsec:ignore:aws-ec2-no-public-ingress-sgr
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"

@@ -23,6 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
@@ -40,6 +41,7 @@ module "public_https_sg" {
   }
 }
 
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"

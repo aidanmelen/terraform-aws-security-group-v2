@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# render terraform-docs code examples
+
 NAME=$1
 HOSTNAME=$2
 PROVIDER=$3
 VERSION=$4
-PATTERN="s/source = [^\r\n]*/source  = \"$HOSTNAME\/$NAME\/$PROVIDER\"\n  version = \">= $VERSION\"/g"
 
-# render terraform-docs code examples
+PATTERN="s/source = [^\r\n]*/source  = \"$HOSTNAME\/$NAME\/$PROVIDER\"\n  version = \">= $VERSION\"/g"
 
 sed -z "${PATTERN}" examples/basic/main.tf > examples/basic/.main.tf.docs
 sed -z "${PATTERN}" examples/complete/main.tf > examples/complete/.main.tf.docs

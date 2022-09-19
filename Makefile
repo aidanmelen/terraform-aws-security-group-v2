@@ -43,7 +43,7 @@ setup: ## Setup project
 
 docs:
 	./bin/render-terraform-docs.sh $(NAME) $(HOSTNAME) $(PROVIDER) $(VERSION)
-	./bin/render-terratest-docs.sh
+	./bin/render-terratest-docs.sh $(VERSION)
 	./bin/render-makefile-docs.sh
 	./bin/scrub-terratest-logs.sh
 
