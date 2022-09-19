@@ -89,14 +89,14 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.1.0)
---- PASS: TestTerraformBasicExample (22.69s)
---- PASS: TestTerraformCompleteExample (47.14s)
---- PASS: TestTerraformCustomerRulesExample (33.07s)
---- PASS: TestTerraformManagedRulesExample (32.84s)
+--- PASS: TestTerraformBasicExample (23.57s)
+--- PASS: TestTerraformCompleteExample (48.71s)
+--- PASS: TestTerraformCustomerRulesExample (37.88s)
+--- PASS: TestTerraformManagedRulesExample (37.96s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (31.81s)
---- PASS: TestTerraformComputedRulesExample (39.79s)
---- PASS: TestTerraformRulesOnlyExample (20.02s)
+--- PASS: TestTerraformMatrixRulesExample (34.06s)
+--- PASS: TestTerraformComputedRulesExample (45.59s)
+--- PASS: TestTerraformRulesOnlyExample (22.30s)
 ```
 
 ## Makefile Targets
@@ -154,6 +154,7 @@ clean                Clean project
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
+| <a name="input_default_rule_description"></a> [default\_rule\_description](#input\_default\_rule\_description) | The default security group rule description. | `string` | `"managed by Terraform"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
 | <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |

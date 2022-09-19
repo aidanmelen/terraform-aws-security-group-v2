@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "ingress" {
   for_each                 = var.create ? local.ingress_true_expr : local.ingress_false_expr
   security_group_id        = local.security_group_id
   type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "ingress")
-  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
   protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
@@ -50,7 +50,7 @@ resource "aws_security_group_rule" "egress" {
   for_each                 = var.create ? local.egress_true_expr : local.egress_false_expr
   security_group_id        = local.security_group_id
   type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "egress")
-  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
   protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])

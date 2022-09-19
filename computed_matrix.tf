@@ -13,14 +13,14 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
 
   type = try(
     var.computed_matrix_ingress[count.index]["type"],
-    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"],
+    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"], # common rule type
     "ingress"
   )
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
     var.computed_matrix_ingress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
@@ -43,7 +43,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
 }
 
 resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security_group_id" {
-  # This is count statement is bizarre but it was the only combinatons of functions that I found to dynamically handles unknown values.
+  # This count statement is bizarre but it was the only combinatons of functions that dynamically handled unknown values.
   count = var.create ? (
     length(flatten([lookup(var.computed_matrix_ingress, "source_security_group_id", [])])) *
     length(try(var.computed_matrix_ingress.rules, []))
@@ -53,14 +53,14 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
 
   type = try(
     var.computed_matrix_ingress[count.index]["type"],
-    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"],
+    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"], # common rule type
     "ingress"
   )
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
     var.computed_matrix_ingress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
@@ -98,7 +98,7 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
     var.computed_matrix_ingress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
@@ -135,14 +135,14 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
 
   type = try(
     var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"],
+    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
     "egress"
   )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
     var.computed_matrix_egress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
@@ -165,7 +165,7 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
 }
 
 resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_group_id" {
-  # This is count statement is bizarre but it was the only combinatons of functions that I found to dynamically handles unknown values.
+  # This count statement is bizarre but it was the only combinatons of functions that dynamically handled unknown values.
   count = var.create ? (
     length(flatten([lookup(var.computed_matrix_egress, "source_security_group_id", [])])) *
     length(try(var.computed_matrix_egress.rules, []))
@@ -175,14 +175,14 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
 
   type = try(
     var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"],
+    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
     "egress"
   )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
     var.computed_matrix_egress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
@@ -211,14 +211,14 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
 
   type = try(
     var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"],
+    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
     "egress"
   )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
     var.computed_matrix_egress["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],

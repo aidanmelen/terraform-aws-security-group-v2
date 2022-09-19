@@ -7,7 +7,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
         "type"             = try(var.matrix_ingress.type, rule.type, "ingress")
-        "description"      = try(var.matrix_ingress.description, rule.description, "managed by Terraform")
+        "description"      = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "cidr_blocks"      = try(var.matrix_ingress.cidr_blocks, null)
         "ipv6_cidr_blocks" = try(var.matrix_ingress.ipv6_cidr_blocks, null)
         "prefix_list_ids"  = try(var.matrix_ingress.prefix_list_ids, null)
@@ -21,7 +21,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
         "type"                     = try(var.matrix_ingress.type, rule.type, "ingress")
-        "description"              = try(var.matrix_ingress.description, rule.description, "managed by Terraform")
+        "description"              = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "source_security_group_id" = try(var.matrix_ingress.source_security_group_id, null)
       })
       if var.create && try(contains(keys(var.matrix_ingress), "source_security_group_id"), false)
@@ -29,7 +29,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
         "type"        = try(var.matrix_ingress.type, rule.type, "ingress")
-        "description" = try(var.matrix_ingress.description, rule.description, "managed by Terraform")
+        "description" = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "self"        = try(var.matrix_ingress.self, null)
       })
       if var.create && try(contains(keys(var.matrix_ingress), "self"), false)
@@ -40,7 +40,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
         "type"             = try(var.matrix_egress.type, rule.type, "egress")
-        "description"      = try(var.matrix_egress.description, rule.description, "managed by Terraform")
+        "description"      = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "cidr_blocks"      = try(var.matrix_egress.cidr_blocks, null)
         "ipv6_cidr_blocks" = try(var.matrix_egress.ipv6_cidr_blocks, null)
         "prefix_list_ids"  = try(var.matrix_egress.prefix_list_ids, null)
@@ -54,7 +54,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
         "type"                     = try(var.matrix_egress.type, rule.type, "egress")
-        "description"              = try(var.matrix_egress.description, rule.description, "managed by Terraform")
+        "description"              = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "source_security_group_id" = try(var.matrix_egress.source_security_group_id, null)
       })
       if var.create && try(contains(keys(var.matrix_egress), "source_security_group_id"), false)
@@ -62,7 +62,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
         "type"        = try(var.matrix_egress.type, rule.type, "egress")
-        "description" = try(var.matrix_egress.description, rule.description, "managed by Terraform")
+        "description" = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "self"        = try(var.matrix_egress.self, null)
       })
       if var.create && try(contains(keys(var.matrix_egress), "self"), false)
@@ -76,7 +76,7 @@ resource "aws_security_group_rule" "matrix_ingress" {
   }
   security_group_id        = local.security_group_id
   type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "ingress")
-  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
   protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])
@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "matrix_egress" {
   }
   security_group_id        = local.security_group_id
   type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "egress")
-  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], "managed by Terraform")
+  description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
   protocol                 = try(each.value["protocol"], local.rules[each.value["rule"]]["protocol"])

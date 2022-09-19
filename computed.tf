@@ -7,13 +7,13 @@ resource "aws_security_group_rule" "computed_ingress" {
   security_group_id = local.security_group_id
   type = try(
     var.computed_ingress[count.index]["type"],
-    local.rules[var.computed_ingress[count.index]["rule"]]["type"],
+    local.rules[var.computed_ingress[count.index]["rule"]]["type"], # common rule type
     "ingress"
   )
   description = try(
     var.computed_ingress[count.index]["description"],
     local.rules[var.computed_ingress[count.index]["rule"]]["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     var.computed_ingress[count.index]["from_port"],
@@ -59,13 +59,13 @@ resource "aws_security_group_rule" "computed_egress" {
   security_group_id = local.security_group_id
   type = try(
     var.computed_ingress[count.index]["type"],
-    local.rules[var.computed_ingress[count.index]["rule"]]["type"],
+    local.rules[var.computed_ingress[count.index]["rule"]]["type"], # common rule type
     "egress"
   )
   description = try(
     var.computed_egress[count.index]["description"],
     local.rules[var.computed_egress[count.index]["rule"]]["description"],
-    "managed by Terraform"
+    var.default_rule_description
   )
   from_port = try(
     var.computed_egress[count.index]["from_port"],
