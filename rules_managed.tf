@@ -62,10 +62,12 @@ locals {
     graphite-8125-udp = { "to_port" = 8125, "from_port" = 8125, "protocol" = "udp" }
     graphite-8126-tcp = { "to_port" = 8126, "from_port" = 8126, "protocol" = "tcp" }
     # HTTP
+    http          = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp" }
     http-tcp      = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp" }
     http-80-tcp   = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp" }
     http-8080-tcp = { "to_port" = 8080, "from_port" = 8080, "protocol" = "tcp" }
     # HTTPS
+    https          = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp" }
     https-tcp      = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp" }
     https-443-tcp  = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp" }
     https-8443-tcp = { "to_port" = 8443, "from_port" = 8443, "protocol" = "tcp" }
