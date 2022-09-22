@@ -13,22 +13,22 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   type              = "ingress"
 
   description = try(
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
-    var.computed_matrix_ingress["description"],
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].description,
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].description,
+    var.computed_matrix_ingress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].from_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["to_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].to_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].protocol,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].protocol
   )
 
   cidr_blocks              = try(var.computed_matrix_ingress.cidr_blocks, null)
@@ -49,22 +49,22 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   type              = "ingress"
 
   description = try(
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
-    var.computed_matrix_ingress["description"],
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].description,
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].description,
+    var.computed_matrix_ingress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].from_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["to_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].to_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].protocol,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].protocol
   )
 
   cidr_blocks              = null # Cannot be specified with source_security_group_id
@@ -83,22 +83,22 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
   type              = "ingress"
 
   description = try(
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
-    var.computed_matrix_ingress["description"],
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].description,
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].description,
+    var.computed_matrix_ingress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["from_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].from_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["to_port"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].to_port,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["protocol"]
+    local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].rule].protocol,
+    var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)].protocol
   )
 
   cidr_blocks              = null # Cannot be specified with self
@@ -123,22 +123,22 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   type              = "egress"
 
   description = try(
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
-    var.computed_matrix_egress["description"],
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].description,
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].description,
+    var.computed_matrix_egress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].from_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["to_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].to_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].protocol,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].protocol
   )
 
   cidr_blocks              = try(var.computed_matrix_egress.cidr_blocks, null)
@@ -159,22 +159,22 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   type              = "egress"
 
   description = try(
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
-    var.computed_matrix_egress["description"],
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].description,
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].description,
+    var.computed_matrix_egress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].from_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["to_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].to_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].protocol,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].protocol
   )
 
   cidr_blocks              = null # Cannot be specified with source_security_group_id
@@ -191,22 +191,22 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   type              = "egress"
 
   description = try(
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
-    var.computed_matrix_egress["description"],
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].description,
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].description,
+    var.computed_matrix_egress.description,
     var.default_rule_description
   )
   from_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["from_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["from_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].from_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].from_port
   )
   to_port = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["to_port"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["to_port"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].to_port,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].to_port
   )
   protocol = try(
-    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["protocol"],
-    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["protocol"]
+    local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].rule].protocol,
+    var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)].protocol
   )
 
   cidr_blocks              = null # Cannot be specified with self
