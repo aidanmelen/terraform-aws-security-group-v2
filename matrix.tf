@@ -6,7 +6,7 @@ locals {
   matrix_ingress = flatten([
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
-        "type"             = try(var.matrix_ingress.type, rule.type, "ingress")
+        "type"             = "ingress"
         "description"      = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "cidr_blocks"      = try(var.matrix_ingress.cidr_blocks, null)
         "ipv6_cidr_blocks" = try(var.matrix_ingress.ipv6_cidr_blocks, null)
@@ -20,7 +20,7 @@ locals {
     ],
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
-        "type"                     = try(var.matrix_ingress.type, rule.type, "ingress")
+        "type"                     = "ingress"
         "description"              = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "source_security_group_id" = try(var.matrix_ingress.source_security_group_id, null)
       })
@@ -28,7 +28,7 @@ locals {
     ],
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
-        "type"        = try(var.matrix_ingress.type, rule.type, "ingress")
+        "type"        = "ingress"
         "description" = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         "self"        = try(var.matrix_ingress.self, null)
       })
@@ -39,7 +39,7 @@ locals {
   matrix_egress = flatten([
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
-        "type"             = try(var.matrix_egress.type, rule.type, "egress")
+        "type"             = "egress"
         "description"      = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "cidr_blocks"      = try(var.matrix_egress.cidr_blocks, null)
         "ipv6_cidr_blocks" = try(var.matrix_egress.ipv6_cidr_blocks, null)
@@ -53,7 +53,7 @@ locals {
     ],
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
-        "type"                     = try(var.matrix_egress.type, rule.type, "egress")
+        "type"                     = "egress"
         "description"              = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "source_security_group_id" = try(var.matrix_egress.source_security_group_id, null)
       })
@@ -61,7 +61,7 @@ locals {
     ],
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
-        "type"        = try(var.matrix_egress.type, rule.type, "egress")
+        "type"        = "egress"
         "description" = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         "self"        = try(var.matrix_egress.self, null)
       })
@@ -75,7 +75,7 @@ resource "aws_security_group_rule" "matrix_ingress" {
     for rule in local.matrix_ingress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule
   }
   security_group_id        = local.security_group_id
-  type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "ingress")
+  type                     = "ingress"
   description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])
@@ -92,7 +92,7 @@ resource "aws_security_group_rule" "matrix_egress" {
     for rule in local.matrix_egress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule
   }
   security_group_id        = local.security_group_id
-  type                     = try(each.value["type"], local.rules[each.value["rule"]]["type"], "egress")
+  type                     = "egress"
   description              = try(each.value["description"], local.rules[each.value["rule"]]["description"], var.default_rule_description)
   from_port                = try(each.value["from_port"], local.rules[each.value["rule"]]["from_port"])
   to_port                  = try(each.value["to_port"], local.rules[each.value["rule"]]["to_port"])

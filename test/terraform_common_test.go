@@ -35,10 +35,6 @@ func TestTerraformCommonRulesExample(t *testing.T) {
 	actualPublicHttpIngress := terraform.OutputList(t, terraformOptions, "public_http_ingress")
 	actualPublicHttpEgress := terraform.OutputList(t, terraformOptions, "public_http_egress")
 
-	actualRuleTypeOverrideSecurityGroupId := terraform.Output(t, terraformOptions, "rule_type_override_sg_id")
-	actualRuleTypeOverrideIngress := terraform.OutputList(t, terraformOptions, "rule_type_override_ingress")
-	actualRuleTypeOverrideEgress := terraform.Output(t, terraformOptions, "rule_type_override_egress")
-
 	regexp, _ := regexp.Compile(`sgrule-[a-z0-9]*`)
 	actualPublicHttpsIngress0 := regexp.ReplaceAllString(actualPublicHttpsIngress[0], "sgrule-1111111111")
 	actualPublicHttpsIngress1 := regexp.ReplaceAllString(actualPublicHttpsIngress[1], "sgrule-1111111111")
@@ -47,9 +43,6 @@ func TestTerraformCommonRulesExample(t *testing.T) {
 	actualPublicHttpIngress0 := regexp.ReplaceAllString(actualPublicHttpIngress[0], "sgrule-1111111111")
 	actualPublicHttpIngress1 := regexp.ReplaceAllString(actualPublicHttpIngress[1], "sgrule-1111111111")
 	actualPublicHttpEgress0 := regexp.ReplaceAllString(actualPublicHttpEgress[0], "sgrule-1111111111")
-
-	actualRuleTypeOverrideIngress0 := regexp.ReplaceAllString(actualRuleTypeOverrideIngress[0], "sgrule-1111111111")
-	actualRuleTypeOverrideIngress1 := regexp.ReplaceAllString(actualRuleTypeOverrideIngress[1], "sgrule-1111111111")
 
 	// assign expected
 	expectedPublicHttpsIngress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:0 type:ingress]", actualPublicHttpsSecurityGroupId)
@@ -60,10 +53,6 @@ func TestTerraformCommonRulesExample(t *testing.T) {
 	expectedPublicHttpIngress1 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:80 type:ingress]", actualPublicHttpSecurityGroupId)
 	expectedPublicHttpEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualPublicHttpSecurityGroupId)
 
-	expectedRuleTypeOverrideIngress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualRuleTypeOverrideSecurityGroupId)
-	expectedRuleTypeOverrideIngress1 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualRuleTypeOverrideSecurityGroupId)
-	expectedRuleTypeOverrideEgress := fmt.Sprintf("[]")
-
 	// assert
 	assert.Equal(t, expectedPublicHttpsIngress0, actualPublicHttpsIngress0, "Map %q should match %q", expectedPublicHttpsIngress0, actualPublicHttpsIngress0)
 	assert.Equal(t, expectedPublicHttpsIngress1, actualPublicHttpsIngress1, "Map %q should match %q", expectedPublicHttpsIngress1, actualPublicHttpsIngress1)
@@ -72,8 +61,4 @@ func TestTerraformCommonRulesExample(t *testing.T) {
 	assert.Equal(t, expectedPublicHttpIngress0, actualPublicHttpIngress0, "Map %q should match %q", expectedPublicHttpIngress0, actualPublicHttpIngress0)
 	assert.Equal(t, expectedPublicHttpIngress1, actualPublicHttpIngress1, "Map %q should match %q", expectedPublicHttpIngress1, actualPublicHttpIngress1)
 	assert.Equal(t, expectedPublicHttpEgress0, actualPublicHttpEgress0, "Map %q should match %q", expectedPublicHttpEgress0, actualPublicHttpEgress0)
-
-	assert.Equal(t, expectedRuleTypeOverrideIngress0, actualRuleTypeOverrideIngress0, "Map %q should match %q", expectedRuleTypeOverrideIngress0, actualRuleTypeOverrideIngress0)
-	assert.Equal(t, expectedRuleTypeOverrideIngress1, actualRuleTypeOverrideIngress1, "Map %q should match %q", expectedRuleTypeOverrideIngress1, actualRuleTypeOverrideIngress1)
-	assert.Equal(t, expectedRuleTypeOverrideEgress, actualRuleTypeOverrideEgress, "Map %q should match %q", expectedRuleTypeOverrideEgress, actualRuleTypeOverrideEgress)
 }

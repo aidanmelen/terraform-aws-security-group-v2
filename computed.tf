@@ -5,11 +5,8 @@
 resource "aws_security_group_rule" "computed_ingress" {
   count             = var.create ? length(var.computed_ingress) : 0
   security_group_id = local.security_group_id
-  type = try(
-    var.computed_ingress[count.index]["type"],
-    local.rules[var.computed_ingress[count.index]["rule"]]["type"], # common rule type
-    "ingress"
-  )
+  type              = "ingress"
+
   description = try(
     var.computed_ingress[count.index]["description"],
     local.rules[var.computed_ingress[count.index]["rule"]]["description"],
@@ -57,11 +54,8 @@ resource "aws_security_group_rule" "computed_ingress" {
 resource "aws_security_group_rule" "computed_egress" {
   count             = var.create ? length(var.computed_egress) : 0
   security_group_id = local.security_group_id
-  type = try(
-    var.computed_ingress[count.index]["type"],
-    local.rules[var.computed_ingress[count.index]["rule"]]["type"], # common rule type
-    "egress"
-  )
+  type              = "egress"
+
   description = try(
     var.computed_egress[count.index]["description"],
     local.rules[var.computed_egress[count.index]["rule"]]["description"],

@@ -10,12 +10,8 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_cidr_blocks_and
   ]) ? length(var.computed_matrix_ingress.rules) : 0
 
   security_group_id = local.security_group_id
+  type              = "ingress"
 
-  type = try(
-    var.computed_matrix_ingress[count.index]["type"],
-    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"], # common rule type
-    "ingress"
-  )
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
@@ -50,12 +46,8 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_source_security
   ) : 0
 
   security_group_id = local.security_group_id
+  type              = "ingress"
 
-  type = try(
-    var.computed_matrix_ingress[count.index]["type"],
-    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"], # common rule type
-    "ingress"
-  )
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
@@ -88,12 +80,8 @@ resource "aws_security_group_rule" "computed_matrix_ingress_with_self" {
     length(try(var.computed_matrix_ingress.rules, []))
   ) : 0
   security_group_id = local.security_group_id
+  type              = "ingress"
 
-  type = try(
-    var.computed_matrix_ingress[count.index]["type"],
-    local.rules[var.computed_matrix_ingress[count.index]["rule"]]["type"],
-    "ingress"
-  )
   description = try(
     var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["description"],
     local.rules[var.computed_matrix_ingress.rules[count.index % length(var.computed_matrix_ingress.rules)]["rule"]]["description"],
@@ -132,12 +120,8 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_cidr_blocks_and_
   ]) ? length(var.computed_matrix_egress.rules) : 0
 
   security_group_id = local.security_group_id
+  type              = "egress"
 
-  type = try(
-    var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
-    "egress"
-  )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
@@ -172,12 +156,8 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_source_security_
   ) : 0
 
   security_group_id = local.security_group_id
+  type              = "egress"
 
-  type = try(
-    var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
-    "egress"
-  )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],
@@ -208,12 +188,8 @@ resource "aws_security_group_rule" "computed_matrix_egress_with_self" {
   count = try(var.create && var.computed_matrix_egress.self == true ? length(var.computed_matrix_egress.rules) : 0, 0)
 
   security_group_id = local.security_group_id
+  type              = "egress"
 
-  type = try(
-    var.computed_matrix_egress[count.index]["type"],
-    local.rules[var.computed_matrix_egress[count.index]["rule"]]["type"], # common rule type
-    "egress"
-  )
   description = try(
     var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["description"],
     local.rules[var.computed_matrix_egress.rules[count.index % length(var.computed_matrix_egress.rules)]["rule"]]["description"],

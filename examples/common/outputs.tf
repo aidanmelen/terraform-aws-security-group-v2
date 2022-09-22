@@ -12,11 +12,6 @@ output "public_http_sg_id" {
   value       = try(module.public_http_sg.security_group.id, null)
 }
 
-output "rule_type_override_sg_id" {
-  description = "The ID of the rule type override security group."
-  value       = try(module.rule_type_override_sg.security_group.id, null)
-}
-
 ###############################################################################
 # Security Group Rules
 ###############################################################################
@@ -39,14 +34,4 @@ output "public_http_ingress" {
 output "public_http_egress" {
   description = "The public HTTP security group egress rules."
   value       = try(module.public_http_sg.security_group_egress_rules, null)
-}
-
-output "rule_type_override_ingress" {
-  description = "The rule type override security group ingress rules."
-  value       = try(module.rule_type_override_sg.security_group_ingress_rules, null)
-}
-
-output "rule_type_override_egress" {
-  description = "The rule type override security group egress rules."
-  value       = try(module.rule_type_override_sg.security_group_egress_rules, null)
 }
