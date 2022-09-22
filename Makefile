@@ -85,7 +85,7 @@ test-rules-only: ## Test the rules_only example
 
 release:
 	git tag v${VERSION}
-	git push --tag v${VERSION}
+	git push --tag
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
