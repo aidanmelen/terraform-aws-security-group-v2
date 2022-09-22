@@ -73,8 +73,8 @@ Please see the full examples for more information:
 |---|---|
 | **AWS Security Group Rule** | The Security Group (SG) rule resource (ingress/egress). |
 | **Customer Rule** | A module rule where the customer explicitly declares all of the SG rule arguments. <br/><br/>These rules are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM. |
-| **Managed Rule** | A module rule that references an alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see  [managed_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/managed_rules.tf)  for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
-| **Common Rule** | A module rule that references an alias for common scenarios where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [common_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/common_rules.tf) for the complete list of common rules. |
+| **Managed Rule** | A module rule alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`/`https-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see  [managed_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/managed_rules.tf)  for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
+| **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [common_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/common_rules.tf) for the complete list of common rules. |
 | **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
 | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
 
@@ -89,14 +89,14 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.1.0)
---- PASS: TestTerraformBasicExample (23.79s)
---- PASS: TestTerraformCompleteExample (51.28s)
---- PASS: TestTerraformCustomerRulesExample (36.32s)
---- PASS: TestTerraformManagedRulesExample (37.46s)
+--- PASS: TestTerraformBasicExample (23.48s)
+--- PASS: TestTerraformCompleteExample (49.69s)
+--- PASS: TestTerraformCustomerRulesExample (36.73s)
+--- PASS: TestTerraformManagedRulesExample (36.19s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (34.46s)
---- PASS: TestTerraformComputedRulesExample (44.96s)
---- PASS: TestTerraformRulesOnlyExample (22.85s)
+--- PASS: TestTerraformMatrixRulesExample (34.10s)
+--- PASS: TestTerraformComputedRulesExample (46.96s)
+--- PASS: TestTerraformRulesOnlyExample (22.63s)
 ```
 
 ## Makefile Targets
