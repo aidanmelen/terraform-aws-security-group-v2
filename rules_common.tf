@@ -6,8 +6,10 @@ locals {
     all-all-self         = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
     https-443-tcp-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     https-tcp-public     = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    https-public         = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     http-80-tcp-public   = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     http-tcp-public      = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    http-public          = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     all-icmp-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
     all-ping-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
 
@@ -21,8 +23,10 @@ locals {
     all-all-from-self         = local.common_rules["all-all-self"]
     https-443-tcp-from-public = local.common_rules["https-443-tcp-public"]
     https-tcp-from-public     = local.common_rules["https-tcp-public"]
+    https-from-public         = local.common_rules["https-public"]
     http-80-tcp-from-public   = local.common_rules["http-80-tcp-public"]
     http-tcp-from-public      = local.common_rules["http-tcp-public"]
+    http-from-public          = local.common_rules["http-public"]
     all-icmp-from-public      = local.common_rules["all-icmp-public"]
     all-ping-from-public      = local.common_rules["all-ping-public"]
 
