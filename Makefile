@@ -1,6 +1,9 @@
-NAME = terraform-kubernetes-confluent
-
+NAME := security-group-v2
+HOSTNAME := aidanmelen
+PROVIDER := aws
+VERSION := 1.1.0
 SHELL := /bin/bash
+
 
 .PHONY: help all
 
@@ -39,8 +42,8 @@ setup: ## Setup project
 	go mod tidy -go=1.16 && go mod tidy -go=1.17
 
 docs:
-	./bin/render-terraform-docs.sh
-	./bin/render-terratest-docs.sh
+	./bin/render-terraform-docs.sh $(NAME) $(HOSTNAME) $(PROVIDER) $(VERSION)
+	./bin/render-terratest-docs.sh $(VERSION)
 	./bin/render-makefile-docs.sh
 	./bin/scrub-terratest-logs.sh
 
@@ -68,6 +71,9 @@ test-customer: ## Test the customer example
 test-managed: ## Test the managed example
 	go test test/terraform_managed_test.go -timeout 5m -v |& tee test/terraform_managed_test.log
 
+test-common: ## Test the common example
+	go test test/terraform_common_test.go -timeout 5m -v |& tee test/terraform_common_test.log
+
 test-matrix: ## Test the matrix example
 	go test test/terraform_matrix_test.go -timeout 5m -v |& tee test/terraform_matrix_test.log
 
@@ -76,6 +82,10 @@ test-computed: ## Test the computed example
 
 test-rules-only: ## Test the rules_only example
 	go test test/terraform_rules_only_test.go -timeout 5m -v |& tee test/terraform_rules_only_test.log
+
+release:
+	git tag v${VERSION}
+	git push --tag v${VERSION}
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl

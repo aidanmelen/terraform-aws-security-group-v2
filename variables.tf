@@ -72,6 +72,12 @@ variable "delete_timeout" {
 # Security Group Rules
 ###############################################################################
 
+variable "default_rule_description" {
+  description = "The default security group rule description."
+  type        = string
+  default     = "managed by Terraform"
+}
+
 variable "ingress" {
   description = "The security group ingress rules. Can be either customer, managed, or common rule."
   type        = any

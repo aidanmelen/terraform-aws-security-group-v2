@@ -2,6 +2,8 @@
 
 Create security group with common scenario rules (e.g. `https-tcp-from-public`, `all-all-from-self`, `all-all-to-public`, etc). This is like a shortcut for managed rules that have a known source or destination.
 
+Some common rules may contain either `to` or `from` for readability. This is purely cosmetic as the rule type is determined by the module arguments.
+
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
 ## Usage
@@ -21,9 +23,11 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
+  version = ">= 1.1.0"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -37,9 +41,11 @@ module "public_https_sg" {
   }
 }
 
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
+  version = ">= 1.1.0"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -50,22 +56,6 @@ module "public_http_sg" {
 
   tags = {
     "Name" = "${local.name}-http"
-  }
-}
-
-module "ssh_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
-
-  name        = "${local.name}-ssh"
-  description = "${local.name}-ssh"
-  vpc_id      = data.aws_vpc.default.id
-
-  ingress = [{ rule = "ssh-tcp", cidr_blocks = ["10.0.0.0/24"] }, { rule = "all-all-from-self" }]
-  egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-ssh"
   }
 }
 ```
@@ -82,7 +72,6 @@ module "ssh_sg" {
 |------|--------|---------|
 | <a name="module_public_http_sg"></a> [public\_http\_sg](#module\_public\_http\_sg) | ../../ | n/a |
 | <a name="module_public_https_sg"></a> [public\_https\_sg](#module\_public\_https\_sg) | ../../ | n/a |
-| <a name="module_ssh_sg"></a> [ssh\_sg](#module\_ssh\_sg) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -92,13 +81,10 @@ module "ssh_sg" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_public_http_sg_egress_keys"></a> [public\_http\_sg\_egress\_keys](#output\_public\_http\_sg\_egress\_keys) | The public HTTP security group egress rules keys. |
+| <a name="output_public_http_egress"></a> [public\_http\_egress](#output\_public\_http\_egress) | The public HTTP security group egress rules. |
+| <a name="output_public_http_ingress"></a> [public\_http\_ingress](#output\_public\_http\_ingress) | The public HTTP security group ingress rules. |
 | <a name="output_public_http_sg_id"></a> [public\_http\_sg\_id](#output\_public\_http\_sg\_id) | The ID of the public HTTP security group. |
-| <a name="output_public_http_sg_ingress_keys"></a> [public\_http\_sg\_ingress\_keys](#output\_public\_http\_sg\_ingress\_keys) | The public HTTP security group ingress rules keys. |
-| <a name="output_public_https_sg_egress_keys"></a> [public\_https\_sg\_egress\_keys](#output\_public\_https\_sg\_egress\_keys) | The public HTTPS security group egress rules keys. |
+| <a name="output_public_https_egress"></a> [public\_https\_egress](#output\_public\_https\_egress) | The public HTTPS security group egress rules. |
+| <a name="output_public_https_ingress"></a> [public\_https\_ingress](#output\_public\_https\_ingress) | The public HTTPS security group ingress rules. |
 | <a name="output_public_https_sg_id"></a> [public\_https\_sg\_id](#output\_public\_https\_sg\_id) | The ID of the public HTTPS security group. |
-| <a name="output_public_https_sg_ingress_keys"></a> [public\_https\_sg\_ingress\_keys](#output\_public\_https\_sg\_ingress\_keys) | The public HTTPS security group ingress rules keys. |
-| <a name="output_ssh_sg_egress_keys"></a> [ssh\_sg\_egress\_keys](#output\_ssh\_sg\_egress\_keys) | The SSH security group egress rules keys. |
-| <a name="output_ssh_sg_id"></a> [ssh\_sg\_id](#output\_ssh\_sg\_id) | The ID of the public SSH security group. |
-| <a name="output_ssh_sg_ingress_keys"></a> [ssh\_sg\_ingress\_keys](#output\_ssh\_sg\_ingress\_keys) | The SSH security group ingress rules keys. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

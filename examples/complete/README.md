@@ -27,9 +27,11 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
+#tfsec:ignore:aws-ec2-no-public-ingress-sgr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
+  version = ">= 1.1.0"
 
   name        = local.name
   description = local.name
@@ -131,7 +133,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 0.7.0"
+  version = ">= 1.1.0"
   create = false
 }
 ```
