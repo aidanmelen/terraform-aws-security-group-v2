@@ -82,8 +82,4 @@ module "security_group" {
     rules                    = [{ rule = "postgresql-tcp" }],
     source_security_group_id = aws_security_group.other.id
   }
-
-  tags = {
-    "Name" = local.name
-  }
 }

@@ -9,10 +9,6 @@ module "public_https_sg" {
 
   ingress = [{ rule = "https-tcp-from-public" }, { rule = "all-all-from-self" }]
   egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-https"
-  }
 }
 
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
@@ -26,8 +22,4 @@ module "public_http_sg" {
 
   ingress = [{ rule = "http-tcp-from-public" }, { rule = "all-all-from-self" }]
   egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-http"
-  }
 }

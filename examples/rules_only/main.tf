@@ -3,10 +3,6 @@ module "pre_existing" {
 
   description = "${local.name}-pre-existing"
   vpc_id      = data.aws_vpc.default.id
-
-  tags = {
-    "Name" = local.name
-  }
 }
 
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
@@ -19,8 +15,4 @@ module "security_group" {
 
   ingress = [{ rule = "https-tcp-from-public" }]
   egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = local.name
-  }
 }
