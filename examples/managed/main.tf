@@ -52,8 +52,4 @@ module "security_group" {
       self = true
     }
   ]
-
-  tags = {
-    "Name" = local.name
-  }
 }

@@ -27,8 +27,4 @@ module "security_group" {
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     source_security_group_id = data.aws_security_group.default.id
   }
-
-  tags = {
-    "Name" = local.name
-  }
 }

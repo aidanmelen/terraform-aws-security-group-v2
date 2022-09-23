@@ -22,6 +22,10 @@ locals {
     cassandra-clients-tcp        = { "to_port" = 9042, "from_port" = 9042, "protocol" = "tcp" }
     cassandra-thrift-clients-tcp = { "to_port" = 9160, "from_port" = 9160, "protocol" = "tcp" }
     cassandra-jmx-tcp            = { "to_port" = 7199, "from_port" = 7199, "protocol" = "tcp" }
+    # Confluent
+    confluent-schema-registry = { "to_port" = 8081, "from_port" = 8081, "protocol" = "tcp" }
+    confluent-control-center  = { "to_port" = 9021, "from_port" = 9021, "protocol" = "tcp" }
+    confluent-ksqldb          = { "to_port" = 8088, "from_port" = 8088, "protocol" = "tcp" }
     # Consul
     consul-tcp             = { "to_port" = 8300, "from_port" = 8300, "protocol" = "tcp" }
     consul-grpc-tcp        = { "to_port" = 8502, "from_port" = 8502, "protocol" = "tcp" }
@@ -76,12 +80,14 @@ locals {
     ipsec-4500-udp = { "to_port" = 4500, "from_port" = 4500, "protocol" = "udp" }
     # Kafka
     kafka-broker-tcp                   = { "to_port" = 9092, "from_port" = 9092, "protocol" = "tcp" }
+    kafka-broker-9071-tcp              = { "to_port" = 9071, "from_port" = 9071, "protocol" = "tcp" }
     kafka-broker-tls-tcp               = { "to_port" = 9094, "from_port" = 9094, "protocol" = "tcp" }
     kafka-broker-tls-public-tcp        = { "to_port" = 9194, "from_port" = 9194, "protocol" = "tcp" }
     kafka-broker-sasl-scram-tcp        = { "to_port" = 9096, "from_port" = 9096, "protocol" = "tcp" }
     kafka-broker-sasl-scram-public-tcp = { "to_port" = 9196, "from_port" = 9196, "protocol" = "tcp" }
     kafka-broker-sasl-iam-tcp          = { "to_port" = 9098, "from_port" = 9098, "protocol" = "tcp" }
     kafka-broker-sasl-iam-public-tcp   = { "to_port" = 9198, "from_port" = 9198, "protocol" = "tcp" }
+    kafka-connect-tcp                  = { "to_port" = 8083, "from_port" = 8083, "protocol" = "tcp" }
     kafka-jmx-exporter-tcp             = { "to_port" = 11001, "from_port" = 11001, "protocol" = "tcp" }
     kafka-node-exporter-tcp            = { "to_port" = 11002, "from_port" = 11002, "protocol" = "tcp" }
     # Kibana

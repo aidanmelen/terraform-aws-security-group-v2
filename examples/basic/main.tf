@@ -17,8 +17,4 @@ module "security_group" {
   egress = [
     { rule = "all-all-to-public" }
   ]
-
-  tags = {
-    "Name" = local.name
-  }
 }

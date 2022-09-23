@@ -27,7 +27,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.1.0"
+  version = ">= 1.2.0"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -35,17 +35,13 @@ module "public_https_sg" {
 
   ingress = [{ rule = "https-tcp-from-public" }, { rule = "all-all-from-self" }]
   egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-https"
-  }
 }
 
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.1.0"
+  version = ">= 1.2.0"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"
@@ -53,10 +49,6 @@ module "public_http_sg" {
 
   ingress = [{ rule = "http-tcp-from-public" }, { rule = "all-all-from-self" }]
   egress  = [{ rule = "all-all-to-public" }]
-
-  tags = {
-    "Name" = "${local.name}-http"
-  }
 }
 ```
 

@@ -18,7 +18,7 @@ resource "aws_security_group" "self" {
   name_prefix            = var.name_prefix
   name                   = var.name
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  tags                   = var.tags
+  tags                   = merge({ "Name" : var.name }, var.tags)
   vpc_id                 = var.vpc_id
 
   timeouts {

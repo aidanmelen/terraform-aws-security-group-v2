@@ -57,7 +57,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.1.0"
+  version = ">= 1.2.0"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
@@ -84,10 +84,6 @@ module "security_group" {
     rules                    = [{ rule = "https-443-tcp" }],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     source_security_group_id = data.aws_security_group.default.id
-  }
-
-  tags = {
-    "Name" = local.name
   }
 }
 ```

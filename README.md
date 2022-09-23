@@ -25,7 +25,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.1.0"
+  version = ">= 1.2.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -42,10 +42,6 @@ module "security_group" {
   egress = [
     { rule = "all-all-to-public" }
   ]
-
-  tags = {
-    "Name" = local.name
-  }
 }
 ```
 
@@ -88,15 +84,15 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (v1.1.0)
---- PASS: TestTerraformBasicExample (23.48s)
---- PASS: TestTerraformCompleteExample (49.69s)
---- PASS: TestTerraformCustomerRulesExample (36.73s)
---- PASS: TestTerraformManagedRulesExample (36.19s)
+Terratest Suite (v1.2.0)
+--- PASS: TestTerraformBasicExample (24.12s)
+--- PASS: TestTerraformCompleteExample (50.08s)
+--- PASS: TestTerraformCustomerRulesExample (34.89s)
+--- PASS: TestTerraformManagedRulesExample (33.99s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (34.10s)
---- PASS: TestTerraformComputedRulesExample (46.96s)
---- PASS: TestTerraformRulesOnlyExample (22.63s)
+--- PASS: TestTerraformMatrixRulesExample (34.88s)
+--- PASS: TestTerraformComputedRulesExample (41.59s)
+--- PASS: TestTerraformRulesOnlyExample (22.57s)
 ```
 
 ## Makefile Targets
