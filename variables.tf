@@ -32,6 +32,17 @@ variable "name_prefix" {
   default     = null
 }
 
+variable "name_prefix_separator" {
+  description = "(Optional, Only used with name_prefix) The separator between the name_prefix and generated suffix."
+  type        = string
+  default     = "-"
+
+  validation {
+    condition     = length(var.name_prefix_separator) == 1
+    error_message = "The \"name_prefix_separator\" must be 1 character long."
+  }
+}
+
 variable "name" {
   description = "(Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name."
   type        = string

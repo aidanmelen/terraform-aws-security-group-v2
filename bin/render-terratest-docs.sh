@@ -12,4 +12,5 @@ tail -3 test/terraform_managed_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_common_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_matrix_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_computed_test.log | head -1 >> test/.terratest.docs
+tail -3 test/terraform_name_prefix_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_rules_only_test.log | head -1 >> test/.terratest.docs

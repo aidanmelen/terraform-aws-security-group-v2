@@ -25,7 +25,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.2.0"
+  version = ">= 1.3.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -61,6 +61,8 @@ Please see the full examples for more information:
 
 - [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed)
 
+- [Name Prefix Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/name_prefix)
+
 - [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only)
 
 ## Key Concepts
@@ -84,15 +86,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (v1.2.0)
---- PASS: TestTerraformBasicExample (24.12s)
+Terratest Suite (v1.3.0)
+--- PASS: TestTerraformBasicExample (23.59s)
 --- PASS: TestTerraformCompleteExample (50.08s)
---- PASS: TestTerraformCustomerRulesExample (34.89s)
---- PASS: TestTerraformManagedRulesExample (33.99s)
+--- PASS: TestTerraformCustomerRulesExample (34.30s)
+--- PASS: TestTerraformManagedRulesExample (33.33s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (34.88s)
---- PASS: TestTerraformComputedRulesExample (41.59s)
---- PASS: TestTerraformRulesOnlyExample (22.57s)
+--- PASS: TestTerraformMatrixRulesExample (32.88s)
+--- PASS: TestTerraformComputedRulesExample (41.19s)
+--- PASS: TestTerraformNamePrefixExample (22.40s)
+--- PASS: TestTerraformRulesOnlyExample (23.35s)
 ```
 
 ## Makefile Targets
@@ -112,6 +115,7 @@ test-managed         Test the managed example
 test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
+test-name-prefix     Test the name_prefix example
 test-rules-only      Test the rules_only example
 clean                Clean project
 ```
@@ -127,6 +131,7 @@ clean                Clean project
 | Name | Type |
 |------|------|
 | [aws_security_group.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group.self_with_name_prefix](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.computed_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.computed_matrix_egress_with_cidr_blocks_and_prefix_list_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
@@ -159,6 +164,7 @@ clean                Clean project
 | <a name="input_matrix_ingress"></a> [matrix\_ingress](#input\_matrix\_ingress) | A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. | `any` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | (Optional, Forces new resource) Creates a unique name beginning with the specified prefix. Conflicts with name. | `string` | `null` | no |
+| <a name="input_name_prefix_separator"></a> [name\_prefix\_separator](#input\_name\_prefix\_separator) | (Optional, Only used with name\_prefix) The separator between the name\_prefix and generated suffix. | `string` | `"-"` | no |
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | ID of existing security group whose rules we will manage. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `null` | no |

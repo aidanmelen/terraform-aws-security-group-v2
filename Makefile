@@ -1,7 +1,7 @@
 NAME := security-group-v2
 HOSTNAME := aidanmelen
 PROVIDER := aws
-VERSION := 1.2.0
+VERSION := 1.3.0
 SHELL := /bin/bash
 
 
@@ -28,6 +28,7 @@ setup: ## Setup project
 	cd examples/common && terraform init
 	cd examples/matrix && terraform init
 	cd examples/computed && terraform init
+	cd examples/name_prefix && terraform init
 	cd examples/rules_only && terraform init
 
 	# pre-commit
@@ -80,6 +81,9 @@ test-matrix: ## Test the matrix example
 test-computed: ## Test the computed example
 	go test test/terraform_computed_test.go -timeout 5m -v |& tee test/terraform_computed_test.log
 
+test-name-prefix: ## Test the name_prefix example
+	go test test/terraform_name_prefix_test.go -timeout 5m -v |& tee test/terraform_name_prefix_test.log
+
 test-rules-only: ## Test the rules_only example
 	go test test/terraform_rules_only_test.go -timeout 5m -v |& tee test/terraform_rules_only_test.log
 
@@ -96,6 +100,7 @@ clean: ## Clean project
 	@rm -f examples/common/.terraform.lock.hcl
 	@rm -f examples/matrix/.terraform.lock.hcl
 	@rm -f examples/computed/.terraform.lock.hcl
+	@rm -f examples/name_prefix/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
 
 	@rm -rf .terraform
@@ -106,6 +111,7 @@ clean: ## Clean project
 	@rm -rf examples/common/.terraform
 	@rm -rf examples/matrix/.terraform
 	@rm -rf examples/computed/.terraform
+	@rm -rf examples/name_prefix/.terraform
 	@rm -rf examples/rules_only/.terraform
 
 	@rm -f go.mod
