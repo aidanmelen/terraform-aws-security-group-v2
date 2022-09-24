@@ -4,7 +4,11 @@
 
 output "security_group" {
   description = "The security group attributes."
-  value       = try(aws_security_group.self[0], null)
+  value = try(
+    aws_security_group.self[0],
+    aws_security_group.self_with_name_prefix[0],
+    null
+  )
 }
 
 ###############################################################################

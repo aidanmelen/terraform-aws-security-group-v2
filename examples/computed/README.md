@@ -52,7 +52,7 @@ resource "aws_ec2_managed_prefix_list" "other" {
 
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.2.0"
+  version = ">= 1.3.0"
 
   name        = local.name
   description = local.name

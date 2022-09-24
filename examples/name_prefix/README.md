@@ -1,8 +1,6 @@
-# Only rules with pre-existing security group
+# Security Group with
 
-Use the module to create rules for a pre-existing security group.
-
-Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
+Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior object is destroyed after the replacement is created.
 
 ## Usage
 
@@ -18,28 +16,29 @@ Note that this example may create resources which cost money. Run `terraform des
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-## Example
+## Examples
 
 ```hcl
-module "pre_existing" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
-
-  description = "${local.name}-pre-existing"
-  vpc_id      = data.aws_vpc.default.id
-}
-
-#tfsec:ignore:aws-ec2-no-public-ingress-sgr
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 1.3.0"
 
-  create_security_group = false
-  security_group_id     = module.pre_existing.security_group.id
+  name_prefix = local.name
+  description = "Allow TLS inbound traffic"
+  vpc_id      = data.aws_vpc.default.id
 
-  ingress = [{ rule = "https-tcp-from-public" }]
-  egress  = [{ rule = "all-all-to-public" }]
+  ingress = [
+    {
+      rule             = "https-443-tcp"
+      cidr_blocks      = [data.aws_vpc.default.cidr_block]
+      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    }
+  ]
+
+  egress = [
+    { rule = "all-all-to-public" }
+  ]
 }
 ```
 
@@ -49,6 +48,11 @@ module "security_group" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

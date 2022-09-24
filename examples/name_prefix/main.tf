@@ -1,9 +1,8 @@
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  source = "../../"
 
-  name        = local.name
+  name_prefix = local.name
   description = "Allow TLS inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
