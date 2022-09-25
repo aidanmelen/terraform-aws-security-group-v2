@@ -3,8 +3,14 @@ locals {
     aws_security_group.self[0].id,
     aws_security_group.self_with_name_prefix[0].id
   ) : var.security_group_id
-  ingress_true_expr = { for rule in var.ingress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule }
-  egress_true_expr  = { for rule in var.egress : lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")) => rule }
+  ingress_true_expr = { for rule in var.ingress : try(
+    rule.key,
+    lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
+  ) => rule }
+  egress_true_expr = { for rule in var.egress : try(
+    rule.key,
+    lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
+  ) => rule }
 
   # https://github.com/hashicorp/terraform/issues/28751
   ingress_false_expr = { for k, rule in local.ingress_true_expr : k => null }
@@ -64,6 +70,10 @@ resource "aws_security_group_rule" "ingress" {
   prefix_list_ids          = try(each.value.prefix_list_ids, local.rules[each.value.rule].prefix_list_ids, null)
   self                     = try(each.value.self, local.rules[each.value.rule].self, null)
   source_security_group_id = try(each.value.source_security_group_id, local.rules[each.value.rule].source_security_group_id, null)
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group_rule" "egress" {
@@ -79,4 +89,8 @@ resource "aws_security_group_rule" "egress" {
   prefix_list_ids          = try(each.value.prefix_list_ids, local.rules[each.value.rule].prefix_list_ids, null)
   self                     = try(each.value.self, local.rules[each.value.rule].self, null)
   source_security_group_id = try(each.value.source_security_group_id, local.rules[each.value.rule].source_security_group_id, null)
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

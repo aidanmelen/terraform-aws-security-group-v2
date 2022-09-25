@@ -25,7 +25,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 1.4.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -86,16 +86,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (v1.3.0)
---- PASS: TestTerraformBasicExample (23.59s)
---- PASS: TestTerraformCompleteExample (50.08s)
---- PASS: TestTerraformCustomerRulesExample (34.30s)
---- PASS: TestTerraformManagedRulesExample (33.33s)
+Terratest Suite (v1.4.0)
+--- PASS: TestTerraformBasicExample (22.11s)
+--- PASS: TestTerraformCompleteExample (45.48s)
+--- PASS: TestTerraformCustomerRulesExample (34.26s)
+--- PASS: TestTerraformManagedRulesExample (33.92s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (32.88s)
---- PASS: TestTerraformComputedRulesExample (41.19s)
+FAIL
+--- PASS: TestTerraformComputedRulesExample (42.82s)
 --- PASS: TestTerraformNamePrefixExample (22.40s)
---- PASS: TestTerraformRulesOnlyExample (23.35s)
+--- PASS: TestTerraformRulesOnlyExample (21.32s)
 ```
 
 ## Makefile Targets
