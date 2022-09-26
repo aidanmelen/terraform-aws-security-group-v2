@@ -85,14 +85,14 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (22.08s)
---- PASS: TestTerraformCompleteExample (47.08s)
---- PASS: TestTerraformCustomerRulesExample (35.04s)
---- PASS: TestTerraformManagedRulesExample (35.19s)
+--- PASS: TestTerraformBasicExample (22.94s)
+--- PASS: TestTerraformCompleteExample (51.48s)
+--- PASS: TestTerraformCustomerRulesExample (33.59s)
+--- PASS: TestTerraformManagedRulesExample (34.39s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (33.24s)
---- PASS: TestTerraformComputedRulesExample (42.66s)
---- PASS: TestTerraformRulesOnlyExample (22.75s)
+--- PASS: TestTerraformMatrixRulesExample (34.64s)
+--- PASS: TestTerraformComputedRulesExample (43.35s)
+--- PASS: TestTerraformRulesOnlyExample (22.59s)
 ```
 
 ## Makefile Targets
