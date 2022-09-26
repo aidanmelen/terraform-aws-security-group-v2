@@ -61,8 +61,6 @@ Please see the full examples for more information:
 
 - [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed)
 
-- [Name Prefix Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/name_prefix)
-
 - [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only)
 
 ## Key Concepts
