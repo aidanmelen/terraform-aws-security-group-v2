@@ -1,0 +1,94 @@
+module "consideration_1" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 1.4.0"
+
+  name_prefix = local.name
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [
+    {
+      rule        = "https-443-tcp"
+      cidr_blocks = [data.aws_vpc.default.cidr_block]
+      # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    }
+  ]
+}
+
+module "consideration_2" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 1.4.0"
+
+  name_prefix = local.name
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [
+    {
+      key         = "my-key"
+      rule        = "https-443-tcp"
+      cidr_blocks = [data.aws_vpc.default.cidr_block]
+      # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    }
+  ]
+
+  matrix_ingress = {
+    rules = [
+      {
+        key  = "my-rule-key-prefix"
+        rule = "https-443-tcp"
+      }
+    ]
+    key         = "my-subject-key-suffix"
+    cidr_blocks = [data.aws_vpc.default.cidr_block]
+    # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+  }
+}
+
+module "consideration_3" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 1.4.0"
+
+  name_prefix = join("-", [local.name, "blue"])
+  vpc_id      = data.aws_vpc.default.id
+
+  ingress = [
+    # destroy the ipv4 rule after the ipv6 rule is applied
+    {
+      rule        = "https-443-tcp"
+      cidr_blocks = [data.aws_vpc.default.cidr_block]
+    },
+    # {
+    #   rule             = "https-443-tcp"
+    #   ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+    # }
+  ]
+}
+
+module "consideration_4_blue" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 1.4.0"
+
+  name_prefix = join("-", [local.name, "blue"])
+  vpc_id      = data.aws_vpc.default.id
+
+  computed_ingress = [
+    {
+      rule                     = "https-443-tcp"
+      source_security_group_id = aws_security_group.other.id
+    }
+  ]
+}
+
+# module "consideration_4_green" {
+#   source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 1.4.0"
+
+#   name_prefix = join("-", [local.name, "green"])
+#   vpc_id      = data.aws_vpc.default.id
+
+#   computed_ingress = [
+#     {
+#       rule            = "https-443-tcp"
+#       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+#     }
+#   ]
+# }

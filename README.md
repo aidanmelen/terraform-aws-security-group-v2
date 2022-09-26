@@ -87,14 +87,13 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (22.11s)
---- PASS: TestTerraformCompleteExample (45.48s)
+FAIL
+TestTerraformCompleteExample 2022-09-26T02:41:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Refreshing state... [id=sgrule-1111111111]
 --- PASS: TestTerraformCustomerRulesExample (34.26s)
 --- PASS: TestTerraformManagedRulesExample (33.92s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
 FAIL
 --- PASS: TestTerraformComputedRulesExample (42.82s)
---- PASS: TestTerraformNamePrefixExample (22.40s)
 --- PASS: TestTerraformRulesOnlyExample (21.32s)
 ```
 
@@ -115,7 +114,6 @@ test-managed         Test the managed example
 test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
-test-name-prefix     Test the name_prefix example
 test-rules-only      Test the rules_only example
 clean                Clean project
 ```

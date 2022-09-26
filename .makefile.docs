@@ -12,6 +12,5 @@ test-managed         Test the managed example
 test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
-test-name-prefix     Test the name_prefix example
 test-rules-only      Test the rules_only example
 clean                Clean project
