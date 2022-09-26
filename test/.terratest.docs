@@ -1,9 +1,9 @@
 Terratest Suite (v1.4.0)
-FAIL
-TestTerraformCompleteExample 2022-09-26T02:41:36Z logger.go:66: module.security_group.aws_security_group_rule.computed_ingress[1]: Refreshing state... [id=sgrule-1111111111]
---- PASS: TestTerraformCustomerRulesExample (34.26s)
---- PASS: TestTerraformManagedRulesExample (33.92s)
+--- PASS: TestTerraformBasicExample (22.08s)
+--- PASS: TestTerraformCompleteExample (47.08s)
+--- PASS: TestTerraformCustomerRulesExample (35.04s)
+--- PASS: TestTerraformManagedRulesExample (35.19s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
-FAIL
---- PASS: TestTerraformComputedRulesExample (42.82s)
---- PASS: TestTerraformRulesOnlyExample (21.32s)
+--- PASS: TestTerraformMatrixRulesExample (33.24s)
+--- PASS: TestTerraformComputedRulesExample (42.66s)
+--- PASS: TestTerraformRulesOnlyExample (22.75s)

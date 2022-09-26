@@ -78,9 +78,10 @@ locals {
 
 resource "aws_security_group_rule" "matrix_ingress" {
   for_each = {
-    for rule in local.matrix_ingress : try(
-      rule.key,
-      lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")),
+    for rule in local.matrix_ingress : (
+      rule.key != null ?
+      rule.key :
+      lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
     ) => rule
   }
   security_group_id        = local.security_group_id
@@ -102,9 +103,10 @@ resource "aws_security_group_rule" "matrix_ingress" {
 
 resource "aws_security_group_rule" "matrix_egress" {
   for_each = {
-    for rule in local.matrix_egress : try(
-      rule.key,
-      lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-")),
+    for rule in local.matrix_egress : (
+      rule.key != null ?
+      rule.key :
+      lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
     ) => rule
   }
   security_group_id        = local.security_group_id

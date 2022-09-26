@@ -88,25 +88,6 @@ module "consideration_4" {
   ]
 }
 
-# module "consideration_5" {
-#   source = "../../"
-
-#   name_prefix = join("-", [local.name, 5, "blue"])
-#   # Force a SG level CBD with a name change
-#   # name_prefix = join("-", [local.name, 5, "green"])
-#   vpc_id      = data.aws_vpc.default.id
-#   description = "Use the name_prefix argument when the SG ID does not need to be preserved."
-
-#   computed_ingress = [
-#     {
-#       rule                     = "https-443-tcp"
-#       source_security_group_id = aws_security_group.other.id
-#       # prefix_list_ids        = [aws_ec2_managed_prefix_list.other.id]
-#     }
-#   ]
-# }
-
-
 module "consideration_5" {
   source = "../../"
 
