@@ -1,9 +1,13 @@
+################################################################################
+# Condsideration 1
+################################################################################
+
 module "consideration_1" {
   source = "../../"
 
   name        = join("-", [local.name, 1])
   vpc_id      = data.aws_vpc.default.id
-  description = "Rules with dynamic keys will use DBC lifecycle management."
+  description = "Rules with dynamic keys will use DBC lifecycle management"
 
   ingress = [
     # destroy the ipv4 rule after the ipv6 rule is applied
@@ -18,12 +22,16 @@ module "consideration_1" {
   ]
 }
 
+################################################################################
+# Condsideration 2
+################################################################################
+
 module "consideration_2" {
   source = "../../"
 
   name        = join("-", [local.name, 2])
   vpc_id      = data.aws_vpc.default.id
-  description = "Rules with user managed keys will use CBD lifecycle management."
+  description = "Rules with user managed keys will use CBD lifecycle management"
 
   ingress = [
     {
@@ -46,12 +54,16 @@ module "consideration_2" {
   }
 }
 
+################################################################################
+# Condsideration 3
+################################################################################
+
 module "consideration_3" {
   source = "../../"
 
   name        = join("-", [local.name, 3])
   vpc_id      = data.aws_vpc.default.id
-  description = "Avoid rules with multiple subjects."
+  description = "Avoid rules with multiple sources/destinations"
 
   ingress = [
     # removing/updating IPV4 rule will not effect the IPV6 rule and vica versa
@@ -66,14 +78,30 @@ module "consideration_3" {
       ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
     }
   ]
+
+  # matrix rules will create a rule for each source/destination
+  matrix_ingress = {
+    rules = [
+      {
+        key  = "my-key"
+        rule = "http-80-tcp"
+      }
+    ]
+    cidr_blocks      = [data.aws_vpc.default.cidr_block]
+    ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+  }
 }
+
+################################################################################
+# Condsideration 4
+################################################################################
 
 module "consideration_4" {
   source = "../../"
 
   name_prefix = join("-", [local.name, 4])
   vpc_id      = data.aws_vpc.default.id
-  description = "Avoid computed rules by passing known values. Unknown values must be computed using count which may cause undesirable rule churn when updates occur."
+  description = "Avoid computed rules by passing known values. Unknown values must be computed using count which may cause undesirable rule churn when updates occur"
 
   computed_ingress = [
     # commenting out the first rule will cause churn and
@@ -90,6 +118,10 @@ module "consideration_4" {
   ]
 }
 
+################################################################################
+# Condsideration 5
+################################################################################
+
 module "consideration_5" {
   source = "../../"
 
@@ -97,7 +129,7 @@ module "consideration_5" {
   # Force a SG level CBD with a name change
   # name_prefix = join("-", [local.name, 5, "green"])
   vpc_id      = data.aws_vpc.default.id
-  description = "Use the name_prefix argument when the SG ID does not need to be preserved."
+  description = "Use the name_prefix argument when the SG ID does not need to be preserved"
 
   ingress = [
     {
@@ -114,31 +146,59 @@ resource "aws_network_interface" "consideration_5" {
   subnet_id       = data.aws_subnet.default.id
   private_ips     = [cidrhost(data.aws_subnet.default.cidr_block, 10)]
   security_groups = [module.consideration_5.security_group.id]
+
+  tags = {
+    Name = join("-", [local.name, 5])
+  }
 }
+
+################################################################################
+# Condsideration 6
+################################################################################
 
 module "consideration_6" {
   source = "../../"
 
-  name_prefix = join("-", [local.name, 6, "blue"])
-  # Force a SG level CBD with a name change
-  # name_prefix = join("-", [local.name, 6, "green"])
+  name        = join("-", [local.name, 6])
   vpc_id      = data.aws_vpc.default.id
-  description = "This is not supported by the aws provider and should be changed outside of Terraform to avoid a service interruption."
+  description = "The SG ID must be preserved because it is used by a load balancer"
 
   computed_ingress = [
     {
       rule                     = "https-443-tcp"
       source_security_group_id = aws_security_group.other.id
+      # uncommenting will result in a service interruption for source_security_group_id
+      # and we cannot use CBD because it is not support with computed rules.
       # prefix_list_ids        = [aws_ec2_managed_prefix_list.other.id]
     }
   ]
 }
 
-# the ENI will updated with the new SG ID after the old SG is destroyed
-# thus resulting in a service interruption. The only way to avoid a service interruption
-# is to manually change the SG rule outside of terraform and fix TF state after.
-resource "aws_network_interface" "consideration_6" {
-  subnet_id       = data.aws_subnet.default.id
-  private_ips     = [cidrhost(data.aws_subnet.default.cidr_block, 20)]
-  security_groups = [module.consideration_6.security_group.id]
+# this module rule will have no effect on the source_security_group_id
+# module "consideration_6_rules_only" {
+#   source = "../../"
+
+#   create_security_group = false
+#   security_group_id     = module.consideration_6.security_group.id
+#   description           = "This additional rule will preserve the SG ID and will not effect the pre-existing rules."
+
+#   computed_ingress = [
+#     {
+#       rule            = "https-443-tcp"
+#       prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
+#     }
+#   ]
+# }
+
+resource "aws_lb" "consideration_6" {
+  name                       = join("-", [substr(local.name, 0, 30), 6])
+  drop_invalid_header_fields = true
+  internal                   = true
+  load_balancer_type         = "application"
+  security_groups            = [module.consideration_6.security_group.id]
+  subnets                    = data.aws_subnets.default.ids
+
+  tags = {
+    Name = join("-", [local.name, 6])
+  }
 }

@@ -3,10 +3,12 @@ locals {
     aws_security_group.self[0].id,
     aws_security_group.self_with_name_prefix[0].id
   ) : var.security_group_id
+
   ingress_true_expr = { for rule in var.ingress : try(
     rule.key,
     lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
   ) => rule }
+
   egress_true_expr = { for rule in var.egress : try(
     rule.key,
     lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))

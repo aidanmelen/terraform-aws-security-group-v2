@@ -6,23 +6,35 @@ locals {
   matrix_ingress = flatten([
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
-        type             = "ingress"
-        key              = try(join("-", [rule.key, "cidr-blocks-and-prefix-list-ids"]), null)
-        description      = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
-        cidr_blocks      = try(var.matrix_ingress.cidr_blocks, null)
-        ipv6_cidr_blocks = try(var.matrix_ingress.ipv6_cidr_blocks, null)
-        prefix_list_ids  = try(var.matrix_ingress.prefix_list_ids, null)
+        type        = "ingress"
+        key         = try(format("%s-%s", rule.key, "cidr-blocks"), null)
+        description = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
+        cidr_blocks = try(var.matrix_ingress.cidr_blocks, null)
       })
-      if var.create && anytrue([
-        contains(keys(var.matrix_ingress), "cidr_blocks"),
-        contains(keys(var.matrix_ingress), "ipv6_cidr_blocks"),
-        contains(keys(var.matrix_ingress), "prefix_list_ids"),
-      ])
+      if var.create && try(contains(keys(var.matrix_ingress), "cidr_blocks"), false)
+    ],
+    [
+      for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
+        type             = "ingress"
+        key              = try(format("%s-%s", rule.key, "ipv6-cidr-blocks"), null)
+        description      = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
+        ipv6_cidr_blocks = try(var.matrix_ingress.ipv6_cidr_blocks, null)
+      })
+      if var.create && try(contains(keys(var.matrix_ingress), "ipv6_cidr_blocks"), false)
+    ],
+    [
+      for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
+        type            = "ingress"
+        key             = try(format("%s-%s", rule.key, "prefix-list-ids"), null)
+        description     = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
+        prefix_list_ids = try(var.matrix_ingress.prefix_list_ids, null)
+      })
+      if var.create && try(contains(keys(var.matrix_ingress), "prefix_list_ids"), false)
     ],
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
         type                     = "ingress"
-        key                      = try(join("-", [rule.key, "source-security-group-id"]), null)
+        key                      = try(format("%s-%s", rule.key, "source-security-group-id"), null)
         description              = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         source_security_group_id = try(var.matrix_ingress.source_security_group_id, null)
       })
@@ -31,7 +43,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(rule, {
         type        = "ingress"
-        key         = try(join("-", [rule.key, "self"]), null)
+        key         = try(format("%s-%s", rule.key, "self"), null)
         description = try(var.matrix_ingress.description, rule.description, var.default_rule_description)
         self        = try(var.matrix_ingress.self, null)
       })
@@ -42,23 +54,35 @@ locals {
   matrix_egress = flatten([
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
-        type             = "egress"
-        key              = try(join("-", [rule.key, "cidr-blocks-and-prefix-list-ids"]), null)
-        description      = try(var.matrix_egress.description, rule.description, var.default_rule_description)
-        cidr_blocks      = try(var.matrix_egress.cidr_blocks, null)
-        ipv6_cidr_blocks = try(var.matrix_egress.ipv6_cidr_blocks, null)
-        prefix_list_ids  = try(var.matrix_egress.prefix_list_ids, null)
+        type        = "egress"
+        key         = try(format("%s-%s", rule.key, "cidr-blocks"), null)
+        description = try(var.matrix_egress.description, rule.description, var.default_rule_description)
+        cidr_blocks = try(var.matrix_egress.cidr_blocks, null)
       })
-      if var.create && anytrue([
-        contains(keys(var.matrix_egress), "cidr_blocks"),
-        contains(keys(var.matrix_egress), "ipv6_cidr_blocks"),
-        contains(keys(var.matrix_egress), "prefix_list_ids"),
-      ])
+      if var.create && try(contains(keys(var.matrix_egress), "cidr_blocks"), false)
+    ],
+    [
+      for rule in try(var.matrix_egress.rules, []) : merge(rule, {
+        type             = "egress"
+        key              = try(format("%s-%s", rule.key, "ipv6-cidr-blocks"), null)
+        description      = try(var.matrix_egress.description, rule.description, var.default_rule_description)
+        ipv6_cidr_blocks = try(var.matrix_egress.ipv6_cidr_blocks, null)
+      })
+      if var.create && try(contains(keys(var.matrix_egress), "ipv6_cidr_blocks"), false)
+    ],
+    [
+      for rule in try(var.matrix_egress.rules, []) : merge(rule, {
+        type            = "egress"
+        key             = try(format("%s-%s", rule.key, "prefix-list-ids"), null)
+        description     = try(var.matrix_egress.description, rule.description, var.default_rule_description)
+        prefix_list_ids = try(var.matrix_egress.prefix_list_ids, null)
+      })
+      if var.create && try(contains(keys(var.matrix_egress), "prefix_list_ids"), false)
     ],
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
         type                     = "egress"
-        key                      = try(join("-", [rule.key, "source-security-group-id"]), null)
+        key                      = try(format("%s-%s", rule.key, "source-security-group-id"), null)
         description              = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         source_security_group_id = try(var.matrix_egress.source_security_group_id, null)
       })
@@ -67,7 +91,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(rule, {
         type        = "egress"
-        key         = try(join("-", [rule.key, "self"]), null)
+        key         = try(format("%s-%s", rule.key, "self"), null)
         description = try(var.matrix_egress.description, rule.description, var.default_rule_description)
         self        = try(var.matrix_egress.self, null)
       })
@@ -79,8 +103,7 @@ locals {
 resource "aws_security_group_rule" "matrix_ingress" {
   for_each = {
     for rule in local.matrix_ingress : (
-      rule.key != null ?
-      rule.key :
+      rule.key != null ? rule.key :
       lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
     ) => rule
   }
@@ -104,8 +127,7 @@ resource "aws_security_group_rule" "matrix_ingress" {
 resource "aws_security_group_rule" "matrix_egress" {
   for_each = {
     for rule in local.matrix_egress : (
-      rule.key != null ?
-      rule.key :
+      rule.key != null ? rule.key :
       lower(replace(replace(join("-", compact(flatten(values(rule)))), " ", "-"), "_", "-"))
     ) => rule
   }

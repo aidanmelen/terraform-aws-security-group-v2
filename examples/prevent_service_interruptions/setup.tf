@@ -17,6 +17,7 @@ data "aws_subnet" "default" {
   id = data.aws_subnets.default.ids[0]
 }
 
+
 ###############################################################################
 # Resources That Must Use Computed Security Group Rules
 ###############################################################################
