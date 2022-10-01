@@ -58,7 +58,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-complete test-customer test-managed test-computed test-matrix test-rules-only lint ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-computed test-matrix test-rules-only ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log

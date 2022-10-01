@@ -22,9 +22,9 @@ Please see [The `lifecycle` Meta-Argument](https://www.terraform.io/language/met
 
 ## Types of Interruptions
 
-1. When a SG rule is updated using DBC lifecycle management; the service will be inaccessible during the period after the rule is deleted and before the rule is recreated.
+1. A SG rule update using DBC lifecycle management will result in the service being inaccessible during the period after the rule is deleted and before the rule is recreated.
 
-2. A SG replacement will cause an interruption if depended on by another SG via the `source_security_group_id` argument and that SG is managed in another Terraform run or outside of Terraform all together. The service would be restored when the `source_security_group_id` is updated with the new value.
+2. A SG rule ID change will result in any `source_security_group_id` reference becoming [stale](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeStaleSecurityGroups.html). The service will be restored when the `source_security_group_id` is updated with the new value.
 
 ## Considerations
 
@@ -60,7 +60,7 @@ Note that this example may create resources which cost money. Run `terraform des
 
 ```hcl
 ################################################################################
-# Condsideration 1
+# Consideration 1
 ################################################################################
 
 module "consideration_1" {
@@ -85,7 +85,7 @@ module "consideration_1" {
 }
 
 ################################################################################
-# Condsideration 2
+# Consideration 2
 ################################################################################
 
 module "consideration_2" {
@@ -98,9 +98,9 @@ module "consideration_2" {
 
   ingress = [
     {
-      key         = "my-key"
+      #   key         = "my-key"
       rule        = "https-443-tcp"
-      cidr_blocks = [data.aws_vpc.default.cidr_block]
+      cidr_blocks = [data.aws_vpc.default.cidr_block, "10.0.0.0/24"]
       # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
     }
   ]
@@ -108,17 +108,17 @@ module "consideration_2" {
   matrix_ingress = {
     rules = [
       {
-        key  = "my-key"
+        # key  = "my-key"
         rule = "http-80-tcp"
       }
     ]
-    cidr_blocks = [data.aws_vpc.default.cidr_block]
+    cidr_blocks = [data.aws_vpc.default.cidr_block, "10.0.0.0/24"]
     # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
   }
 }
 
 ################################################################################
-# Condsideration 3
+# Consideration 3
 ################################################################################
 
 module "consideration_3" {
@@ -157,7 +157,7 @@ module "consideration_3" {
 }
 
 ################################################################################
-# Condsideration 4
+# Consideration 4
 ################################################################################
 
 module "consideration_4" {
@@ -184,7 +184,7 @@ module "consideration_4" {
 }
 
 ################################################################################
-# Condsideration 5
+# Consideration 5
 ################################################################################
 
 module "consideration_5" {
@@ -219,7 +219,7 @@ resource "aws_network_interface" "consideration_5" {
 }
 
 ################################################################################
-# Condsideration 6
+# Consideration 6
 ################################################################################
 
 module "consideration_6" {

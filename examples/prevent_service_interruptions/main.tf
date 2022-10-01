@@ -1,5 +1,5 @@
 ################################################################################
-# Condsideration 1
+# Consideration 1
 ################################################################################
 
 module "consideration_1" {
@@ -23,7 +23,7 @@ module "consideration_1" {
 }
 
 ################################################################################
-# Condsideration 2
+# Consideration 2
 ################################################################################
 
 module "consideration_2" {
@@ -35,9 +35,9 @@ module "consideration_2" {
 
   ingress = [
     {
-      key         = "my-key"
+      #   key         = "my-key"
       rule        = "https-443-tcp"
-      cidr_blocks = [data.aws_vpc.default.cidr_block]
+      cidr_blocks = [data.aws_vpc.default.cidr_block, "10.0.0.0/24"]
       # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
     }
   ]
@@ -45,17 +45,17 @@ module "consideration_2" {
   matrix_ingress = {
     rules = [
       {
-        key  = "my-key"
+        # key  = "my-key"
         rule = "http-80-tcp"
       }
     ]
-    cidr_blocks = [data.aws_vpc.default.cidr_block]
+    cidr_blocks = [data.aws_vpc.default.cidr_block, "10.0.0.0/24"]
     # ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
   }
 }
 
 ################################################################################
-# Condsideration 3
+# Consideration 3
 ################################################################################
 
 module "consideration_3" {
@@ -93,7 +93,7 @@ module "consideration_3" {
 }
 
 ################################################################################
-# Condsideration 4
+# Consideration 4
 ################################################################################
 
 module "consideration_4" {
@@ -119,7 +119,7 @@ module "consideration_4" {
 }
 
 ################################################################################
-# Condsideration 5
+# Consideration 5
 ################################################################################
 
 module "consideration_5" {
@@ -153,7 +153,7 @@ resource "aws_network_interface" "consideration_5" {
 }
 
 ################################################################################
-# Condsideration 6
+# Consideration 6
 ################################################################################
 
 module "consideration_6" {

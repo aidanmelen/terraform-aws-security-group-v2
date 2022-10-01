@@ -1,6 +1,6 @@
-# Security Group with customer rules
+# Security Group with Dedicated Rules Example
 
-Create a security group with customer rules. Customer rules for security groups are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM.
+Create a security group with managed rules. Managed rules for security groups are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -32,68 +32,48 @@ module "security_group" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress = [
-    # {
-    #   from_port   = 443
-    #   to_port     = 443
-    #   protocol    = "tcp"
-    #   cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    # },
     {
-      from_port        = 350
-      to_port          = 450
-      protocol         = "tcp"
+      rule        = "all-all"
+      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+    },
+    {
+      rule             = "postgresql-tcp"
       ipv6_cidr_blocks = ["2001:db8::/64"]
     },
     {
-      from_port       = 22
-      to_port         = 22
-      protocol        = "tcp"
+      rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
+      rule                     = "all-icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
+      rule = "all-all"
+      self = true
     }
   ]
 
   egress = [
     {
-      from_port   = 443
-      to_port     = 443
-      protocol    = "tcp"
+      rule        = "https-443-tcp"
       cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
     },
     {
-      from_port        = 350
-      to_port          = 450
-      protocol         = "tcp"
+      rule             = "postgresql-tcp"
       ipv6_cidr_blocks = ["2001:db8::/64"]
     },
     {
-      from_port       = 22
-      to_port         = 22
-      protocol        = "tcp"
+      rule            = "ssh-tcp"
       prefix_list_ids = [data.aws_prefix_list.private_s3.id]
     },
     {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
+      rule                     = "all-icmp"
       source_security_group_id = data.aws_security_group.default.id
     },
     {
-      from_port = 0
-      to_port   = 0
-      protocol  = "-1"
-      self      = true
+      rule = "all-all"
+      self = true
     }
   ]
 }
