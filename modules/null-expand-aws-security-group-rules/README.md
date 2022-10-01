@@ -1,6 +1,6 @@
 # expand
 
-A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when declared with many source(s)/destination(s) (e.g., cidr_block) or a single source/destination with many list elements.
+A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when declared with many source(s)/destination(s) (e.g. `cidr_blocks` and `ipv6_cidr_blocks`) or a single source/destination (e.g. `cidr_blocks`) with many list elements.
 This module ensures that the module rule arguments are expanded such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
