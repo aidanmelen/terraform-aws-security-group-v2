@@ -46,9 +46,9 @@ resource "aws_security_group" "self_with_name_prefix" {
 ###############################################################################
 
 module "expand_ingress" {
-  source    = "./modules/expand"
-  create    = var.create
-  rules     = [
+  source = "./modules/expand"
+  create = var.create
+  rules = [
     for i in var.ingress : {
       type                     = "ingress"
       rule                     = try(i.rule, null)
@@ -66,9 +66,9 @@ module "expand_ingress" {
 }
 
 module "expand_egress" {
-  source    = "./modules/expand"
-  create    = var.create
-  rules     = [
+  source = "./modules/expand"
+  create = var.create
+  rules = [
     for e in var.egress : {
       type                     = "ingress"
       rule                     = try(e.rule, null)

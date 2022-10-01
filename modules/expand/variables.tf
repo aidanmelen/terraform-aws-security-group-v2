@@ -5,7 +5,7 @@ variable "create" {
 }
 
 variable "rules" {
-  description = "The grouped security group rules to expand into dedicated security group rules."
+  description = "The grouped security rules to expand into dedicated security group rules."
   type        = list(any)
 
   validation {
