@@ -6,9 +6,9 @@ module "consideration_1" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 1.4.0"
 
-  name        = join("-", [local.name, 1])
-  vpc_id      = data.aws_vpc.default.id
-  description = "Rules with dynamic keys will use DBC lifecycle management"
+  name   = join("-", [local.name, 1])
+  vpc_id = data.aws_vpc.default.id
+  # description = "Rules with dynamic keys will use DBC lifecycle management"
 
   ingress = [
     # destroy the ipv4 rule after the ipv6 rule is applied
@@ -76,7 +76,7 @@ module "consideration_3" {
     },
     # removing/updating IPV6 rule will not cause AWS API duplication errors
     {
-      key              = "my-rule"
+      # key              = "my-rule"
       rule             = "https-443-tcp"
       ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
     }
@@ -86,7 +86,7 @@ module "consideration_3" {
   matrix_ingress = {
     rules = [
       {
-        key  = "my-key"
+        # key  = "my-key"
         rule = "http-80-tcp"
       }
     ]

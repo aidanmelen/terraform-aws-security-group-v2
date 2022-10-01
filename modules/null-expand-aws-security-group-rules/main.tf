@@ -77,17 +77,17 @@ locals {
         )
         if try(contains(keys(_rule), "self"), false)
       ],
-    )) : join("-", compact([
-      try(rule.type, null),
-      try(rule.rule, null),
-      try(rule.from_port, null),
-      try(rule.to_port, null),
-      try(rule.protocol, null),
-      try(join("-", rule.cidr_blocks), null),
-      try(join("-", rule.ipv6_cidr_blocks), null),
-      try(join("-", rule.prefix_list_ids), null),
-      try(rule.source_security_group_id, null),
-      try(rule.self, null),
-    ])) => rule if var.create
+      )) : lower(join("-", compact([
+        try(rule.type, null),
+        try(rule.rule, null),
+        try(rule.from_port, null),
+        try(rule.to_port, null),
+        try(rule.protocol, null),
+        try(join("-", rule.cidr_blocks), null),
+        try(join("-", rule.ipv6_cidr_blocks), null),
+        try(join("-", rule.prefix_list_ids), null),
+        try(rule.source_security_group_id, null),
+        try(rule.self, null),
+    ]))) => rule if var.create
   }
 }

@@ -32,12 +32,12 @@ module "security_group" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress = [
-    # {
-    #   from_port   = 443
-    #   to_port     = 443
-    #   protocol    = "tcp"
-    #   cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-    # },
+    {
+      from_port   = 443
+      to_port     = 443
+      protocol    = "tcp"
+      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
+    },
     {
       from_port        = 350
       to_port          = 450

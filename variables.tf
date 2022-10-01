@@ -89,6 +89,12 @@ variable "default_rule_description" {
   default     = "managed by Terraform"
 }
 
+variable "expand" {
+  description = "Whether the grouped security rules will be expand into dedicated security group rules. This helps prevent service interruption by ensuring for_each keys do not change resulting in create before destroy lifecycle being used."
+  type        = bool
+  default     = false
+}
+
 variable "ingress" {
   description = "The security group ingress rules. Can be either customer, managed, or common rule."
   type        = any

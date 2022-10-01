@@ -11,7 +11,7 @@ module "security_group" {
   ingress = [
     {
       rule        = "all-all"
-      cidr_blocks = ["10.10.0.0/16"] #, "10.20.0.0/24"]
+      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
       description = "managed rule example"
     },
     {

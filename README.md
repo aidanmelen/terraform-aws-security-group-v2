@@ -122,6 +122,12 @@ clean                Clean project
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_expand_egress"></a> [expand\_egress](#module\_expand\_egress) | ./modules/null-expand-aws-security-group-rules | n/a |
+| <a name="module_expand_ingress"></a> [expand\_ingress](#module\_expand\_ingress) | ./modules/null-expand-aws-security-group-rules | n/a |
 ## Resources
 
 | Name | Type |
@@ -155,6 +161,7 @@ clean                Clean project
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
 | <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
+| <a name="input_expand"></a> [expand](#input\_expand) | Whether the grouped security rules will be expand into dedicated security group rules. This helps prevent service interruption by ensuring for\_each keys do not change resulting in create before destroy lifecycle being used. | `bool` | `false` | no |
 | <a name="input_ingress"></a> [ingress](#input\_ingress) | The security group ingress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_matrix_egress"></a> [matrix\_egress](#input\_matrix\_egress) | A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. | `any` | `{}` | no |
 | <a name="input_matrix_ingress"></a> [matrix\_ingress](#input\_matrix\_ingress) | A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. | `any` | `{}` | no |

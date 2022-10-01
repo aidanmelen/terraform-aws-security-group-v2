@@ -45,11 +45,45 @@ resource "aws_security_group" "self_with_name_prefix" {
 # Security Group Rules
 ###############################################################################
 
+locals {
+  # list of objects for grouped rules
+  ingress = {
+    for rule in var.ingress : lower(join("-", compact([
+      "ingress",
+      try(rule.rule, null),
+      try(rule.from_port, null),
+      try(rule.to_port, null),
+      try(rule.protocol, null),
+      try(join("-", rule.cidr_blocks), null),
+      try(join("-", rule.ipv6_cidr_blocks), null),
+      try(join("-", rule.prefix_list_ids), null),
+      try(rule.source_security_group_id, null),
+      try(rule.self, null),
+    ]))) => rule if var.create && !var.expand
+  }
+
+  egress = {
+    for rule in var.egress : lower(join("-", compact([
+      "egress",
+      try(rule.rule, null),
+      try(rule.from_port, null),
+      try(rule.to_port, null),
+      try(rule.protocol, null),
+      try(join("-", rule.cidr_blocks), null),
+      try(join("-", rule.ipv6_cidr_blocks), null),
+      try(join("-", rule.prefix_list_ids), null),
+      try(rule.source_security_group_id, null),
+      try(rule.self, null),
+    ]))) => rule if var.create && !var.expand
+  }
+}
+
 module "expand_ingress" {
-  source = "./modules/expand"
+  source = "./modules/null-expand-aws-security-group-rules"
+  count  = var.expand ? 1 : 0
   create = var.create
   rules = [
-    for i in var.ingress : {
+    for i in try(var.ingress, []) : {
       type                     = "ingress"
       rule                     = try(i.rule, null)
       from_port                = try(i.from_port, null)
@@ -66,10 +100,11 @@ module "expand_ingress" {
 }
 
 module "expand_egress" {
-  source = "./modules/expand"
+  source = "./modules/null-expand-aws-security-group-rules"
+  count  = var.expand ? 1 : 0
   create = var.create
   rules = [
-    for e in var.egress : {
+    for e in try(var.egress, []) : {
       type                     = "ingress"
       rule                     = try(e.rule, null)
       from_port                = try(e.from_port, null)
@@ -86,8 +121,7 @@ module "expand_egress" {
 }
 
 resource "aws_security_group_rule" "ingress" {
-  # for_each                 = var.create ? local.ingress_true_expr : local.ingress_false_expr
-  for_each                 = module.expand_ingress.rules
+  for_each                 = try(module.expand_ingress.rules[0], local.ingress)
   security_group_id        = local.security_group_id
   type                     = "ingress"
   description              = try(each.value.description, local.rules[each.value.rule].description, var.default_rule_description)
@@ -102,8 +136,7 @@ resource "aws_security_group_rule" "ingress" {
 }
 
 resource "aws_security_group_rule" "egress" {
-  # for_each                 = var.create ? local.egress_true_expr : local.egress_false_expr
-  for_each                 = module.expand_ingress.rules
+  for_each                 = try(module.expand_egress.rules[0], local.egress)
   security_group_id        = local.security_group_id
   type                     = "egress"
   description              = try(each.value.description, local.rules[each.value.rule].description, var.default_rule_description)
