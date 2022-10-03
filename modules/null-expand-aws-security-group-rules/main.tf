@@ -7,10 +7,10 @@ locals {
             try(_rule.description != null ? { description = _rule.description } : {}, {}),
             {
               type        = _rule.type
-              rule        = try(_rule.rule, null),
-              from_port   = try(_rule.from_port, null),
-              to_port     = try(_rule.to_port, null),
-              protocol    = try(_rule.protocol, null),
+              rule        = try(_rule.rule, null)
+              from_port   = try(_rule.from_port, null)
+              to_port     = try(_rule.to_port, null)
+              protocol    = try(_rule.protocol, null)
               cidr_blocks = [cidr_block]
             }
           )
@@ -23,10 +23,10 @@ locals {
             try({ description = _rule.description }, {}),
             {
               type             = _rule.type
-              rule             = try(_rule.rule, null),
-              from_port        = try(_rule.from_port, null),
-              to_port          = try(_rule.to_port, null),
-              protocol         = try(_rule.protocol, null),
+              rule             = try(_rule.rule, null)
+              from_port        = try(_rule.from_port, null)
+              to_port          = try(_rule.to_port, null)
+              protocol         = try(_rule.protocol, null)
               ipv6_cidr_blocks = [ipv6_cidr_block]
             }
           )
@@ -39,10 +39,10 @@ locals {
             try({ description = _rule.description }, {}),
             {
               type            = _rule.type
-              rule            = try(_rule.rule, null),
-              from_port       = try(_rule.from_port, null),
-              to_port         = try(_rule.to_port, null),
-              protocol        = try(_rule.protocol, null),
+              rule            = try(_rule.rule, null)
+              from_port       = try(_rule.from_port, null)
+              to_port         = try(_rule.to_port, null)
+              protocol        = try(_rule.protocol, null)
               prefix_list_ids = [prefix_list_id]
             }
           )
@@ -54,10 +54,10 @@ locals {
           try({ description = _rule.description }, {}),
           {
             type                     = _rule.type
-            rule                     = try(_rule.rule, null),
-            from_port                = try(_rule.from_port, null),
-            to_port                  = try(_rule.to_port, null),
-            protocol                 = try(_rule.protocol, null),
+            rule                     = try(_rule.rule, null)
+            from_port                = try(_rule.from_port, null)
+            to_port                  = try(_rule.to_port, null)
+            protocol                 = try(_rule.protocol, null)
             source_security_group_id = _rule.source_security_group_id
           }
         )
@@ -68,10 +68,10 @@ locals {
           try({ description = _rule.description }, {}),
           {
             type      = _rule.type
-            rule      = try(_rule.rule, null),
-            from_port = try(_rule.from_port, null),
-            to_port   = try(_rule.to_port, null),
-            protocol  = try(_rule.protocol, null),
+            rule      = try(_rule.rule, null)
+            from_port = try(_rule.from_port, null)
+            to_port   = try(_rule.to_port, null)
+            protocol  = try(_rule.protocol, null)
             self      = _rule.self
           }
         )

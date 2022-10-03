@@ -128,6 +128,8 @@ clean                Clean project
 |------|--------|---------|
 | <a name="module_expand_egress"></a> [expand\_egress](#module\_expand\_egress) | ./modules/null-expand-aws-security-group-rules | n/a |
 | <a name="module_expand_ingress"></a> [expand\_ingress](#module\_expand\_ingress) | ./modules/null-expand-aws-security-group-rules | n/a |
+| <a name="module_expand_matrix_egress"></a> [expand\_matrix\_egress](#module\_expand\_matrix\_egress) | ./modules/null-expand-aws-security-group-rules | n/a |
+| <a name="module_expand_matrix_ingress"></a> [expand\_matrix\_ingress](#module\_expand\_matrix\_ingress) | ./modules/null-expand-aws-security-group-rules | n/a |
 ## Resources
 
 | Name | Type |

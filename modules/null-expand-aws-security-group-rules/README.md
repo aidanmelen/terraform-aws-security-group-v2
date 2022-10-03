@@ -1,7 +1,33 @@
 # expand
 
-A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when declared with many source(s)/destination(s) (e.g. `cidr_blocks` and `ipv6_cidr_blocks`) or a single source/destination (e.g. `cidr_blocks`) with many list elements.
-This module ensures that the module rule arguments are expanded such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
+A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when many source(s)/destination(s) arguments are specified or a single source/destination argument is specified with many list elements. This will expanded the list of module rules such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
+
+<!-- ## Example
+
+```hcl
+locals {
+  ingress = [
+    {
+      type             = "ingress"
+      rule             = "https-443-tcp"
+      cidr_blocks      = ["10.10.0.0/16", "10.20.0.0/24"]
+      ipv6_cidr_blocks = ["2001:db8::/64"]
+      prefix_list_ids  = [data.aws_prefix_list.private_s3.id]
+    }
+  ]
+}
+
+module "expand_ingress" {
+  source = "aidanmelen/security-group-v2/aws/modules/null-expand-aws-security-group-rules"
+  rules  = local.ingress
+}
+
+output "expand_ingress" {
+  value = module.expand_ingress.rules
+}
+``` -->
+
+
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

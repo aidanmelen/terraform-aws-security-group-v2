@@ -83,18 +83,18 @@ module "expand_ingress" {
   count  = var.expand ? 1 : 0
   create = var.create
   rules = [
-    for i in try(var.ingress, []) : {
+    for rule in try(var.ingress, []) : {
       type                     = "ingress"
-      rule                     = try(i.rule, null)
-      from_port                = try(i.from_port, null)
-      to_port                  = try(i.to_port, null)
-      protocol                 = try(i.protocol, null)
-      cidr_blocks              = try(i.cidr_blocks, null)
-      ipv6_cidr_blocks         = try(i.ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(i.prefix_list_ids, null)
-      source_security_group_id = try(i.source_security_group_id, null)
-      self                     = try(i.self, null)
-      description              = try(i.description, null)
+      rule                     = try(rule.rule, null)
+      from_port                = try(rule.from_port, null)
+      to_port                  = try(rule.to_port, null)
+      protocol                 = try(rule.protocol, null)
+      cidr_blocks              = try(rule.cidr_blocks, null)
+      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, null)
+      prefix_list_ids          = try(rule.prefix_list_ids, null)
+      source_security_group_id = try(rule.source_security_group_id, null)
+      self                     = try(rule.self, null)
+      description              = try(rule.description, null)
     }
   ]
 }
@@ -104,18 +104,18 @@ module "expand_egress" {
   count  = var.expand ? 1 : 0
   create = var.create
   rules = [
-    for e in try(var.egress, []) : {
+    for rule in try(var.egress, []) : {
       type                     = "ingress"
-      rule                     = try(e.rule, null)
-      from_port                = try(e.from_port, null)
-      to_port                  = try(e.to_port, null)
-      protocol                 = try(e.protocol, null)
-      cidr_blocks              = try(e.cidr_blocks, null)
-      ipv6_cidr_blocks         = try(e.ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(e.prefix_list_ids, null)
-      source_security_group_id = try(e.source_security_group_id, null)
-      self                     = try(e.self, null)
-      description              = try(e.description, null)
+      rule                     = try(rule.rule, null)
+      from_port                = try(rule.from_port, null)
+      to_port                  = try(rule.to_port, null)
+      protocol                 = try(rule.protocol, null)
+      cidr_blocks              = try(rule.cidr_blocks, null)
+      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, null)
+      prefix_list_ids          = try(rule.prefix_list_ids, null)
+      source_security_group_id = try(rule.source_security_group_id, null)
+      self                     = try(rule.self, null)
+      description              = try(rule.description, null)
     }
   ]
 }
