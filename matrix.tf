@@ -2,8 +2,9 @@
 # Security Group Matrix Rules
 ###############################################################################
 
+#
 locals {
-  normalize_matrix_ingress = flatten([
+  matrix_ingress_normalized = flatten([
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(
         try({ description = var.matrix_ingress.description }, {}),
@@ -21,9 +22,9 @@ locals {
           source_security_group_id = null
         }
         ) if var.create && anytrue([
-          contains(keys(var.matrix_ingress), "cidr_blocks"),
-          contains(keys(var.matrix_ingress), "ipv6_cidr_blocks"),
-          contains(keys(var.matrix_ingress), "prefix_list_ids"),
+          try(var.matrix_ingress.cidr_blocks != null, false),
+          try(var.matrix_ingress.ipv6_cidr_blocks != null, false),
+          try(var.matrix_ingress.prefix_list_ids != null, false),
       ])
     ],
     [
@@ -42,7 +43,7 @@ locals {
           self                     = null
           source_security_group_id = try(var.matrix_ingress.source_security_group_id, null)
         }
-      ) if var.create && try(contains(keys(var.matrix_ingress), "source_security_group_id"), false)
+      ) if var.create && try(var.matrix_ingress.source_security_group_id != null, false)
     ],
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(
@@ -60,11 +61,11 @@ locals {
           self                     = try(var.matrix_ingress.self, null)
           source_security_group_id = null
         }
-      ) if var.create && try(contains(keys(var.matrix_ingress), "self"), false)
+      ) if var.create && try(var.matrix_ingress.self != null, false)
     ]
   ])
 
-  normalize_matrix_egress = flatten([
+  matrix_egress_normalized = flatten([
     [
       for rule in try(var.matrix_egress.rules, []) : merge(
         try({ description = var.matrix_egress.description }, {}),
@@ -82,9 +83,9 @@ locals {
           source_security_group_id = null
         }
         ) if var.create && anytrue([
-          contains(keys(var.matrix_egress), "cidr_blocks"),
-          contains(keys(var.matrix_egress), "ipv6_cidr_blocks"),
-          contains(keys(var.matrix_egress), "prefix_list_ids"),
+          try(var.matrix_egress.cidr_blocks != null, false),
+          try(var.matrix_egress.ipv6_cidr_blocks != null, false),
+          try(var.matrix_egress.prefix_list_ids != null, false),
       ])
     ],
     [
@@ -103,7 +104,7 @@ locals {
           self                     = null
           source_security_group_id = try(var.matrix_egress.source_security_group_id, null)
         }
-      ) if var.create && try(contains(keys(var.matrix_egress), "source_security_group_id"), false)
+      ) if var.create && try(var.matrix_egress.source_security_group_id != null, false)
     ],
     [
       for rule in try(var.matrix_egress.rules, []) : merge(
@@ -121,43 +122,58 @@ locals {
           self                     = try(var.matrix_egress.self, null)
           source_security_group_id = null
         }
-      ) if var.create && try(contains(keys(var.matrix_egress), "self"), false)
+      ) if var.create && try(var.matrix_egress.self != null, false)
     ]
   ])
 }
 
-module "unpack_matrix_ingress" {
+module "matrix_ingress_unpacked" {
   source = "./modules/null-unpack-aws-security-group-rules"
   count  = var.unpack ? 1 : 0
   create = var.create
-  rules  = local.normalize_matrix_ingress
+  rules  = local.matrix_ingress_normalized
 }
 
-module "unpack_matrix_egress" {
+module "matrix_egress_unpacked" {
   source = "./modules/null-unpack-aws-security-group-rules"
   count  = var.unpack ? 1 : 0
   create = var.create
-  rules  = local.normalize_matrix_egress
+  rules  = local.matrix_egress_normalized
+}
+
+# create map of rules with unique keys to prevent for_each churn that occurs with a set of rules
+locals {
+  matrix_ingress_map = {
+    for rule in try(module.matrix_ingress_unpacked[0].rules, local.matrix_ingress_normalized) : lower(join("-", compact([
+      try(rule.rule, null),
+      try(rule.from_port, null),
+      try(rule.to_port, null),
+      try(rule.protocol, null),
+      try(join("-", rule.cidr_blocks), null),
+      try(join("-", rule.ipv6_cidr_blocks), null),
+      try(join("-", rule.prefix_list_ids), null),
+      try(rule.self, null),
+      try(rule.source_security_group_id, null),
+    ]))) => rule
+  }
+
+  matrix_egress_map = {
+    for rule in try(module.matrix_egress_unpacked[0].rules, local.matrix_egress_normalized) : lower(join("-", compact([
+      try(rule.rule, null),
+      try(rule.from_port, null),
+      try(rule.to_port, null),
+      try(rule.protocol, null),
+      try(join("-", rule.cidr_blocks), null),
+      try(join("-", rule.ipv6_cidr_blocks), null),
+      try(join("-", rule.prefix_list_ids), null),
+      try(rule.self, null),
+      try(rule.source_security_group_id, null),
+    ]))) => rule
+  }
 }
 
 resource "aws_security_group_rule" "matrix_ingress" {
-  for_each = try(
-    module.unpack_matrix_ingress.rules[0],
-    {
-      for rule in local.normalize_matrix_ingress : lower(join("-", compact([
-        "ingress",
-        try(rule.rule, null),
-        try(rule.from_port, null),
-        try(rule.to_port, null),
-        try(rule.protocol, null),
-        try(join("-", rule.cidr_blocks), null),
-        try(join("-", rule.ipv6_cidr_blocks), null),
-        try(join("-", rule.prefix_list_ids), null),
-        try(rule.self, null),
-        try(rule.source_security_group_id, null),
-      ]))) => rule if var.create
-    }
-  )
+  for_each                 = local.matrix_ingress_map
   security_group_id        = local.security_group_id
   type                     = "ingress"
   description              = try(each.value.description, local.rule_aliases[each.value.rule].description, var.default_rule_description)
@@ -172,23 +188,7 @@ resource "aws_security_group_rule" "matrix_ingress" {
 }
 
 resource "aws_security_group_rule" "matrix_egress" {
-  for_each = try(
-    module.unpack_matrix_egress.rules[0],
-    {
-      for rule in local.normalize_matrix_egress : lower(join("-", compact([
-        "egress",
-        try(rule.rule, null),
-        try(rule.from_port, null),
-        try(rule.to_port, null),
-        try(rule.protocol, null),
-        try(join("-", rule.cidr_blocks), null),
-        try(join("-", rule.ipv6_cidr_blocks), null),
-        try(join("-", rule.prefix_list_ids), null),
-        try(rule.self, null),
-        try(rule.source_security_group_id, null),
-      ]))) => rule if var.create
-    }
-  )
+  for_each                 = local.matrix_egress_map
   security_group_id        = local.security_group_id
   type                     = "egress"
   description              = try(each.value.description, local.rule_aliases[each.value.rule].description, var.default_rule_description)

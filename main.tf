@@ -4,7 +4,7 @@
 
 # normalize customer, managed and common rules
 locals {
-  ingress_normalize = [
+  ingress_normalized = [
     for rule in var.ingress : {
       description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
       from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port)
@@ -19,7 +19,7 @@ locals {
     if var.create
   ]
 
-  egress_normalize = [
+  egress_normalized = [
     for rule in var.egress : {
       description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
       from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port)
@@ -36,24 +36,24 @@ locals {
 }
 
 # unpack grouped security rules
-module "ingress_unpack" {
+module "ingress_unpacked" {
   source = "./modules/null-unpack-aws-security-group-rules"
   count  = var.unpack ? 1 : 0
   create = var.create
-  rules  = local.ingress_normalize
+  rules  = local.ingress_normalized
 }
 
-module "egress_unpack" {
+module "egress_unpacked" {
   source = "./modules/null-unpack-aws-security-group-rules"
   count  = var.unpack ? 1 : 0
   create = var.create
-  rules  = local.egress_normalize
+  rules  = local.egress_normalized
 }
 
 # create map of rules with unique keys to prevent for_each churn that occurs with a set of rules
 locals {
   ingress_map = {
-    for rule in try(module.ingress_unpack[0].rules, local.ingress_normalize) : lower(join("-", compact([
+    for rule in try(module.ingress_unpacked[0].rules, local.ingress_normalized) : lower(join("-", compact([
       try(rule.rule, null),
       try(rule.from_port, null),
       try(rule.to_port, null),
@@ -67,7 +67,7 @@ locals {
   }
 
   egress_map = {
-    for rule in try(module.egress_unpack[0].rules, local.egress_normalize) : lower(join("-", compact([
+    for rule in try(module.egress_unpacked[0].rules, local.egress_normalized) : lower(join("-", compact([
       try(rule.rule, null),
       try(rule.from_port, null),
       try(rule.to_port, null),

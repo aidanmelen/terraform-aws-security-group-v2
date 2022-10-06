@@ -126,10 +126,10 @@ clean                Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_egress_unpack"></a> [egress\_unpack](#module\_egress\_unpack) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_ingress_unpack"></a> [ingress\_unpack](#module\_ingress\_unpack) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_unpack_matrix_egress"></a> [unpack\_matrix\_egress](#module\_unpack\_matrix\_egress) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_unpack_matrix_ingress"></a> [unpack\_matrix\_ingress](#module\_unpack\_matrix\_ingress) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_egress_unpacked"></a> [egress\_unpacked](#module\_egress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_ingress_unpacked"></a> [ingress\_unpacked](#module\_ingress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_matrix_egress_unpacked"></a> [matrix\_egress\_unpacked](#module\_matrix\_egress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_matrix_ingress_unpacked"></a> [matrix\_ingress\_unpacked](#module\_matrix\_ingress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
 ## Resources
 
 | Name | Type |
