@@ -5,8 +5,8 @@ variable "create" {
 }
 
 variable "rules" {
-  description = "The grouped security rules to expand into dedicated security group rules."
-  type        = list(any)
+  description = "The grouped security rules to unpack into dedicated security group rules."
+  type        = any
 
   validation {
     condition = alltrue([

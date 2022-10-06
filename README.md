@@ -126,10 +126,10 @@ clean                Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_expand_egress"></a> [expand\_egress](#module\_expand\_egress) | ./modules/null-expand-aws-security-group-rules | n/a |
-| <a name="module_expand_ingress"></a> [expand\_ingress](#module\_expand\_ingress) | ./modules/null-expand-aws-security-group-rules | n/a |
-| <a name="module_expand_matrix_egress"></a> [expand\_matrix\_egress](#module\_expand\_matrix\_egress) | ./modules/null-expand-aws-security-group-rules | n/a |
-| <a name="module_expand_matrix_ingress"></a> [expand\_matrix\_ingress](#module\_expand\_matrix\_ingress) | ./modules/null-expand-aws-security-group-rules | n/a |
+| <a name="module_unpack_egress"></a> [unpack\_egress](#module\_unpack\_egress) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_unpack_ingress"></a> [unpack\_ingress](#module\_unpack\_ingress) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_unpack_matrix_egress"></a> [unpack\_matrix\_egress](#module\_unpack\_matrix\_egress) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_unpack_matrix_ingress"></a> [unpack\_matrix\_ingress](#module\_unpack\_matrix\_ingress) | ./modules/null-unpack-aws-security-group-rules | n/a |
 ## Resources
 
 | Name | Type |
@@ -163,7 +163,6 @@ clean                Clean project
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
 | <a name="input_egress"></a> [egress](#input\_egress) | The security group egress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
-| <a name="input_expand"></a> [expand](#input\_expand) | Whether the grouped security rules will be expand into dedicated security group rules. This helps prevent service interruption by ensuring for\_each keys do not change resulting in create before destroy lifecycle being used. | `bool` | `false` | no |
 | <a name="input_ingress"></a> [ingress](#input\_ingress) | The security group ingress rules. Can be either customer, managed, or common rule. | `any` | `[]` | no |
 | <a name="input_matrix_egress"></a> [matrix\_egress](#input\_matrix\_egress) | A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. | `any` | `{}` | no |
 | <a name="input_matrix_ingress"></a> [matrix\_ingress](#input\_matrix\_ingress) | A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. | `any` | `{}` | no |
@@ -173,6 +172,7 @@ clean                Clean project
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | ID of existing security group whose rules we will manage. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `null` | no |
+| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack grouped security rules. This helps prevent service interruption by removing side-effects caused by updating grouped rules. | `bool` | `false` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | (Optional, Forces new resource) VPC ID. | `string` | `null` | no |
 ## Outputs
 

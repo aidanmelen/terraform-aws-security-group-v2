@@ -46,10 +46,8 @@ resource "aws_security_group" "self_with_name_prefix" {
 ###############################################################################
 
 locals {
-  # list of objects for grouped rules
   ingress = {
     for rule in var.ingress : lower(join("-", compact([
-      "ingress",
       try(rule.rule, null),
       try(rule.from_port, null),
       try(rule.to_port, null),
@@ -57,14 +55,13 @@ locals {
       try(join("-", rule.cidr_blocks), null),
       try(join("-", rule.ipv6_cidr_blocks), null),
       try(join("-", rule.prefix_list_ids), null),
-      try(rule.source_security_group_id, null),
       try(rule.self, null),
-    ]))) => rule if var.create && !var.expand
+      try(rule.source_security_group_id, null),
+    ]))) => rule if var.create
   }
 
   egress = {
     for rule in var.egress : lower(join("-", compact([
-      "egress",
       try(rule.rule, null),
       try(rule.from_port, null),
       try(rule.to_port, null),
@@ -72,56 +69,28 @@ locals {
       try(join("-", rule.cidr_blocks), null),
       try(join("-", rule.ipv6_cidr_blocks), null),
       try(join("-", rule.prefix_list_ids), null),
-      try(rule.source_security_group_id, null),
       try(rule.self, null),
-    ]))) => rule if var.create && !var.expand
+      try(rule.source_security_group_id, null),
+    ]))) => rule if var.create
   }
 }
 
-module "expand_ingress" {
-  source = "./modules/null-expand-aws-security-group-rules"
-  count  = var.expand ? 1 : 0
+module "unpack_ingress" {
+  source = "./modules/null-unpack-aws-security-group-rules"
+  count  = var.unpack ? 1 : 0
   create = var.create
-  rules = [
-    for rule in try(var.ingress, []) : {
-      type                     = "ingress"
-      rule                     = try(rule.rule, null)
-      from_port                = try(rule.from_port, null)
-      to_port                  = try(rule.to_port, null)
-      protocol                 = try(rule.protocol, null)
-      cidr_blocks              = try(rule.cidr_blocks, null)
-      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(rule.prefix_list_ids, null)
-      source_security_group_id = try(rule.source_security_group_id, null)
-      self                     = try(rule.self, null)
-      description              = try(rule.description, null)
-    }
-  ]
+  rules  = local.ingress
 }
 
-module "expand_egress" {
-  source = "./modules/null-expand-aws-security-group-rules"
-  count  = var.expand ? 1 : 0
+module "unpack_egress" {
+  source = "./modules/null-unpack-aws-security-group-rules"
+  count  = var.unpack ? 1 : 0
   create = var.create
-  rules = [
-    for rule in try(var.egress, []) : {
-      type                     = "ingress"
-      rule                     = try(rule.rule, null)
-      from_port                = try(rule.from_port, null)
-      to_port                  = try(rule.to_port, null)
-      protocol                 = try(rule.protocol, null)
-      cidr_blocks              = try(rule.cidr_blocks, null)
-      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(rule.prefix_list_ids, null)
-      source_security_group_id = try(rule.source_security_group_id, null)
-      self                     = try(rule.self, null)
-      description              = try(rule.description, null)
-    }
-  ]
+  rules  = local.egress
 }
 
 resource "aws_security_group_rule" "ingress" {
-  for_each                 = try(module.expand_ingress.rules[0], local.ingress)
+  for_each                 = try(module.unpack_ingress[0].rules, local.ingress)
   security_group_id        = local.security_group_id
   type                     = "ingress"
   description              = try(each.value.description, local.rules[each.value.rule].description, var.default_rule_description)
@@ -136,7 +105,7 @@ resource "aws_security_group_rule" "ingress" {
 }
 
 resource "aws_security_group_rule" "egress" {
-  for_each                 = try(module.expand_egress.rules[0], local.egress)
+  for_each                 = try(module.unpack_egress[0].rules, local.egress)
   security_group_id        = local.security_group_id
   type                     = "egress"
   description              = try(each.value.description, local.rules[each.value.rule].description, var.default_rule_description)

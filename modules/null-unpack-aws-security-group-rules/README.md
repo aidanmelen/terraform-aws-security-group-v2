@@ -1,6 +1,6 @@
-# expand
+# unpack
 
-A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when many source(s)/destination(s) arguments are specified or a single source/destination argument is specified with many list elements. This will expanded the list of module rules such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
+A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when many source(s)/destination(s) arguments are specified or a single source/destination argument is specified with many list elements. This will unpacked the list of module rules such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
 
 <!-- ## Example
 
@@ -17,13 +17,13 @@ locals {
   ]
 }
 
-module "expand_ingress" {
-  source = "aidanmelen/security-group-v2/aws/modules/null-expand-aws-security-group-rules"
+module "unpack_ingress" {
+  source = "aidanmelen/security-group-v2/aws/modules/null-unpack-aws-security-group-rules"
   rules  = local.ingress
 }
 
-output "expand_ingress" {
-  value = module.expand_ingress.rules
+output "unpack_ingress" {
+  value = module.unpack_ingress.rules
 }
 ``` -->
 
@@ -41,12 +41,12 @@ output "expand_ingress" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group rules | `bool` | `true` | no |
-| <a name="input_rules"></a> [rules](#input\_rules) | The grouped security rules to expand into dedicated security group rules. | `list(any)` | n/a | yes |
+| <a name="input_rules"></a> [rules](#input\_rules) | The grouped security rules to unpack into dedicated security group rules. | `any` | n/a | yes |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_rules"></a> [rules](#output\_rules) | The expanded security group rules |
+| <a name="output_rules"></a> [rules](#output\_rules) | The unpacked security group rules |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License

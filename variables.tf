@@ -83,18 +83,6 @@ variable "delete_timeout" {
 # Security Group Rules
 ###############################################################################
 
-variable "default_rule_description" {
-  description = "The default security group rule description."
-  type        = string
-  default     = "managed by Terraform"
-}
-
-variable "expand" {
-  description = "Whether the grouped security rules will be expand into dedicated security group rules. This helps prevent service interruption by ensuring for_each keys do not change resulting in create before destroy lifecycle being used."
-  type        = bool
-  default     = false
-}
-
 variable "ingress" {
   description = "The security group ingress rules. Can be either customer, managed, or common rule."
   type        = any
@@ -141,4 +129,16 @@ variable "computed_matrix_egress" {
   description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
   type        = any
   default     = {}
+}
+
+variable "default_rule_description" {
+  description = "The default security group rule description."
+  type        = string
+  default     = "managed by Terraform"
+}
+
+variable "unpack" {
+  description = "Whether to unpack grouped security rules. This helps prevent service interruption by removing side-effects caused by updating grouped rules."
+  type        = bool
+  default     = false
 }

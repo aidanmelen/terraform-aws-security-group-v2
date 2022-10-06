@@ -21,7 +21,7 @@ run: ## Run docker dev container
 setup: ## Setup project
 	# terraform
 	terraform init
-	cd modules/null-expand-aws-security-group-rules && terraform init
+	cd modules/null-unpack-aws-security-group-rules && terraform init
 	cd examples/basic && terraform init
 	cd examples/complete && terraform init
 	cd examples/customer && terraform init
@@ -91,7 +91,7 @@ release:
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
-	@rm -f modules/null-expand-aws-security-group-rules/.terraform.lock.hcl
+	@rm -f modules/null-unpack-aws-security-group-rules/.terraform.lock.hcl
 	@rm -f examples/basic/.tebasiclock.hcl
 	@rm -f examples/complete/.tebasiclock.hcl
 	@rm -f examples/customer/.terraform.lock.hcl
@@ -104,7 +104,7 @@ clean: ## Clean project
 
 
 	@rm -rf .terraform
-	@rm -rf modules/null-expand-aws-security-group-rules/.terraform
+	@rm -rf modules/null-unpack-aws-security-group-rules/.terraform
 	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/customer/.terraform
