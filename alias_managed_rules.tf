@@ -1,7 +1,7 @@
 # Protocols (tcp, udp, icmp, all - are allowed keywords) or numbers (from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml):
 # All = -1, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
 locals {
-  managed_rules = {
+  managed_rule_aliases = {
     # ActiveMQ
     activemq-5671-tcp  = { "to_port" = 5671, "from_port" = 5671, "protocol" = "tcp" }
     activemq-8883-tcp  = { "to_port" = 8883, "from_port" = 8883, "protocol" = "tcp" }

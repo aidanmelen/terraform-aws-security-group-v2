@@ -1,7 +1,7 @@
 # Protocols (tcp, udp, icmp, all - are allowed keywords) or numbers (from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml):
 # All = -1, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
 locals {
-  common_rules = {
+  common_rule_aliases = {
     # common rules with "from" are intended to be used with ingress module arguments
     all-all-self         = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
     https-443-tcp-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
@@ -18,20 +18,20 @@ locals {
     all-all-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
   }
 
-  common_rules_with_type_annotation = {
+  common_rule_aliases_with_type_annotation = {
     # common rules with "from" are intended to be used with ingress module arguments
-    all-all-from-self         = local.common_rules["all-all-self"]
-    https-443-tcp-from-public = local.common_rules["https-443-tcp-public"]
-    https-tcp-from-public     = local.common_rules["https-tcp-public"]
-    https-from-public         = local.common_rules["https-public"]
-    http-80-tcp-from-public   = local.common_rules["http-80-tcp-public"]
-    http-tcp-from-public      = local.common_rules["http-tcp-public"]
-    http-from-public          = local.common_rules["http-public"]
-    all-icmp-from-public      = local.common_rules["all-icmp-public"]
-    all-ping-from-public      = local.common_rules["all-ping-public"]
+    all-all-from-self         = local.common_rule_aliases["all-all-self"]
+    https-443-tcp-from-public = local.common_rule_aliases["https-443-tcp-public"]
+    https-tcp-from-public     = local.common_rule_aliases["https-tcp-public"]
+    https-from-public         = local.common_rule_aliases["https-public"]
+    http-80-tcp-from-public   = local.common_rule_aliases["http-80-tcp-public"]
+    http-tcp-from-public      = local.common_rule_aliases["http-tcp-public"]
+    http-from-public          = local.common_rule_aliases["http-public"]
+    all-icmp-from-public      = local.common_rule_aliases["all-icmp-public"]
+    all-ping-from-public      = local.common_rule_aliases["all-ping-public"]
 
     # common rules with "to" are intended to be used with egress module arguments
-    all-all-to-self   = local.common_rules["all-all-self"]
-    all-all-to-public = local.common_rules["all-all-public"]
+    all-all-to-self   = local.common_rule_aliases["all-all-self"]
+    all-all-to-public = local.common_rule_aliases["all-all-public"]
   }
 }

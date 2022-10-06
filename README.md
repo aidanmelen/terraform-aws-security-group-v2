@@ -85,7 +85,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
-	/usr/local/go/src/testing/testing.go:1306 +0x35a
+--- PASS: TestTerraformBasicExample (20.63s)
 	/usr/local/go/src/testing/testing.go:1306 +0x35a
 FAIL
 FAIL
@@ -126,8 +126,8 @@ clean                Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_unpack_egress"></a> [unpack\_egress](#module\_unpack\_egress) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_unpack_ingress"></a> [unpack\_ingress](#module\_unpack\_ingress) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_egress_unpack"></a> [egress\_unpack](#module\_egress\_unpack) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_ingress_unpack"></a> [ingress\_unpack](#module\_ingress\_unpack) | ./modules/null-unpack-aws-security-group-rules | n/a |
 | <a name="module_unpack_matrix_egress"></a> [unpack\_matrix\_egress](#module\_unpack\_matrix\_egress) | ./modules/null-unpack-aws-security-group-rules | n/a |
 | <a name="module_unpack_matrix_ingress"></a> [unpack\_matrix\_ingress](#module\_unpack\_matrix\_ingress) | ./modules/null-unpack-aws-security-group-rules | n/a |
 ## Resources
