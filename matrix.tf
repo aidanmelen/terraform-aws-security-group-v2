@@ -12,8 +12,8 @@ locals {
           description = try(
             rule.description,
             var.matrix_ingress.description,
-            # local.rule_aliases[rule.rule].description,
-            # var.default_rule_description
+            local.rule_aliases[rule.rule].description,
+            var.default_rule_description
           )
           cidr_blocks = try(
             concat(var.matrix_ingress.cidr_blocks, local.rule_aliases[rule.rule].cidr_blocks),
@@ -54,8 +54,8 @@ locals {
           description = try(
             rule.description,
             var.matrix_ingress.description,
-            # local.rule_aliases[rule.rule].description,
-            # var.default_rule_description
+            local.rule_aliases[rule.rule].description,
+            var.default_rule_description
           )
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
@@ -76,8 +76,8 @@ locals {
           description = try(
             rule.description,
             var.matrix_ingress.description,
-            # local.rule_aliases[rule.rule].description,
-            # var.default_rule_description
+            local.rule_aliases[rule.rule].description,
+            var.default_rule_description
           )
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
