@@ -61,7 +61,11 @@ Please see the full examples for more information:
 
 - [Computed Rules Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/computed)
 
+- [Name Prefix Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/name_prefix)
+
 - [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only)
+
+- [Unpack Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack)
 
 ## Key Concepts
 
@@ -85,14 +89,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (20.63s)
-FAIL
-FAIL
-FAIL
+--- PASS: TestTerraformBasicExample (20.86s)
+--- PASS: TestTerraformCompleteExample (41.34s)
+--- PASS: TestTerraformCustomerRulesExample (28.98s)
+--- PASS: TestTerraformManagedRulesExample (29.81s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
-FAIL
---- PASS: TestTerraformComputedRulesExample (40.83s)
-	/usr/local/go/src/testing/testing.go:1306 +0x35a
+--- PASS: TestTerraformMatrixRulesExample (29.57s)
+--- PASS: TestTerraformComputedRulesExample (37.37s)
+--- PASS: TestTerraformNamePrefixExample (20.11s)
+--- PASS: TestTerraformRulesOnlyExample (20.05s)
+--- PASS: TestTerraformUnpackRulesExample (48.24s)
 ```
 
 ## Makefile Targets
@@ -113,6 +119,8 @@ test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
 test-rules-only      Test the rules_only example
+test-name-prefix     Test the name_prefix example
+test-unpack          Test the unpack example
 clean                Clean project
 ```
 
@@ -185,6 +193,8 @@ clean                Clean project
 ## Acknowledgments
 
 This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
+
+- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) grouped arguments provided by the user.
 
 - Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) and [matrix.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/matrix.tf) are both ~100 lines.
 

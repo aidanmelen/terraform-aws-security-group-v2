@@ -9,11 +9,11 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(
         {
-          description      = try(rule.description, var.matrix_ingress.description)
+          description      = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks      = try(var.matrix_ingress.cidr_blocks, null)
           ipv6_cidr_blocks = try(var.matrix_ingress.ipv6_cidr_blocks, null)
           prefix_list_ids  = try(var.matrix_ingress.prefix_list_ids, null)
-          # incompatible rules must be assigned null otherwise the object types in the list will not match
+          # incompatible resource rules must be assigned null otherwise the object types in the list will not match
           self                     = null
           source_security_group_id = null
         },
@@ -34,7 +34,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(
         {
-          description              = try(rule.description, var.matrix_ingress.description)
+          description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
           prefix_list_ids          = null
@@ -51,7 +51,7 @@ locals {
     [
       for rule in try(var.matrix_ingress.rules, []) : merge(
         {
-          description              = try(rule.description, var.matrix_ingress.description)
+          description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
           prefix_list_ids          = null
@@ -71,7 +71,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(
         {
-          description              = try(rule.description, var.matrix_egress.description)
+          description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks              = try(var.matrix_egress.cidr_blocks, null)
           ipv6_cidr_blocks         = try(var.matrix_egress.ipv6_cidr_blocks, null)
           prefix_list_ids          = try(var.matrix_egress.prefix_list_ids, null)
@@ -92,7 +92,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(
         {
-          description              = try(rule.description, var.matrix_egress.description)
+          description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
           prefix_list_ids          = null
@@ -109,7 +109,7 @@ locals {
     [
       for rule in try(var.matrix_egress.rules, []) : merge(
         {
-          description              = try(rule.description, var.matrix_egress.description)
+          description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
           cidr_blocks              = null
           ipv6_cidr_blocks         = null
           prefix_list_ids          = null
@@ -128,7 +128,7 @@ locals {
   # normalize customer, managed and common rules
   matrix_ingress_normalized = [
     for rule in local.matrix_ingress_flatten : {
-      description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
+      description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
       from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port)
       to_port                  = try(rule.to_port, local.rule_aliases[rule.rule].to_port)
       protocol                 = try(rule.protocol, local.rule_aliases[rule.rule].protocol)
@@ -143,7 +143,7 @@ locals {
 
   matrix_egress_normalized = [
     for rule in local.matrix_egress_flatten : {
-      description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
+      description              = try(rule.description, var.matrix_ingress.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
       from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port)
       to_port                  = try(rule.to_port, local.rule_aliases[rule.rule].to_port)
       protocol                 = try(rule.protocol, local.rule_aliases[rule.rule].protocol)

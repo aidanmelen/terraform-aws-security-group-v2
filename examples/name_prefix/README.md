@@ -1,6 +1,6 @@
 # Security Group with
 
-Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior object is destroyed after the replacement is created.
+Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior security group is destroyed after the replacement is created. Only use when the security group ID does not need to be preserved (e.g. can be used with EC2 Network Interfaces because they allow multiple security group attachments). On the other hand, use `name` when the security group ID must be preserved (e.g. when used with AWS Load Balancers or clustered services like EKS, MSK, EMR, etc).
 
 ## Usage
 

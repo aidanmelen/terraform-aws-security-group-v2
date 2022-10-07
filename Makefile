@@ -60,7 +60,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-complete test-customer test-managed test-computed test-matrix test-rules-only ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-computed test-matrix test-rules-only test-name-prefix test-unpack ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
@@ -86,6 +86,12 @@ test-computed: ## Test the computed example
 test-rules-only: ## Test the rules_only example
 	go test test/terraform_rules_only_test.go -timeout 5m -v |& tee test/terraform_rules_only_test.log
 
+test-name-prefix: ## Test the name_prefix example
+	go test test/terraform_name_prefix_test.go -timeout 5m -v |& tee test/terraform_name_prefix_test.log
+
+test-unpack: ## Test the unpack example
+	go test test/terraform_unpack_test.go -timeout 5m -v |& tee test/terraform_unpack_test.log
+
 release:
 	git tag v${VERSION}
 	git push --tag
@@ -101,7 +107,7 @@ clean: ## Clean project
 	@rm -f examples/matrix/.terraform.lock.hcl
 	@rm -f examples/computed/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
-	@rm -f examples/uname_prefix.terraform.lock.hcl
+	@rm -f examples/name_prefix/.terraform.lock.hcl
 	@rm -f examples/unpack/.terraform.lock.hcl
 
 	@rm -rf .terraform
@@ -114,7 +120,7 @@ clean: ## Clean project
 	@rm -rf examples/matrix/.terraform
 	@rm -rf examples/computed/.terraform
 	@rm -rf examples/rules_only/.terraform
-	@rm -rf exname_prefix/unpack/.terraform
+	@rm -rf examples/name_prefix/.terraform
 	@rm -rf examples/unpack/.terraform
 
 	@rm -f go.mod

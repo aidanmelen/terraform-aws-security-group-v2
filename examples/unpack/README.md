@@ -1,6 +1,6 @@
 # Unpack Security Group Rules
 
-Unpack grouped security rules. This helps prevent service interruption by removing side-effects caused by updating grouped rules.
+Unpack grouped security rules. This helps prevent service interruptions by removing side-effects caused by updating grouped rules.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 

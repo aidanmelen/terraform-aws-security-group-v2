@@ -11,7 +11,7 @@ module "security_group" {
         from_port   = 80
         to_port     = 80
         protocol    = "tcp"
-        description = "customer rule example"
+        description = "matrix customer rule"
       }
     ],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
@@ -19,7 +19,7 @@ module "security_group" {
     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
     source_security_group_id = data.aws_security_group.default.id
     self                     = true
-    description              = "matrix default rule example"
+    description              = "matrix managed rule. overridden by rule.description. overrides managed rule description and default_rule_description."
   }
 
   matrix_egress = {

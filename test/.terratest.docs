@@ -1,9 +1,11 @@
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (20.63s)
-FAIL
-FAIL
-FAIL
+--- PASS: TestTerraformBasicExample (20.86s)
+--- PASS: TestTerraformCompleteExample (41.34s)
+--- PASS: TestTerraformCustomerRulesExample (28.98s)
+--- PASS: TestTerraformManagedRulesExample (29.81s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
-FAIL
---- PASS: TestTerraformComputedRulesExample (40.83s)
-	/usr/local/go/src/testing/testing.go:1306 +0x35a
+--- PASS: TestTerraformMatrixRulesExample (29.57s)
+--- PASS: TestTerraformComputedRulesExample (37.37s)
+--- PASS: TestTerraformNamePrefixExample (20.11s)
+--- PASS: TestTerraformRulesOnlyExample (20.05s)
+--- PASS: TestTerraformUnpackRulesExample (48.24s)
