@@ -30,7 +30,7 @@ func TestTerraformUnpackRulesExample(t *testing.T) {
 	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
-	expectedIngressCount := "29"
+	expectedIngressCount := "31"
 	expectedEgressCount := "0"
 
 	// assert

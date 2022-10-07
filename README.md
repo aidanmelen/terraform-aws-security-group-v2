@@ -89,16 +89,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (20.86s)
---- PASS: TestTerraformCompleteExample (41.34s)
---- PASS: TestTerraformCustomerRulesExample (28.98s)
---- PASS: TestTerraformManagedRulesExample (29.81s)
+--- PASS: TestTerraformBasicExample (20.22s)
+--- PASS: TestTerraformCompleteExample (39.65s)
+--- PASS: TestTerraformCustomerRulesExample (29.47s)
+--- PASS: TestTerraformManagedRulesExample (29.44s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (29.57s)
---- PASS: TestTerraformComputedRulesExample (37.37s)
---- PASS: TestTerraformNamePrefixExample (20.11s)
---- PASS: TestTerraformRulesOnlyExample (20.05s)
---- PASS: TestTerraformUnpackRulesExample (48.24s)
+--- PASS: TestTerraformMatrixRulesExample (30.50s)
+--- PASS: TestTerraformComputedRulesExample (37.32s)
+--- PASS: TestTerraformNamePrefixExample (20.36s)
+--- PASS: TestTerraformRulesOnlyExample (20.24s)
+--- PASS: TestTerraformUnpackRulesExample (49.75s)
 ```
 
 ## Makefile Targets
@@ -180,7 +180,7 @@ clean                Clean project
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | ID of existing security group whose rules we will manage. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `null` | no |
-| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack grouped security rules. This helps prevent service interruption by removing side-effects caused by updating grouped rules. | `bool` | `false` | no |
+| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack grouped security group rules. Unpacking will prevent unwanted security group rule updates that normally occur when grouping arguments. | `bool` | `false` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | (Optional, Forces new resource) VPC ID. | `string` | `null` | no |
 ## Outputs
 

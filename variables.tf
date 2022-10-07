@@ -138,7 +138,7 @@ variable "default_rule_description" {
 }
 
 variable "unpack" {
-  description = "Whether to unpack grouped security rules. This helps prevent service interruption by removing side-effects caused by updating grouped rules."
+  description = "Whether to unpack grouped security group rules. Unpacking will prevent unwanted security group rule updates that normally occur when grouping arguments."
   type        = bool
   default     = false
 }
