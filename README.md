@@ -89,16 +89,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (20.22s)
---- PASS: TestTerraformCompleteExample (39.65s)
---- PASS: TestTerraformCustomerRulesExample (29.47s)
---- PASS: TestTerraformManagedRulesExample (29.44s)
+--- PASS: TestTerraformBasicExample (20.30s)
+--- PASS: TestTerraformCompleteExample (39.41s)
+--- PASS: TestTerraformCustomerRulesExample (29.31s)
+--- PASS: TestTerraformManagedRulesExample (29.33s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (30.50s)
---- PASS: TestTerraformComputedRulesExample (37.32s)
---- PASS: TestTerraformNamePrefixExample (20.36s)
---- PASS: TestTerraformRulesOnlyExample (20.24s)
---- PASS: TestTerraformUnpackRulesExample (49.75s)
+--- PASS: TestTerraformMatrixRulesExample (29.88s)
+--- PASS: TestTerraformComputedRulesExample (36.84s)
+--- PASS: TestTerraformNamePrefixExample (20.68s)
+--- PASS: TestTerraformRulesOnlyExample (20.33s)
+--- PASS: TestTerraformUnpackRulesExample (49.54s)
 ```
 
 ## Makefile Targets
@@ -194,11 +194,13 @@ clean                Clean project
 
 This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
 
-- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) grouped arguments provided by the user.
-
-- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) and [matrix.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/matrix.tf) are both ~100 lines.
+- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The core functionality found in the [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines.
 
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
+
+- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) grouped arguments provided by the user.
+
+- A simplified interface for matrix functionality that works with all module rule types and computed rules.
 
 - Dynamically create customer, managed and common security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). `for_each` has two advantages over `count`:
 

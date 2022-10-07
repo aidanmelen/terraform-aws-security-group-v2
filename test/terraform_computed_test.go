@@ -45,6 +45,8 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
 	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
 	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
+	actualIngressCount := actualTerratest["ingress_count"]
+	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
 	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:80 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
@@ -58,6 +60,8 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:80 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
 	expectedEgress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
 	expectedEgress2 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:5432 type:egress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
+	expectedIngressCount := "8"
+	expectedEgressCount := "3"
 
 	// assert
 	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)
@@ -71,4 +75,6 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	assert.Equal(t, expectedEgress0, actualEgress0, "Map %q should match %q", expectedEgress0, actualEgress0)
 	assert.Equal(t, expectedEgress1, actualEgress1, "Map %q should match %q", expectedEgress1, actualEgress1)
 	assert.Equal(t, expectedEgress2, actualEgress2, "Map %q should match %q", expectedEgress2, actualEgress2)
+	assert.Equal(t, expectedIngressCount, actualIngressCount, "Map %q should match %q", expectedIngressCount, actualIngressCount)
+	assert.Equal(t, expectedEgressCount, actualEgressCount, "Map %q should match %q", expectedEgressCount, actualEgressCount)
 }

@@ -42,6 +42,8 @@ func TestTerraformMatrixRulesExample(t *testing.T) {
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
 	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
 	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
+	actualIngressCount := actualTerratest["ingress_count"]
+	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
 	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:matrix managed rule. overridden by rule.description. overrides managed rule description and default_rule_description. from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualDataAwsPrefixListPrivateS3Id, actualSecurityGroupId)
@@ -52,6 +54,8 @@ func TestTerraformMatrixRulesExample(t *testing.T) {
 	expectedIngress5 := fmt.Sprintf("map[cidr_blocks:<nil> description:matrix customer rule from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:80 type:ingress]", actualSecurityGroupId)
 	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualSecurityGroupId)
 	expectedEgress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:443 type:egress]", actualSecurityGroupId, actualDataAwsSecurityGroupDefaultId)
+	expectedIngressCount := "6"
+	expectedEgressCount := "2"
 
 	// assert
 	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)
@@ -62,4 +66,6 @@ func TestTerraformMatrixRulesExample(t *testing.T) {
 	assert.Equal(t, expectedIngress5, actualIngress5, "Map %q should match %q", expectedIngress5, actualIngress5)
 	assert.Equal(t, expectedEgress0, actualEgress0, "Map %q should match %q", expectedEgress0, actualEgress0)
 	assert.Equal(t, expectedEgress1, actualEgress1, "Map %q should match %q", expectedEgress1, actualEgress1)
+	assert.Equal(t, expectedIngressCount, actualIngressCount, "Map %q should match %q", expectedIngressCount, actualIngressCount)
+	assert.Equal(t, expectedEgressCount, actualEgressCount, "Map %q should match %q", expectedEgressCount, actualEgressCount)
 }

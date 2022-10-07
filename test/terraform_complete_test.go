@@ -53,6 +53,8 @@ func TestTerraformCompleteExample(t *testing.T) {
 	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
 	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
 	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
+	actualIngressCount := actualTerratest["ingress_count"]
+	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
 	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[10.10.0.0/16 10.20.0.0/24] description:managed rule example from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:ingress]", actualSecurityGroupId)
@@ -71,6 +73,8 @@ func TestTerraformCompleteExample(t *testing.T) {
 	expectedEgress4 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:[2001:db8::/64] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:5432 type:egress]", actualSecurityGroupId)
 	expectedEgress5 := fmt.Sprintf("map[cidr_blocks:<nil> description:computed (customer) rule example from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:80 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
 	expectedEgress6 := fmt.Sprintf("map[cidr_blocks:<nil> description:computed (managed) rule example from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
+	expectedIngressCount := "9"
+	expectedEgressCount := "7"
 	expectedDisabledSgId := "I was not created"
 
 	// assert
@@ -90,5 +94,7 @@ func TestTerraformCompleteExample(t *testing.T) {
 	assert.Equal(t, expectedEgress4, actualEgress4, "Map %q should match %q", expectedEgress4, actualEgress4)
 	assert.Equal(t, expectedEgress5, actualEgress5, "Map %q should match %q", expectedEgress5, actualEgress5)
 	assert.Equal(t, expectedEgress6, actualEgress6, "Map %q should match %q", expectedEgress6, actualEgress6)
+	assert.Equal(t, expectedIngressCount, actualIngressCount, "Map %q should match %q", expectedIngressCount, actualIngressCount)
+	assert.Equal(t, expectedEgressCount, actualEgressCount, "Map %q should match %q", expectedEgressCount, actualEgressCount)
 	assert.Equal(t, expectedDisabledSgId, actualDisabledSgId, "Map %q should match %q", expectedDisabledSgId, actualDisabledSgId)
 }
