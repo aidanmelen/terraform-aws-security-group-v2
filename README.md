@@ -91,16 +91,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (20.30s)
---- PASS: TestTerraformCompleteExample (39.41s)
---- PASS: TestTerraformCustomerRulesExample (29.31s)
---- PASS: TestTerraformManagedRulesExample (29.33s)
+--- PASS: TestTerraformBasicExample (21.38s)
+--- PASS: TestTerraformCompleteExample (44.73s)
+--- PASS: TestTerraformCustomerRulesExample (30.70s)
+--- PASS: TestTerraformManagedRulesExample (30.27s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (29.88s)
---- PASS: TestTerraformComputedRulesExample (36.84s)
---- PASS: TestTerraformNamePrefixExample (20.68s)
---- PASS: TestTerraformRulesOnlyExample (20.33s)
---- PASS: TestTerraformUnpackRulesExample (49.54s)
+--- PASS: TestTerraformMatrixRulesExample (32.34s)
+--- PASS: TestTerraformComputedRulesExample (38.25s)
+--- PASS: TestTerraformNamePrefixExample (21.42s)
+--- PASS: TestTerraformRulesOnlyExample (20.94s)
+--- PASS: TestTerraformUnpackRulesExample (50.97s)
 ```
 
 ## Makefile Targets
@@ -130,7 +130,7 @@ clean                Clean project
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
 ## Modules
 
