@@ -69,7 +69,7 @@ module "security_group" {
         from_port   = 80
         to_port     = 80
         protocol    = "tcp"
-        description = "customer rule example with create before destroy lifecycle"
+        description = "customer rule example"
       }
     ],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
@@ -77,7 +77,7 @@ module "security_group" {
     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
     source_security_group_id = data.aws_security_group.default.id
     self                     = true
-    description              = "matrix rules default description"
+    description              = "matrix default rule example"
   }
 
   matrix_egress = {
@@ -85,8 +85,6 @@ module "security_group" {
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     source_security_group_id = data.aws_security_group.default.id
   }
-
-  unpack = true
 }
 ```
 

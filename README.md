@@ -86,7 +86,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ```
 Terratest Suite (v1.4.0)
 --- PASS: TestTerraformBasicExample (20.63s)
-	/usr/local/go/src/testing/testing.go:1306 +0x35a
+FAIL
 FAIL
 FAIL
 --- PASS: TestTerraformCommonRulesExample (27.24s)

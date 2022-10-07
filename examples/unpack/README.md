@@ -22,7 +22,6 @@ Note that this example may create resources which cost money. Run `terraform des
 
 ```hcl
 #tfsec:ignore:aws-ec2-no-public-ingress-sgr
-#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 1.4.0"
@@ -33,102 +32,108 @@ module "security_group" {
 
   ingress = [
     {
-      rule        = "all-all"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-      description = "managed rule example"
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
+      from_port                = "22"
+      to_port                  = "22"
+      protocol                 = "TCP"
+      cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
+      ipv6_cidr_blocks         = ["2001:db8::/64"]
+      prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
       source_security_group_id = data.aws_security_group.default.id
-      description              = "customer rule example"
+      self                     = true
+      description              = "unpack customer rules"
     },
     {
-      rule        = "https-tcp-from-public"
-      description = "common rule example"
-    },
-    { rule = "http-tcp-from-public" },
-    { rule = "all-all-from-self" }
-  ]
-
-  computed_ingress = [
-    {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = "tcp"
-      source_security_group_id = aws_security_group.other.id
-      description              = "This rule must be computed because it is created in the same terraform run as this module and is unknown at plan time."
-    },
-    {
-      rule                     = "https-443-tcp"
-      source_security_group_id = aws_security_group.other.id
-    }
-  ]
-
-  egress = [
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = ["10.10.0.0/16", "10.20.0.0/24"]
-      description = "managed rule example"
-    },
-    {
-      rule             = "postgresql-tcp"
-      ipv6_cidr_blocks = ["2001:db8::/64"]
-    },
-    {
-      rule            = "ssh-tcp"
-      prefix_list_ids = [data.aws_prefix_list.private_s3.id]
-    },
-    {
-      from_port                = 0
-      to_port                  = 0
-      protocol                 = "icmp"
+      rule                     = "postgresql-tcp"
+      cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
+      ipv6_cidr_blocks         = ["2001:db8::/64"]
+      prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
       source_security_group_id = data.aws_security_group.default.id
-      description              = "customer rule example"
+      self                     = true
+      description              = "unpack managed rules"
     },
     {
-      rule        = "all-all-to-public"
-      description = "common rule example"
-    }
-  ]
-
-  computed_egress = [
-    {
-      from_port       = 80
-      to_port         = 80
-      protocol        = "tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-      description     = "computed (customer) rule example"
+      rule        = "https-from-public"
+      description = "unpack common rule"
     },
-    {
-      rule            = "https-443-tcp"
-      prefix_list_ids = [aws_ec2_managed_prefix_list.other.id]
-      description     = "computed (managed) rule example"
-    }
   ]
 
-  tags = {
-    "Name" = local.name
+  matrix_ingress = {
+    rules = [
+      {
+        from_port   = 25
+        to_port     = 25
+        protocol    = "tcp"
+        description = "unpack customer rule"
+      },
+      {
+        rule        = "mysql-tcp"
+        description = "unpack managed rule"
+      },
+      {
+        rule        = "http-from-public"
+        description = "unpack common rule"
+      },
+    ],
+    cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+    ipv6_cidr_blocks         = []
+    prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
+    source_security_group_id = data.aws_security_group.default.id
+    self                     = true
   }
-}
 
-################################################################################
-# Disabled creation
-################################################################################
+  # ommitted for the sake of not creating a whole lot of example egress rules
+  # egress = [
+  #   {
+  #     from_port                = "22"
+  #     to_port                  = "22"
+  #     protocol                 = "TCP"
+  #     cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
+  #     ipv6_cidr_blocks         = ["2001:db8::/64"]
+  #     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
+  #     source_security_group_id = data.aws_security_group.default.id
+  #     self                     = true
+  #     description              = "unpack customer rules"
+  #   },
+  #   {
+  #     rule                     = "postgresql-tcp"
+  #     cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
+  #     ipv6_cidr_blocks         = ["2001:db8::/64"]
+  #     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
+  #     source_security_group_id = data.aws_security_group.default.id
+  #     self                     = true
+  #     description              = "unpack managed rules"
+  #   },
+  #   {
+  #     rule        = "https-from-public"
+  #     description = "unpack common rule"
+  #   },
+  # ]
 
-module "disabled_sg" {
-  source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.4.0"
-  create = false
+  # matrix_egress = {
+  #   rules = [
+  #     {
+  #       from_port   = 25
+  #       to_port     = 25
+  #       protocol    = "tcp"
+  #       description = "unpack customer rule"
+  #     },
+  #     {
+  #       rule        = "mysql-tcp"
+  #       description = "unpack managed rule"
+  #     },
+  #     {
+  #       rule        = "http-from-public"
+  #       description = "unpack common rule"
+  #     },
+  #   ],
+  #   cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
+  #   ipv6_cidr_blocks         = []
+  #   prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
+  #   source_security_group_id = data.aws_security_group.default.id
+  #   self                     = true
+  # }
+
+  unpack = true
 }
 ```
 

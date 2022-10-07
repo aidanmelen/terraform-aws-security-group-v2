@@ -30,8 +30,8 @@ setup: ## Setup project
 	cd examples/matrix && terraform init
 	cd examples/computed && terraform init
 	cd examples/rules_only && terraform init
+	cd examples/name_prefix && terraform init
 	cd examples/unpack && terraform init
-	cd examples/prevent_service_interruptions && terraform init
 
 	# pre-commit
 	git init
@@ -101,9 +101,8 @@ clean: ## Clean project
 	@rm -f examples/matrix/.terraform.lock.hcl
 	@rm -f examples/computed/.terraform.lock.hcl
 	@rm -f examples/rules_only/.terraform.lock.hcl
+	@rm -f examples/uname_prefix.terraform.lock.hcl
 	@rm -f examples/unpack/.terraform.lock.hcl
-	@rm -f examples/prevent_service_interruptions/.terraform.lock.hcl
-
 
 	@rm -rf .terraform
 	@rm -rf modules/null-unpack-aws-security-group-rules/.terraform
@@ -115,8 +114,8 @@ clean: ## Clean project
 	@rm -rf examples/matrix/.terraform
 	@rm -rf examples/computed/.terraform
 	@rm -rf examples/rules_only/.terraform
+	@rm -rf exname_prefix/unpack/.terraform
 	@rm -rf examples/unpack/.terraform
-	@rm -rf examples/prevent_service_interruptions/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum
