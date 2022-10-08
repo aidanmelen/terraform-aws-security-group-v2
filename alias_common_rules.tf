@@ -3,19 +3,21 @@
 locals {
   common_rule_aliases = {
     # common rules with "from" are intended to be used with ingress module arguments
-    all-all-self         = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    https-443-tcp-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    https-tcp-public     = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    https-public         = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    http-80-tcp-public   = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    http-tcp-public      = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    http-public          = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    all-icmp-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
-    all-ping-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-self         = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true, description = "All protocols self" }
+    https-443-tcp-public = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTPS from public" }
+    https-tcp-public     = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTPS from public" }
+    https-public         = { "to_port" = 443, "from_port" = 443, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTPS from public" }
+    http-80-tcp-public   = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTP from public" }
+    http-tcp-public      = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTP from public" }
+    http-public          = { "to_port" = 80, "from_port" = 80, "protocol" = "tcp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "HTTP from public" }
+    all-icmp-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "All IPV4 ICMP from public" }
+    all-ping-public      = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "All IPV4 ICMP from public" }
+    all-ipv6-icmp-public = { "to_port" = 0, "from_port" = 0, "protocol" = "icmp", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "All IPV6 ICMP from public" }
+    all-ipv6-ping-public = { "to_port" = 0, "from_port" = 0, "protocol" = 58, cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "All IPV6 ICMP from public" }
 
     # common rules with "to" are intended to be used with egress module arguments
-    all-all-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true }
-    all-all-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"] }
+    all-all-self   = { "to_port" = 0, "from_port" = 0, "protocol" = "all", self = true, description = "All protocols to self" }
+    all-all-public = { "to_port" = 0, "from_port" = 0, "protocol" = "all", cidr_blocks = ["0.0.0.0/0"], ipv6_cidr_blocks = ["::/0"], description = "All to public" }
   }
 
   common_rule_aliases_with_type_annotation = {
