@@ -17,7 +17,7 @@ module "security_group" {
       prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
       source_security_group_id = data.aws_security_group.default.id
       self                     = true
-      description              = "unpack customer rules"
+      description              = "unpack customer rules."
     },
     {
       rule                     = "postgresql-tcp"
@@ -30,7 +30,7 @@ module "security_group" {
     },
     {
       rule        = "https-from-public"
-      description = "unpack common rule"
+      description = "unpack common rule."
     },
   ]
 

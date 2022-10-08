@@ -3,7 +3,8 @@
 # render terratest docs
 
 VERSION=$1
-echo "Terratest Suite (v${VERSION})" > test/.terratest.docs
+TF_VERSION=$(cat .terraform-version)
+echo "Terratest Suite (Module v${VERSION}) (Terraform v${TF_VERSION})" > test/.terratest.docs
 
 tail -3 test/terraform_basic_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_complete_test.log | head -1 >> test/.terratest.docs

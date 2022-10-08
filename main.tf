@@ -35,7 +35,7 @@ locals {
   ]
 }
 
-# unpack security group rules with grouped arguments
+# unpack security group rule arguments
 module "ingress_unpacked" {
   source = "./modules/null-unpack-aws-security-group-rules"
   count  = var.unpack ? 1 : 0

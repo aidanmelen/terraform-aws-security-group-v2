@@ -1,6 +1,6 @@
 # Unpack Security Group Rules
 
-A single `aws_security_group_rule` resource can result in one or many security group rules being created by the EC2 API. When unpacking is enabled, `aws_security_group_rule` resource argument groups supplied by the user will be unpacked such that each resource is guaranteed to result in the EC2 API creating exactly one rule. This prevents the side-effect of a single rule update causing many other unwanted updates during the replacement.
+A single `aws_security_group_rule` resource can result in one or many security group rules being created by the EC2 API. When unpacking is enabled, `aws_security_group_rule` resource arguments supplied by the user will be unpacked such that each resource is guaranteed to result in the EC2 API creating exactly one rule. This prevents the side-effect of a single rule update causing many other unwanted updates during the replacement.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
 
@@ -40,7 +40,7 @@ module "security_group" {
       prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
       source_security_group_id = data.aws_security_group.default.id
       self                     = true
-      description              = "unpack customer rules"
+      description              = "unpack customer rules."
     },
     {
       rule                     = "postgresql-tcp"
@@ -53,7 +53,7 @@ module "security_group" {
     },
     {
       rule        = "https-from-public"
-      description = "unpack common rule"
+      description = "unpack common rule."
     },
   ]
 

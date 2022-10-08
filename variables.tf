@@ -87,48 +87,248 @@ variable "ingress" {
   description = "The security group ingress rules. Can be either customer, managed, or common rule."
   type        = any
   default     = []
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.ingress, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "cidr_blocks",
+          "ipv6_cidr_blocks",
+          "prefix_list_ids",
+          "source_security_group_id",
+          "self",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "egress" {
   description = "The security group egress rules. Can be either customer, managed, or common rule."
   type        = any
   default     = []
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.egress, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "cidr_blocks",
+          "ipv6_cidr_blocks",
+          "prefix_list_ids",
+          "source_security_group_id",
+          "self",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "matrix_ingress" {
   description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules."
   type        = any
   default     = {}
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.matrix_ingress.rules, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+  }
+
+  validation {
+    condition = alltrue(flatten([
+      for key in keys(try(var.matrix_ingress, {})) : contains([
+        "rules",
+        "cidr_blocks",
+        "ipv6_cidr_blocks",
+        "prefix_list_ids",
+        "source_security_group_id",
+        "self",
+        "description",
+      ], key)
+    ]))
+    error_message = "At least one of the matrix_ingress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "matrix_egress" {
   description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules."
   type        = any
   default     = {}
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.matrix_egress.rules, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+  }
+
+  validation {
+    condition = alltrue(flatten([
+      for key in keys(try(var.matrix_egress, {})) : contains([
+        "rules",
+        "cidr_blocks",
+        "ipv6_cidr_blocks",
+        "prefix_list_ids",
+        "source_security_group_id",
+        "self",
+        "description",
+      ], key)
+    ]))
+    error_message = "At least one of the matrix_egress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "computed_ingress" {
   description = "The security group ingress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
   default     = []
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.computed_ingress, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "cidr_blocks",
+          "ipv6_cidr_blocks",
+          "prefix_list_ids",
+          "source_security_group_id",
+          "self",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "computed_egress" {
   description = "The security group egress rules that contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc). Can be either customer, managed, or common rule."
   type        = any
   default     = []
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.computed_egress, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "cidr_blocks",
+          "ipv6_cidr_blocks",
+          "prefix_list_ids",
+          "source_security_group_id",
+          "self",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "computed_matrix_ingress" {
   description = "A map of module rule(s) and source(s) representing the multi-dimensional matrix ingress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
   type        = any
   default     = {}
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.computed_matrix_ingress.rules, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the computed_matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+  }
+
+  validation {
+    condition = alltrue(flatten([
+      for key in keys(try(var.computed_matrix_ingress, {})) : contains([
+        "rules",
+        "cidr_blocks",
+        "ipv6_cidr_blocks",
+        "prefix_list_ids",
+        "source_security_group_id",
+        "self",
+        "description",
+      ], key)
+    ]))
+    error_message = "At least one of the computed_matrix_ingress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "computed_matrix_egress" {
   description = "A map of module rule(s) and destinations(s) representing the multi-dimensional matrix egress rules. The matrix may contain unknown values (e.g. `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc)."
   type        = any
   default     = {}
+
+  validation {
+    condition = alltrue(flatten([
+      for rule in try(var.computed_matrix_egress.rules, []) : [
+        for key in keys(rule) : contains([
+          "rule",
+          "from_port",
+          "to_port",
+          "protocol",
+          "description",
+        ], key)
+      ]
+    ]))
+    error_message = "At least one of the computed_matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+  }
+
+  validation {
+    condition = alltrue(flatten([
+      for key in keys(try(var.computed_matrix_egress, {})) : contains([
+        "rules",
+        "cidr_blocks",
+        "ipv6_cidr_blocks",
+        "prefix_list_ids",
+        "source_security_group_id",
+        "self",
+        "description",
+      ], key)
+    ]))
+    error_message = "At least one of the computed_matrix_egress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+  }
 }
 
 variable "default_rule_description" {
@@ -138,7 +338,7 @@ variable "default_rule_description" {
 }
 
 variable "unpack" {
-  description = "Whether to unpack grouped security group rules. Unpacking will prevent unwanted security group rule updates that normally occur when grouping arguments."
+  description = "Whether to unpack security group rule arguments. Unpacking will prevent unwanted security group rule updates that regularly occur when arguments are packed together."
   type        = bool
   default     = false
 }

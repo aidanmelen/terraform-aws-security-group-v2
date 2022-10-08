@@ -77,7 +77,7 @@ Please see the full examples for more information:
 | **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [rules_common.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules_common.tf) for the complete list of common rules. |
 | **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
 | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
-| **Grouped Rule Arguments** | The arguments for a single `aws_security_group_rule` resource are considered "grouped" when the resulting EC2 API creates many security group rules. |
+| **Packed Rule Arguments** | The arguments for a single `aws_security_group_rule` resource are considered "packed" when the resulting EC2 API creates many security group rules. |
 | **Unpacked Rule Arguments** | The arguments for a single `aws_security_group_rule` resource are considered "unpacked" when the resulting EC2 API creates exactly one security group rule. |
 
 ## Tests
@@ -90,17 +90,17 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (v1.4.0)
---- PASS: TestTerraformBasicExample (21.38s)
---- PASS: TestTerraformCompleteExample (44.73s)
---- PASS: TestTerraformCustomerRulesExample (30.70s)
---- PASS: TestTerraformManagedRulesExample (30.27s)
+Terratest Suite (Module v1.4.0) (Terraform v1.3.1)
+--- PASS: TestTerraformBasicExample (26.64s)
+--- PASS: TestTerraformCompleteExample (41.59s)
+--- PASS: TestTerraformCustomerRulesExample (31.89s)
+--- PASS: TestTerraformManagedRulesExample (30.61s)
 --- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (32.34s)
---- PASS: TestTerraformComputedRulesExample (38.25s)
---- PASS: TestTerraformNamePrefixExample (21.42s)
---- PASS: TestTerraformRulesOnlyExample (20.94s)
---- PASS: TestTerraformUnpackRulesExample (50.97s)
+--- PASS: TestTerraformMatrixRulesExample (32.54s)
+--- PASS: TestTerraformComputedRulesExample (38.16s)
+--- PASS: TestTerraformNamePrefixExample (23.64s)
+--- PASS: TestTerraformRulesOnlyExample (21.86s)
+--- PASS: TestTerraformUnpackRulesExample (51.18s)
 ```
 
 ## Makefile Targets
@@ -130,7 +130,7 @@ clean                Clean project
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
 ## Modules
 
@@ -182,7 +182,7 @@ clean                Clean project
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | ID of existing security group whose rules we will manage. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `null` | no |
-| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack grouped security group rules. Unpacking will prevent unwanted security group rule updates that normally occur when grouping arguments. | `bool` | `false` | no |
+| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack security group rule arguments. Unpacking will prevent unwanted security group rule updates that regularly occur when arguments are packed together. | `bool` | `false` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | (Optional, Forces new resource) VPC ID. | `string` | `null` | no |
 ## Outputs
 
@@ -200,7 +200,7 @@ This modules aims to improve on the venerable [terraform-aws-modules/terraform-a
 
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
 
-- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) grouped arguments provided by the user.
+- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) packed arguments provided by the user.
 
 - A simplified interface for matrix functionality that works with all module rule types and computed rules.
 
