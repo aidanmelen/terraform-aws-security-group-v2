@@ -1,6 +1,7 @@
 # null_repack_matrix_rules sub-module
 
-Repack the map of multi-dimensional matrix rule(s) and source(s)/destination(s) to be the same `aws_security_group_rule` arguments.
+
+A sub-module for repacking security group matrix rule arguments to be the same shape as the `aws_security_group_rule` arguments.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

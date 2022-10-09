@@ -1,6 +1,6 @@
 # null_unpack_rules sub-module
 
-A sub-module for unpacking security group rule argument groups. A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when many sources/destinations arguments are specified or a single source/destination argument is specified with many list elements. This will unpacked the list of module rules such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
+A sub-module for unpacking security group rule arguments. A single `aws_security_group_rule` resource will result in the EC2 API creating many security group rules when many sources/destinations arguments are specified or a single source/destination argument is specified with many list elements. This will unpacked the list of module rules such that each `aws_security_group_rule` resource results in the EC2 API creating a single security group rule.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
