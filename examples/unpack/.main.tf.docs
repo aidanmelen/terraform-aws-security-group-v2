@@ -40,15 +40,11 @@ module "security_group" {
         from_port   = 25
         to_port     = 25
         protocol    = "tcp"
-        description = "unpack customer rule"
+        description = "unpack matrix customer rule"
       },
       {
         rule        = "mysql-tcp"
-        description = "unpack managed rule"
-      },
-      {
-        rule        = "http-from-public"
-        description = "unpack common rule"
+        description = "unpack matrix managed rule"
       },
     ],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
@@ -58,7 +54,7 @@ module "security_group" {
     self                     = true
   }
 
-  # ommitted for the sake of not creating a whole lot of example egress rules
+  # ommitted for the sake of not creating 31 more example egress rules
   # egress = [
   #   {
   #     from_port                = "22"
@@ -79,10 +75,6 @@ module "security_group" {
   #     source_security_group_id = data.aws_security_group.default.id
   #     self                     = true
   #     description              = "unpack managed rules"
-  #   },
-  #   {
-  #     rule        = "https-from-public"
-  #     description = "unpack common rule"
   #   },
   # ]
 

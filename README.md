@@ -91,16 +91,16 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 
 ```
 Terratest Suite (Module v1.4.0) (Terraform v1.3.1)
-FAIL
-FAIL
---- PASS: TestTerraformCustomerRulesExample (30.00s)
-FAIL
---- PASS: TestTerraformCommonRulesExample (27.24s)
-FAIL
-FAIL
-FAIL
-FAIL
---- PASS: TestTerraformUnpackRulesExample (52.13s)
+--- PASS: TestTerraformBasicExample (21.59s)
+--- PASS: TestTerraformCompleteExample (44.23s)
+--- PASS: TestTerraformCustomerRulesExample (30.66s)
+--- PASS: TestTerraformManagedRulesExample (30.01s)
+--- PASS: TestTerraformCommonRulesExample (23.78s)
+--- PASS: TestTerraformMatrixRulesExample (32.47s)
+--- PASS: TestTerraformComputedRulesExample (37.90s)
+--- PASS: TestTerraformNamePrefixExample (21.44s)
+--- PASS: TestTerraformRulesOnlyExample (21.04s)
+--- PASS: TestTerraformUnpackRulesExample (42.91s)
 ```
 
 ## Makefile Targets
@@ -136,10 +136,12 @@ clean                Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_egress_unpacked"></a> [egress\_unpacked](#module\_egress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_ingress_unpacked"></a> [ingress\_unpacked](#module\_ingress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_matrix_egress_unpacked"></a> [matrix\_egress\_unpacked](#module\_matrix\_egress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
-| <a name="module_matrix_ingress_unpacked"></a> [matrix\_ingress\_unpacked](#module\_matrix\_ingress\_unpacked) | ./modules/null-unpack-aws-security-group-rules | n/a |
+| <a name="module_egress_unpack"></a> [egress\_unpack](#module\_egress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_ingress_unpack"></a> [ingress\_unpack](#module\_ingress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_matrix_egress_repack"></a> [matrix\_egress\_repack](#module\_matrix\_egress\_repack) | ./modules/null_repack_matrix_rules | n/a |
+| <a name="module_matrix_egress_unpack"></a> [matrix\_egress\_unpack](#module\_matrix\_egress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_matrix_ingress_repack"></a> [matrix\_ingress\_repack](#module\_matrix\_ingress\_repack) | ./modules/null_repack_matrix_rules | n/a |
+| <a name="module_matrix_ingress_unpack"></a> [matrix\_ingress\_unpack](#module\_matrix\_ingress\_unpack) | ./modules/null_unpack_rules | n/a |
 ## Resources
 
 | Name | Type |
@@ -169,6 +171,7 @@ clean                Clean project
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
+| <a name="input_debug"></a> [debug](#input\_debug) | Whether to output debug information on local for\_each loops. | `bool` | `false` | no |
 | <a name="input_default_rule_description"></a> [default\_rule\_description](#input\_default\_rule\_description) | The default security group rule description. | `string` | `"managed by Terraform"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
@@ -188,6 +191,7 @@ clean                Clean project
 
 | Name | Description |
 |------|-------------|
+| <a name="output_debug"></a> [debug](#output\_debug) | Debug information on local for\_each loops. |
 | <a name="output_security_group"></a> [security\_group](#output\_security\_group) | The security group attributes. |
 | <a name="output_security_group_egress_rules"></a> [security\_group\_egress\_rules](#output\_security\_group\_egress\_rules) | The security group egress rules. |
 | <a name="output_security_group_ingress_rules"></a> [security\_group\_ingress\_rules](#output\_security\_group\_ingress\_rules) | The security group ingress rules. |

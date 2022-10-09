@@ -92,6 +92,8 @@ module "security_group" {
     }
   ]
 
+  unpack = false
+
   tags = {
     "Name" = local.name
   }

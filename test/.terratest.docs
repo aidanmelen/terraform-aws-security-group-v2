@@ -1,11 +1,11 @@
 Terratest Suite (Module v1.4.0) (Terraform v1.3.1)
-FAIL
-FAIL
---- PASS: TestTerraformCustomerRulesExample (30.00s)
-FAIL
---- PASS: TestTerraformCommonRulesExample (27.24s)
-FAIL
-FAIL
-FAIL
-FAIL
---- PASS: TestTerraformUnpackRulesExample (52.13s)
+--- PASS: TestTerraformBasicExample (21.59s)
+--- PASS: TestTerraformCompleteExample (44.23s)
+--- PASS: TestTerraformCustomerRulesExample (30.66s)
+--- PASS: TestTerraformManagedRulesExample (30.01s)
+--- PASS: TestTerraformCommonRulesExample (23.78s)
+--- PASS: TestTerraformMatrixRulesExample (32.47s)
+--- PASS: TestTerraformComputedRulesExample (37.90s)
+--- PASS: TestTerraformNamePrefixExample (21.44s)
+--- PASS: TestTerraformRulesOnlyExample (21.04s)
+--- PASS: TestTerraformUnpackRulesExample (42.91s)

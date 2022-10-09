@@ -9,6 +9,8 @@ VERSION=$4
 
 PATTERN="s/source = [^\r\n]*/source  = \"$HOSTNAME\/$NAME\/$PROVIDER\"\n  version = \">= $VERSION\"/g"
 
+sed -z "${PATTERN}" modules/null_unpack_rules/examples/basic/main.tf > modules/null_unpack_rules/examples/basic/.main.tf.docs
+sed -z "${PATTERN}" modules/null_repack_matrix_rules/examples/basic/main.tf > modules/null_repack_matrix_rules/examples/basic/.main.tf.docs
 sed -z "${PATTERN}" examples/basic/main.tf > examples/basic/.main.tf.docs
 sed -z "${PATTERN}" examples/complete/main.tf > examples/complete/.main.tf.docs
 sed -z "${PATTERN}" examples/customer/main.tf > examples/customer/.main.tf.docs

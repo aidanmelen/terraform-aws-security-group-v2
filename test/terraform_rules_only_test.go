@@ -38,8 +38,8 @@ func TestTerraformRulesOnlyExample(t *testing.T) {
 	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
-	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualPreExistingSecurityGroupId)
-	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:managed by Terraform from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualPreExistingSecurityGroupId)
+	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:HTTPS from public from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualPreExistingSecurityGroupId)
+	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:[0.0.0.0/0] description:All to public from_port:0 id:sgrule-1111111111 ipv6_cidr_blocks:[::/0] prefix_list_ids:<nil> protocol:-1 security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:0 type:egress]", actualPreExistingSecurityGroupId)
 	expectedIngressCount := "1"
 	expectedEgressCount := "1"
 

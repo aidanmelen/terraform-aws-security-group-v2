@@ -4,7 +4,6 @@ PROVIDER := aws
 VERSION := 1.4.0
 SHELL := /bin/bash
 
-
 .PHONY: help all
 
 help: ## This help.
@@ -21,7 +20,10 @@ run: ## Run docker dev container
 setup: ## Setup project
 	# terraform
 	terraform init
-	cd modules/null-unpack-aws-security-group-rules && terraform init
+	cd modules/null_unpack_rules && terraform init
+	cd modules/null_repack_matrix_rules && terraform init
+	cd modules/null_unpack_rules/examples/basic && terraform init
+	cd modules/null_repack_matrix_rules/examples/basic && terraform init
 	cd examples/basic && terraform init
 	cd examples/complete && terraform init
 	cd examples/customer && terraform init
@@ -60,7 +62,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-complete test-customer test-managed test-computed test-matrix test-rules-only test-name-prefix test-unpack ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-common test-computed test-matrix test-rules-only test-name-prefix test-unpack ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
@@ -98,7 +100,10 @@ release:
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
-	@rm -f modules/null-unpack-aws-security-group-rules/.terraform.lock.hcl
+	@rm -f modules/null_unpack_rules/.terraform.lock.hcl
+	@rm -f modules/null_repack_matrix_rules/.terraform.lock.hcl
+	@rm -f modules/null_unpack_rules/examples/basic/.terraform.lock.hcl
+	@rm -f modules/null_repack_matrix_rules/examples/basic/.terraform.lock.hcl
 	@rm -f examples/basic/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
 	@rm -f examples/customer/.terraform.lock.hcl
@@ -111,7 +116,10 @@ clean: ## Clean project
 	@rm -f examples/unpack/.terraform.lock.hcl
 
 	@rm -rf .terraform
-	@rm -rf modules/null-unpack-aws-security-group-rules/.terraform
+	@rm -rf modules/null_unpack_rules/.terraform
+	@rm -rf modules/null_repack_matrix_rules/.terraform
+	@rm -rf modules/null_unpack_rules/examples/basic/.terraform
+	@rm -rf modules/null_repack_matrix_rules/examples/basic/.terraform
 	@rm -rf examples/basic/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/customer/.terraform

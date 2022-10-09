@@ -152,7 +152,7 @@ variable "matrix_ingress" {
         ], key)
       ]
     ]))
-    error_message = "At least one of the matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+    error_message = "At least one of the matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", and \"description\"."
   }
 
   validation {
@@ -188,7 +188,7 @@ variable "matrix_egress" {
         ], key)
       ]
     ]))
-    error_message = "At least one of the matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+    error_message = "At least one of the matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", and \"description\"."
   }
 
   validation {
@@ -276,7 +276,7 @@ variable "computed_matrix_ingress" {
         ], key)
       ]
     ]))
-    error_message = "At least one of the computed_matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+    error_message = "At least one of the computed_matrix_ingress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", and \"description\"."
   }
 
   validation {
@@ -312,7 +312,7 @@ variable "computed_matrix_egress" {
         ], key)
       ]
     ]))
-    error_message = "At least one of the computed_matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", or \"protocol\"."
+    error_message = "At least one of the computed_matrix_egress.rules keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", and \"description\"."
   }
 
   validation {
@@ -339,6 +339,12 @@ variable "default_rule_description" {
 
 variable "unpack" {
   description = "Whether to unpack security group rule arguments. Unpacking will prevent unwanted security group rule updates that regularly occur when arguments are packed together."
+  type        = bool
+  default     = false
+}
+
+variable "debug" {
+  description = "Whether to output debug information on local for_each loops."
   type        = bool
   default     = false
 }
