@@ -1,7 +1,7 @@
 NAME := security-group-v2
 HOSTNAME := aidanmelen
 PROVIDER := aws
-VERSION := 1.4.0
+VERSION := 2.0.0
 SHELL := /bin/bash
 
 .PHONY: help all

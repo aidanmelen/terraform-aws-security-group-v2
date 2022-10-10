@@ -1,7 +1,7 @@
 # null_repack_matrix_rules sub-module
 
 
-A sub-module for repacking security group matrix rule arguments to be the same shape as the `aws_security_group_rule` arguments.
+A sub-module for repacking security group matrix rule. Each matrix rule (`rule` or `from_port`, `to_port`, and `protocol`) will be repacked using three `aws_security_groups_rule` resources. The first resource will pack rules with `cidr_blocks`, `ipv6_cidr_blocks`, and `prefix_list_ids`. The second resource will pack rules with `source_security_group_id`. Finally, the third resource will pack the rules with `self`. As a result, all matrix rules are optimally packed without incompatible sources/destinations.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -10,7 +10,7 @@ A sub-module for repacking security group matrix rule arguments to be the same s
 ```hcl
 module "repack" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.4.0"
+  version = ">= 2.0.0"
   matrix = {
     rules = [
       {
@@ -30,6 +30,59 @@ module "repack" {
     description              = "managed by Terraform"
   }
 }
+
+# Outputs:
+
+# rules = [
+#   {
+#     "cidr_blocks" = [
+#       "10.0.1.0/24",
+#       "10.0.2.0/24",
+#     ]
+#     "from_port" = "443"
+#     "ipv6_cidr_blocks" = [
+#       "2001:db8::/64",
+#     ]
+#     "prefix_list_ids" = [
+#       "pl-11111111",
+#     ]
+#     "protocol" = "tcp"
+#     "to_port" = "443"
+#   },
+#   {
+#     "cidr_blocks" = [
+#       "10.0.1.0/24",
+#       "10.0.2.0/24",
+#     ]
+#     "ipv6_cidr_blocks" = [
+#       "2001:db8::/64",
+#     ]
+#     "prefix_list_ids" = [
+#       "pl-11111111",
+#     ]
+#     "rule" = "http-80-tcp"
+#   },
+#   {
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "source_security_group_id" = "sg-11111111"
+#     "to_port" = "443"
+#   },
+#   {
+#     "rule" = "http-80-tcp"
+#     "source_security_group_id" = "sg-11111111"
+#   },
+#   {
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "self" = true
+#     "to_port" = "443"
+#   },
+#   {
+#     "rule" = "http-80-tcp"
+#     "self" = true
+#   },
+# ]
 ```
 ## Requirements
 

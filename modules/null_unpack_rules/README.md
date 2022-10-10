@@ -9,7 +9,7 @@ A sub-module for unpacking security group rule arguments. A single `aws_security
 ```hcl
 module "unpack" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.4.0"
+  version = ">= 2.0.0"
   rules = [
     {
       from_port                = "443"
@@ -24,6 +24,61 @@ module "unpack" {
     }
   ]
 }
+
+# Outputs:
+
+# rules = [
+#   {
+#     "cidr_blocks" = [
+#       "10.0.1.0/24",
+#     ]
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "to_port" = "443"
+#   },
+#   {
+#     "cidr_blocks" = [
+#       "10.0.2.0/24",
+#     ]
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "to_port" = "443"
+#   },
+#   {
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "ipv6_cidr_blocks" = [
+#       "2001:db8::/64",
+#     ]
+#     "protocol" = "tcp"
+#     "to_port" = "443"
+#   },
+#   {
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "prefix_list_ids" = [
+#       "pl-11111111",
+#     ]
+#     "protocol" = "tcp"
+#     "to_port" = "443"
+#   },
+#   {
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "self" = true
+#     "to_port" = "443"
+#   },
+#   {
+#     "description" = "managed by Terraform"
+#     "from_port" = "443"
+#     "protocol" = "tcp"
+#     "source_security_group_id" = "sg-11111111"
+#     "to_port" = "443"
+#   },
+# ]
 ```
 ## Requirements
 

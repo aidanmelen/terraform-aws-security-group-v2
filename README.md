@@ -25,7 +25,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.4.0"
+  version = ">= 2.0.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -77,8 +77,24 @@ Please see the full examples for more information:
 | **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [rules_common.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules_common.tf) for the complete list of common rules. |
 | **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
 | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
-| **Packed Rule Arguments** | The arguments for a single `aws_security_group_rule` resource are considered "packed" when the resulting EC2 API creates many security group rules. |
-| **Unpacked Rule Arguments** | The arguments for a single `aws_security_group_rule` resource are considered "unpacked" when the resulting EC2 API creates exactly one security group rule. |
+| **Packed Rules** | The arguments for a single `aws_security_group_rule` resource are considered "packed" when the resulting EC2 API creates many security group rules. |
+| **Unpacked Rules** | The arguments for a single `aws_security_group_rule` resource are considered "unpacked" when the resulting EC2 API creates exactly one security group rule. |
+
+## Argument Precedence
+
+This module uses the [`try` function](https://developer.hashicorp.com/terraform/language/functions/try) to implement argument precedence.
+
+| Argument | Precedence (most -> least) |
+|---|---|
+| **description** | `rule.description` -> `rule_alias.description` -> `var.default_rule_description` |
+| **from_port** | `rule.from_port (customer)` -> `rule_alias.from_port (managed/common)` |
+| **to_port** | `rule.to_port (customer)` -> `rule_alias.to_port (managed/common)` |
+| **protocol** | `rule.protocol (customer)` -> `rule_alias.protocol (managed/common)` |
+| **cidr_blocks** | `rule.cidr_blocks` -> `rule_alias.cidr_blocks (common)` |
+| **ipv6_cidr_blocks** | `rule.ipv6_cidr_blocks` -> `rule_alias.ipv6_cidr_blocks (common)` |
+| **prefix_list_ids** | `rule.prefix_list_ids` -> `rule_alias.prefix_list_ids (common)` |
+| **source_security_group_id** | `rule.source_security_group_id` -> `rule_alias.source_security_group_id (common)` |
+| **self** | `rule.self` -> `rule_alias.self (common)` |
 
 ## Tests
 
@@ -90,17 +106,17 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (Module v1.4.0) (Terraform v1.3.1)
---- PASS: TestTerraformBasicExample (21.59s)
---- PASS: TestTerraformCompleteExample (44.23s)
---- PASS: TestTerraformCustomerRulesExample (30.66s)
---- PASS: TestTerraformManagedRulesExample (30.01s)
---- PASS: TestTerraformCommonRulesExample (23.78s)
---- PASS: TestTerraformMatrixRulesExample (32.47s)
---- PASS: TestTerraformComputedRulesExample (37.90s)
---- PASS: TestTerraformNamePrefixExample (21.44s)
---- PASS: TestTerraformRulesOnlyExample (21.04s)
---- PASS: TestTerraformUnpackRulesExample (42.91s)
+Terratest Suite (Module v2.0.0) (Terraform v1.3.1)
+--- PASS: TestTerraformBasicExample (21.49s)
+--- PASS: TestTerraformCompleteExample (68.16s)
+--- PASS: TestTerraformCustomerRulesExample (31.44s)
+--- PASS: TestTerraformManagedRulesExample (31.49s)
+--- PASS: TestTerraformCommonRulesExample (25.21s)
+--- PASS: TestTerraformMatrixRulesExample (31.00s)
+--- PASS: TestTerraformComputedRulesExample (37.49s)
+--- PASS: TestTerraformNamePrefixExample (21.01s)
+--- PASS: TestTerraformRulesOnlyExample (20.59s)
+--- PASS: TestTerraformUnpackRulesExample (43.42s)
 ```
 
 ## Makefile Targets

@@ -22,7 +22,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.4.0"
+  version = ">= 2.0.0"
 
   name_prefix = local.name
   description = "Allow TLS inbound traffic"
@@ -66,5 +66,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

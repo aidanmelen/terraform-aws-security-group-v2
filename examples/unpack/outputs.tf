@@ -31,7 +31,7 @@ output "egress" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resources to be used by Terratest."
+  description = "Outputs used by Terratest."
   value = {
     "ingress_count"                      = try(length(module.security_group.security_group_ingress_rules), 0)
     "egress_count"                       = try(length(module.security_group.security_group_egress_rules), 0)

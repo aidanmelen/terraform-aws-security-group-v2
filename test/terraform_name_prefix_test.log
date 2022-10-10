@@ -1,350 +1,350 @@
 === RUN   TestTerraformNamePrefixExample
-TestTerraformNamePrefixExample 2022-10-09T20:40:51Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformNamePrefixExample 2022-10-09T20:40:51Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformNamePrefixExample 2022-10-09T20:40:51Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformNamePrefixExample 2022-10-09T20:40:51Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:51Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformNamePrefixExample 2022-10-09T20:40:52Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:52Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformNamePrefixExample 2022-10-09T20:40:52Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: - Using previously-installed hashicorp/aws v4.34.0
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: [0m[32m
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: should now work.
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformNamePrefixExample 2022-10-09T20:40:53Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformNamePrefixExample 2022-10-09T20:40:56Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + create
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: Terraform will perform the following actions:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   # module.security_group.aws_security_group.self_with_name_prefix[0] will be created
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + resource "aws_security_group" "self_with_name_prefix" {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + description            = "Allow TLS inbound traffic"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + id                     = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + name                   = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + name_prefix            = "ex-name-prefix-"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + tags_all               = {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "Example"    = "ex-name-prefix"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         }
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + timeouts {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + create = "10m"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + delete = "15m"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         }
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"] will be created
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + cidr_blocks              = [
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "0.0.0.0/0",
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         ]
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + description              = "All to public"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + from_port                = 0
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + id                       = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "::/0",
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         ]
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + protocol                 = "-1"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + self                     = false
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + to_port                  = 0
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + type                     = "egress"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"] will be created
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + cidr_blocks              = [
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "172.31.0.0/16",
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         ]
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + description              = "HTTPS"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + from_port                = 443
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + id                       = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:           + "2600:1f13:b21:6500::/56",
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:         ]
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + self                     = false
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + to_port                  = 443
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + type                     = "ingress"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66: Changes to Outputs:
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + arn       = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + egress    = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + id        = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:   + terratest = {
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + egress_count                         = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:       + ingress_count                        = (known after apply)
-TestTerraformNamePrefixExample 2022-10-09T20:40:57Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:40:58Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Creating...
-TestTerraformNamePrefixExample 2022-10-09T20:41:00Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:00Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Creating...
-TestTerraformNamePrefixExample 2022-10-09T20:41:00Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Creating...
-TestTerraformNamePrefixExample 2022-10-09T20:41:00Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: Outputs:
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: egress = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   {
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:       "0.0.0.0/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     ])
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "description" = "All to public"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "from_port" = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:       "::/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     ])
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "protocol" = "-1"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "self" = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "to_port" = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "type" = "egress"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   },
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: id = "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: ingress = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   {
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:       "172.31.0.0/16",
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     ])
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "description" = "HTTPS"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "from_port" = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:       "2600:1f13:b21:6500::/56",
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     ])
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "protocol" = "tcp"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "self" = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "to_port" = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:     "type" = "ingress"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   },
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: terratest = {
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   "data_aws_vpc_default_cidr_block" = "172.31.0.0/16"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   "data_aws_vpc_default_ipv6_cidr_block" = "2600:1f13:b21:6500::/56"
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   "egress_count" = 1
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66:   "ingress_count" = 1
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: }
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z retry.go:91: terraform [output -no-color -json id]
-TestTerraformNamePrefixExample 2022-10-09T20:41:01Z logger.go:66: Running command terraform with args [output -no-color -json id]
-TestTerraformNamePrefixExample 2022-10-09T20:41:02Z logger.go:66: "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:02Z retry.go:91: terraform [output -no-color -json ingress]
-TestTerraformNamePrefixExample 2022-10-09T20:41:02Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z logger.go:66: [{"cidr_blocks":["172.31.0.0/16"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["2600:1f13:b21:6500::/56"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z retry.go:91: terraform [output -no-color -json egress]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z logger.go:66: Running command terraform with args [output -no-color -json egress]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z retry.go:91: terraform [output -no-color -json terratest]
-TestTerraformNamePrefixExample 2022-10-09T20:41:03Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
-TestTerraformNamePrefixExample 2022-10-09T20:41:04Z logger.go:66: {"data_aws_vpc_default_cidr_block":"172.31.0.0/16","data_aws_vpc_default_ipv6_cidr_block":"2600:1f13:b21:6500::/56","egress_count":1,"ingress_count":1}
-TestTerraformNamePrefixExample 2022-10-09T20:41:04Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformNamePrefixExample 2022-10-09T20:41:04Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformNamePrefixExample 2022-10-09T20:41:08Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformNamePrefixExample 2022-10-09T20:41:08Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:08Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:08Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:08Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - destroy
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66: Terraform will perform the following actions:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   # module.security_group.aws_security_group.self_with_name_prefix[0] will be destroyed
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - resource "aws_security_group" "self_with_name_prefix" {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - description            = "Allow TLS inbound traffic" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - egress                 = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - cidr_blocks      = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                   - "0.0.0.0/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                 ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - description      = "All to public"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - from_port        = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                   - "::/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                 ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - protocol         = "-1"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - security_groups  = []
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - self             = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - to_port          = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             },
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - ingress                = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - cidr_blocks      = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                   - "172.31.0.0/16",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                 ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - description      = "HTTPS"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - from_port        = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                   - "2600:1f13:b21:6500::/56",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:                 ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - protocol         = "tcp"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - security_groups  = []
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - self             = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - to_port          = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             },
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - name                   = "ex-name-prefix-11111111111111111111111101" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - name_prefix            = "ex-name-prefix-" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - tags                   = {} -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - tags_all               = {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "Example"    = "ex-name-prefix"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         } -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - timeouts {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - create = "10m" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - delete = "15m" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         }
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"] will be destroyed
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - cidr_blocks       = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "0.0.0.0/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - description       = "All to public" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "::/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - self              = false -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - type              = "egress" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"] will be destroyed
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - cidr_blocks       = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "172.31.0.0/16",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - description       = "HTTPS" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - "2600:1f13:b21:6500::/56",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - self              = false -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     }
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66: Changes to Outputs:
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - egress    = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - cidr_blocks              = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - "0.0.0.0/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - description              = "All to public"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - from_port                = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - "::/0",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - protocol                 = "-1"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - self                     = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - source_security_group_id = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - timeouts                 = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - to_port                  = 0
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - type                     = "egress"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         },
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - id        = "sg-1111111111111111" -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - ingress   = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - cidr_blocks              = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - "172.31.0.0/16",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - description              = "HTTPS"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - from_port                = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:               - "2600:1f13:b21:6500::/56",
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:             ]
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - self                     = false
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - source_security_group_id = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - timeouts                 = null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - to_port                  = 443
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:           - type                     = "ingress"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:         },
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     ] -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:   - terratest = {
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - egress_count                         = 1
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:       - ingress_count                        = 1
-TestTerraformNamePrefixExample 2022-10-09T20:41:09Z logger.go:66:     } -> null
-TestTerraformNamePrefixExample 2022-10-09T20:41:10Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Destroying... [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:10Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Destroying... [id=sgrule-1111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:11Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Destruction complete after 0s
-TestTerraformNamePrefixExample 2022-10-09T20:41:11Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Destruction complete after 1s
-TestTerraformNamePrefixExample 2022-10-09T20:41:11Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Destroying... [id=sg-1111111111111111]
-TestTerraformNamePrefixExample 2022-10-09T20:41:12Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Destruction complete after 1s
-TestTerraformNamePrefixExample 2022-10-09T20:41:12Z logger.go:66:
-TestTerraformNamePrefixExample 2022-10-09T20:41:12Z logger.go:66: Destroy complete! Resources: 3 destroyed.
---- PASS: TestTerraformNamePrefixExample (21.44s)
+TestTerraformNamePrefixExample 2022-10-10T02:35:06Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:06Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:06Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformNamePrefixExample 2022-10-10T02:35:06Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:06Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformNamePrefixExample 2022-10-10T02:35:07Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:07Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformNamePrefixExample 2022-10-10T02:35:07Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: - Using previously-installed hashicorp/aws v4.34.0
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: [0m[32m
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: should now work.
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:08Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + create
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: Terraform will perform the following actions:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   # module.security_group.aws_security_group.self_with_name_prefix[0] will be created
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + resource "aws_security_group" "self_with_name_prefix" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + description            = "Allow TLS inbound traffic"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + id                     = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + name                   = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + name_prefix            = "ex-name-prefix-"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + tags_all               = {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "Example"    = "ex-name-prefix"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         }
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + timeouts {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + create = "10m"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + delete = "15m"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         }
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"] will be created
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + cidr_blocks              = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "0.0.0.0/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + description              = "All to public"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + from_port                = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + id                       = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "::/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + protocol                 = "-1"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + self                     = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + to_port                  = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + type                     = "egress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"] will be created
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + cidr_blocks              = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "172.31.0.0/16",
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + description              = "HTTPS"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + from_port                = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + id                       = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:           + "2600:1f13:b21:6500::/56",
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:         ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + self                     = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + to_port                  = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + type                     = "ingress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66: Changes to Outputs:
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + arn       = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + egress    = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + id        = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:   + terratest = {
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + egress_count                         = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:       + ingress_count                        = (known after apply)
+TestTerraformNamePrefixExample 2022-10-10T02:35:11Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:12Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Creating...
+TestTerraformNamePrefixExample 2022-10-10T02:35:14Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:14Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Creating...
+TestTerraformNamePrefixExample 2022-10-10T02:35:14Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Creating...
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Creation complete after 0s [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: Outputs:
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: egress = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   {
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:       "0.0.0.0/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     ])
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "description" = "All to public"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "from_port" = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:       "::/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     ])
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "protocol" = "-1"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "self" = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "to_port" = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "type" = "egress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   },
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: id = "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: ingress = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   {
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:       "172.31.0.0/16",
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     ])
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "description" = "HTTPS"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "from_port" = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:       "2600:1f13:b21:6500::/56",
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     ])
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "protocol" = "tcp"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "self" = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "to_port" = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:     "type" = "ingress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   },
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: terratest = {
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   "data_aws_vpc_default_cidr_block" = "172.31.0.0/16"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   "data_aws_vpc_default_ipv6_cidr_block" = "2600:1f13:b21:6500::/56"
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   "egress_count" = 1
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66:   "ingress_count" = 1
+TestTerraformNamePrefixExample 2022-10-10T02:35:15Z logger.go:66: }
+TestTerraformNamePrefixExample 2022-10-10T02:35:16Z retry.go:91: terraform [output -no-color -json id]
+TestTerraformNamePrefixExample 2022-10-10T02:35:16Z logger.go:66: Running command terraform with args [output -no-color -json id]
+TestTerraformNamePrefixExample 2022-10-10T02:35:16Z logger.go:66: "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:16Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformNamePrefixExample 2022-10-10T02:35:16Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformNamePrefixExample 2022-10-10T02:35:17Z logger.go:66: [{"cidr_blocks":["172.31.0.0/16"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["2600:1f13:b21:6500::/56"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
+TestTerraformNamePrefixExample 2022-10-10T02:35:17Z retry.go:91: terraform [output -no-color -json egress]
+TestTerraformNamePrefixExample 2022-10-10T02:35:17Z logger.go:66: Running command terraform with args [output -no-color -json egress]
+TestTerraformNamePrefixExample 2022-10-10T02:35:18Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
+TestTerraformNamePrefixExample 2022-10-10T02:35:18Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformNamePrefixExample 2022-10-10T02:35:18Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformNamePrefixExample 2022-10-10T02:35:19Z logger.go:66: {"data_aws_vpc_default_cidr_block":"172.31.0.0/16","data_aws_vpc_default_ipv6_cidr_block":"2600:1f13:b21:6500::/56","egress_count":1,"ingress_count":1}
+TestTerraformNamePrefixExample 2022-10-10T02:35:19Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:19Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformNamePrefixExample 2022-10-10T02:35:22Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformNamePrefixExample 2022-10-10T02:35:22Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:22Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:23Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:23Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - destroy
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66: Terraform will perform the following actions:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   # module.security_group.aws_security_group.self_with_name_prefix[0] will be destroyed
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - resource "aws_security_group" "self_with_name_prefix" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - description            = "Allow TLS inbound traffic" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - egress                 = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - cidr_blocks      = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                   - "0.0.0.0/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                 ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - description      = "All to public"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - from_port        = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                   - "::/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                 ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - protocol         = "-1"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - security_groups  = []
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - self             = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - to_port          = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             },
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - ingress                = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - cidr_blocks      = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                   - "172.31.0.0/16",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                 ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - description      = "HTTPS"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - from_port        = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                   - "2600:1f13:b21:6500::/56",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:                 ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - protocol         = "tcp"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - security_groups  = []
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - self             = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - to_port          = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             },
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - name                   = "ex-name-prefix-11111111111111111111111101" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - name_prefix            = "ex-name-prefix-" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - tags                   = {} -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - tags_all               = {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "Example"    = "ex-name-prefix"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         } -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - timeouts {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - create = "10m" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - delete = "15m" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         }
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"] will be destroyed
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - cidr_blocks       = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "0.0.0.0/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - description       = "All to public" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "::/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - self              = false -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - type              = "egress" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"] will be destroyed
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - cidr_blocks       = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "172.31.0.0/16",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - description       = "HTTPS" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - "2600:1f13:b21:6500::/56",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - self              = false -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     }
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66: Changes to Outputs:
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - egress    = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - cidr_blocks              = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - "0.0.0.0/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - description              = "All to public"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - from_port                = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - "::/0",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - protocol                 = "-1"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - self                     = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - source_security_group_id = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - timeouts                 = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - to_port                  = 0
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - type                     = "egress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         },
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - id        = "sg-1111111111111111" -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - ingress   = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - cidr_blocks              = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - "172.31.0.0/16",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - description              = "HTTPS"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - from_port                = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:               - "2600:1f13:b21:6500::/56",
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:             ]
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - self                     = false
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - source_security_group_id = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - timeouts                 = null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - to_port                  = 443
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:           - type                     = "ingress"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:         },
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     ] -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:   - terratest = {
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - egress_count                         = 1
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:       - ingress_count                        = 1
+TestTerraformNamePrefixExample 2022-10-10T02:35:24Z logger.go:66:     } -> null
+TestTerraformNamePrefixExample 2022-10-10T02:35:25Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Destroying... [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:25Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Destroying... [id=sgrule-1111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:25Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0-::/0"]: Destruction complete after 1s
+TestTerraformNamePrefixExample 2022-10-10T02:35:26Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16-2600:1f13:b21:6500::/56"]: Destruction complete after 1s
+TestTerraformNamePrefixExample 2022-10-10T02:35:26Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformNamePrefixExample 2022-10-10T02:35:27Z logger.go:66: module.security_group.aws_security_group.self_with_name_prefix[0]: Destruction complete after 1s
+TestTerraformNamePrefixExample 2022-10-10T02:35:27Z logger.go:66:
+TestTerraformNamePrefixExample 2022-10-10T02:35:27Z logger.go:66: Destroy complete! Resources: 3 destroyed.
+--- PASS: TestTerraformNamePrefixExample (21.01s)
 PASS
-ok  	command-line-arguments	21.454s
+ok  	command-line-arguments	21.019s

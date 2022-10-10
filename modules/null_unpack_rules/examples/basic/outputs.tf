@@ -8,7 +8,7 @@ output "rules" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resources to be used by Terratest."
+  description = "Outputs used by Terratest."
   value = {
     "rule_count"                         = try(length(module.unpack.rules), null)
     "data_aws_security_group_default_id" = data.aws_security_group.default.id,

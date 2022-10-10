@@ -40,7 +40,7 @@ output "disabled_sg_id" {
 ###############################################################################
 
 output "terratest" {
-  description = "The IDs of unknown aws resources to be used by Terratest."
+  description = "Outputs used by Terratest."
   value = {
     "ingress_count"                        = try(length(module.security_group.security_group_ingress_rules), null)
     "egress_count"                         = try(length(module.security_group.security_group_egress_rules), null)
