@@ -6,6 +6,7 @@ Create a AWS Security Group with a broad mix of various features and settings pr
 - Managed ingress/egress rules (e.g. `all-all`, `postgresql-tcp`, `ssh-tcp`, and `https-443-tcp` just to name a few.). Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of managed rules.
 - Common Ingress/Egress for common scenarios sech as `all-all-from-self`, `https-tcp-from-public`, and `all-all-to-public` just to name a few. Please see [rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules.tf) for the complete list of common rules.
 - Computed ingress/egress rules for manage Security Group rules that reference unknown values such as: aws_vpc.vpc.cidr_blocks, aws_security_group.sg.id, etc. Computed rules supports customer, Managed, and Common rules.
+- Matrix rules could be used in the complete example but are omitted for the sake of not creating too many example rules. Please see the [Matrix Rules Example] (https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/matrix) for more information.
 - Conditionally create security group and/or all required security group rules.
 
 Data sources are used to discover existing VPC resources (VPC, default security group, s3 endpoint prefix list).
@@ -31,7 +32,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 2.0.0"
 
   name        = local.name
   description = local.name
@@ -122,6 +123,8 @@ module "security_group" {
     }
   ]
 
+  unpack = false
+
   tags = {
     "Name" = local.name
   }
@@ -133,7 +136,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 2.0.0"
   create = false
 }
 ```
@@ -164,5 +167,5 @@ module "disabled_sg" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

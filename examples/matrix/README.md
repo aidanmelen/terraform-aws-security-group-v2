@@ -57,27 +57,30 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 2.0.0"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
 
   matrix_ingress = {
     rules = [
-      { rule = "https-443-tcp" },
       {
         from_port   = 80
         to_port     = 80
         protocol    = "tcp"
-        description = "customer rule example"
-      }
+        description = "matrix customer rule"
+      },
+      {
+        rule        = "https-443-tcp"
+        description = "matrix managed rule"
+      },
     ],
     cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
     ipv6_cidr_blocks         = []
     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
     source_security_group_id = data.aws_security_group.default.id
     self                     = true
-    description              = "matrix default rule example"
+    description              = "matrix rule. rules[*].description will take precedence"
   }
 
   matrix_egress = {
@@ -112,5 +115,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

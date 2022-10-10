@@ -25,7 +25,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 2.0.0"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -65,6 +65,8 @@ Please see the full examples for more information:
 
 - [Rules Only Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/rules_only)
 
+- [Unpack Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack)
+
 ## Key Concepts
 
 | Terminology | Description |
@@ -75,6 +77,24 @@ Please see the full examples for more information:
 | **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [rules_common.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules_common.tf) for the complete list of common rules. |
 | **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
 | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
+| **Packed Rules** | The arguments for a single `aws_security_group_rule` resource are considered "packed" when the resulting EC2 API creates many security group rules. |
+| **Unpacked Rules** | The arguments for a single `aws_security_group_rule` resource are considered "unpacked" when the resulting EC2 API creates exactly one security group rule. |
+
+## Argument Precedence
+
+This module uses the [`try` function](https://developer.hashicorp.com/terraform/language/functions/try) to implement argument precedence.
+
+| Argument | Precedence (most -> least) |
+|---|---|
+| **description** | `rule.description` -> `rule_alias.description` -> `var.default_rule_description` |
+| **from_port** | `rule.from_port (customer)` -> `rule_alias.from_port (managed/common)` |
+| **to_port** | `rule.to_port (customer)` -> `rule_alias.to_port (managed/common)` |
+| **protocol** | `rule.protocol (customer)` -> `rule_alias.protocol (managed/common)` |
+| **cidr_blocks** | `rule.cidr_blocks` -> `rule_alias.cidr_blocks (common)` |
+| **ipv6_cidr_blocks** | `rule.ipv6_cidr_blocks` -> `rule_alias.ipv6_cidr_blocks (common)` |
+| **prefix_list_ids** | `rule.prefix_list_ids` -> `rule_alias.prefix_list_ids (common)` |
+| **source_security_group_id** | `rule.source_security_group_id` -> `rule_alias.source_security_group_id (common)` |
+| **self** | `rule.self` -> `rule_alias.self (common)` |
 
 ## Tests
 
@@ -86,16 +106,17 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (v1.3.0)
---- PASS: TestTerraformBasicExample (23.59s)
---- PASS: TestTerraformCompleteExample (50.08s)
---- PASS: TestTerraformCustomerRulesExample (34.30s)
---- PASS: TestTerraformManagedRulesExample (33.33s)
---- PASS: TestTerraformCommonRulesExample (27.24s)
---- PASS: TestTerraformMatrixRulesExample (32.88s)
---- PASS: TestTerraformComputedRulesExample (41.19s)
---- PASS: TestTerraformNamePrefixExample (22.40s)
---- PASS: TestTerraformRulesOnlyExample (23.35s)
+Terratest Suite (Module v2.0.0) (Terraform v1.3.1)
+--- PASS: TestTerraformBasicExample (21.49s)
+--- PASS: TestTerraformCompleteExample (68.16s)
+--- PASS: TestTerraformCustomerRulesExample (31.44s)
+--- PASS: TestTerraformManagedRulesExample (31.49s)
+--- PASS: TestTerraformCommonRulesExample (25.21s)
+--- PASS: TestTerraformMatrixRulesExample (31.00s)
+--- PASS: TestTerraformComputedRulesExample (37.49s)
+--- PASS: TestTerraformNamePrefixExample (21.01s)
+--- PASS: TestTerraformRulesOnlyExample (20.59s)
+--- PASS: TestTerraformUnpackRulesExample (43.42s)
 ```
 
 ## Makefile Targets
@@ -115,8 +136,9 @@ test-managed         Test the managed example
 test-common          Test the common example
 test-matrix          Test the matrix example
 test-computed        Test the computed example
-test-name-prefix     Test the name_prefix example
 test-rules-only      Test the rules_only example
+test-name-prefix     Test the name_prefix example
+test-unpack          Test the unpack example
 clean                Clean project
 ```
 
@@ -124,8 +146,18 @@ clean                Clean project
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_egress_unpack"></a> [egress\_unpack](#module\_egress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_ingress_unpack"></a> [ingress\_unpack](#module\_ingress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_matrix_egress_repack"></a> [matrix\_egress\_repack](#module\_matrix\_egress\_repack) | ./modules/null_repack_matrix_rules | n/a |
+| <a name="module_matrix_egress_unpack"></a> [matrix\_egress\_unpack](#module\_matrix\_egress\_unpack) | ./modules/null_unpack_rules | n/a |
+| <a name="module_matrix_ingress_repack"></a> [matrix\_ingress\_repack](#module\_matrix\_ingress\_repack) | ./modules/null_repack_matrix_rules | n/a |
+| <a name="module_matrix_ingress_unpack"></a> [matrix\_ingress\_unpack](#module\_matrix\_ingress\_unpack) | ./modules/null_unpack_rules | n/a |
 ## Resources
 
 | Name | Type |
@@ -155,6 +187,7 @@ clean                Clean project
 | <a name="input_create"></a> [create](#input\_create) | Whether to create security group and all rules | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create security group and all rules. | `bool` | `true` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | Time to wait for a security group to be created. | `string` | `"10m"` | no |
+| <a name="input_debug"></a> [debug](#input\_debug) | Whether to output debug information on local for\_each loops. | `bool` | `false` | no |
 | <a name="input_default_rule_description"></a> [default\_rule\_description](#input\_default\_rule\_description) | The default security group rule description. | `string` | `"managed by Terraform"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | Time to wait for a security group to be deleted. | `string` | `"15m"` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional, Forces new resource) Security group description. Defaults to Managed by Terraform. Cannot be "". NOTE: This field maps to the AWS GroupDescription attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use tags. | `string` | `null` | no |
@@ -168,11 +201,13 @@ clean                Clean project
 | <a name="input_revoke_rules_on_delete"></a> [revoke\_rules\_on\_delete](#input\_revoke\_rules\_on\_delete) | (Optional) Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false. | `string` | `null` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | ID of existing security group whose rules we will manage. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `null` | no |
+| <a name="input_unpack"></a> [unpack](#input\_unpack) | Whether to unpack security group rule arguments. Unpacking will prevent unwanted security group rule updates that regularly occur when arguments are packed together. | `bool` | `false` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | (Optional, Forces new resource) VPC ID. | `string` | `null` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| <a name="output_debug"></a> [debug](#output\_debug) | Debug information on local for\_each loops. |
 | <a name="output_security_group"></a> [security\_group](#output\_security\_group) | The security group attributes. |
 | <a name="output_security_group_egress_rules"></a> [security\_group\_egress\_rules](#output\_security\_group\_egress\_rules) | The security group egress rules. |
 | <a name="output_security_group_ingress_rules"></a> [security\_group\_ingress\_rules](#output\_security\_group\_ingress\_rules) | The security group ingress rules. |
@@ -181,9 +216,13 @@ clean                Clean project
 
 This modules aims to improve on the venerable [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group) module authored by [Anton Babenko](https://github.com/antonbabenko). It does so by:
 
-- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) and [matrix.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/matrix.tf) are both ~100 lines.
+- Reduce the amount of code with [`for` expressions](https://www.terraform.io/language/expressions/for). The core functionality found in the [main.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/main.tf) is ~100 lines.
 
 - Follow DRY principals by using [Conditionally Omitted Arguments](https://www.hashicorp.com/blog/terraform-0-12-conditional-operator-improvements#conditionally-omitted-arguments) AKA nullables.
+
+- Prevent Service interruptions by [unpacking](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack) packed arguments provided by the user.
+
+- A simplified interface for matrix functionality that works with all module rule types and computed rules.
 
 - Dynamically create customer, managed and common security group rule resources with [`for_each` meta-arguments](https://www.terraform.io/language/meta-arguments/for_each). `for_each` has two advantages over `count`:
 

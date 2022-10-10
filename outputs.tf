@@ -38,3 +38,12 @@ output "security_group_egress_rules" {
     try(aws_security_group_rule.computed_matrix_egress_with_self, []),
   )
 }
+
+###############################################################################
+# Debug
+###############################################################################
+
+output "debug" {
+  description = "Debug information on local for_each loops."
+  value       = local.debug
+}

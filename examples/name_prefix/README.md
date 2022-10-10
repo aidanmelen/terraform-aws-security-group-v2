@@ -1,6 +1,6 @@
 # Security Group with
 
-Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior object is destroyed after the replacement is created.
+Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior security group is destroyed after the replacement is created. Only use when the security group ID does not need to be preserved (e.g. can be used with EC2 Network Interfaces because they allow multiple security group attachments). On the other hand, use `name` when the security group ID must be preserved (e.g. when used with AWS Load Balancers or clustered services like EKS, MSK, EMR, etc).
 
 ## Usage
 
@@ -22,7 +22,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 1.3.0"
+  version = ">= 2.0.0"
 
   name_prefix = local.name
   description = "Allow TLS inbound traffic"
@@ -66,5 +66,5 @@ module "security_group" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_terratest"></a> [terratest](#output\_terratest) | The IDs of unknown aws resources to be used by Terratest. |
+| <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

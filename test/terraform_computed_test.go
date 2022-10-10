@@ -45,19 +45,23 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
 	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
 	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
+	actualIngressCount := actualTerratest["ingress_count"]
+	actualEgressCount := actualTerratest["egress_count"]
 
 	// assign expected
 	expectedIngress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:80 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
-	expectedIngress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
-	expectedIngress2 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:computed matrix default rule example from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:5432 type:ingress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
+	expectedIngress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:HTTPS from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
+	expectedIngress2 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:PostgreSQL from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:5432 type:ingress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
 	expectedIngress3 := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/24 10.0.1.0/24] description:customer rule example from_port:22 id:sgrule-1111111111 ipv6_cidr_blocks:[] prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:22 type:ingress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
-	expectedIngress4 := fmt.Sprintf("map[cidr_blocks:<nil> description:computed matrix default rule example from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:5432 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
+	expectedIngress4 := fmt.Sprintf("map[cidr_blocks:<nil> description:PostgreSQL from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:5432 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
 	expectedIngress5 := fmt.Sprintf("map[cidr_blocks:<nil> description:customer rule example from_port:22 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:22 type:ingress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
-	expectedIngress6 := fmt.Sprintf("map[cidr_blocks:<nil> description:computed matrix default rule example from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:5432 type:ingress]", actualSecurityGroupId)
+	expectedIngress6 := fmt.Sprintf("map[cidr_blocks:<nil> description:PostgreSQL from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:5432 type:ingress]", actualSecurityGroupId)
 	expectedIngress7 := fmt.Sprintf("map[cidr_blocks:<nil> description:customer rule example from_port:22 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:true source_security_group_id:<nil> timeouts:<nil> to_port:22 type:ingress]", actualSecurityGroupId)
 	expectedEgress0 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:80 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:80 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
-	expectedEgress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
-	expectedEgress2 := fmt.Sprintf("map[cidr_blocks:<nil> description:managed by Terraform from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:5432 type:egress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
+	expectedEgress1 := fmt.Sprintf("map[cidr_blocks:<nil> description:HTTPS from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
+	expectedEgress2 := fmt.Sprintf("map[cidr_blocks:<nil> description:PostgreSQL from_port:5432 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:%s timeouts:<nil> to_port:5432 type:egress]", actualSecurityGroupId, actualAwsSecurityGroupOtherId)
+	expectedIngressCount := "8"
+	expectedEgressCount := "3"
 
 	// assert
 	assert.Equal(t, expectedIngress0, actualIngress0, "Map %q should match %q", expectedIngress0, actualIngress0)
@@ -71,4 +75,6 @@ func TestTerraformComputedRulesExample(t *testing.T) {
 	assert.Equal(t, expectedEgress0, actualEgress0, "Map %q should match %q", expectedEgress0, actualEgress0)
 	assert.Equal(t, expectedEgress1, actualEgress1, "Map %q should match %q", expectedEgress1, actualEgress1)
 	assert.Equal(t, expectedEgress2, actualEgress2, "Map %q should match %q", expectedEgress2, actualEgress2)
+	assert.Equal(t, expectedIngressCount, actualIngressCount, "Map %q should match %q", expectedIngressCount, actualIngressCount)
+	assert.Equal(t, expectedEgressCount, actualEgressCount, "Map %q should match %q", expectedEgressCount, actualEgressCount)
 }
