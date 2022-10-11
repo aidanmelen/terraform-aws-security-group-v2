@@ -1,5 +1,5 @@
 # Protocols (tcp, udp, icmp, all - are allowed keywords) or numbers (from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml):
-# All = -1, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
+# All = 0, IPV4-ICMP = 1, TCP = 6, UDP = 17, IPV6-ICMP = 58
 locals {
   managed_rule_aliases = {
     # ActiveMQ

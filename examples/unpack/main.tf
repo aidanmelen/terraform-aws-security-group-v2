@@ -6,6 +6,9 @@ module "security_group" {
   description = local.name
   vpc_id      = data.aws_vpc.default.id
 
+  # unpack security group rules to prevent service interruptions
+  unpack = true
+
   ingress = [
     {
       from_port                = "22"
@@ -53,53 +56,6 @@ module "security_group" {
     self                     = true
   }
 
-  # ommitted for the sake of not creating 31 more example egress rules
-  # egress = [
-  #   {
-  #     from_port                = "22"
-  #     to_port                  = "22"
-  #     protocol                 = "TCP"
-  #     cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
-  #     ipv6_cidr_blocks         = ["2001:db8::/64"]
-  #     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
-  #     source_security_group_id = data.aws_security_group.default.id
-  #     self                     = true
-  #     description              = "unpack customer rules"
-  #   },
-  #   {
-  #     rule                     = "postgresql-tcp"
-  #     cidr_blocks              = ["10.10.0.0/16", "10.20.0.0/24"]
-  #     ipv6_cidr_blocks         = ["2001:db8::/64"]
-  #     prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
-  #     source_security_group_id = data.aws_security_group.default.id
-  #     self                     = true
-  #     description              = "unpack managed rules"
-  #   },
-  # ]
-
-  # matrix_egress = {
-  #   rules = [
-  #     {
-  #       from_port   = 25
-  #       to_port     = 25
-  #       protocol    = "tcp"
-  #       description = "unpack customer rule"
-  #     },
-  #     {
-  #       rule        = "mysql-tcp"
-  #       description = "unpack managed rule"
-  #     },
-  #     {
-  #       rule        = "http-from-public"
-  #       description = "unpack common rule"
-  #     },
-  #   ],
-  #   cidr_blocks              = ["10.0.0.0/24", "10.0.1.0/24"]
-  #   ipv6_cidr_blocks         = []
-  #   prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
-  #   source_security_group_id = data.aws_security_group.default.id
-  #   self                     = true
-  # }
-
-  unpack = true
+  # egress        = [ ... ]
+  # matrix_egress = { ... }
 }

@@ -6,6 +6,28 @@ content: |-
 
   What's more, this module was designed after the [terraform-aws-modules/terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group#features) module and aims to have feature parody. Please see the [Acknowledgments](https://github.com/aidanmelen/terraform-aws-security-group-v2/blob/main/README.md#acknowledgments) section for more information.
 
+  ### Rule Aliases
+
+  **Manage Rules**:
+
+  <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "alias_managed_rules.tf" }}
+  ```
+
+  </details>
+
+  **Common Rules:**
+
+  <details><summary>Click to show</summary>
+
+  ```hcl
+  {{ include "alias_common_rules.tf" }}
+  ```
+
+  </details>
+
   ## Examples
 
   Create a Security Group with the following rules:
@@ -16,6 +38,8 @@ content: |-
   ```hcl
   {{ include "examples/basic/.main.tf.docs" }}
   ```
+
+  </details>
 
   Please see the full examples for more information:
 
@@ -45,14 +69,14 @@ content: |-
   |---|---|
   | **AWS Security Group Rule** | The Security Group (SG) rule resource (ingress/egress). |
   | **Customer Rule** | A module rule where the customer explicitly declares all of the SG rule arguments. <br/><br/>These rules are analogous to [AWS customer policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) for IAM. |
-  | **Managed Rule** | A module rule alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`/`https-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see [rules_managed.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules_managed.tf) for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
-  | **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [rules_common.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/rules_common.tf) for the complete list of common rules. |
+  | **Managed Rule** | A module rule alias for a managed/[predefined](https://github.com/terraform-aws-modules/terraform-aws-security-group#security-group-with-predefined-rules) group of `from_port`, `to_port`, and `protocol` arguments. <br/><br/> E.g. `https-443-tcp`/`https-tcp`, `postgresql-tcp`, `ssh-tcp`, and `all-all`. Please see [alias_managed_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/alias_managed_rules.tf) for the complete list of managed rules. <br/><br/>These rules are analogous to [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) for IAM. |
+  | **Common Rule** | A module rule alias for a common scenario where all SG rule arguments except for `type` are known and managed by the rule. <br/><br/>E.g. `https-443-tcp-public`/`https-tcp-from-public`, and `all-all-to-public`, `all-all-from-self` just to name a few. Please see [alias_common_rules.tf](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/alias_common_rules.tf) for the complete list of common rules. |
   | **Matrix Rules** | A map of module rule(s) and source(s)/destination(s) representing the multi-dimensional matrix rules to be applied. <br/><br/>These rules act like a [multi-dimension matrix in Github Actions](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#example-using-a-multi-dimension-matrix).|
   | **Computed Rule** | A special module rule that works with [unknown values](https://github.com/hashicorp/terraform/issues/30937) such as: `aws_vpc.vpc.cidr_blocks`, `aws_security_group.sg.id`, etc. All types of module rules are supported. |
   | **Packed Rules** | The arguments for a single `aws_security_group_rule` resource are considered "packed" when the resulting EC2 API creates many security group rules. |
   | **Unpacked Rules** | The arguments for a single `aws_security_group_rule` resource are considered "unpacked" when the resulting EC2 API creates exactly one security group rule. |
 
-  ## Argument Precedence
+  ## Rule Argument Precedence
 
   This module uses the [`try` function](https://developer.hashicorp.com/terraform/language/functions/try) to implement argument precedence.
 

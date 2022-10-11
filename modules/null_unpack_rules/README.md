@@ -9,7 +9,7 @@ A sub-module for unpacking security group rule arguments. A single `aws_security
 ```hcl
 module "unpack" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.0"
+  version = ">= 2.0.1"
   rules = [
     {
       from_port                = "443"
