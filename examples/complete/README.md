@@ -32,7 +32,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.1"
+  version = ">= 2.0.2"
 
   name        = local.name
   description = local.name
@@ -136,7 +136,7 @@ module "security_group" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.1"
+  version = ">= 2.0.2"
   create = false
 }
 ```
@@ -167,5 +167,6 @@ module "disabled_sg" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
+| <a name="output_postgresql_port"></a> [postgresql\_port](#output\_postgresql\_port) | Gather the PostgreSQL port from the module rule aliases. |
 | <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

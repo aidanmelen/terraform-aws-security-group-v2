@@ -28,8 +28,8 @@ resource "aws_security_group" "self_with_name_prefix" {
   description            = var.description
   name_prefix            = format("%s%s", var.name_prefix, var.name_prefix_separator)
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  tags                   = merge({ "Name" : var.name }, var.tags)
   vpc_id                 = var.vpc_id
+  tags                   = merge({ "Name" : var.name != null ? var.name : var.name_prefix }, var.tags)
 
   lifecycle {
     create_before_destroy = true

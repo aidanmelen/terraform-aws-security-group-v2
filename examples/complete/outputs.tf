@@ -26,6 +26,15 @@ output "egress" {
   value       = try(module.security_group.security_group_egress_rules, null)
 }
 
+###############################################################################
+# Rule Aliases Lookup
+###############################################################################
+
+output "postgresql_port" {
+  description = "Gather the PostgreSQL port from the module rule aliases."
+  value       = try(module.security_group.rule_aliases.postgresql-tcp.from_port, null)
+}
+
 ################################################################################
 # Disabled creation
 ################################################################################

@@ -1,4 +1,4 @@
-Terratest Suite (Module v2.0.1) (Terraform v1.3.1)
+Terratest Suite (Module v2.0.2) (Terraform v1.3.1)
 --- PASS: TestTerraformBasicExample (24.09s)
 --- PASS: TestTerraformCompleteExample (42.17s)
 --- PASS: TestTerraformCustomerRulesExample (29.91s)

@@ -304,7 +304,7 @@ Create a Security Group with the following rules:
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.1"
+  version = ">= 2.0.2"
 
   name        = local.name
   description = "Allow TLS inbound traffic"
@@ -390,7 +390,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (Module v2.0.1) (Terraform v1.3.1)
+Terratest Suite (Module v2.0.2) (Terraform v1.3.1)
 --- PASS: TestTerraformBasicExample (24.09s)
 --- PASS: TestTerraformCompleteExample (42.17s)
 --- PASS: TestTerraformCustomerRulesExample (29.91s)
@@ -492,6 +492,7 @@ clean                Clean project
 | Name | Description |
 |------|-------------|
 | <a name="output_debug"></a> [debug](#output\_debug) | Debug information on local for\_each loops. |
+| <a name="output_rule_aliases"></a> [rule\_aliases](#output\_rule\_aliases) | The module rule aliases. |
 | <a name="output_security_group"></a> [security\_group](#output\_security\_group) | The security group attributes. |
 | <a name="output_security_group_egress_rules"></a> [security\_group\_egress\_rules](#output\_security\_group\_egress\_rules) | The security group egress rules. |
 | <a name="output_security_group_ingress_rules"></a> [security\_group\_ingress\_rules](#output\_security\_group\_ingress\_rules) | The security group ingress rules. |
