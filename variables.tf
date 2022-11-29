@@ -100,12 +100,13 @@ variable "ingress" {
           "ipv6_cidr_blocks",
           "prefix_list_ids",
           "source_security_group_id",
+          "source_security_group_ids",
           "self",
           "description",
         ], key)
       ]
     ]))
-    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"source_security_group_ids\", \"self\", or \"description\"."
   }
 }
 
@@ -126,12 +127,13 @@ variable "egress" {
           "ipv6_cidr_blocks",
           "prefix_list_ids",
           "source_security_group_id",
+          "source_security_group_ids",
           "self",
           "description",
         ], key)
       ]
     ]))
-    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+    error_message = "At least one of the rule keys are invalid. Valid options are: \"rule\", \"from_port\", \"to_port\", \"protocol\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"source_security_group_ids\", \"self\", or \"description\"."
   }
 }
 
@@ -163,11 +165,12 @@ variable "matrix_ingress" {
         "ipv6_cidr_blocks",
         "prefix_list_ids",
         "source_security_group_id",
+        "source_security_group_ids",
         "self",
         "description",
       ], key)
     ]))
-    error_message = "At least one of the matrix_ingress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+    error_message = "At least one of the matrix_ingress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"source_security_group_ids\", \"self\", or \"description\"."
   }
 }
 
@@ -199,11 +202,12 @@ variable "matrix_egress" {
         "ipv6_cidr_blocks",
         "prefix_list_ids",
         "source_security_group_id",
+        "source_security_group_ids",
         "self",
         "description",
       ], key)
     ]))
-    error_message = "At least one of the matrix_egress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"self\", or \"description\"."
+    error_message = "At least one of the matrix_egress keys are invalid. Valid options are: \"rules\", \"cidr_blocks\", \"ipv6_cidr_blocks\", \"prefix_list_ids\", \"source_security_group_id\", \"source_security_group_ids\", \"self\", or \"description\"."
   }
 }
 

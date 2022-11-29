@@ -12,15 +12,16 @@ module "unpack" {
   version = ">= 2.0.2"
   rules = [
     {
-      from_port                = "443"
-      to_port                  = "443"
-      protocol                 = "tcp"
-      cidr_blocks              = ["10.0.1.0/24", "10.0.2.0/24"]
-      ipv6_cidr_blocks         = ["2001:db8::/64"]
-      prefix_list_ids          = [data.aws_prefix_list.private_s3.id]
-      source_security_group_id = data.aws_security_group.default.id
-      self                     = true
-      description              = "managed by Terraform"
+      from_port                 = "443"
+      to_port                   = "443"
+      protocol                  = "tcp"
+      cidr_blocks               = ["10.0.1.0/24", "10.0.2.0/24"]
+      ipv6_cidr_blocks          = ["2001:db8::/64"]
+      prefix_list_ids           = [data.aws_prefix_list.private_s3.id]
+      source_security_group_id  = data.aws_security_group.default.id
+      source_security_group_ids = ["sg-1111", "sg-2222"]
+      self                      = true
+      description               = "managed by Terraform"
     }
   ]
 }

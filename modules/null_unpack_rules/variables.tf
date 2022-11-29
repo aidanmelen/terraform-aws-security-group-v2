@@ -18,10 +18,11 @@ variable "rules" {
         "ipv6_cidr_blocks",
         "prefix_list_ids",
         "source_security_group_id",
+        "source_security_group_ids",
         "self",
         "description",
       ])
     ])
-    error_message = "At least one of the required rule arguments are missing or invalid. Please check rule has required keys:\n\n\t${join("\n\t", ["from_port", "protocol", "to_port", "cidr_blocks", "description", "ipv6_cidr_blocks", "prefix_list_ids", "self", "source_security_group_id"])}"
+    error_message = "At least one of the required rule arguments are missing or invalid. Please check rule has required keys:\n\n\t${join("\n\t", ["from_port", "protocol", "to_port", "cidr_blocks", "description", "ipv6_cidr_blocks", "prefix_list_ids", "source_security_group_id", "source_security_group_ids", "self"])}"
   }
 }
