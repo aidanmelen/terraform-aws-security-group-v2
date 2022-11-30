@@ -25,7 +25,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
@@ -44,7 +44,7 @@ module "security_group" {
 
 module "security_group_matrix" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
 
   name   = "${local.name}-matrix"
   vpc_id = data.aws_vpc.default.id
