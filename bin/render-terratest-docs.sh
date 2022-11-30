@@ -16,3 +16,4 @@ tail -3 test/terraform_computed_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_name_prefix_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_rules_only_test.log | head -1 >> test/.terratest.docs
 tail -3 test/terraform_unpack_test.log | head -1 >> test/.terratest.docs
+tail -3 test/terraform_source_security_group_ids_test.log | head -1 >> test/.terratest.docs

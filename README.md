@@ -351,6 +351,8 @@ Please see the full examples for more information:
 
 - [Unpack Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack)
 
+- [Source Security Group IDs Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/source_security_group_ids)
+
 ## Key Concepts
 
 | Terminology | Description |
@@ -392,7 +394,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ```
 Terratest Suite (Module v2.1.0) (Terraform v1.3.1)
 --- PASS: TestTerraformBasicExample (24.80s)
---- PASS: TestTerraformCompleteExample (44.45s)
+--- PASS: TestTerraformCompleteExample (42.97s)
 --- PASS: TestTerraformCustomerRulesExample (31.73s)
 --- PASS: TestTerraformManagedRulesExample (32.37s)
 --- PASS: TestTerraformCommonRulesExample (26.52s)

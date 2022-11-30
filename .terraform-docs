@@ -63,6 +63,8 @@ content: |-
 
   - [Unpack Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/unpack)
 
+  - [Source Security Group IDs Example](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/examples/source_security_group_ids)
+
   ## Key Concepts
 
   | Terminology | Description |
