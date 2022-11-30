@@ -32,7 +32,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.2"
+  version = ">= 2.1.0"
 
   name        = local.name
   description = local.name
@@ -131,12 +131,32 @@ module "security_group" {
 }
 
 ################################################################################
+# Export Rule Aliases
+################################################################################
+
+resource "aws_security_group" "example" {
+  name        = "${local.name}-export-rule-alises"
+  description = "Security group rule with exported module rule aliases."
+  vpc_id      = data.aws_vpc.default.id
+}
+
+resource "aws_security_group_rule" "example" {
+  type              = "ingress"
+  description       = module.security_group.rule_aliases.https-443-tcp.description
+  from_port         = module.security_group.rule_aliases.https-443-tcp.from_port
+  to_port           = module.security_group.rule_aliases.https-443-tcp.to_port
+  protocol          = module.security_group.rule_aliases.https-443-tcp.protocol
+  cidr_blocks       = ["10.0.0.0/16"]
+  security_group_id = aws_security_group.example.id
+}
+
+################################################################################
 # Disabled creation
 ################################################################################
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.2"
+  version = ">= 2.1.0"
   create = false
 }
 ```
@@ -167,6 +187,6 @@ module "disabled_sg" {
 | <a name="output_egress"></a> [egress](#output\_egress) | The security group egress rules. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the security group. |
 | <a name="output_ingress"></a> [ingress](#output\_ingress) | The security group ingress rules. |
-| <a name="output_postgresql_port"></a> [postgresql\_port](#output\_postgresql\_port) | Gather the PostgreSQL port from the module rule aliases. |
+| <a name="output_sg_rule_with_exported_module_rule_alias"></a> [sg\_rule\_with\_exported\_module\_rule\_alias](#output\_sg\_rule\_with\_exported\_module\_rule\_alias) | Security group rule with exported module rule aliases. |
 | <a name="output_terratest"></a> [terratest](#output\_terratest) | Outputs used by Terratest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

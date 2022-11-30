@@ -30,9 +30,9 @@ output "egress" {
 # Rule Aliases Lookup
 ###############################################################################
 
-output "postgresql_port" {
-  description = "Gather the PostgreSQL port from the module rule aliases."
-  value       = try(module.security_group.rule_aliases.postgresql-tcp.from_port, null)
+output "sg_rule_with_exported_module_rule_alias" {
+  description = "Security group rule with exported module rule aliases."
+  value       = aws_security_group_rule.example
 }
 
 ################################################################################
@@ -51,11 +51,12 @@ output "disabled_sg_id" {
 output "terratest" {
   description = "Outputs used by Terratest."
   value = {
-    "ingress_count"                        = try(length(module.security_group.security_group_ingress_rules), null)
-    "egress_count"                         = try(length(module.security_group.security_group_egress_rules), null)
-    "data_aws_security_group_default_id"   = data.aws_security_group.default.id,
-    "data_aws_prefix_list_private_s3_id"   = data.aws_prefix_list.private_s3.id,
-    "aws_security_group_other_id"          = aws_security_group.other.id,
-    "aws_ec2_managed_prefix_list_other_id" = aws_ec2_managed_prefix_list.other.id,
+    "ingress_count"                         = try(length(module.security_group.security_group_ingress_rules), null)
+    "egress_count"                          = try(length(module.security_group.security_group_egress_rules), null)
+    "data_aws_security_group_default_id"    = data.aws_security_group.default.id,
+    "data_aws_prefix_list_private_s3_id"    = data.aws_prefix_list.private_s3.id,
+    "aws_security_group_other_id"           = aws_security_group.other.id,
+    "aws_ec2_managed_prefix_list_other_id"  = aws_ec2_managed_prefix_list.other.id,
+    "sg_id_with_exported_module_rule_alias" = aws_security_group.example.id
   }
 }

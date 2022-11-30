@@ -33,9 +33,8 @@ output "egress" {
 output "terratest" {
   description = "Outputs used by Terratest."
   value = {
-    "ingress_count"                        = try(length(module.security_group.security_group_ingress_rules), null)
-    "egress_count"                         = try(length(module.security_group.security_group_egress_rules), null)
-    "data_aws_vpc_default_cidr_block"      = data.aws_vpc.default.cidr_block
-    "data_aws_vpc_default_ipv6_cidr_block" = data.aws_vpc.default.ipv6_cidr_block
+    "ingress_count"                      = try(length(module.security_group.security_group_ingress_rules), null)
+    "egress_count"                       = try(length(module.security_group.security_group_egress_rules), null)
+    "data_aws_security_group_default_id" = data.aws_security_group.default.id
   }
 }

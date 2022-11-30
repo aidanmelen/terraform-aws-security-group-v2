@@ -15,4 +15,5 @@ test-computed        Test the computed example
 test-rules-only      Test the rules_only example
 test-name-prefix     Test the name_prefix example
 test-unpack          Test the unpack example
+test-source-security-group-ids Test the source_security_group_ids example
 clean                Clean project

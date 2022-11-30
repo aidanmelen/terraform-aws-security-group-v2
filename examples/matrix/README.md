@@ -57,7 +57,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.2"
+  version = ">= 2.1.0"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id

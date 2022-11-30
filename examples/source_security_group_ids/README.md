@@ -1,6 +1,10 @@
 # Security Group rule with source_security_group_ids
 
-Use the module to create list of `source_security_group_ids` when `unpack = true`. Additionally, `source_security_group_ids` is only supported with `ingress`, `egress`, `matrix_ingress`, and `matrix_egress` module arguments.
+This module supports a list of `source_security_group_ids` when `unpack = true`. This is a workaround the [26642](https://github.com/hashicorp/terraform-provider-aws/issues/26642).
+
+## Limitations
+
+`source_security_group_ids` is only supported with `ingress`, `egress`, `matrix_ingress`, and `matrix_egress` module rules.
 
 ## Usage
 
@@ -21,30 +25,30 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.2"
+  version = ">= 2.1.0"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
 
-  # required for source_security_group_ids
+  # source_security_group_ids requires unpack because the resource only support source_security_group_id
   unpack = true
 
   ingress = [
     {
       rule                      = "https-443-tcp"
       source_security_group_ids = [data.aws_security_group.default.id]
-    },
+    }
   ]
 }
 
 module "security_group_matrix" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.0.2"
+  version = ">= 2.1.0"
 
   name   = "${local.name}-matrix"
   vpc_id = data.aws_vpc.default.id
 
-  # required for source_security_group_ids
+  # source_security_group_ids requires unpack because the resource only support source_security_group_id
   unpack = true
 
   matrix_ingress = {
