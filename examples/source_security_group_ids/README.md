@@ -1,6 +1,6 @@
 # Security Group rule with source_security_group_ids
 
-This module supports a list of `source_security_group_ids` when `unpack = true`. This is a workaround the [26642](https://github.com/hashicorp/terraform-provider-aws/issues/26642).
+This module supports a list of `source_security_group_ids` when `unpack = true`. This is a workaround for [26642](https://github.com/hashicorp/terraform-provider-aws/issues/26642).
 
 ## Limitations
 
