@@ -16,11 +16,12 @@ variable "matrix" {
         "ipv6_cidr_blocks",
         "prefix_list_ids",
         "source_security_group_id",
+        "source_security_group_ids",
         "self",
         "description",
       ], key)
     ]))
-    error_message = "At least one of the required matrix arguments are invalid. Please check rule has required keys:\n\n\t${join("\n\t", ["rules", "cidr_blocks", "ipv6_cidr_blocks", "prefix_list_ids", "source_security_group_id", "self", "description"])}"
+    error_message = "At least one of the required matrix arguments are invalid. Please check rule has required keys:\n\n\t${join("\n\t", ["rules", "cidr_blocks", "ipv6_cidr_blocks", "prefix_list_ids", "source_security_group_id", "source_security_group_ids", "self", "description"])}"
   }
 
   validation {

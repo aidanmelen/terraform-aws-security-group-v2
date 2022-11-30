@@ -1,6 +1,10 @@
-# Security Group with Name Prefix
+# Security Group rule with source_security_group_ids
 
-Create a security group with [`name_prefix`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#name_prefix) and [`lifecycle.create_before_destroy`](https://www.terraform.io/language/meta-arguments/lifecycle#syntax-and-arguments). This will ensure that new replacement security group is created first, and the prior security group is destroyed after the replacement is created. Only use when the security group ID does not need to be preserved (e.g. can be used with EC2 Network Interfaces or AWS Load Balancers because they allow multiple security group attachments). On the other hand, use `name` when the security group ID must be preserved (e.g. when used with clustered services like EKS, MSK, EMR, etc).
+This module supports a list of `source_security_group_ids` when `unpack = true`. This is a workaround for [26642](https://github.com/hashicorp/terraform-provider-aws/issues/26642).
+
+## Limitations
+
+`source_security_group_ids` is only supported with `ingress`, `egress`, `matrix_ingress`, and `matrix_egress` module rules.
 
 ## Usage
 
@@ -19,26 +23,38 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Examples
 
 ```hcl
-#tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
   version = ">= 2.1.0"
 
-  name_prefix = local.name
-  description = "Allow TLS inbound traffic"
-  vpc_id      = data.aws_vpc.default.id
+  name   = local.name
+  vpc_id = data.aws_vpc.default.id
+
+  # unpack is required when using a list of source_security_group_ids
+  # because the aws_security_group_rule resource only supports source_security_group_id
+  unpack = true
 
   ingress = [
     {
-      rule             = "https-443-tcp"
-      cidr_blocks      = [data.aws_vpc.default.cidr_block]
-      ipv6_cidr_blocks = [data.aws_vpc.default.ipv6_cidr_block]
+      rule                      = "https-443-tcp"
+      source_security_group_ids = [data.aws_security_group.default.id]
     }
   ]
+}
 
-  egress = [
-    { rule = "all-all-to-public" }
-  ]
+module "security_group_matrix" {
+  source  = "aidanmelen/security-group-v2/aws"
+  version = ">= 2.1.0"
+
+  name   = "${local.name}-matrix"
+  vpc_id = data.aws_vpc.default.id
+
+  unpack = true
+
+  matrix_ingress = {
+    rules                     = [{ rule = "https-443-tcp" }]
+    source_security_group_ids = [data.aws_security_group.default.id]
+  }
 }
 ```
 
@@ -53,6 +69,7 @@ module "security_group" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ../../ | n/a |
+| <a name="module_security_group_matrix"></a> [security\_group\_matrix](#module\_security\_group\_matrix) | ../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

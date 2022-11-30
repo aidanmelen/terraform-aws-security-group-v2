@@ -6,30 +6,32 @@
 locals {
   ingress_normalize = [
     for rule in var.ingress : {
-      description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
-      from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port, "The rule alias is invalid: ${rule.rule}. https://github.com/aidanmelen/terraform-aws-security-group-v2#rule-aliases")
-      to_port                  = try(rule.to_port, local.rule_aliases[rule.rule].to_port, null)
-      protocol                 = try(rule.protocol, local.rule_aliases[rule.rule].protocol, null)
-      cidr_blocks              = try(rule.cidr_blocks, local.rule_aliases[rule.rule].cidr_blocks, null)
-      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, local.rule_aliases[rule.rule].ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(rule.prefix_list_ids, local.rule_aliases[rule.rule].prefix_list_ids, null)
-      self                     = try(rule.self, local.rule_aliases[rule.rule].self, null)
-      source_security_group_id = try(rule.source_security_group_id, local.rule_aliases[rule.rule].source_security_group_id, null)
+      description               = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
+      from_port                 = try(rule.from_port, local.rule_aliases[rule.rule].from_port, "The rule alias is invalid: ${rule.rule}. https://github.com/aidanmelen/terraform-aws-security-group-v2#rule-aliases")
+      to_port                   = try(rule.to_port, local.rule_aliases[rule.rule].to_port, null)
+      protocol                  = try(rule.protocol, local.rule_aliases[rule.rule].protocol, null)
+      cidr_blocks               = try(rule.cidr_blocks, local.rule_aliases[rule.rule].cidr_blocks, null)
+      ipv6_cidr_blocks          = try(rule.ipv6_cidr_blocks, local.rule_aliases[rule.rule].ipv6_cidr_blocks, null)
+      prefix_list_ids           = try(rule.prefix_list_ids, local.rule_aliases[rule.rule].prefix_list_ids, null)
+      self                      = try(rule.self, local.rule_aliases[rule.rule].self, null)
+      source_security_group_id  = try(rule.source_security_group_id, local.rule_aliases[rule.rule].source_security_group_id, null)
+      source_security_group_ids = try(rule.source_security_group_ids, local.rule_aliases[rule.rule].source_security_group_ids, null)
     }
     if var.create
   ]
 
   egress_normalize = [
     for rule in var.egress : {
-      description              = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
-      from_port                = try(rule.from_port, local.rule_aliases[rule.rule].from_port, "The rule alias is invalid: ${rule.rule}. https://github.com/aidanmelen/terraform-aws-security-group-v2#rule-aliases")
-      to_port                  = try(rule.to_port, local.rule_aliases[rule.rule].to_port)
-      protocol                 = try(rule.protocol, local.rule_aliases[rule.rule].protocol)
-      cidr_blocks              = try(rule.cidr_blocks, local.rule_aliases[rule.rule].cidr_blocks, null)
-      ipv6_cidr_blocks         = try(rule.ipv6_cidr_blocks, local.rule_aliases[rule.rule].ipv6_cidr_blocks, null)
-      prefix_list_ids          = try(rule.prefix_list_ids, local.rule_aliases[rule.rule].prefix_list_ids, null)
-      self                     = try(rule.self, local.rule_aliases[rule.rule].self, null)
-      source_security_group_id = try(rule.source_security_group_id, local.rule_aliases[rule.rule].source_security_group_id, null)
+      description               = try(rule.description, local.rule_aliases[rule.rule].description, var.default_rule_description)
+      from_port                 = try(rule.from_port, local.rule_aliases[rule.rule].from_port, "The rule alias is invalid: ${rule.rule}. https://github.com/aidanmelen/terraform-aws-security-group-v2#rule-aliases")
+      to_port                   = try(rule.to_port, local.rule_aliases[rule.rule].to_port)
+      protocol                  = try(rule.protocol, local.rule_aliases[rule.rule].protocol)
+      cidr_blocks               = try(rule.cidr_blocks, local.rule_aliases[rule.rule].cidr_blocks, null)
+      ipv6_cidr_blocks          = try(rule.ipv6_cidr_blocks, local.rule_aliases[rule.rule].ipv6_cidr_blocks, null)
+      prefix_list_ids           = try(rule.prefix_list_ids, local.rule_aliases[rule.rule].prefix_list_ids, null)
+      self                      = try(rule.self, local.rule_aliases[rule.rule].self, null)
+      source_security_group_id  = try(rule.source_security_group_id, local.rule_aliases[rule.rule].source_security_group_id, null)
+      source_security_group_ids = try(rule.source_security_group_ids, local.rule_aliases[rule.rule].source_security_group_ids, null)
     }
     if var.create
   ]

@@ -21,3 +21,4 @@ sed -z "${PATTERN}" examples/computed/main.tf > examples/computed/.main.tf.docs
 sed -z "${PATTERN}" examples/rules_only/main.tf > examples/rules_only/.main.tf.docs
 sed -z "${PATTERN}" examples/name_prefix/main.tf > examples/name_prefix/.main.tf.docs
 sed -z "${PATTERN}" examples/unpack/main.tf > examples/unpack/.main.tf.docs
+sed -z "${PATTERN}" examples/source_security_group_ids/main.tf > examples/source_security_group_ids/.main.tf.docs

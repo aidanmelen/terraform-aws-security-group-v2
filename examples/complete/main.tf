@@ -100,6 +100,26 @@ module "security_group" {
 }
 
 ################################################################################
+# Export Rule Aliases
+################################################################################
+
+resource "aws_security_group" "example" {
+  name        = "${local.name}-export-rule-alises"
+  description = "Security group rule with exported module rule aliases."
+  vpc_id      = data.aws_vpc.default.id
+}
+
+resource "aws_security_group_rule" "example" {
+  type              = "ingress"
+  description       = module.security_group.rule_aliases.https-443-tcp.description
+  from_port         = module.security_group.rule_aliases.https-443-tcp.from_port
+  to_port           = module.security_group.rule_aliases.https-443-tcp.to_port
+  protocol          = module.security_group.rule_aliases.https-443-tcp.protocol
+  cidr_blocks       = ["10.0.0.0/16"]
+  security_group_id = aws_security_group.example.id
+}
+
+################################################################################
 # Disabled creation
 ################################################################################
 

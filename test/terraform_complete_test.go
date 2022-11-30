@@ -47,12 +47,14 @@ func TestTerraformCompleteExample(t *testing.T) {
 	actualEgress4 := regexp.ReplaceAllString(actualEgress[4], "sgrule-1111111111")
 	actualEgress5 := regexp.ReplaceAllString(actualEgress[5], "sgrule-1111111111")
 	actualEgress6 := regexp.ReplaceAllString(actualEgress[6], "sgrule-1111111111")
-	actualDisabledSgId := terraform.Output(t, terraformOptions, "disabled_sg_id")
 	actualTerratest := terraform.OutputMap(t, terraformOptions, "terratest")
 	actualDataAwsSecurityGroupDefaultId := actualTerratest["data_aws_security_group_default_id"]
 	actualDataAwsPrefixListPrivateS3Id := actualTerratest["data_aws_prefix_list_private_s3_id"]
 	actualAwsSecurityGroupOtherId := actualTerratest["aws_security_group_other_id"]
 	actualAwsEc2ManagedPrefixListOtherId := actualTerratest["aws_ec2_managed_prefix_list_other_id"]
+	actualSecurityGroupIdWithExportedModuleRuleAlias := actualTerratest["sg_id_with_exported_module_rule_alias"]
+	actualSgRuleWithExportedModuleRuleAlias := regexp.ReplaceAllString(terraform.Output(t, terraformOptions, "sg_rule_with_exported_module_rule_alias"), "sgrule-1111111111")
+	actualDisabledSgId := terraform.Output(t, terraformOptions, "disabled_sg_id")
 	actualIngressCount := actualTerratest["ingress_count"]
 	actualEgressCount := actualTerratest["egress_count"]
 
@@ -75,6 +77,7 @@ func TestTerraformCompleteExample(t *testing.T) {
 	expectedEgress6 := fmt.Sprintf("map[cidr_blocks:<nil> description:computed (managed) rule example from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:[%s] protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:egress]", actualAwsEc2ManagedPrefixListOtherId, actualSecurityGroupId)
 	expectedIngressCount := "9"
 	expectedEgressCount := "7"
+	expectedSgRuleWithExportedModuleRuleAlias := fmt.Sprintf("map[cidr_blocks:[10.0.0.0/16] description:HTTPS from_port:443 id:sgrule-1111111111 ipv6_cidr_blocks:<nil> prefix_list_ids:<nil> protocol:tcp security_group_id:%s self:false source_security_group_id:<nil> timeouts:<nil> to_port:443 type:ingress]", actualSecurityGroupIdWithExportedModuleRuleAlias)
 	expectedDisabledSgId := "I was not created"
 
 	// assert
@@ -96,5 +99,6 @@ func TestTerraformCompleteExample(t *testing.T) {
 	assert.Equal(t, expectedEgress6, actualEgress6, "Map %q should match %q", expectedEgress6, actualEgress6)
 	assert.Equal(t, expectedIngressCount, actualIngressCount, "Map %q should match %q", expectedIngressCount, actualIngressCount)
 	assert.Equal(t, expectedEgressCount, actualEgressCount, "Map %q should match %q", expectedEgressCount, actualEgressCount)
+	assert.Equal(t, expectedSgRuleWithExportedModuleRuleAlias, actualSgRuleWithExportedModuleRuleAlias, "Map %q should match %q", expectedSgRuleWithExportedModuleRuleAlias, actualSgRuleWithExportedModuleRuleAlias)
 	assert.Equal(t, expectedDisabledSgId, actualDisabledSgId, "Map %q should match %q", expectedDisabledSgId, actualDisabledSgId)
 }

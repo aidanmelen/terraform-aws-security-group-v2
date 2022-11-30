@@ -71,6 +71,22 @@ locals {
     if var.create && try(rule.source_security_group_id != null, false)
   ], [])
 
+  source_security_group_ids_rules = try([
+    for rule in var.rules : [
+
+      # unpack source_security_group_ids list elements
+      for source_security_group_id in rule.source_security_group_ids : {
+        description              = try(rule.description, null),
+        rule                     = try(rule.rule, null),
+        from_port                = try(rule.from_port, null),
+        to_port                  = try(rule.to_port, null),
+        protocol                 = try(rule.protocol, null),
+        source_security_group_id = try(source_security_group_id, null),
+      }
+    ]
+    if var.create && try(rule.source_security_group_ids != null, false)
+  ], [])
+
   rules = [
     for rule in flatten(concat(
       local.cidr_block_rules,
@@ -78,6 +94,7 @@ locals {
       local.prefix_list_id_rules,
       local.self_rules,
       local.source_security_group_id_rules,
+      local.source_security_group_ids_rules,
       )) : {
       # prune rule map of k,v where v is null
       # otherwise, try function precendence during normalization will break

@@ -1,13 +1,13 @@
 NAME := security-group-v2
 HOSTNAME := aidanmelen
 PROVIDER := aws
-VERSION := 2.0.2
+VERSION := 2.1.0
 SHELL := /bin/bash
 
 .PHONY: help all
 
 help: ## This help.
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
 
@@ -34,6 +34,7 @@ setup: ## Setup project
 	cd examples/rules_only && terraform init
 	cd examples/name_prefix && terraform init
 	cd examples/unpack && terraform init
+	cd examples/source_security_group_ids && terraform init
 
 	# pre-commit
 	git init
@@ -62,7 +63,7 @@ lint-all: docs ## Lint all files with pre-commit and render docs
 	pre-commit run --all-files
 	git add -A
 
-tests: test-basic test-complete test-customer test-managed test-common test-computed test-matrix test-rules-only test-name-prefix test-unpack ## Tests with Terratest
+tests: test-basic test-complete test-customer test-managed test-common test-computed test-matrix test-rules-only test-name-prefix test-unpack test-source-security-group-ids ## Tests with Terratest
 
 test-basic: ## Test the basic example
 	go test test/terraform_basic_test.go -timeout 5m -v |& tee test/terraform_basic_test.log
@@ -93,6 +94,9 @@ test-name-prefix: ## Test the name_prefix example
 
 test-unpack: ## Test the unpack example
 	go test test/terraform_unpack_test.go -timeout 5m -v |& tee test/terraform_unpack_test.log
+
+test-source-security-group-ids: ## Test the source_security_group_ids example
+	go test test/terraform_source_security_group_ids_test.go -timeout 5m -v |& tee test/terraform_source_security_group_ids_test.log
 
 release:
 	git tag v${VERSION}
