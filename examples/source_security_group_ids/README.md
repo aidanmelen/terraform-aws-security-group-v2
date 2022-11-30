@@ -30,7 +30,8 @@ module "security_group" {
   name   = local.name
   vpc_id = data.aws_vpc.default.id
 
-  # source_security_group_ids requires unpack because the resource only support source_security_group_id
+  # unpack is required when using a list of source_security_group_ids
+  # because the aws_security_group_rule resource only supports source_security_group_id
   unpack = true
 
   ingress = [
@@ -48,11 +49,10 @@ module "security_group_matrix" {
   name   = "${local.name}-matrix"
   vpc_id = data.aws_vpc.default.id
 
-  # source_security_group_ids requires unpack because the resource only support source_security_group_id
   unpack = true
 
   matrix_ingress = {
-    rules                     = [{ rule = "https-443-tcp" }],
+    rules                     = [{ rule = "https-443-tcp" }]
     source_security_group_ids = [data.aws_security_group.default.id]
   }
 }
