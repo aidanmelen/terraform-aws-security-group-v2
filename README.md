@@ -403,30 +403,31 @@ Terratest Suite (Module v2.1.0) (Terraform v1.3.1)
 --- PASS: TestTerraformNamePrefixExample (23.24s)
 --- PASS: TestTerraformRulesOnlyExample (23.26s)
 --- PASS: TestTerraformUnpackRulesExample (44.25s)
+--- PASS: TestTerraformSourceSecurityGroupIdsExample (21.83s)
 ```
 
 ## Makefile Targets
 
 ```
-help                 This help.
-build                Build docker dev image
-run                  Run docker dev container
-setup                Setup project
-lint                 Lint with pre-commit and render docs
-lint-all             Lint all files with pre-commit and render docs
-tests                Tests with Terratest
-test-basic           Test the basic example
-test-complete        Test the complete example
-test-customer        Test the customer example
-test-managed         Test the managed example
-test-common          Test the common example
-test-matrix          Test the matrix example
-test-computed        Test the computed example
-test-rules-only      Test the rules_only example
-test-name-prefix     Test the name_prefix example
-test-unpack          Test the unpack example
+help                           This help.
+build                          Build docker dev image
+run                            Run docker dev container
+setup                          Setup project
+lint                           Lint with pre-commit and render docs
+lint-all                       Lint all files with pre-commit and render docs
+tests                          Tests with Terratest
+test-basic                     Test the basic example
+test-complete                  Test the complete example
+test-customer                  Test the customer example
+test-managed                   Test the managed example
+test-common                    Test the common example
+test-matrix                    Test the matrix example
+test-computed                  Test the computed example
+test-rules-only                Test the rules_only example
+test-name-prefix               Test the name_prefix example
+test-unpack                    Test the unpack example
 test-source-security-group-ids Test the source_security_group_ids example
-clean                Clean project
+clean                          Clean project
 ```
 
 ## Requirements
