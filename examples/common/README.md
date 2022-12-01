@@ -27,7 +27,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_https_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.1"
+  version = ">= 2.1.2"
 
   name        = "${local.name}-https"
   description = "${local.name}-https"
@@ -41,7 +41,7 @@ module "public_https_sg" {
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "public_http_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.1"
+  version = ">= 2.1.2"
 
   name        = "${local.name}-http"
   description = "${local.name}-http"

@@ -22,7 +22,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.1"
+  version = ">= 2.1.2"
 
   name_prefix = local.name
   description = "Allow TLS inbound traffic"

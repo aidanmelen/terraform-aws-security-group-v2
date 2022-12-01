@@ -1,6 +1,6 @@
 module "unpack" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.1"
+  version = ">= 2.1.2"
   rules = [
     {
       from_port                 = "443"
