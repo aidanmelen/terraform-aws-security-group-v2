@@ -32,7 +32,7 @@ Note that this example may create resources which cost money. Run `terraform des
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
 
   name        = local.name
   description = local.name
@@ -156,7 +156,7 @@ resource "aws_security_group_rule" "example" {
 
 module "disabled_sg" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
   create = false
 }
 ```
@@ -166,7 +166,7 @@ module "disabled_sg" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29, < 4.40.0 |
 ## Modules
 
 | Name | Source | Version |

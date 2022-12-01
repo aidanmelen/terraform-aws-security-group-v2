@@ -10,7 +10,7 @@ A sub-module for repacking security group matrix rule. Each matrix rule (`rule` 
 ```hcl
 module "repack" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
   matrix = {
     rules = [
       {

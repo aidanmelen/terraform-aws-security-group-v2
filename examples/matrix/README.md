@@ -57,7 +57,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ```hcl
 module "security_group" {
   source  = "aidanmelen/security-group-v2/aws"
-  version = ">= 2.1.0"
+  version = ">= 2.1.1"
 
   name   = local.name
   vpc_id = data.aws_vpc.default.id
@@ -96,7 +96,7 @@ module "security_group" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.29, < 4.40.0 |
 ## Modules
 
 | Name | Source | Version |

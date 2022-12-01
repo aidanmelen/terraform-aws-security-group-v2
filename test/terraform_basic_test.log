@@ -1,476 +1,476 @@
 === RUN   TestTerraformBasicExample
-TestTerraformBasicExample 2022-11-30T02:47:13Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformBasicExample 2022-11-30T02:47:13Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformBasicExample 2022-11-30T02:47:14Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformBasicExample 2022-11-30T02:47:14Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:14Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformBasicExample 2022-11-30T02:47:16Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:16Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformBasicExample 2022-11-30T02:47:16Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: - Using previously-installed hashicorp/aws v4.38.0
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: [0m[32m
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: should now work.
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformBasicExample 2022-11-30T02:47:17Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformBasicExample 2022-11-30T02:47:17Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + create
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: Terraform will perform the following actions:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + description            = "Allow TLS inbound traffic"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + id                     = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + name                   = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + tags                   = {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "Name" = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + tags_all               = {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "Example"    = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "Name"       = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + timeouts {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + create = "10m"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + delete = "15m"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"] will be created
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + cidr_blocks              = [
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "0.0.0.0/0",
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         ]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + description              = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + from_port                = 0
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + id                       = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + protocol                 = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + to_port                  = 0
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + type                     = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-::/0"] will be created
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + description              = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + from_port                = 0
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + id                       = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "::/0",
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         ]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + protocol                 = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + to_port                  = 0
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + type                     = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"] will be created
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + cidr_blocks              = [
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "172.31.0.0/16",
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         ]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + description              = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + from_port                = 443
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + id                       = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + to_port                  = 443
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + type                     = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"] will be created
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + description              = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + from_port                = 443
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + id                       = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + ipv6_cidr_blocks         = [
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:           + "2600:1f13:b21:6500::/56",
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:         ]
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + to_port                  = 443
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + type                     = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: Plan: 5 to add, 0 to change, 0 to destroy.
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66: Changes to Outputs:
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + arn       = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + egress    = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + id        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:   + terratest = {
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + egress_count                         = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:       + ingress_count                        = (known after apply)
-TestTerraformBasicExample 2022-11-30T02:47:21Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:22Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 1s [id=sg-1111111111111111]
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Creating...
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Creating...
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Creating...
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Creating...
-TestTerraformBasicExample 2022-11-30T02:47:24Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:25Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:25Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: Outputs:
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: egress = [
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   {
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:       "0.0.0.0/0",
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     ])
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "description" = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "from_port" = 0
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "protocol" = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "self" = false
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "to_port" = 0
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "type" = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   },
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   {
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "description" = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "from_port" = 0
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:       "::/0",
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     ])
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "protocol" = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "self" = false
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "to_port" = 0
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "type" = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   },
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: ]
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: id = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: ingress = [
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   {
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:       "172.31.0.0/16",
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     ])
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "description" = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "from_port" = 443
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "protocol" = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "self" = false
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "to_port" = 443
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "type" = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   },
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   {
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "description" = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "from_port" = 443
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:       "2600:1f13:b21:6500::/56",
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     ])
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "protocol" = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "self" = false
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "to_port" = 443
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:     "type" = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   },
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: ]
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: terratest = {
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   "data_aws_vpc_default_cidr_block" = "172.31.0.0/16"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   "data_aws_vpc_default_ipv6_cidr_block" = "2600:1f13:b21:6500::/56"
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   "egress_count" = 2
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66:   "ingress_count" = 2
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: }
-TestTerraformBasicExample 2022-11-30T02:47:26Z retry.go:91: terraform [output -no-color -json id]
-TestTerraformBasicExample 2022-11-30T02:47:26Z logger.go:66: Running command terraform with args [output -no-color -json id]
-TestTerraformBasicExample 2022-11-30T02:47:27Z logger.go:66: "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:27Z retry.go:91: terraform [output -no-color -json ingress]
-TestTerraformBasicExample 2022-11-30T02:47:27Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
-TestTerraformBasicExample 2022-11-30T02:47:28Z logger.go:66: [{"cidr_blocks":["172.31.0.0/16"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["2600:1f13:b21:6500::/56"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
-TestTerraformBasicExample 2022-11-30T02:47:28Z retry.go:91: terraform [output -no-color -json egress]
-TestTerraformBasicExample 2022-11-30T02:47:28Z logger.go:66: Running command terraform with args [output -no-color -json egress]
-TestTerraformBasicExample 2022-11-30T02:47:29Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"},{"cidr_blocks":null,"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
-TestTerraformBasicExample 2022-11-30T02:47:29Z retry.go:91: terraform [output -no-color -json terratest]
-TestTerraformBasicExample 2022-11-30T02:47:29Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
-TestTerraformBasicExample 2022-11-30T02:47:30Z logger.go:66: {"data_aws_vpc_default_cidr_block":"172.31.0.0/16","data_aws_vpc_default_ipv6_cidr_block":"2600:1f13:b21:6500::/56","egress_count":2,"ingress_count":2}
-TestTerraformBasicExample 2022-11-30T02:47:30Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformBasicExample 2022-11-30T02:47:30Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:33Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - destroy
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66: Terraform will perform the following actions:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - resource "aws_security_group" "self" {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - description            = "Allow TLS inbound traffic" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - egress                 = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - cidr_blocks      = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                   - "0.0.0.0/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                 ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - description      = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - from_port        = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                   - "::/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                 ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - protocol         = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - security_groups  = []
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - self             = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - to_port          = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - ingress                = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - cidr_blocks      = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                   - "172.31.0.0/16",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                 ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - description      = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - from_port        = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - ipv6_cidr_blocks = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                   - "2600:1f13:b21:6500::/56",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:                 ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - protocol         = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - security_groups  = []
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - self             = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - to_port          = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - name                   = "ex-basic" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - tags                   = {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "Name" = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         } -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - tags_all               = {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "Example"    = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "Name"       = "ex-basic"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         } -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - timeouts {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - create = "10m" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - delete = "15m" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"] will be destroyed
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - cidr_blocks       = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "0.0.0.0/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - description       = "All to public" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - self              = false -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - type              = "egress" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-::/0"] will be destroyed
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - description       = "All to public" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - from_port         = 0 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "::/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - protocol          = "-1" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - self              = false -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - to_port           = 0 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - type              = "egress" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"] will be destroyed
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - cidr_blocks       = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "172.31.0.0/16",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - description       = "HTTPS" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - self              = false -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"] will be destroyed
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - description       = "HTTPS" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - ipv6_cidr_blocks  = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - "2600:1f13:b21:6500::/56",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - self              = false -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     }
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66: Plan: 0 to add, 0 to change, 5 to destroy.
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66: Changes to Outputs:
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - egress    = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - cidr_blocks              = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - "0.0.0.0/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - description              = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - from_port                = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - protocol                 = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - source_security_group_id = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - timeouts                 = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - to_port                  = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - type                     = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - cidr_blocks              = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - description              = "All to public"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - from_port                = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - "::/0",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - protocol                 = "-1"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - source_security_group_id = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - timeouts                 = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - to_port                  = 0
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - type                     = "egress"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - id        = "sg-1111111111111111" -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - ingress   = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - cidr_blocks              = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - "172.31.0.0/16",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - description              = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - from_port                = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - source_security_group_id = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - timeouts                 = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - to_port                  = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - type                     = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - cidr_blocks              = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - description              = "HTTPS"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - from_port                = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - ipv6_cidr_blocks         = [
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:               - "2600:1f13:b21:6500::/56",
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:             ]
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - self                     = false
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - source_security_group_id = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - timeouts                 = null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - to_port                  = 443
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:           - type                     = "ingress"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:         },
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     ] -> null
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:   - terratest = {
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - egress_count                         = 2
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:       - ingress_count                        = 2
-TestTerraformBasicExample 2022-11-30T02:47:35Z logger.go:66:     } -> null
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Destroying... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Destroying... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Destroying... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Destroying... [id=sgrule-1111111111]
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Destruction complete after 0s
-TestTerraformBasicExample 2022-11-30T02:47:36Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Destruction complete after 1s
-TestTerraformBasicExample 2022-11-30T02:47:37Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Destruction complete after 1s
-TestTerraformBasicExample 2022-11-30T02:47:37Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Destruction complete after 2s
-TestTerraformBasicExample 2022-11-30T02:47:37Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
-TestTerraformBasicExample 2022-11-30T02:47:38Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
-TestTerraformBasicExample 2022-11-30T02:47:38Z logger.go:66:
-TestTerraformBasicExample 2022-11-30T02:47:38Z logger.go:66: Destroy complete! Resources: 5 destroyed.
---- PASS: TestTerraformBasicExample (24.80s)
+TestTerraformBasicExample 2022-12-01T02:48:24Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformBasicExample 2022-12-01T02:48:24Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformBasicExample 2022-12-01T02:48:24Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformBasicExample 2022-12-01T02:48:25Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:25Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformBasicExample 2022-12-01T02:48:25Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:25Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformBasicExample 2022-12-01T02:48:25Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: - Using previously-installed hashicorp/aws v4.39.0
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: [0m[32m
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: should now work.
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformBasicExample 2022-12-01T02:48:26Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformBasicExample 2022-12-01T02:48:26Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + create
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: Terraform will perform the following actions:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + description            = "Allow TLS inbound traffic"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + id                     = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + name                   = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + tags                   = {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "Name" = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + tags_all               = {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "Example"    = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "Name"       = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + timeouts {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + create = "10m"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + delete = "15m"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"] will be created
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + cidr_blocks              = [
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "0.0.0.0/0",
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         ]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + description              = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + from_port                = 0
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + id                       = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + protocol                 = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + to_port                  = 0
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + type                     = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-::/0"] will be created
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + resource "aws_security_group_rule" "egress" {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + description              = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + from_port                = 0
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + id                       = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "::/0",
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         ]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + protocol                 = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + to_port                  = 0
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + type                     = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"] will be created
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + cidr_blocks              = [
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "172.31.0.0/16",
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         ]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + description              = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + from_port                = 443
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + id                       = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + to_port                  = 443
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + type                     = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"] will be created
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + description              = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + from_port                = 443
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + id                       = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + ipv6_cidr_blocks         = [
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:           + "2600:1f13:b21:6500::/56",
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:         ]
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + to_port                  = 443
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + type                     = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: Plan: 5 to add, 0 to change, 0 to destroy.
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66: Changes to Outputs:
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + arn       = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + egress    = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + id        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:   + terratest = {
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + egress_count                         = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:       + ingress_count                        = (known after apply)
+TestTerraformBasicExample 2022-12-01T02:48:32Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:33Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 1s [id=sg-1111111111111111]
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Creating...
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Creating...
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Creating...
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Creating...
+TestTerraformBasicExample 2022-12-01T02:48:35Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:36Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Creation complete after 3s [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: Outputs:
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: egress = [
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   {
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:       "0.0.0.0/0",
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     ])
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "description" = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "from_port" = 0
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "protocol" = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "self" = false
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "to_port" = 0
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "type" = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   },
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   {
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "description" = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "from_port" = 0
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:       "::/0",
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     ])
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "protocol" = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "self" = false
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "to_port" = 0
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "type" = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   },
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: ]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: id = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: ingress = [
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   {
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:       "172.31.0.0/16",
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     ])
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "description" = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "from_port" = 443
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "protocol" = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "self" = false
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "to_port" = 443
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "type" = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   },
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   {
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "description" = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "from_port" = 443
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "ipv6_cidr_blocks" = tolist([
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:       "2600:1f13:b21:6500::/56",
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     ])
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "protocol" = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "self" = false
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "to_port" = 443
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:     "type" = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   },
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: ]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: terratest = {
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   "data_aws_vpc_default_cidr_block" = "172.31.0.0/16"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   "data_aws_vpc_default_ipv6_cidr_block" = "2600:1f13:b21:6500::/56"
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   "egress_count" = 2
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66:   "ingress_count" = 2
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: }
+TestTerraformBasicExample 2022-12-01T02:48:37Z retry.go:91: terraform [output -no-color -json id]
+TestTerraformBasicExample 2022-12-01T02:48:37Z logger.go:66: Running command terraform with args [output -no-color -json id]
+TestTerraformBasicExample 2022-12-01T02:48:38Z logger.go:66: "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:38Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformBasicExample 2022-12-01T02:48:38Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformBasicExample 2022-12-01T02:48:39Z logger.go:66: [{"cidr_blocks":["172.31.0.0/16"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":["2600:1f13:b21:6500::/56"],"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"}]
+TestTerraformBasicExample 2022-12-01T02:48:39Z retry.go:91: terraform [output -no-color -json egress]
+TestTerraformBasicExample 2022-12-01T02:48:39Z logger.go:66: Running command terraform with args [output -no-color -json egress]
+TestTerraformBasicExample 2022-12-01T02:48:40Z logger.go:66: [{"cidr_blocks":["0.0.0.0/0"],"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"},{"cidr_blocks":null,"description":"All to public","from_port":0,"id":"sgrule-1111111111","ipv6_cidr_blocks":["::/0"],"prefix_list_ids":null,"protocol":"-1","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":0,"type":"egress"}]
+TestTerraformBasicExample 2022-12-01T02:48:40Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformBasicExample 2022-12-01T02:48:40Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformBasicExample 2022-12-01T02:48:41Z logger.go:66: {"data_aws_vpc_default_cidr_block":"172.31.0.0/16","data_aws_vpc_default_ipv6_cidr_block":"2600:1f13:b21:6500::/56","egress_count":2,"ingress_count":2}
+TestTerraformBasicExample 2022-12-01T02:48:41Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformBasicExample 2022-12-01T02:48:41Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:44Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - destroy
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66: Terraform will perform the following actions:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - description            = "Allow TLS inbound traffic" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - egress                 = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - cidr_blocks      = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                   - "0.0.0.0/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                 ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - description      = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - from_port        = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                   - "::/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                 ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - protocol         = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - security_groups  = []
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - self             = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - to_port          = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - ingress                = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - cidr_blocks      = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                   - "172.31.0.0/16",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                 ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - description      = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - from_port        = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - ipv6_cidr_blocks = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                   - "2600:1f13:b21:6500::/56",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:                 ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - protocol         = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - security_groups  = []
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - self             = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - to_port          = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - name                   = "ex-basic" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - tags                   = {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "Name" = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         } -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - tags_all               = {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "Example"    = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "Name"       = "ex-basic"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         } -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - timeouts {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - create = "10m" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - delete = "15m" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"] will be destroyed
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - cidr_blocks       = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "0.0.0.0/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - description       = "All to public" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - self              = false -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - type              = "egress" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   # module.security_group.aws_security_group_rule.egress["0-0-all-::/0"] will be destroyed
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - resource "aws_security_group_rule" "egress" {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - description       = "All to public" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - from_port         = 0 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "::/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - protocol          = "-1" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - self              = false -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - to_port           = 0 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - type              = "egress" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"] will be destroyed
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - cidr_blocks       = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "172.31.0.0/16",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - description       = "HTTPS" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - self              = false -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"] will be destroyed
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - description       = "HTTPS" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - ipv6_cidr_blocks  = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - "2600:1f13:b21:6500::/56",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - self              = false -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     }
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66: Plan: 0 to add, 0 to change, 5 to destroy.
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66: Changes to Outputs:
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - egress    = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - cidr_blocks              = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - "0.0.0.0/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - description              = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - from_port                = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - protocol                 = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - source_security_group_id = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - timeouts                 = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - to_port                  = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - type                     = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - cidr_blocks              = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - description              = "All to public"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - from_port                = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - "::/0",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - protocol                 = "-1"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - source_security_group_id = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - timeouts                 = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - to_port                  = 0
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - type                     = "egress"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - id        = "sg-1111111111111111" -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - ingress   = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - cidr_blocks              = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - "172.31.0.0/16",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - description              = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - from_port                = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - source_security_group_id = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - timeouts                 = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - to_port                  = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - type                     = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - cidr_blocks              = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - description              = "HTTPS"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - from_port                = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - ipv6_cidr_blocks         = [
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:               - "2600:1f13:b21:6500::/56",
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:             ]
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - self                     = false
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - source_security_group_id = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - timeouts                 = null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - to_port                  = 443
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:           - type                     = "ingress"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:         },
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     ] -> null
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:   - terratest = {
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - data_aws_vpc_default_cidr_block      = "172.31.0.0/16"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - data_aws_vpc_default_ipv6_cidr_block = "2600:1f13:b21:6500::/56"
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - egress_count                         = 2
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:       - ingress_count                        = 2
+TestTerraformBasicExample 2022-12-01T02:48:46Z logger.go:66:     } -> null
+TestTerraformBasicExample 2022-12-01T02:48:47Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Destroying... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:47Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Destroying... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:47Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Destroying... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:47Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Destroying... [id=sgrule-1111111111]
+TestTerraformBasicExample 2022-12-01T02:48:47Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-172.31.0.0/16"]: Destruction complete after 1s
+TestTerraformBasicExample 2022-12-01T02:48:48Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-2600:1f13:b21:6500::/56"]: Destruction complete after 1s
+TestTerraformBasicExample 2022-12-01T02:48:48Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-::/0"]: Destruction complete after 1s
+TestTerraformBasicExample 2022-12-01T02:48:48Z logger.go:66: module.security_group.aws_security_group_rule.egress["0-0-all-0.0.0.0/0"]: Destruction complete after 2s
+TestTerraformBasicExample 2022-12-01T02:48:48Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformBasicExample 2022-12-01T02:48:49Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformBasicExample 2022-12-01T02:48:49Z logger.go:66:
+TestTerraformBasicExample 2022-12-01T02:48:49Z logger.go:66: Destroy complete! Resources: 5 destroyed.
+--- PASS: TestTerraformBasicExample (24.84s)
 PASS
-ok  	command-line-arguments	24.812s
+ok  	command-line-arguments	24.853s
