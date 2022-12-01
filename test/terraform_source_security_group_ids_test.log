@@ -1,295 +1,295 @@
 === RUN   TestTerraformSourceSecurityGroupIdsExample
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:39Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:39Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:39Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:39Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:39Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:40Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:40Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:40Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: - Using previously-installed hashicorp/aws v4.39.0
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: [0m[32m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: should now work.
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:41Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:44Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + create
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: Terraform will perform the following actions:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + description            = "Managed by Terraform"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + id                     = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + name                   = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + tags                   = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Name" = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + tags_all               = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Example"    = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Name"       = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + timeouts {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + create = "10m"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + delete = "15m"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"] will be created
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + description              = "HTTPS"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + from_port                = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + id                       = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + self                     = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + to_port                  = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + type                     = "ingress"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   # module.security_group_matrix.aws_security_group.self[0] will be created
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + description            = "Managed by Terraform"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + id                     = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + name                   = "ex-source-security-group-ids-matrix"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + tags                   = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Name" = "ex-source-security-group-ids-matrix"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + tags_all               = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Example"    = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + "Name"       = "ex-source-security-group-ids-matrix"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + timeouts {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + create = "10m"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:           + delete = "15m"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66: Changes to Outputs:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + arn       = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + egress    = []
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + id        = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:   + terratest = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + egress_count                       = 0
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:       + ingress_count                      = (known after apply)
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:45Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:46Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:46Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Creating...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Creating...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: Outputs:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: egress = []
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: id = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: ingress = [
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:   {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "description" = "HTTPS"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "from_port" = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "protocol" = "tcp"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "self" = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "to_port" = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:     "type" = "ingress"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:   },
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: ]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: terratest = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:   "egress_count" = 0
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66:   "ingress_count" = 1
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z retry.go:91: terraform [output -no-color -json id]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:48Z logger.go:66: Running command terraform with args [output -no-color -json id]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:49Z logger.go:66: "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:49Z retry.go:91: terraform [output -no-color -json ingress]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:49Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:50Z logger.go:66: [{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"ingress"}]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:50Z retry.go:91: terraform [output -no-color -json terratest]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:50Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:51Z logger.go:66: {"data_aws_security_group_default_id":"sg-1111111111111111","egress_count":0,"ingress_count":1}
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:51Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:51Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:54Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: data.aws_security_group.default: Read complete after 1s [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:55Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - destroy
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66: Terraform will perform the following actions:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - resource "aws_security_group" "self" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - description            = "Managed by Terraform" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - egress                 = [] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - ingress                = [
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - cidr_blocks      = []
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - description      = "HTTPS"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - from_port        = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - protocol         = "tcp"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - security_groups  = [
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:                   - "sg-1111111111111111",
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:                 ]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - self             = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:               - to_port          = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:             },
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         ] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - name                   = "ex-source-security-group-ids" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - tags                   = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Name" = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         } -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - tags_all               = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Example"    = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Name"       = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         } -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - timeouts {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - create = "10m" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - delete = "15m" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"] will be destroyed
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - description              = "HTTPS" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - from_port                = 443 -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - protocol                 = "tcp" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - self                     = false -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - to_port                  = 443 -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - type                     = "ingress" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   # module.security_group_matrix.aws_security_group.self[0] will be destroyed
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - resource "aws_security_group" "self" {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - description            = "Managed by Terraform" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - egress                 = [] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - ingress                = [] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - name                   = "ex-source-security-group-ids-matrix" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - tags                   = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Name" = "ex-source-security-group-ids-matrix"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         } -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - tags_all               = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Example"    = "ex-source-security-group-ids"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - "Name"       = "ex-source-security-group-ids-matrix"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         } -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - timeouts {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - create = "10m" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - delete = "15m" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:     }
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66: Changes to Outputs:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - egress    = [] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - id        = "sg-1111111111111111" -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - ingress   = [
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - cidr_blocks              = null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - description              = "HTTPS"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - from_port                = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - self                     = false
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - timeouts                 = null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - to_port                  = 443
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:           - type                     = "ingress"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:         },
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:     ] -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:   - terratest = {
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - egress_count                       = 0
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:       - ingress_count                      = 1
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:56Z logger.go:66:     } -> null
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:57Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:57Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:58Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 0s
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:58Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:58Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Destruction complete after 1s
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:59Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:59Z logger.go:66:
-TestTerraformSourceSecurityGroupIdsExample 2022-12-01T02:53:59Z logger.go:66: Destroy complete! Resources: 3 destroyed.
---- PASS: TestTerraformSourceSecurityGroupIdsExample (19.75s)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:32Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:32Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:32Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:33Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:33Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:34Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:34Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:34Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: - Using previously-installed hashicorp/aws v4.39.0
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: [0m[32m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: should now work.
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:35Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:38Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:38Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:38Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + create
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: Terraform will perform the following actions:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + description            = "Managed by Terraform"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + id                     = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + name                   = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + tags                   = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Name" = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + tags_all               = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Example"    = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Name"       = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + timeouts {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + create = "10m"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + delete = "15m"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"] will be created
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + resource "aws_security_group_rule" "ingress" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + description              = "HTTPS"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + from_port                = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + id                       = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + self                     = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + to_port                  = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + type                     = "ingress"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   # module.security_group_matrix.aws_security_group.self[0] will be created
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + description            = "Managed by Terraform"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + id                     = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + name                   = "ex-source-security-group-ids-matrix"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + tags                   = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Name" = "ex-source-security-group-ids-matrix"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + tags_all               = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Example"    = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + "Name"       = "ex-source-security-group-ids-matrix"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + timeouts {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + create = "10m"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:           + delete = "15m"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: Plan: 3 to add, 0 to change, 0 to destroy.
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66: Changes to Outputs:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + arn       = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + egress    = []
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + id        = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:   + terratest = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + egress_count                       = 0
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:       + ingress_count                      = (known after apply)
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:39Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:40Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:40Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Creating...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:41Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:41Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:41Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Creating...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Creation complete after 0s [id=sgrule-1111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: Outputs:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: egress = []
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: id = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: ingress = [
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:   {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "description" = "HTTPS"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "from_port" = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "protocol" = "tcp"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "self" = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "to_port" = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:     "type" = "ingress"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:   },
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: ]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: terratest = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:   "egress_count" = 0
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66:   "ingress_count" = 1
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z retry.go:91: terraform [output -no-color -json id]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:42Z logger.go:66: Running command terraform with args [output -no-color -json id]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:43Z logger.go:66: "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:43Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:43Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:44Z logger.go:66: [{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"ingress"}]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:44Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:44Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:45Z logger.go:66: {"data_aws_security_group_default_id":"sg-1111111111111111","egress_count":0,"ingress_count":1}
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:45Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:45Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:48Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:49Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - destroy
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66: Terraform will perform the following actions:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - description            = "Managed by Terraform" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - egress                 = [] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - ingress                = [
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - cidr_blocks      = []
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - description      = "HTTPS"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - from_port        = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - protocol         = "tcp"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - security_groups  = [
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:                 ]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - self             = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:               - to_port          = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:             },
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         ] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - name                   = "ex-source-security-group-ids" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - tags                   = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Name" = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         } -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - tags_all               = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Example"    = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Name"       = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         } -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - timeouts {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - create = "10m" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - delete = "15m" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   # module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"] will be destroyed
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - resource "aws_security_group_rule" "ingress" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - description              = "HTTPS" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - from_port                = 443 -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - self                     = false -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - to_port                  = 443 -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   # module.security_group_matrix.aws_security_group.self[0] will be destroyed
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - description            = "Managed by Terraform" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - egress                 = [] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - ingress                = [] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - name                   = "ex-source-security-group-ids-matrix" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - tags                   = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Name" = "ex-source-security-group-ids-matrix"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         } -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - tags_all               = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Example"    = "ex-source-security-group-ids"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - "Name"       = "ex-source-security-group-ids-matrix"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         } -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - timeouts {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - create = "10m" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - delete = "15m" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:     }
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66: Plan: 0 to add, 0 to change, 3 to destroy.
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66: Changes to Outputs:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - egress    = [] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - id        = "sg-1111111111111111" -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - ingress   = [
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - cidr_blocks              = null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - description              = "HTTPS"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - from_port                = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - self                     = false
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - timeouts                 = null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - to_port                  = 443
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:           - type                     = "ingress"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:         },
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:     ] -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:   - terratest = {
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - egress_count                       = 0
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:       - ingress_count                      = 1
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:50Z logger.go:66:     } -> null
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:51Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:51Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:51Z logger.go:66: module.security_group.aws_security_group_rule.ingress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 1s
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:51Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:52Z logger.go:66: module.security_group_matrix.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:52Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:52Z logger.go:66:
+TestTerraformSourceSecurityGroupIdsExample 2022-12-01T03:38:52Z logger.go:66: Destroy complete! Resources: 3 destroyed.
+--- PASS: TestTerraformSourceSecurityGroupIdsExample (19.87s)
 PASS
-ok  	command-line-arguments	19.768s
+ok  	command-line-arguments	19.888s
