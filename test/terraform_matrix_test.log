@@ -1,873 +1,873 @@
 === RUN   TestTerraformMatrixRulesExample
-TestTerraformMatrixRulesExample 2022-11-30T02:50:39Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:39Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:39Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:39Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:39Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:42Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:42Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:42Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: - Using previously-installed hashicorp/aws v4.34.0
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: [0m[32m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: should now work.
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:43Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:46Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:46Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:46Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + create
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: Terraform will perform the following actions:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_ec2_managed_prefix_list" "other" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + address_family = "IPv4"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + arn            = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id             = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + max_entries    = 5
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + name           = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + owner_id       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + tags_all       = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + version        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + entry {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + cidr        = "172.31.0.0/16"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + description = "Primary"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # aws_security_group.other will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group" "other" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description            = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                     = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + name                   = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + tags                   = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Name" = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + tags_all               = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Name"       = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group" "self" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + arn                    = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description            = "Managed by Terraform"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + egress                 = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                     = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + ingress                = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + name                   = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + name_prefix            = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + owner_id               = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + revoke_rules_on_delete = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + tags                   = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Name" = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + tags_all               = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "Name"       = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + timeouts {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + create = "10m"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + delete = "15m"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_egress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_egress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + ipv6_cidr_blocks         = []
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + prefix_list_ids          = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = true
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + ipv6_cidr_blocks         = []
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + prefix_list_ids          = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:           + "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:         ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"] will be created
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + id                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + security_group_id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + self                     = true
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + source_security_group_id = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: Plan: 11 to add, 0 to change, 0 to destroy.
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66: Changes to Outputs:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + arn       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + egress    = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + id        = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + ingress   = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:   + terratest = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + data_aws_prefix_list_private_s3_id = "pl-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + egress_count                       = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:       + ingress_count                      = (known after apply)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:47Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:48Z logger.go:66: aws_ec2_managed_prefix_list.other: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:48Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:48Z logger.go:66: aws_security_group.other: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:49Z logger.go:66: aws_ec2_managed_prefix_list.other: Creation complete after 1s [id=pl-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: aws_security_group.other: Creation complete after 1s [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 1s [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Creating...
-TestTerraformMatrixRulesExample 2022-11-30T02:50:51Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Creation complete after 1s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:51Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:52Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Creation complete after 2s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:52Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creation complete after 3s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:53Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Creation complete after 3s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:53Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creation complete after 4s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:54Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Creation complete after 4s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:54Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Creation complete after 5s [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: Outputs:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: egress = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     ])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: ingress = [
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     ])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist([])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist([
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     ])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = true
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist([
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     ])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist([])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist([
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:       "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     ])
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = false
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "description" = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "from_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "id" = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "protocol" = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "self" = true
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "source_security_group_id" = tostring(null)
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "timeouts" = null /* object */
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "to_port" = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:     "type" = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   },
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: ]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: terratest = {
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   "data_aws_prefix_list_private_s3_id" = "pl-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   "egress_count" = 2
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66:   "ingress_count" = 6
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: }
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z retry.go:91: terraform [output -no-color -json id]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: Running command terraform with args [output -no-color -json id]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z retry.go:91: terraform [output -no-color -json ingress]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:55Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:56Z logger.go:66: [{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":[],"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":true,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":[],"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":80,"type":"ingress"},{"cidr_blocks":null,"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":80,"type":"ingress"},{"cidr_blocks":null,"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":true,"source_security_group_id":null,"timeouts":null,"to_port":80,"type":"ingress"}]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:56Z retry.go:91: terraform [output -no-color -json egress]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:56Z logger.go:66: Running command terraform with args [output -no-color -json egress]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:57Z logger.go:66: [{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"egress"},{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"egress"}]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:57Z retry.go:91: terraform [output -no-color -json terratest]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:57Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:58Z logger.go:66: {"data_aws_prefix_list_private_s3_id":"pl-1111111111111111","data_aws_security_group_default_id":"sg-1111111111111111","egress_count":2,"ingress_count":6}
-TestTerraformMatrixRulesExample 2022-11-30T02:50:58Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:50:58Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:01Z logger.go:66: data.aws_vpc.default: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:51:01Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: data.aws_vpc.default: Read complete after 0s [id=vpc-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: data.aws_security_group.default: Reading...
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: data.aws_security_group.default: Read complete after 1s [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:02Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Refreshing state... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - destroy
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66: Terraform will perform the following actions:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_ec2_managed_prefix_list" "other" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - address_family = "IPv4" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - arn            = "arn:aws:ec2:us-west-2:111111111111:prefix-list/pl-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id             = "pl-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - max_entries    = 5 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - name           = "ex-matrix-other" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - owner_id       = "111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags           = {} -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags_all       = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - version        = 1 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - entry {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr        = "172.31.0.0/16" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description = "Primary" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # aws_security_group.other will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group" "other" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description            = "ex-matrix-other" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - egress                 = [] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - ingress                = [] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - name                   = "ex-matrix-other" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags                   = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Name" = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags_all               = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Name"       = "ex-matrix-other"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group" "self" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description            = "Managed by Terraform" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - egress                 = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - cidr_blocks      = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - description      = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - from_port        = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - prefix_list_ids  = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - protocol         = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - security_groups  = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "sg-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - self             = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - to_port          = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - ingress                = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - cidr_blocks      = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - description      = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - from_port        = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - prefix_list_ids  = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - protocol         = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - security_groups  = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "sg-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - self             = true
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - to_port          = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - cidr_blocks      = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - description      = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - from_port        = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - ipv6_cidr_blocks = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - prefix_list_ids  = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - protocol         = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - security_groups  = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                   - "sg-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:                 ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - self             = true
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - to_port          = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - name                   = "ex-matrix" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - owner_id               = "111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - revoke_rules_on_delete = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags                   = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Name" = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - tags_all               = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Example"    = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "Name"       = "ex-matrix"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - timeouts {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - create = "10m" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - delete = "15m" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_egress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - cidr_blocks       = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description       = "HTTPS" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self              = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type              = "egress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_egress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description              = "HTTPS" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port                = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol                 = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self                     = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port                  = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type                     = "egress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - cidr_blocks       = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description       = "matrix managed rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - prefix_list_ids   = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self              = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description              = "matrix managed rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port                = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol                 = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self                     = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port                  = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type                     = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description       = "matrix managed rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port         = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self              = true -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port           = 443 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - cidr_blocks       = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description       = "matrix customer rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port         = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - prefix_list_ids   = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self              = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port           = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description              = "matrix customer rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port                = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol                 = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self                     = false -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port                  = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type                     = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"] will be destroyed
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - description       = "matrix customer rule" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - from_port         = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - id                = "sgrule-1111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - protocol          = "tcp" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - self              = true -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - to_port           = 80 -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - type              = "ingress" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     }
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66: Plan: 0 to add, 0 to change, 11 to destroy.
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66: Changes to Outputs:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - egress    = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "HTTPS"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "egress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - id        = "sg-1111111111111111" -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - ingress   = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix managed rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = true
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 443
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.0.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "10.0.1.0/24",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = []
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = [
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:               - "pl-1111111111111111",
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:             ]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = false
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - cidr_blocks              = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - description              = "matrix customer rule"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - from_port                = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - id                       = "sgrule-1111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - ipv6_cidr_blocks         = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - prefix_list_ids          = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - protocol                 = "tcp"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - self                     = true
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - source_security_group_id = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - timeouts                 = null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - to_port                  = 80
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:           - type                     = "ingress"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:         },
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     ] -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:   - terratest = {
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - data_aws_prefix_list_private_s3_id = "pl-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - egress_count                       = 2
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:       - ingress_count                      = 6
-TestTerraformMatrixRulesExample 2022-11-30T02:51:04Z logger.go:66:     } -> null
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: aws_ec2_managed_prefix_list.other: Destroying... [id=pl-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: aws_security_group.other: Destroying... [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Destroying... [id=sgrule-1111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destruction complete after 1s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:06Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destruction complete after 1s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:06Z logger.go:66: aws_security_group.other: Destruction complete after 1s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:06Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Destruction complete after 2s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:07Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Destruction complete after 2s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:07Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Destruction complete after 3s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:08Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Destruction complete after 3s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:08Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 4s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:08Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 4s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:09Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
-TestTerraformMatrixRulesExample 2022-11-30T02:51:09Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:12Z logger.go:66: aws_ec2_managed_prefix_list.other: Destruction complete after 8s
-TestTerraformMatrixRulesExample 2022-11-30T02:51:12Z logger.go:66:
-TestTerraformMatrixRulesExample 2022-11-30T02:51:12Z logger.go:66: Destroy complete! Resources: 11 destroyed.
---- PASS: TestTerraformMatrixRulesExample (33.59s)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:40Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:40Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:40Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:40Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:40Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:41Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:41Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:41Z logger.go:66: - Reusing previous version of hashicorp/aws from the dependency lock file
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: - Using previously-installed hashicorp/aws v4.39.0
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: [0m[32m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: should now work.
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:42Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:45Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:45Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + create
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: Terraform will perform the following actions:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_ec2_managed_prefix_list" "other" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + address_family = "IPv4"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + arn            = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id             = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + max_entries    = 5
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + name           = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + owner_id       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + tags_all       = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + version        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + entry {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + cidr        = "172.31.0.0/16"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + description = "Primary"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # aws_security_group.other will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group" "other" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description            = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                     = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + name                   = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + tags                   = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Name" = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + tags_all               = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Name"       = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group" "self" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + arn                    = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description            = "Managed by Terraform"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + egress                 = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                     = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + ingress                = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + name                   = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + name_prefix            = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + owner_id               = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + revoke_rules_on_delete = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + tags                   = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Name" = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + tags_all               = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "Name"       = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + vpc_id                 = "vpc-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + timeouts {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + create = "10m"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + delete = "15m"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_egress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_egress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + ipv6_cidr_blocks         = []
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = true
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + ipv6_cidr_blocks         = []
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + prefix_list_ids          = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:           + "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:         ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"] will be created
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + id                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + security_group_id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + self                     = true
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + source_security_group_id = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: Plan: 11 to add, 0 to change, 0 to destroy.
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66: Changes to Outputs:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + arn       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + egress    = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + id        = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + ingress   = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:   + terratest = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + data_aws_prefix_list_private_s3_id = "pl-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + egress_count                       = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:       + ingress_count                      = (known after apply)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:46Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:47Z logger.go:66: aws_ec2_managed_prefix_list.other: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:47Z logger.go:66: module.security_group.aws_security_group.self[0]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:47Z logger.go:66: aws_security_group.other: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:48Z logger.go:66: aws_ec2_managed_prefix_list.other: Creation complete after 1s [id=pl-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group.self[0]: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: aws_security_group.other: Creation complete after 2s [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:49Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creating...
+TestTerraformMatrixRulesExample 2022-12-01T02:51:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Creation complete after 0s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:50Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:51Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Creation complete after 1s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:51Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Creation complete after 2s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:52Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Creation complete after 3s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:53Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Creation complete after 3s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:53Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Creation complete after 4s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Creation complete after 4s [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: Outputs:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: arn = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: egress = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     ])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: ingress = [
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     ])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist([])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist([
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     ])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = true
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist([
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     ])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist([])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist([
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:       "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     ])
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = false
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "description" = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "from_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "id" = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "ipv6_cidr_blocks" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "prefix_list_ids" = tolist(null) /* of string */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "protocol" = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "security_group_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "self" = true
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "source_security_group_id" = tostring(null)
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "timeouts" = null /* object */
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "to_port" = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:     "type" = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   },
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: ]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: terratest = {
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   "data_aws_prefix_list_private_s3_id" = "pl-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   "data_aws_security_group_default_id" = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   "egress_count" = 2
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66:   "ingress_count" = 6
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: }
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z retry.go:91: terraform [output -no-color -json id]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:54Z logger.go:66: Running command terraform with args [output -no-color -json id]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:55Z logger.go:66: "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:51:55Z retry.go:91: terraform [output -no-color -json ingress]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:55Z logger.go:66: Running command terraform with args [output -no-color -json ingress]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z logger.go:66: [{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":[],"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":null,"description":"matrix managed rule","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":true,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"ingress"},{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":[],"prefix_list_ids":["pl-1111111111111111"],"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":80,"type":"ingress"},{"cidr_blocks":null,"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":80,"type":"ingress"},{"cidr_blocks":null,"description":"matrix customer rule","from_port":80,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":true,"source_security_group_id":null,"timeouts":null,"to_port":80,"type":"ingress"}]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z retry.go:91: terraform [output -no-color -json egress]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z logger.go:66: Running command terraform with args [output -no-color -json egress]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z logger.go:66: [{"cidr_blocks":["10.0.0.0/24","10.0.1.0/24"],"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":null,"timeouts":null,"to_port":443,"type":"egress"},{"cidr_blocks":null,"description":"HTTPS","from_port":443,"id":"sgrule-1111111111","ipv6_cidr_blocks":null,"prefix_list_ids":null,"protocol":"tcp","security_group_id":"sg-1111111111111111","self":false,"source_security_group_id":"sg-1111111111111111","timeouts":null,"to_port":443,"type":"egress"}]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z retry.go:91: terraform [output -no-color -json terratest]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:56Z logger.go:66: Running command terraform with args [output -no-color -json terratest]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:57Z logger.go:66: {"data_aws_prefix_list_private_s3_id":"pl-1111111111111111","data_aws_security_group_default_id":"sg-1111111111111111","egress_count":2,"ingress_count":6}
+TestTerraformMatrixRulesExample 2022-12-01T02:51:57Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:51:57Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:00Z logger.go:66: data.aws_prefix_list.private_s3: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:52:00Z logger.go:66: data.aws_vpc.default: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: data.aws_prefix_list.private_s3: Read complete after 0s [id=pl-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: data.aws_vpc.default: Read complete after 1s [id=vpc-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: aws_ec2_managed_prefix_list.other: Refreshing state... [id=pl-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: aws_security_group.other: Refreshing state... [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: data.aws_security_group.default: Reading...
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group.self[0]: Refreshing state... [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: data.aws_security_group.default: Read complete after 0s [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:01Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Refreshing state... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - destroy
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66: Terraform will perform the following actions:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # aws_ec2_managed_prefix_list.other will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_ec2_managed_prefix_list" "other" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - address_family = "IPv4" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - arn            = "arn:aws:ec2:us-west-2:111111111111:prefix-list/pl-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id             = "pl-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - max_entries    = 5 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - name           = "ex-matrix-other" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - owner_id       = "111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags           = {} -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags_all       = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - version        = 1 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - entry {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr        = "172.31.0.0/16" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description = "Primary" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # aws_security_group.other will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group" "other" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description            = "ex-matrix-other" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - egress                 = [] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - ingress                = [] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - name                   = "ex-matrix-other" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags                   = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Name" = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags_all               = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Name"       = "ex-matrix-other"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group.self[0] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group" "self" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - arn                    = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description            = "Managed by Terraform" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - egress                 = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - cidr_blocks      = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - description      = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - from_port        = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - prefix_list_ids  = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - protocol         = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - security_groups  = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - self             = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - to_port          = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                     = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - ingress                = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - cidr_blocks      = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - description      = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - from_port        = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - protocol         = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - security_groups  = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - self             = true
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - to_port          = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - cidr_blocks      = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - description      = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - from_port        = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - ipv6_cidr_blocks = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - prefix_list_ids  = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - protocol         = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - security_groups  = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                   - "sg-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:                 ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - self             = true
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - to_port          = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - name                   = "ex-matrix" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - owner_id               = "111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - revoke_rules_on_delete = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags                   = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Name" = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - tags_all               = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Example"    = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubOrg"  = "aidanmelen"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "GithubRepo" = "terraform-aws-security-group"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "Name"       = "ex-matrix"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - vpc_id                 = "vpc-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - timeouts {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - create = "10m" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - delete = "15m" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_egress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - cidr_blocks       = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description       = "HTTPS" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self              = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type              = "egress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_egress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description              = "HTTPS" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port                = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self                     = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port                  = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type                     = "egress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - cidr_blocks       = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description       = "matrix managed rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self              = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description              = "matrix managed rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port                = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self                     = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port                  = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description       = "matrix managed rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port         = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self              = true -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port           = 443 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - cidr_blocks       = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description       = "matrix customer rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port         = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - ipv6_cidr_blocks  = [] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - prefix_list_ids   = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self              = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port           = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description              = "matrix customer rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port                = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                       = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol                 = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id        = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self                     = false -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - source_security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port                  = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type                     = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   # module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"] will be destroyed
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - resource "aws_security_group_rule" "matrix_ingress" {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - description       = "matrix customer rule" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - from_port         = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - id                = "sgrule-1111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - protocol          = "tcp" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - security_group_id = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - self              = true -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - to_port           = 80 -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - type              = "ingress" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     }
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66: Plan: 0 to add, 0 to change, 11 to destroy.
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66: Changes to Outputs:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - arn       = "arn:aws:ec2:us-west-2:111111111111:security-group/sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - egress    = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "HTTPS"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "egress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - id        = "sg-1111111111111111" -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - ingress   = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix managed rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = true
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 443
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.0.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "10.0.1.0/24",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = []
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = [
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:               - "pl-1111111111111111",
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:             ]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = false
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - cidr_blocks              = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - description              = "matrix customer rule"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - from_port                = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - id                       = "sgrule-1111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - ipv6_cidr_blocks         = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - prefix_list_ids          = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - protocol                 = "tcp"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - security_group_id        = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - self                     = true
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - source_security_group_id = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - timeouts                 = null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - to_port                  = 80
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:           - type                     = "ingress"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:         },
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     ] -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:   - terratest = {
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - data_aws_prefix_list_private_s3_id = "pl-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - data_aws_security_group_default_id = "sg-1111111111111111"
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - egress_count                       = 2
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:       - ingress_count                      = 6
+TestTerraformMatrixRulesExample 2022-12-01T02:52:03Z logger.go:66:     } -> null
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: aws_ec2_managed_prefix_list.other: Destroying... [id=pl-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: aws_security_group.other: Destroying... [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Destroying... [id=sgrule-1111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:04Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 1s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:05Z logger.go:66: aws_security_group.other: Destruction complete after 1s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-true"]: Destruction complete after 1s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:05Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-10.0.0.0/24-10.0.1.0/24"]: Destruction complete after 2s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:06Z logger.go:66: module.security_group.aws_security_group_rule.matrix_egress["443-443-tcp-sg-1111111111111111"]: Destruction complete after 2s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:06Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-sg-1111111111111111"]: Destruction complete after 2s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:06Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destruction complete after 3s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:07Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["443-443-tcp-10.0.0.0/24-10.0.1.0/24-pl-1111111111111111"]: Destruction complete after 3s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:07Z logger.go:66: module.security_group.aws_security_group_rule.matrix_ingress["80-80-tcp-true"]: Destruction complete after 4s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:07Z logger.go:66: module.security_group.aws_security_group.self[0]: Destroying... [id=sg-1111111111111111]
+TestTerraformMatrixRulesExample 2022-12-01T02:52:08Z logger.go:66: module.security_group.aws_security_group.self[0]: Destruction complete after 1s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:11Z logger.go:66: aws_ec2_managed_prefix_list.other: Destruction complete after 7s
+TestTerraformMatrixRulesExample 2022-12-01T02:52:11Z logger.go:66:
+TestTerraformMatrixRulesExample 2022-12-01T02:52:11Z logger.go:66: Destroy complete! Resources: 11 destroyed.
+--- PASS: TestTerraformMatrixRulesExample (30.56s)
 PASS
-ok  	command-line-arguments	33.611s
+ok  	command-line-arguments	30.575s
